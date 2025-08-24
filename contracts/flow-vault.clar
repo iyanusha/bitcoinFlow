@@ -14,8 +14,11 @@
 (define-constant ERR-INSUFFICIENT-BALANCE (err u101))
 (define-constant ERR-INVALID-AMOUNT (err u102))
 (define-constant ERR-STACKING-ERROR (err u103))
+(define-constant ERR-SBTC-TRANSFER-FAILED (err u104))
 (define-constant CONTRACT-OWNER tx-sender)
 (define-constant STACKING-THRESHOLD u10000000) ;; 10 STX minimum for stacking
+;; sBTC token contract (testnet placeholder)
+(define-constant SBTC-TOKEN-CONTRACT 'SP000000000000000000002Q6VF78.sbtc-token)
 
 ;; data vars
 (define-data-var total-deposits uint u0)
