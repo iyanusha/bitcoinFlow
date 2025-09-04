@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { useWallet } from './hooks/useWallet'
+import { openContractCall } from '@stacks/connect'
+import { uintCV, PostConditionMode } from '@stacks/transactions'
+import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './lib/stacks'
 import './App.css'
 
 function App() {
-  const [isConnected, setIsConnected] = useState(false)
-  const [walletAddress, setWalletAddress] = useState('')
+  const { isConnected, connect, disconnect, getAddress } = useWallet()
   const [depositAmount, setDepositAmount] = useState('')
   const [withdrawAmount, setWithdrawAmount] = useState('')
   const [vaultStats] = useState({
@@ -12,43 +15,56 @@ function App() {
     userBalance: 0
   })
 
-  const connectWallet = () => {
-    // Simplified wallet connection for demo
-    setIsConnected(true)
-    setWalletAddress('ST1EXAMPLE...TESTNET')
-  }
-
   const handleDeposit = async () => {
     if (!isConnected || !depositAmount) return
-    
-    // Simplified deposit logic - in real implementation would call contract
-    alert(`Depositing ${depositAmount} sBTC to vault...`)
-    console.log('Deposit function called with amount:', depositAmount)
-    setDepositAmount('')
+
+    await openContractCall({
+      network,
+      contractAddress: CONTRACT_ADDRESS,
+      contractName: CONTRACT_NAME,
+      functionName: 'deposit',
+      functionArgs: [uintCV(parseInt(depositAmount) * 100000000)],
+      postConditionMode: PostConditionMode.Deny,
+      onFinish: (data) => {
+        console.log('Deposit tx:', data.txId)
+        setDepositAmount('')
+      },
+    })
   }
 
   const handleWithdraw = async () => {
     if (!isConnected || !withdrawAmount) return
-    
-    // Simplified withdraw logic - in real implementation would call contract
-    alert(`Withdrawing ${withdrawAmount} Flow tokens from vault...`)
-    console.log('Withdraw function called with amount:', withdrawAmount)
-    setWithdrawAmount('')
+
+    await openContractCall({
+      network,
+      contractAddress: CONTRACT_ADDRESS,
+      contractName: CONTRACT_NAME,
+      functionName: 'withdraw',
+      functionArgs: [uintCV(parseInt(withdrawAmount) * 100000000)],
+      postConditionMode: PostConditionMode.Deny,
+      onFinish: (data) => {
+        console.log('Withdraw tx:', data.txId)
+        setWithdrawAmount('')
+      },
+    })
   }
 
   return (
     <div className="app">
       <header className="app-header">
-        <h1>🌊 BitcoinFlow</h1>
+        <h1>BitcoinFlow</h1>
         <p>Smart sBTC Stacking Vault</p>
-        
+
         {!isConnected ? (
-          <button className="connect-btn" onClick={connectWallet}>
+          <button className="connect-btn" onClick={connect}>
             Connect Stacks Wallet
           </button>
         ) : (
           <div className="wallet-info">
-            <p>Connected: {walletAddress}</p>
+            <p>Connected: {getAddress()?.slice(0, 8)}...{getAddress()?.slice(-4)}</p>
+            <button className="disconnect-btn" onClick={disconnect}>
+              Disconnect
+            </button>
           </div>
         )}
       </header>
@@ -76,8 +92,8 @@ function App() {
           <div className="actions">
             <div className="action-card">
               <h3>Deposit sBTC</h3>
-              <input 
-                type="number" 
+              <input
+                type="number"
                 placeholder="Amount to deposit"
                 value={depositAmount}
                 onChange={(e) => setDepositAmount(e.target.value)}
@@ -89,8 +105,8 @@ function App() {
 
             <div className="action-card">
               <h3>Withdraw sBTC</h3>
-              <input 
-                type="number" 
+              <input
+                type="number"
                 placeholder="Flow tokens to burn"
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(e.target.value)}
