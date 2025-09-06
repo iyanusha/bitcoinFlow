@@ -116,6 +116,19 @@
   }
 )
 
+;; Emergency withdraw all for a user (admin only)
+(define-public (emergency-withdraw (user principal))
+  (let ((user-balance (default-to u0 (map-get? user-deposits user))))
+    (begin
+      (asserts! (is-eq tx-sender CONTRACT-OWNER) ERR-NOT-AUTHORIZED)
+      (asserts! (> user-balance u0) ERR-INSUFFICIENT-BALANCE)
+      (map-set user-deposits user u0)
+      (var-set total-deposits (- (var-get total-deposits) user-balance))
+      (ft-burn? flow-token user-balance user)
+    )
+  )
+)
+
 ;; private functions
 ;;
 
