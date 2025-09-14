@@ -115,7 +115,8 @@
     total-deposits: (var-get total-deposits),
     total-rewards: (var-get total-rewards),
     stx-balance: (var-get stx-balance),
-    last-compound: (var-get last-compound-cycle)
+    last-compound: (var-get last-compound-cycle),
+    paused: (var-get vault-paused)
   }
 )
 
