@@ -116,7 +116,8 @@
     total-rewards: (var-get total-rewards),
     stx-balance: (var-get stx-balance),
     last-compound: (var-get last-compound-cycle),
-    paused: (var-get vault-paused)
+    paused: (var-get vault-paused),
+    current-time: (unwrap-panic (get-stacks-block-info? time block-height))
   }
 )
 
