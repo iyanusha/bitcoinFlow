@@ -12,6 +12,8 @@ export const CONTRACT_ADDRESS =
 
 export const CONTRACT_NAME = "flow-vault";
 
+export const CLARITY_VERSION = 4;
+
 export const EXPLORER_URL = isMainnet
-  ? "https://explorer.stacks.co"
-  : "https://explorer.stacks.co/?chain=testnet";
+  ? "https://explorer.hiro.so"
+  : "https://explorer.hiro.so/?chain=testnet";

@@ -1,14 +1,16 @@
 [project]
 name = 'bitcoinflow'
-description = ''
+description = 'sBTC liquid stacking vault'
 authors = []
-telemetry = true
+telemetry = false
 cache_dir = './.cache'
 requirements = []
+
 [contracts.flow-vault]
 path = 'contracts/flow-vault.clar'
 clarity_version = 3
-epoch = 'latest'
+epoch = 3.0
+
 [repl.analysis]
 passes = ['check_checker']
 
