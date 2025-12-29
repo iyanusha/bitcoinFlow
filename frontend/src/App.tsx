@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import type { VaultStats, AppError } from './types'
 import { useWallet } from './hooks/useWallet'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
@@ -9,7 +10,7 @@ function App() {
   const { isConnected, connect, disconnect, getAddress } = useWallet()
   const [depositAmount, setDepositAmount] = useState('')
   const [withdrawAmount, setWithdrawAmount] = useState('')
-  const [vaultStats] = useState({
+  const [vaultStats] = useState<VaultStats>({
     totalDeposits: 0,
     totalRewards: 0,
     userBalance: 0
