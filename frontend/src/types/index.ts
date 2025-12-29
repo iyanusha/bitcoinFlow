@@ -71,3 +71,10 @@ export interface UserPosition {
   pendingRewards: number;
   lastDepositTime: number | null;
 }
+
+export interface StackingInfo {
+  delegationPool: string | null;
+  lastCompoundCycle: number;
+  isVaultPaused: boolean;
+  currentBlockHeight: number;
+}
