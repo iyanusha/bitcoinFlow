@@ -36,3 +36,17 @@ export interface WithdrawParams {
   amount: number;
   tokensToBurn: number;
 }
+
+export type ErrorCode =
+  | 'NOT_AUTHORIZED'
+  | 'INSUFFICIENT_BALANCE'
+  | 'INVALID_AMOUNT'
+  | 'STACKING_ERROR'
+  | 'SBTC_TRANSFER_FAILED'
+  | 'VAULT_PAUSED';
+
+export interface AppError {
+  code: ErrorCode;
+  message: string;
+  details?: string;
+}
