@@ -50,3 +50,17 @@ export interface AppError {
   message: string;
   details?: string;
 }
+
+export interface VaultConfig {
+  contractAddress: string;
+  contractName: string;
+  network: 'mainnet' | 'testnet';
+  explorerUrl: string;
+  clarityVersion: number;
+}
+
+export interface NetworkInfo {
+  name: string;
+  chainId: number;
+  explorerUrl: string;
+}
