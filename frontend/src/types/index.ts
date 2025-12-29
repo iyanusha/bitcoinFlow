@@ -64,3 +64,10 @@ export interface NetworkInfo {
   chainId: number;
   explorerUrl: string;
 }
+
+export interface UserPosition {
+  depositedAmount: number;
+  flowTokenBalance: number;
+  pendingRewards: number;
+  lastDepositTime: number | null;
+}
