@@ -19,3 +19,20 @@ export interface TransactionRecord {
   status: TransactionStatus;
   timestamp: number;
 }
+
+export interface ContractCallOptions {
+  contractAddress: string;
+  contractName: string;
+  functionName: string;
+  functionArgs: unknown[];
+}
+
+export interface DepositParams {
+  amount: number;
+  senderAddress: string;
+}
+
+export interface WithdrawParams {
+  amount: number;
+  tokensToBurn: number;
+}
