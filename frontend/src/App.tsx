@@ -10,6 +10,7 @@ function App() {
   const { isConnected, connect, disconnect, getAddress } = useWallet()
   const [depositAmount, setDepositAmount] = useState('')
   const [withdrawAmount, setWithdrawAmount] = useState('')
+  const [error, setError] = useState<string | null>(null)
   const [vaultStats] = useState<VaultStats>({
     totalDeposits: 0,
     totalRewards: 0,
