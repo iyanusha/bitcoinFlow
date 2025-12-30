@@ -43,6 +43,7 @@ function App() {
   const handleWithdraw = async () => {
     if (!isConnected || !withdrawAmount) return
 
+    try {
     await openContractCall({
       network,
       contractAddress: CONTRACT_ADDRESS,
@@ -53,6 +54,11 @@ function App() {
       onFinish: (data) => {
         console.log('Withdraw tx:', data.txId)
         setWithdrawAmount('')
+      },
+    });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Withdrawal failed");
+    }
       },
     })
   }
