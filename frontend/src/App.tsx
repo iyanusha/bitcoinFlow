@@ -20,6 +20,7 @@ function App() {
   const handleDeposit = async () => {
     if (!isConnected || !depositAmount) return
 
+    try {
     await openContractCall({
       network,
       contractAddress: CONTRACT_ADDRESS,
@@ -30,6 +31,11 @@ function App() {
       onFinish: (data) => {
         console.log('Deposit tx:', data.txId)
         setDepositAmount('')
+      },
+    });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Deposit failed");
+    }
       },
     })
   }
