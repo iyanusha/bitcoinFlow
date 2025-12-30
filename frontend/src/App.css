@@ -227,3 +227,28 @@
     grid-template-columns: 1fr;
   }
 }
+
+.error-boundary {
+  text-align: center;
+  padding: 3rem;
+  max-width: 500px;
+  margin: 2rem auto;
+  background: #fff5f5;
+  border: 1px solid #fed7d7;
+  border-radius: 12px;
+}
+
+.error-boundary h2 { color: #c53030; margin-bottom: 1rem; }
+.error-boundary p { color: #742a2a; margin-bottom: 1.5rem; }
+.error-boundary button { background: #c53030; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; }
+
+.error-banner {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
