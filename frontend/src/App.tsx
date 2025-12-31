@@ -11,6 +11,8 @@ function App() {
   const [depositAmount, setDepositAmount] = useState('')
   const [withdrawAmount, setWithdrawAmount] = useState('')
   const [error, setError] = useState<string | null>(null)
+  const [isDepositing, setIsDepositing] = useState(false)
+  const [isWithdrawing, setIsWithdrawing] = useState(false)
   const [vaultStats] = useState<VaultStats>({
     totalDeposits: 0,
     totalRewards: 0,
