@@ -37,3 +37,11 @@ export function sanitizeNumericInput(value: string): string {
   if (parts.length > 2) s = parts[0] + '.' + parts.slice(1).join('');
   return s;
 }
+
+export function isPositiveInteger(value: string): boolean {
+  return /^\d+$/.test(value) && parseInt(value) > 0;
+}
+
+export function isValidStxAddress(address: string): boolean {
+  return /^S[TPM][0-9A-Z]{38,40}$/.test(address);
+}
