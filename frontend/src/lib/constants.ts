@@ -13,3 +13,9 @@ export const ERROR_MESSAGES: Record<number, string> = {
 export const MIN_DEPOSIT_AMOUNT = 0.0001;
 export const MAX_DEPOSIT_AMOUNT = 1000;
 export const DEPOSIT_DECIMALS = 8;
+
+export const VALIDATION = {
+  MIN_DEPOSIT: 0.0001,
+  MAX_DEPOSIT: 21_000_000,
+  MAX_DECIMALS: 8,
+} as const;
