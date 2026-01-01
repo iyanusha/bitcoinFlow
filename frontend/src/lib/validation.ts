@@ -45,3 +45,13 @@ export function isPositiveInteger(value: string): boolean {
 export function isValidStxAddress(address: string): boolean {
   return /^S[TPM][0-9A-Z]{38,40}$/.test(address);
 }
+
+export function combineValidators(...validators: ((v: string) => ValidationResult)[]): (v: string) => ValidationResult {
+  return (value: string) => {
+    for (const validator of validators) {
+      const result = validator(value);
+      if (!result.isValid) return result;
+    }
+    return { isValid: true, error: null };
+  };
+}
