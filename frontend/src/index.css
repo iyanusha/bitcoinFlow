@@ -85,3 +85,7 @@ button:focus-visible {
 
 .skip-link { position: absolute; left: -9999px; top: auto; }
 .skip-link:focus { position: fixed !important; top: 0; left: 0; width: auto; height: auto; padding: 0.5rem 1rem; background: #667eea; color: white; z-index: 99999; font-weight: 600; text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
