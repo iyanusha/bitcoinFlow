@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div className="app">
-      <header className="app-header">
+      <header className="app-header" role="banner">
         <h1>BitcoinFlow</h1>
         <p>Smart sBTC Stacking Vault</p>
 
