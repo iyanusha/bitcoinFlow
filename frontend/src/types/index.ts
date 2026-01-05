@@ -86,3 +86,6 @@ export interface FormField<T = string> {
   error: string | null;
   touched: boolean;
 }
+
+export interface Responsive_designConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Responsive_designItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
