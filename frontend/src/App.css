@@ -285,3 +285,10 @@
 .responsive_design__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .responsive_design__body { min-height: 60px; }
 @media (max-width: 768px) { .responsive_design { padding: 1rem; } }
+
+.seo_meta_tags { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.seo_meta_tags:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.seo_meta_tags--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.seo_meta_tags__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.seo_meta_tags__body { min-height: 60px; }
+@media (max-width: 768px) { .seo_meta_tags { padding: 1rem; } }
