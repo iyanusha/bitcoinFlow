@@ -21,3 +21,5 @@ export const VALIDATION = {
 } as const;
 
 export const RESPONSIVE_DESIGN_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const SEO_META_TAGS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
