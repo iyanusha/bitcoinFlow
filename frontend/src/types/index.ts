@@ -92,3 +92,6 @@ export interface Responsive_designItem { id: string; label: string; value: numbe
 
 export interface Seo_meta_tagsConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Seo_meta_tagsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Env_validationConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Env_validationItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
