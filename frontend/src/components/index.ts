@@ -7,3 +7,6 @@ export { Seo_meta_tagsList } from './seo_meta_tags_list';
 export { Env_validation } from './env_validation';
 export { Env_validationItem } from './env_validation_item';
 export { Env_validationList } from './env_validation_list';
+export { Vault_status_hooks } from './vault_status_hooks';
+export { Vault_status_hooksItem } from './vault_status_hooks_item';
+export { Vault_status_hooksList } from './vault_status_hooks_list';
