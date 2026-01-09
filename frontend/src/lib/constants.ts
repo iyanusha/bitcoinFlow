@@ -27,3 +27,5 @@ export const SEO_META_TAGS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize:
 export const ENV_VALIDATION_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const VAULT_STATUS_HOOKS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const WALLET_UX_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
