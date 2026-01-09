@@ -10,3 +10,6 @@ export { Env_validationList } from './env_validation_list';
 export { Vault_status_hooks } from './vault_status_hooks';
 export { Vault_status_hooksItem } from './vault_status_hooks_item';
 export { Vault_status_hooksList } from './vault_status_hooks_list';
+export { Wallet_ux } from './wallet_ux';
+export { Wallet_uxItem } from './wallet_ux_item';
+export { Wallet_uxList } from './wallet_ux_list';
