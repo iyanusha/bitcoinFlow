@@ -101,3 +101,6 @@ export interface Vault_status_hooksItem { id: string; label: string; value: numb
 
 export interface Wallet_uxConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Wallet_uxItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Tx_trackingConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Tx_trackingItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
