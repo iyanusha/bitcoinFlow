@@ -13,3 +13,6 @@ export { Vault_status_hooksList } from './vault_status_hooks_list';
 export { Wallet_ux } from './wallet_ux';
 export { Wallet_uxItem } from './wallet_ux_item';
 export { Wallet_uxList } from './wallet_ux_list';
+export { Tx_tracking } from './tx_tracking';
+export { Tx_trackingItem } from './tx_tracking_item';
+export { Tx_trackingList } from './tx_tracking_list';
