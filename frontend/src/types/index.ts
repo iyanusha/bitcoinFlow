@@ -104,3 +104,6 @@ export interface Wallet_uxItem { id: string; label: string; value: number; statu
 
 export interface Tx_trackingConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Tx_trackingItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Post_conditionsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Post_conditionsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
