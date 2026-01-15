@@ -22,3 +22,6 @@ export { Post_conditionsList } from './post_conditions_list';
 export { Toast_system } from './toast_system';
 export { Toast_systemItem } from './toast_system_item';
 export { Toast_systemList } from './toast_system_list';
+export { Modal_dialogs } from './modal_dialogs';
+export { Modal_dialogsItem } from './modal_dialogs_item';
+export { Modal_dialogsList } from './modal_dialogs_list';
