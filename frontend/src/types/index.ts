@@ -110,3 +110,6 @@ export interface Post_conditionsItem { id: string; label: string; value: number;
 
 export interface Toast_systemConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Toast_systemItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Modal_dialogsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Modal_dialogsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
