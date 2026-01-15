@@ -334,3 +334,10 @@
 .toast_system__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .toast_system__body { min-height: 60px; }
 @media (max-width: 768px) { .toast_system { padding: 1rem; } }
+
+.modal_dialogs { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.modal_dialogs:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.modal_dialogs--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.modal_dialogs__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.modal_dialogs__body { min-height: 60px; }
+@media (max-width: 768px) { .modal_dialogs { padding: 1rem; } }
