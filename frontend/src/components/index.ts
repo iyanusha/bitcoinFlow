@@ -25,3 +25,6 @@ export { Toast_systemList } from './toast_system_list';
 export { Modal_dialogs } from './modal_dialogs';
 export { Modal_dialogsItem } from './modal_dialogs_item';
 export { Modal_dialogsList } from './modal_dialogs_list';
+export { Header_footer } from './header_footer';
+export { Header_footerItem } from './header_footer_item';
+export { Header_footerList } from './header_footer_list';
