@@ -116,3 +116,6 @@ export interface Modal_dialogsItem { id: string; label: string; value: number; s
 
 export interface Header_footerConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Header_footerItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Contract_tests_v2Config { enabled: boolean; interval: number; maxItems: number; }
+export interface Contract_tests_v2Item { id: string; label: string; value: number; status: 'active' | 'inactive'; }
