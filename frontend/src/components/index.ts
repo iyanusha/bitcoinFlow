@@ -31,3 +31,6 @@ export { Header_footerList } from './header_footer_list';
 export { Contract_tests_v2 } from './contract_tests_v2';
 export { Contract_tests_v2Item } from './contract_tests_v2_item';
 export { Contract_tests_v2List } from './contract_tests_v2_list';
+export { Deposit_confirm } from './deposit_confirm';
+export { Deposit_confirmItem } from './deposit_confirm_item';
+export { Deposit_confirmList } from './deposit_confirm_list';
