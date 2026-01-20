@@ -119,3 +119,6 @@ export interface Header_footerItem { id: string; label: string; value: number; s
 
 export interface Contract_tests_v2Config { enabled: boolean; interval: number; maxItems: number; }
 export interface Contract_tests_v2Item { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Deposit_confirmConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Deposit_confirmItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
