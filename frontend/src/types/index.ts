@@ -122,3 +122,6 @@ export interface Contract_tests_v2Item { id: string; label: string; value: numbe
 
 export interface Deposit_confirmConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Deposit_confirmItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Network_statusConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Network_statusItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
