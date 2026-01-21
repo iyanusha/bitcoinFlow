@@ -43,3 +43,5 @@ export const HEADER_FOOTER_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize:
 export const CONTRACT_TESTS_V2_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const DEPOSIT_CONFIRM_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const NETWORK_STATUS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
