@@ -131,3 +131,6 @@ export interface Stats_refreshItem { id: string; label: string; value: number; s
 
 export interface Dashboard_layoutConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Dashboard_layoutItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Dark_mode_varsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Dark_mode_varsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
