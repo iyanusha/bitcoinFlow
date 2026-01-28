@@ -49,3 +49,6 @@ export { Dark_mode_varsList } from './dark_mode_vars_list';
 export { Dark_mode_toggle } from './dark_mode_toggle';
 export { Dark_mode_toggleItem } from './dark_mode_toggle_item';
 export { Dark_mode_toggleList } from './dark_mode_toggle_list';
+export { Dark_mode_apply } from './dark_mode_apply';
+export { Dark_mode_applyItem } from './dark_mode_apply_item';
+export { Dark_mode_applyList } from './dark_mode_apply_list';
