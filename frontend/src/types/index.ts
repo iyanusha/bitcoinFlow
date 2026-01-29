@@ -140,3 +140,6 @@ export interface Dark_mode_toggleItem { id: string; label: string; value: number
 
 export interface Dark_mode_applyConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Dark_mode_applyItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Vault_metricsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Vault_metricsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
