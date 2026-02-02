@@ -418,3 +418,10 @@
 .stacking_info__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .stacking_info__body { min-height: 60px; }
 @media (max-width: 768px) { .stacking_info { padding: 1rem; } }
+
+.rewards_calc { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.rewards_calc:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.rewards_calc--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.rewards_calc__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.rewards_calc__body { min-height: 60px; }
+@media (max-width: 768px) { .rewards_calc { padding: 1rem; } }
