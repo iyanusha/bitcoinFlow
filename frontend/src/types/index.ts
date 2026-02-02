@@ -146,3 +146,6 @@ export interface Vault_metricsItem { id: string; label: string; value: number; s
 
 export interface Stacking_infoConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Stacking_infoItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Rewards_calcConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Rewards_calcItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
