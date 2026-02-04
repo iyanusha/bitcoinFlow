@@ -63,3 +63,5 @@ export const STACKING_INFO_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize:
 export const REWARDS_CALC_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const FLOW_TOKEN_INFO_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const INPUT_SANITIZE_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
