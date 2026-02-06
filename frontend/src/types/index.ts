@@ -158,3 +158,6 @@ export interface Input_sanitizeItem { id: string; label: string; value: number; 
 
 export interface Security_headersConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Security_headersItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Csp_configConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Csp_configItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
