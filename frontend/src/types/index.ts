@@ -167,3 +167,6 @@ export interface Hook_testsItem { id: string; label: string; value: number; stat
 
 export interface Component_testsConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Component_testsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Test_setupConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Test_setupItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
