@@ -79,3 +79,6 @@ export { Hook_testsList } from './hook_tests_list';
 export { Component_tests } from './component_tests';
 export { Component_testsItem } from './component_tests_item';
 export { Component_testsList } from './component_tests_list';
+export { Test_setup } from './test_setup';
+export { Test_setupItem } from './test_setup_item';
+export { Test_setupList } from './test_setup_list';
