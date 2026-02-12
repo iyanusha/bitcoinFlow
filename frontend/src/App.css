@@ -474,3 +474,10 @@
 .test_setup__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .test_setup__body { min-height: 60px; }
 @media (max-width: 768px) { .test_setup { padding: 1rem; } }
+
+.test_utils { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.test_utils:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.test_utils--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.test_utils__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.test_utils__body { min-height: 60px; }
+@media (max-width: 768px) { .test_utils { padding: 1rem; } }
