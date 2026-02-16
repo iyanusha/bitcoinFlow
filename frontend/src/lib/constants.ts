@@ -79,3 +79,5 @@ export const TEST_SETUP_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25
 export const TEST_UTILS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const MOCK_DATA_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const README_UPDATE_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
