@@ -488,3 +488,10 @@
 .mock_data__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .mock_data__body { min-height: 60px; }
 @media (max-width: 768px) { .mock_data { padding: 1rem; } }
+
+.readme_update { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.readme_update:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.readme_update--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.readme_update__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.readme_update__body { min-height: 60px; }
+@media (max-width: 768px) { .readme_update { padding: 1rem; } }
