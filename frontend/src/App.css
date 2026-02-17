@@ -495,3 +495,10 @@
 .readme_update__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .readme_update__body { min-height: 60px; }
 @media (max-width: 768px) { .readme_update { padding: 1rem; } }
+
+.contributing { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.contributing:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.contributing--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.contributing__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.contributing__body { min-height: 60px; }
+@media (max-width: 768px) { .contributing { padding: 1rem; } }
