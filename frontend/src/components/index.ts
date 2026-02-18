@@ -94,3 +94,6 @@ export { Readme_updateList } from './readme_update_list';
 export { Contributing } from './contributing';
 export { ContributingItem } from './contributing_item';
 export { ContributingList } from './contributing_list';
+export { Env_docs } from './env_docs';
+export { Env_docsItem } from './env_docs_item';
+export { Env_docsList } from './env_docs_list';
