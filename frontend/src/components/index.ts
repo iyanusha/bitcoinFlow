@@ -97,3 +97,6 @@ export { ContributingList } from './contributing_list';
 export { Env_docs } from './env_docs';
 export { Env_docsItem } from './env_docs_item';
 export { Env_docsList } from './env_docs_list';
+export { Api_docs } from './api_docs';
+export { Api_docsItem } from './api_docs_item';
+export { Api_docsList } from './api_docs_list';
