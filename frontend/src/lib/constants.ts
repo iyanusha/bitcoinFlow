@@ -85,3 +85,5 @@ export const README_UPDATE_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize:
 export const CONTRIBUTING_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const ENV_DOCS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const API_DOCS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
