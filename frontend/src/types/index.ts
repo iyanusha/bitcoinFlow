@@ -185,3 +185,6 @@ export interface ContributingItem { id: string; label: string; value: number; st
 
 export interface Env_docsConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Env_docsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Api_docsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Api_docsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
