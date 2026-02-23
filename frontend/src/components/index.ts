@@ -103,3 +103,6 @@ export { Api_docsList } from './api_docs_list';
 export { Component_docs } from './component_docs';
 export { Component_docsItem } from './component_docs_item';
 export { Component_docsList } from './component_docs_list';
+export { Lazy_loading } from './lazy_loading';
+export { Lazy_loadingItem } from './lazy_loading_item';
+export { Lazy_loadingList } from './lazy_loading_list';
