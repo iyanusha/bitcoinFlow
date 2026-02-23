@@ -89,3 +89,5 @@ export const ENV_DOCS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 }
 export const API_DOCS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const COMPONENT_DOCS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const LAZY_LOADING_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
