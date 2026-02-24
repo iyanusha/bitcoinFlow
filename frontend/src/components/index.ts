@@ -106,3 +106,6 @@ export { Component_docsList } from './component_docs_list';
 export { Lazy_loading } from './lazy_loading';
 export { Lazy_loadingItem } from './lazy_loading_item';
 export { Lazy_loadingList } from './lazy_loading_list';
+export { Code_splitting } from './code_splitting';
+export { Code_splittingItem } from './code_splitting_item';
+export { Code_splittingList } from './code_splitting_list';
