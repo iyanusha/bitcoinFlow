@@ -93,3 +93,5 @@ export const COMPONENT_DOCS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize
 export const LAZY_LOADING_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const CODE_SPLITTING_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const MEMOIZATION_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
