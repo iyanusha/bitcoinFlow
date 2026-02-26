@@ -200,3 +200,6 @@ export interface Code_splittingItem { id: string; label: string; value: number; 
 
 export interface MemoizationConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface MemoizationItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Image_optimizeConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Image_optimizeItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
