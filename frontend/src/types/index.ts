@@ -203,3 +203,6 @@ export interface MemoizationItem { id: string; label: string; value: number; sta
 
 export interface Image_optimizeConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Image_optimizeItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Bundle_analyzeConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Bundle_analyzeItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
