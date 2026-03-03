@@ -101,3 +101,5 @@ export const IMAGE_OPTIMIZE_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize
 export const BUNDLE_ANALYZE_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const FAVICON_ICONS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const OG_IMAGES_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
