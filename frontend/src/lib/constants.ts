@@ -103,3 +103,5 @@ export const BUNDLE_ANALYZE_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize
 export const FAVICON_ICONS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const OG_IMAGES_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const TWITTER_ENHANCE_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
