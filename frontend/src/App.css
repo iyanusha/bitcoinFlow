@@ -586,3 +586,10 @@
 .canonical_urls__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .canonical_urls__body { min-height: 60px; }
 @media (max-width: 768px) { .canonical_urls { padding: 1rem; } }
+
+.sitemap { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.sitemap:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.sitemap--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.sitemap__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.sitemap__body { min-height: 60px; }
+@media (max-width: 768px) { .sitemap { padding: 1rem; } }
