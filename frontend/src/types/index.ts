@@ -227,3 +227,6 @@ export interface Mobile_navItem { id: string; label: string; value: number; stat
 
 export interface Keyboard_shortcutsConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Keyboard_shortcutsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Focus_managementConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Focus_managementItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
