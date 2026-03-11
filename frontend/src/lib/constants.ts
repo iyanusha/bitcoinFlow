@@ -113,3 +113,5 @@ export const SITEMAP_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } 
 export const MOBILE_NAV_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const KEYBOARD_SHORTCUTS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const FOCUS_MANAGEMENT_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
