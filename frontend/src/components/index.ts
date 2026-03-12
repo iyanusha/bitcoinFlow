@@ -142,3 +142,6 @@ export { Keyboard_shortcutsList } from './keyboard_shortcuts_list';
 export { Focus_management } from './focus_management';
 export { Focus_managementItem } from './focus_management_item';
 export { Focus_managementList } from './focus_management_list';
+export { Screen_reader } from './screen_reader';
+export { Screen_readerItem } from './screen_reader_item';
+export { Screen_readerList } from './screen_reader_list';
