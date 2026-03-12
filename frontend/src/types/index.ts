@@ -230,3 +230,6 @@ export interface Keyboard_shortcutsItem { id: string; label: string; value: numb
 
 export interface Focus_managementConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Focus_managementItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Screen_readerConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Screen_readerItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
