@@ -233,3 +233,6 @@ export interface Focus_managementItem { id: string; label: string; value: number
 
 export interface Screen_readerConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Screen_readerItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface High_contrastConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface High_contrastItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
