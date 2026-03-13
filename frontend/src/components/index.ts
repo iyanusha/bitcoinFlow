@@ -145,3 +145,6 @@ export { Focus_managementList } from './focus_management_list';
 export { Screen_reader } from './screen_reader';
 export { Screen_readerItem } from './screen_reader_item';
 export { Screen_readerList } from './screen_reader_list';
+export { High_contrast } from './high_contrast';
+export { High_contrastItem } from './high_contrast_item';
+export { High_contrastList } from './high_contrast_list';
