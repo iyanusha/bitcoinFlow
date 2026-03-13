@@ -117,3 +117,5 @@ export const KEYBOARD_SHORTCUTS_CONFIG = { refreshMs: 30000, maxRetries: 3, page
 export const FOCUS_MANAGEMENT_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const SCREEN_READER_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const HIGH_CONTRAST_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
