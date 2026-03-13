@@ -621,3 +621,10 @@
 .screen_reader__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .screen_reader__body { min-height: 60px; }
 @media (max-width: 768px) { .screen_reader { padding: 1rem; } }
+
+.high_contrast { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.high_contrast:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.high_contrast--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.high_contrast__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.high_contrast__body { min-height: 60px; }
+@media (max-width: 768px) { .high_contrast { padding: 1rem; } }
