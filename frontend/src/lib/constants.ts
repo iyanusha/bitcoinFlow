@@ -119,3 +119,5 @@ export const FOCUS_MANAGEMENT_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSi
 export const SCREEN_READER_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const HIGH_CONTRAST_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const NETWORK_INDICATOR_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
