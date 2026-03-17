@@ -239,3 +239,6 @@ export interface High_contrastItem { id: string; label: string; value: number; s
 
 export interface Network_indicatorConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Network_indicatorItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Stats_pollingConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Stats_pollingItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
