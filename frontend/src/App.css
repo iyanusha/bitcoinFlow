@@ -642,3 +642,10 @@
 .stats_polling__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .stats_polling__body { min-height: 60px; }
 @media (max-width: 768px) { .stats_polling { padding: 1rem; } }
+
+.stat_cards { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.stat_cards:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.stat_cards--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.stat_cards__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.stat_cards__body { min-height: 60px; }
+@media (max-width: 768px) { .stat_cards { padding: 1rem; } }
