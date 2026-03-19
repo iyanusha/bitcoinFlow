@@ -125,3 +125,5 @@ export const NETWORK_INDICATOR_CONFIG = { refreshMs: 30000, maxRetries: 3, pageS
 export const STATS_POLLING_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const STAT_CARDS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const SECTION_HEADERS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
