@@ -245,3 +245,6 @@ export interface Stats_pollingItem { id: string; label: string; value: number; s
 
 export interface Stat_cardsConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Stat_cardsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Section_headersConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Section_headersItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
