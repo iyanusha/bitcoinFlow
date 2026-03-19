@@ -157,3 +157,6 @@ export { Stats_pollingList } from './stats_polling_list';
 export { Stat_cards } from './stat_cards';
 export { Stat_cardsItem } from './stat_cards_item';
 export { Stat_cardsList } from './stat_cards_list';
+export { Section_headers } from './section_headers';
+export { Section_headersItem } from './section_headers_item';
+export { Section_headersList } from './section_headers_list';
