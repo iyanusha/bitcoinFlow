@@ -76,3 +76,6 @@ export { Csp_configList } from './csp_config_list';
 export { Hook_tests } from './hook_tests';
 export { Hook_testsItem } from './hook_tests_item';
 export { Hook_testsList } from './hook_tests_list';
+export { Component_tests } from './component_tests';
+export { Component_testsItem } from './component_tests_item';
+export { Component_testsList } from './component_tests_list';

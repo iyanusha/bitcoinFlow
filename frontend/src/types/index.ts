@@ -164,3 +164,6 @@ export interface Csp_configItem { id: string; label: string; value: number; stat
 
 export interface Hook_testsConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Hook_testsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Component_testsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Component_testsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }

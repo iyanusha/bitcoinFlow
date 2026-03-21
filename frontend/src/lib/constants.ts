@@ -71,3 +71,5 @@ export const SECURITY_HEADERS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSi
 export const CSP_CONFIG_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const HOOK_TESTS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const COMPONENT_TESTS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
