@@ -37,3 +37,5 @@ export const POST_CONDITIONS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSiz
 export const TOAST_SYSTEM_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const MODAL_DIALOGS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const HEADER_FOOTER_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;

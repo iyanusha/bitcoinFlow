@@ -113,3 +113,6 @@ export interface Toast_systemItem { id: string; label: string; value: number; st
 
 export interface Modal_dialogsConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Modal_dialogsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Header_footerConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Header_footerItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
