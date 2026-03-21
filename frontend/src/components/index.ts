@@ -112,3 +112,6 @@ export { Code_splittingList } from './code_splitting_list';
 export { Memoization } from './memoization';
 export { MemoizationItem } from './memoization_item';
 export { MemoizationList } from './memoization_list';
+export { Image_optimize } from './image_optimize';
+export { Image_optimizeItem } from './image_optimize_item';
+export { Image_optimizeList } from './image_optimize_list';
