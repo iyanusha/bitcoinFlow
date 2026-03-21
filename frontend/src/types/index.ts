@@ -218,3 +218,6 @@ export interface Twitter_enhanceItem { id: string; label: string; value: number;
 
 export interface Canonical_urlsConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Canonical_urlsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface SitemapConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface SitemapItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }

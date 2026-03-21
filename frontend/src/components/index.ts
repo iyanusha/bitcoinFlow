@@ -130,3 +130,6 @@ export { Twitter_enhanceList } from './twitter_enhance_list';
 export { Canonical_urls } from './canonical_urls';
 export { Canonical_urlsItem } from './canonical_urls_item';
 export { Canonical_urlsList } from './canonical_urls_list';
+export { Sitemap } from './sitemap';
+export { SitemapItem } from './sitemap_item';
+export { SitemapList } from './sitemap_list';
