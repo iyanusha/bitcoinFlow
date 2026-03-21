@@ -711,3 +711,7 @@
 .tx_history_page-b7 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
 .tx_history_page-b7 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
 @media (max-width: 768px) { .tx_history_page-b7 { padding: 1rem; } }
+
+.tx_history_page-b16 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.tx_history_page-b16 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .tx_history_page-b16 { padding: 1rem; } }
