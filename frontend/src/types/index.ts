@@ -236,3 +236,6 @@ export interface Screen_readerItem { id: string; label: string; value: number; s
 
 export interface High_contrastConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface High_contrastItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Network_indicatorConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Network_indicatorItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
