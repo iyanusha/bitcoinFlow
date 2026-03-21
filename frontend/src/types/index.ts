@@ -299,3 +299,5 @@ export interface About_pageD18 { id: string; name: string; value: number; ts: nu
 export interface About_pageD28 { id: string; name: string; value: number; ts: number; }
 
 export interface About_pageD38 { id: string; name: string; value: number; ts: number; }
+
+export interface About_pageD48 { id: string; name: string; value: number; ts: number; }
