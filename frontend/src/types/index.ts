@@ -152,3 +152,6 @@ export interface Rewards_calcItem { id: string; label: string; value: number; st
 
 export interface Flow_token_infoConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Flow_token_infoItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Input_sanitizeConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Input_sanitizeItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
