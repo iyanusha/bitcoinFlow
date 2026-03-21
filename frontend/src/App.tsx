@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div className="app">
-      <header className="app-header">
+      <header className="app-header" role="banner">
         <h1>BitcoinFlow</h1>
         <p>Smart sBTC Stacking Vault</p>
 
@@ -89,7 +89,7 @@ function App() {
         <main className="main-content">
           <div className="vault-stats">
             <h2>Vault Statistics</h2>
-            <div className="stats-grid">
+            <div className="stats-grid" aria-live="polite">
               <div className="stat-card">
                 <h3>Total Deposits</h3>
                 <p>{vaultStats.totalDeposits} sBTC</p>
