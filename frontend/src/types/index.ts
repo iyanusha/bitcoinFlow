@@ -347,3 +347,5 @@ export interface Admin_panelD8 { id: string; name: string; value: number; ts: nu
 export interface Admin_panelD18 { id: string; name: string; value: number; ts: number; }
 
 export interface Admin_panelD28 { id: string; name: string; value: number; ts: number; }
+
+export interface Admin_panelD38 { id: string; name: string; value: number; ts: number; }
