@@ -203,3 +203,5 @@ export const MULTI_TOKEN_S49 = { pageSize: 20, refreshMs: 30000 } as const;
 export const NOTIFICATION_CENTER_S9 = { pageSize: 20, refreshMs: 30000 } as const;
 
 export const NOTIFICATION_CENTER_S19 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const NOTIFICATION_CENTER_S29 = { pageSize: 20, refreshMs: 30000 } as const;
