@@ -100,3 +100,6 @@ export { Env_docsList } from './env_docs_list';
 export { Api_docs } from './api_docs';
 export { Api_docsItem } from './api_docs_item';
 export { Api_docsList } from './api_docs_list';
+export { Component_docs } from './component_docs';
+export { Component_docsItem } from './component_docs_item';
+export { Component_docsList } from './component_docs_list';

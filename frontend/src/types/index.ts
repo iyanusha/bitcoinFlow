@@ -188,3 +188,6 @@ export interface Env_docsItem { id: string; label: string; value: number; status
 
 export interface Api_docsConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Api_docsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Component_docsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Component_docsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
