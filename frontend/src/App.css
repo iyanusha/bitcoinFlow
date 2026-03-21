@@ -663,3 +663,7 @@
 .empty_states__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .empty_states__body { min-height: 60px; }
 @media (max-width: 768px) { .empty_states { padding: 1rem; } }
+
+.vault_dashboard-b6 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.vault_dashboard-b6 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .vault_dashboard-b6 { padding: 1rem; } }
