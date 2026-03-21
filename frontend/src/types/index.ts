@@ -78,3 +78,5 @@ export interface StackingInfo {
   isVaultPaused: boolean;
   currentBlockHeight: number;
 }
+
+export type LoadingState = 'idle' | 'loading' | 'success' | 'error';
