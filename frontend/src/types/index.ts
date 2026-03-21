@@ -261,3 +261,5 @@ export interface Vault_dashboardD28 { id: string; name: string; value: number; t
 export interface Vault_dashboardD38 { id: string; name: string; value: number; ts: number; }
 
 export interface Vault_dashboardD48 { id: string; name: string; value: number; ts: number; }
+
+export interface Tx_history_pageD8 { id: string; name: string; value: number; ts: number; }
