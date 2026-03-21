@@ -151,3 +151,6 @@ export { High_contrastList } from './high_contrast_list';
 export { Network_indicator } from './network_indicator';
 export { Network_indicatorItem } from './network_indicator_item';
 export { Network_indicatorList } from './network_indicator_list';
+export { Stats_polling } from './stats_polling';
+export { Stats_pollingItem } from './stats_polling_item';
+export { Stats_pollingList } from './stats_polling_list';

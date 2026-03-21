@@ -635,3 +635,10 @@
 .network_indicator__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .network_indicator__body { min-height: 60px; }
 @media (max-width: 768px) { .network_indicator { padding: 1rem; } }
+
+.stats_polling { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.stats_polling:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.stats_polling--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.stats_polling__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.stats_polling__body { min-height: 60px; }
+@media (max-width: 768px) { .stats_polling { padding: 1rem; } }
