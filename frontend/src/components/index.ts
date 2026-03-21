@@ -133,3 +133,6 @@ export { Canonical_urlsList } from './canonical_urls_list';
 export { Sitemap } from './sitemap';
 export { SitemapItem } from './sitemap_item';
 export { SitemapList } from './sitemap_list';
+export { Mobile_nav } from './mobile_nav';
+export { Mobile_navItem } from './mobile_nav_item';
+export { Mobile_navList } from './mobile_nav_list';
