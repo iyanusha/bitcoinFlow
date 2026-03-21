@@ -691,3 +691,7 @@
 .vault_dashboard-b36 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
 .vault_dashboard-b36 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
 @media (max-width: 768px) { .vault_dashboard-b36 { padding: 1rem; } }
+
+.vault_dashboard-b37 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.vault_dashboard-b37 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .vault_dashboard-b37 { padding: 1rem; } }
