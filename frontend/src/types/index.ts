@@ -248,3 +248,6 @@ export interface Stat_cardsItem { id: string; label: string; value: number; stat
 
 export interface Section_headersConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Section_headersItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Empty_statesConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Empty_statesItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
