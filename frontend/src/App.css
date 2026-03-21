@@ -607,3 +607,10 @@
 .keyboard_shortcuts__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .keyboard_shortcuts__body { min-height: 60px; }
 @media (max-width: 768px) { .keyboard_shortcuts { padding: 1rem; } }
+
+.focus_management { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.focus_management:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.focus_management--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.focus_management__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.focus_management__body { min-height: 60px; }
+@media (max-width: 768px) { .focus_management { padding: 1rem; } }
