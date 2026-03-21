@@ -251,3 +251,5 @@ export interface Section_headersItem { id: string; label: string; value: number;
 
 export interface Empty_statesConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Empty_statesItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Vault_dashboardD8 { id: string; name: string; value: number; ts: number; }
