@@ -217,3 +217,5 @@ export const ADVANCED_FORMS_S19 = { pageSize: 20, refreshMs: 30000 } as const;
 export const ADVANCED_FORMS_S29 = { pageSize: 20, refreshMs: 30000 } as const;
 
 export const ADVANCED_FORMS_S39 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const ADVANCED_FORMS_S49 = { pageSize: 20, refreshMs: 30000 } as const;
