@@ -125,3 +125,6 @@ export interface Deposit_confirmItem { id: string; label: string; value: number;
 
 export interface Network_statusConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Network_statusItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Stats_refreshConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Stats_refreshItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
