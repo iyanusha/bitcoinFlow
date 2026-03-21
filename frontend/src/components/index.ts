@@ -28,3 +28,6 @@ export { Modal_dialogsList } from './modal_dialogs_list';
 export { Header_footer } from './header_footer';
 export { Header_footerItem } from './header_footer_item';
 export { Header_footerList } from './header_footer_list';
+export { Contract_tests_v2 } from './contract_tests_v2';
+export { Contract_tests_v2Item } from './contract_tests_v2_item';
+export { Contract_tests_v2List } from './contract_tests_v2_list';
