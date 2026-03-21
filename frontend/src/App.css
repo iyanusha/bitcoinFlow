@@ -987,3 +987,7 @@
 .advanced_forms-b6 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
 .advanced_forms-b6 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
 @media (max-width: 768px) { .advanced_forms-b6 { padding: 1rem; } }
+
+.advanced_forms-b7 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.advanced_forms-b7 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .advanced_forms-b7 { padding: 1rem; } }
