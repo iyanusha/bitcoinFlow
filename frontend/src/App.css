@@ -320,3 +320,10 @@
 .tx_tracking__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .tx_tracking__body { min-height: 60px; }
 @media (max-width: 768px) { .tx_tracking { padding: 1rem; } }
+
+.post_conditions { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.post_conditions:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.post_conditions--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.post_conditions__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.post_conditions__body { min-height: 60px; }
+@media (max-width: 768px) { .post_conditions { padding: 1rem; } }
