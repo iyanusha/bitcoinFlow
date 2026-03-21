@@ -293,3 +293,5 @@ export interface Faq_help_pageD38 { id: string; name: string; value: number; ts:
 export interface Faq_help_pageD48 { id: string; name: string; value: number; ts: number; }
 
 export interface About_pageD8 { id: string; name: string; value: number; ts: number; }
+
+export interface About_pageD18 { id: string; name: string; value: number; ts: number; }
