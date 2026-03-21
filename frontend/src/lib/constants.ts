@@ -51,3 +51,5 @@ export const STATS_REFRESH_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize:
 export const DASHBOARD_LAYOUT_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const DARK_MODE_VARS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const DARK_MODE_TOGGLE_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
