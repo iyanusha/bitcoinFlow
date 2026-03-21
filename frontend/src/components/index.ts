@@ -118,3 +118,6 @@ export { Image_optimizeList } from './image_optimize_list';
 export { Bundle_analyze } from './bundle_analyze';
 export { Bundle_analyzeItem } from './bundle_analyze_item';
 export { Bundle_analyzeList } from './bundle_analyze_list';
+export { Favicon_icons } from './favicon_icons';
+export { Favicon_iconsItem } from './favicon_icons_item';
+export { Favicon_iconsList } from './favicon_icons_list';
