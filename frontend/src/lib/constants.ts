@@ -213,3 +213,5 @@ export const NOTIFICATION_CENTER_S49 = { pageSize: 20, refreshMs: 30000 } as con
 export const ADVANCED_FORMS_S9 = { pageSize: 20, refreshMs: 30000 } as const;
 
 export const ADVANCED_FORMS_S19 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const ADVANCED_FORMS_S29 = { pageSize: 20, refreshMs: 30000 } as const;
