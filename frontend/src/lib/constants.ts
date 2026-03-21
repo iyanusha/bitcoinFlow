@@ -165,3 +165,5 @@ export const FAQ_HELP_PAGE_S9 = { pageSize: 20, refreshMs: 30000 } as const;
 export const FAQ_HELP_PAGE_S19 = { pageSize: 20, refreshMs: 30000 } as const;
 
 export const FAQ_HELP_PAGE_S29 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const FAQ_HELP_PAGE_S39 = { pageSize: 20, refreshMs: 30000 } as const;
