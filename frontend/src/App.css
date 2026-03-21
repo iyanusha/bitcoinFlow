@@ -863,3 +863,43 @@
 .about_page-b47 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
 .about_page-b47 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
 @media (max-width: 768px) { .about_page-b47 { padding: 1rem; } }
+
+.stacking_analytics-b6 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.stacking_analytics-b6 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .stacking_analytics-b6 { padding: 1rem; } }
+
+.stacking_analytics-b7 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.stacking_analytics-b7 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .stacking_analytics-b7 { padding: 1rem; } }
+
+.stacking_analytics-b16 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.stacking_analytics-b16 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .stacking_analytics-b16 { padding: 1rem; } }
+
+.stacking_analytics-b17 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.stacking_analytics-b17 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .stacking_analytics-b17 { padding: 1rem; } }
+
+.stacking_analytics-b26 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.stacking_analytics-b26 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .stacking_analytics-b26 { padding: 1rem; } }
+
+.stacking_analytics-b27 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.stacking_analytics-b27 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .stacking_analytics-b27 { padding: 1rem; } }
+
+.stacking_analytics-b36 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.stacking_analytics-b36 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .stacking_analytics-b36 { padding: 1rem; } }
+
+.stacking_analytics-b37 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.stacking_analytics-b37 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .stacking_analytics-b37 { padding: 1rem; } }
+
+.stacking_analytics-b46 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.stacking_analytics-b46 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .stacking_analytics-b46 { padding: 1rem; } }
+
+.stacking_analytics-b47 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.stacking_analytics-b47 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .stacking_analytics-b47 { padding: 1rem; } }
