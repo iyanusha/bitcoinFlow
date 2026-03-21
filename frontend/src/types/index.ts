@@ -242,3 +242,6 @@ export interface Network_indicatorItem { id: string; label: string; value: numbe
 
 export interface Stats_pollingConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Stats_pollingItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Stat_cardsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Stat_cardsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
