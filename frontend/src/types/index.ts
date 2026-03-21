@@ -98,3 +98,6 @@ export interface Env_validationItem { id: string; label: string; value: number; 
 
 export interface Vault_status_hooksConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Vault_status_hooksItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Wallet_uxConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Wallet_uxItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
