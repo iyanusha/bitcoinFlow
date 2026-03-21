@@ -215,3 +215,6 @@ export interface Og_imagesItem { id: string; label: string; value: number; statu
 
 export interface Twitter_enhanceConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Twitter_enhanceItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Canonical_urlsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Canonical_urlsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }

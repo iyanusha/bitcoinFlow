@@ -127,3 +127,6 @@ export { Og_imagesList } from './og_images_list';
 export { Twitter_enhance } from './twitter_enhance';
 export { Twitter_enhanceItem } from './twitter_enhance_item';
 export { Twitter_enhanceList } from './twitter_enhance_list';
+export { Canonical_urls } from './canonical_urls';
+export { Canonical_urlsItem } from './canonical_urls_item';
+export { Canonical_urlsList } from './canonical_urls_list';
