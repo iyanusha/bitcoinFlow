@@ -209,3 +209,6 @@ export interface Bundle_analyzeItem { id: string; label: string; value: number; 
 
 export interface Favicon_iconsConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Favicon_iconsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Og_imagesConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Og_imagesItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
