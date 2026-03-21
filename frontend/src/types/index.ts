@@ -107,3 +107,6 @@ export interface Tx_trackingItem { id: string; label: string; value: number; sta
 
 export interface Post_conditionsConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Post_conditionsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Toast_systemConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Toast_systemItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
