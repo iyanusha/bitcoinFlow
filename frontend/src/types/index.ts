@@ -143,3 +143,6 @@ export interface Dark_mode_applyItem { id: string; label: string; value: number;
 
 export interface Vault_metricsConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Vault_metricsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Stacking_infoConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Stacking_infoItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
