@@ -467,3 +467,10 @@
 .component_tests__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .component_tests__body { min-height: 60px; }
 @media (max-width: 768px) { .component_tests { padding: 1rem; } }
+
+.test_setup { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.test_setup:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.test_setup--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.test_setup__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.test_setup__body { min-height: 60px; }
+@media (max-width: 768px) { .test_setup { padding: 1rem; } }
