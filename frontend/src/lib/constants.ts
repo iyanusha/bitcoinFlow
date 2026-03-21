@@ -131,3 +131,5 @@ export const SECTION_HEADERS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSiz
 export const EMPTY_STATES_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const VAULT_DASHBOARD_S9 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const VAULT_DASHBOARD_S19 = { pageSize: 20, refreshMs: 30000 } as const;
