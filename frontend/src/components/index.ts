@@ -109,3 +109,6 @@ export { Lazy_loadingList } from './lazy_loading_list';
 export { Code_splitting } from './code_splitting';
 export { Code_splittingItem } from './code_splitting_item';
 export { Code_splittingList } from './code_splitting_list';
+export { Memoization } from './memoization';
+export { MemoizationItem } from './memoization_item';
+export { MemoizationList } from './memoization_list';

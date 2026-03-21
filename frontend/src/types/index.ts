@@ -197,3 +197,6 @@ export interface Lazy_loadingItem { id: string; label: string; value: number; st
 
 export interface Code_splittingConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Code_splittingItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface MemoizationConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface MemoizationItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
