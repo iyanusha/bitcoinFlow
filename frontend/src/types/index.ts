@@ -95,3 +95,6 @@ export interface Seo_meta_tagsItem { id: string; label: string; value: number; s
 
 export interface Env_validationConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Env_validationItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Vault_status_hooksConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Vault_status_hooksItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
