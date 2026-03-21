@@ -207,3 +207,5 @@ export const NOTIFICATION_CENTER_S19 = { pageSize: 20, refreshMs: 30000 } as con
 export const NOTIFICATION_CENTER_S29 = { pageSize: 20, refreshMs: 30000 } as const;
 
 export const NOTIFICATION_CENTER_S39 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const NOTIFICATION_CENTER_S49 = { pageSize: 20, refreshMs: 30000 } as const;
