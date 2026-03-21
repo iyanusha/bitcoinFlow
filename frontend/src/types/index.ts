@@ -176,3 +176,6 @@ export interface Test_utilsItem { id: string; label: string; value: number; stat
 
 export interface Mock_dataConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Mock_dataItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Readme_updateConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Readme_updateItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
