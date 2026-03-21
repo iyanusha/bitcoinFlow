@@ -292,3 +292,10 @@
 .seo_meta_tags__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .seo_meta_tags__body { min-height: 60px; }
 @media (max-width: 768px) { .seo_meta_tags { padding: 1rem; } }
+
+.env_validation { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.env_validation:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.env_validation--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.env_validation__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.env_validation__body { min-height: 60px; }
+@media (max-width: 768px) { .env_validation { padding: 1rem; } }
