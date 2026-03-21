@@ -281,3 +281,5 @@ export interface Settings_pageD28 { id: string; name: string; value: number; ts:
 export interface Settings_pageD38 { id: string; name: string; value: number; ts: number; }
 
 export interface Settings_pageD48 { id: string; name: string; value: number; ts: number; }
+
+export interface Faq_help_pageD8 { id: string; name: string; value: number; ts: number; }
