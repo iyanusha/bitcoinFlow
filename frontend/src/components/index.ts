@@ -115,3 +115,6 @@ export { MemoizationList } from './memoization_list';
 export { Image_optimize } from './image_optimize';
 export { Image_optimizeItem } from './image_optimize_item';
 export { Image_optimizeList } from './image_optimize_list';
+export { Bundle_analyze } from './bundle_analyze';
+export { Bundle_analyzeItem } from './bundle_analyze_item';
+export { Bundle_analyzeList } from './bundle_analyze_list';
