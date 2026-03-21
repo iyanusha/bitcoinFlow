@@ -523,3 +523,10 @@
 .component_docs__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .component_docs__body { min-height: 60px; }
 @media (max-width: 768px) { .component_docs { padding: 1rem; } }
+
+.lazy_loading { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.lazy_loading:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.lazy_loading--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.lazy_loading__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.lazy_loading__body { min-height: 60px; }
+@media (max-width: 768px) { .lazy_loading { padding: 1rem; } }
