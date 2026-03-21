@@ -35,3 +35,10 @@ export function useWallet() {
 
   return { isConnected, connect, disconnect, getAddress, userSession };
 }
+
+export function getStxBalance(address: string): Promise<number> {
+  return fetch(`https://api.hiro.so/extended/v1/address/${address}/balances`)
+    .then(res => res.json())
+    .then(data => parseInt(data.stx?.balance || '0'))
+    .catch(() => 0);
+}

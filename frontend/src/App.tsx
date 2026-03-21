@@ -10,6 +10,7 @@ function App() {
   const { isConnected, connect, disconnect, getAddress } = useWallet()
   const [depositAmount, setDepositAmount] = useState('')
   const [withdrawAmount, setWithdrawAmount] = useState('')
+  const [error, setError] = useState<string | null>(null)
   const [vaultStats] = useState<VaultStats>({
     totalDeposits: 0,
     totalRewards: 0,
@@ -19,6 +20,7 @@ function App() {
   const handleDeposit = async () => {
     if (!isConnected || !depositAmount) return
 
+    try {
     await openContractCall({
       network,
       contractAddress: CONTRACT_ADDRESS,
@@ -30,12 +32,18 @@ function App() {
         console.log('Deposit tx:', data.txId)
         setDepositAmount('')
       },
+    });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Deposit failed");
+    }
+      },
     })
   }
 
   const handleWithdraw = async () => {
     if (!isConnected || !withdrawAmount) return
 
+    try {
     await openContractCall({
       network,
       contractAddress: CONTRACT_ADDRESS,
@@ -46,6 +54,11 @@ function App() {
       onFinish: (data) => {
         console.log('Withdraw tx:', data.txId)
         setWithdrawAmount('')
+      },
+    });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Withdrawal failed");
+    }
       },
     })
   }
