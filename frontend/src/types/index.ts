@@ -89,3 +89,6 @@ export interface FormField<T = string> {
 
 export interface Responsive_designConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Responsive_designItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Seo_meta_tagsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Seo_meta_tagsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
