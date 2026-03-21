@@ -136,3 +136,6 @@ export { SitemapList } from './sitemap_list';
 export { Mobile_nav } from './mobile_nav';
 export { Mobile_navItem } from './mobile_nav_item';
 export { Mobile_navList } from './mobile_nav_list';
+export { Keyboard_shortcuts } from './keyboard_shortcuts';
+export { Keyboard_shortcutsItem } from './keyboard_shortcuts_item';
+export { Keyboard_shortcutsList } from './keyboard_shortcuts_list';

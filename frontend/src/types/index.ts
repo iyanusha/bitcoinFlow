@@ -224,3 +224,6 @@ export interface SitemapItem { id: string; label: string; value: number; status:
 
 export interface Mobile_navConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Mobile_navItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Keyboard_shortcutsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Keyboard_shortcutsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
