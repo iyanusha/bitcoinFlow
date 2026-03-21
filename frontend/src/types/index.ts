@@ -335,3 +335,5 @@ export interface Notification_centerD48 { id: string; name: string; value: numbe
 export interface Advanced_formsD8 { id: string; name: string; value: number; ts: number; }
 
 export interface Advanced_formsD18 { id: string; name: string; value: number; ts: number; }
+
+export interface Advanced_formsD28 { id: string; name: string; value: number; ts: number; }
