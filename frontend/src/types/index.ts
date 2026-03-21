@@ -329,3 +329,5 @@ export interface Notification_centerD18 { id: string; name: string; value: numbe
 export interface Notification_centerD28 { id: string; name: string; value: number; ts: number; }
 
 export interface Notification_centerD38 { id: string; name: string; value: number; ts: number; }
+
+export interface Notification_centerD48 { id: string; name: string; value: number; ts: number; }
