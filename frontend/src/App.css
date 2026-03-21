@@ -1059,3 +1059,7 @@
 .admin_panel-b46 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
 .admin_panel-b46 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
 @media (max-width: 768px) { .admin_panel-b46 { padding: 1rem; } }
+
+.admin_panel-b47 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #f3f4f6; }
+.admin_panel-b47 .hdr { display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
+@media (max-width: 768px) { .admin_panel-b47 { padding: 1rem; } }
