@@ -376,3 +376,10 @@
 .stats_refresh__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .stats_refresh__body { min-height: 60px; }
 @media (max-width: 768px) { .stats_refresh { padding: 1rem; } }
+
+.dashboard_layout { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.dashboard_layout:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.dashboard_layout--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.dashboard_layout__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.dashboard_layout__body { min-height: 60px; }
+@media (max-width: 768px) { .dashboard_layout { padding: 1rem; } }

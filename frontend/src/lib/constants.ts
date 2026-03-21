@@ -47,3 +47,5 @@ export const DEPOSIT_CONFIRM_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSiz
 export const NETWORK_STATUS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const STATS_REFRESH_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const DASHBOARD_LAYOUT_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
