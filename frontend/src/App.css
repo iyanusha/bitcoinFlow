@@ -278,3 +278,10 @@
 .field-error { color: #dc2626; font-size: 0.85rem; margin-top: 4px; min-height: 1.2em; }
 .action-card input.invalid { border-color: #dc2626; background: #fef2f2; }
 .action-card input.valid { border-color: #16a34a; }
+
+.responsive_design { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.responsive_design:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.responsive_design--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.responsive_design__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.responsive_design__body { min-height: 60px; }
+@media (max-width: 768px) { .responsive_design { padding: 1rem; } }

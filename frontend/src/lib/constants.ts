@@ -19,3 +19,5 @@ export const VALIDATION = {
   MAX_DEPOSIT: 21_000_000,
   MAX_DECIMALS: 8,
 } as const;
+
+export const RESPONSIVE_DESIGN_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
