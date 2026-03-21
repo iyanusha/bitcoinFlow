@@ -317,3 +317,5 @@ export interface Multi_tokenD8 { id: string; name: string; value: number; ts: nu
 export interface Multi_tokenD18 { id: string; name: string; value: number; ts: number; }
 
 export interface Multi_tokenD28 { id: string; name: string; value: number; ts: number; }
+
+export interface Multi_tokenD38 { id: string; name: string; value: number; ts: number; }
