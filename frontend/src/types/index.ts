@@ -161,3 +161,6 @@ export interface Security_headersItem { id: string; label: string; value: number
 
 export interface Csp_configConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Csp_configItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Hook_testsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Hook_testsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }

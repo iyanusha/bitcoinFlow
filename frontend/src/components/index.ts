@@ -73,3 +73,6 @@ export { Security_headersList } from './security_headers_list';
 export { Csp_config } from './csp_config';
 export { Csp_configItem } from './csp_config_item';
 export { Csp_configList } from './csp_config_list';
+export { Hook_tests } from './hook_tests';
+export { Hook_testsItem } from './hook_tests_item';
+export { Hook_testsList } from './hook_tests_list';
