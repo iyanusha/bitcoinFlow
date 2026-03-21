@@ -58,3 +58,6 @@ export { Vault_metricsList } from './vault_metrics_list';
 export { Stacking_info } from './stacking_info';
 export { Stacking_infoItem } from './stacking_info_item';
 export { Stacking_infoList } from './stacking_info_list';
+export { Rewards_calc } from './rewards_calc';
+export { Rewards_calcItem } from './rewards_calc_item';
+export { Rewards_calcList } from './rewards_calc_list';

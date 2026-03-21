@@ -59,3 +59,5 @@ export const DARK_MODE_APPLY_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSiz
 export const VAULT_METRICS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const STACKING_INFO_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
+
+export const REWARDS_CALC_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
