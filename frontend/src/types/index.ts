@@ -137,3 +137,6 @@ export interface Dark_mode_varsItem { id: string; label: string; value: number; 
 
 export interface Dark_mode_toggleConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Dark_mode_toggleItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Dark_mode_applyConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Dark_mode_applyItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
