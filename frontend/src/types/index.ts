@@ -80,3 +80,9 @@ export interface StackingInfo {
 }
 
 export type LoadingState = 'idle' | 'loading' | 'success' | 'error';
+
+export interface FormField<T = string> {
+  value: T;
+  error: string | null;
+  touched: boolean;
+}
