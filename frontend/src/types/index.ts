@@ -255,3 +255,5 @@ export interface Empty_statesItem { id: string; label: string; value: number; st
 export interface Vault_dashboardD8 { id: string; name: string; value: number; ts: number; }
 
 export interface Vault_dashboardD18 { id: string; name: string; value: number; ts: number; }
+
+export interface Vault_dashboardD28 { id: string; name: string; value: number; ts: number; }
