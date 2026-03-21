@@ -303,3 +303,5 @@ export interface About_pageD38 { id: string; name: string; value: number; ts: nu
 export interface About_pageD48 { id: string; name: string; value: number; ts: number; }
 
 export interface Stacking_analyticsD8 { id: string; name: string; value: number; ts: number; }
+
+export interface Stacking_analyticsD18 { id: string; name: string; value: number; ts: number; }
