@@ -197,3 +197,5 @@ export const MULTI_TOKEN_S19 = { pageSize: 20, refreshMs: 30000 } as const;
 export const MULTI_TOKEN_S29 = { pageSize: 20, refreshMs: 30000 } as const;
 
 export const MULTI_TOKEN_S39 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const MULTI_TOKEN_S49 = { pageSize: 20, refreshMs: 30000 } as const;
