@@ -52,3 +52,6 @@ export { Dark_mode_toggleList } from './dark_mode_toggle_list';
 export { Dark_mode_apply } from './dark_mode_apply';
 export { Dark_mode_applyItem } from './dark_mode_apply_item';
 export { Dark_mode_applyList } from './dark_mode_apply_list';
+export { Vault_metrics } from './vault_metrics';
+export { Vault_metricsItem } from './vault_metrics_item';
+export { Vault_metricsList } from './vault_metrics_list';
