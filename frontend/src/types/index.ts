@@ -345,3 +345,5 @@ export interface Advanced_formsD48 { id: string; name: string; value: number; ts
 export interface Admin_panelD8 { id: string; name: string; value: number; ts: number; }
 
 export interface Admin_panelD18 { id: string; name: string; value: number; ts: number; }
+
+export interface Admin_panelD28 { id: string; name: string; value: number; ts: number; }
