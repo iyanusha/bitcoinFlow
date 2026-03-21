@@ -149,3 +149,13 @@ export const TX_HISTORY_PAGE_S29 = { pageSize: 20, refreshMs: 30000 } as const;
 export const TX_HISTORY_PAGE_S39 = { pageSize: 20, refreshMs: 30000 } as const;
 
 export const TX_HISTORY_PAGE_S49 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const SETTINGS_PAGE_S9 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const SETTINGS_PAGE_S19 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const SETTINGS_PAGE_S29 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const SETTINGS_PAGE_S39 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const SETTINGS_PAGE_S49 = { pageSize: 20, refreshMs: 30000 } as const;
