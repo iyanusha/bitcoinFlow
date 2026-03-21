@@ -253,3 +253,5 @@ export interface Empty_statesConfig { enabled: boolean; interval: number; maxIte
 export interface Empty_statesItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
 
 export interface Vault_dashboardD8 { id: string; name: string; value: number; ts: number; }
+
+export interface Vault_dashboardD18 { id: string; name: string; value: number; ts: number; }
