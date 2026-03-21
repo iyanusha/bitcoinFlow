@@ -67,3 +67,6 @@ export { Flow_token_infoList } from './flow_token_info_list';
 export { Input_sanitize } from './input_sanitize';
 export { Input_sanitizeItem } from './input_sanitize_item';
 export { Input_sanitizeList } from './input_sanitize_list';
+export { Security_headers } from './security_headers';
+export { Security_headersItem } from './security_headers_item';
+export { Security_headersList } from './security_headers_list';

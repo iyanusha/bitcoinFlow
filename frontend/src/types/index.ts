@@ -155,3 +155,6 @@ export interface Flow_token_infoItem { id: string; label: string; value: number;
 
 export interface Input_sanitizeConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Input_sanitizeItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Security_headersConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Security_headersItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }

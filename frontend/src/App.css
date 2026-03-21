@@ -439,3 +439,10 @@
 .input_sanitize__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .input_sanitize__body { min-height: 60px; }
 @media (max-width: 768px) { .input_sanitize { padding: 1rem; } }
+
+.security_headers { padding: 1.25rem; border-radius: 12px; background: #fff; border: 1px solid #e5e7eb; transition: all 0.2s; }
+.security_headers:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.security_headers--active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.security_headers__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.security_headers__body { min-height: 60px; }
+@media (max-width: 768px) { .security_headers { padding: 1rem; } }
