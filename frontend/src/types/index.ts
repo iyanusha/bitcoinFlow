@@ -212,3 +212,6 @@ export interface Favicon_iconsItem { id: string; label: string; value: number; s
 
 export interface Og_imagesConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface Og_imagesItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Twitter_enhanceConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Twitter_enhanceItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
