@@ -182,3 +182,6 @@ export interface Readme_updateItem { id: string; label: string; value: number; s
 
 export interface ContributingConfig { enabled: boolean; interval: number; maxItems: number; }
 export interface ContributingItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
+
+export interface Env_docsConfig { enabled: boolean; interval: number; maxItems: number; }
+export interface Env_docsItem { id: string; label: string; value: number; status: 'active' | 'inactive'; }
