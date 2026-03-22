@@ -1,5 +1,5 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
-import { withRetry } from '../retry';
+import { withRetry, isRetryableError } from '../retry';
 
 describe('withRetry', () => {
   beforeEach(() => {
@@ -54,5 +54,38 @@ describe('withRetry', () => {
 
     expect(result).toBe(42);
     expect(fn).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe('isRetryableError', () => {
+  it('returns true for network errors', () => {
+    expect(isRetryableError(new Error('network error'))).toBe(true);
+  });
+
+  it('returns true for fetch errors', () => {
+    expect(isRetryableError(new Error('Failed to fetch'))).toBe(true);
+  });
+
+  it('returns true for timeout errors', () => {
+    expect(isRetryableError(new Error('Request timeout'))).toBe(true);
+  });
+
+  it('returns true for connection refused', () => {
+    expect(isRetryableError(new Error('ECONNREFUSED'))).toBe(true);
+  });
+
+  it('returns true for rate limit errors', () => {
+    expect(isRetryableError(new Error('Too many requests 429'))).toBe(true);
+  });
+
+  it('returns false for non-Error values', () => {
+    expect(isRetryableError('string error')).toBe(false);
+    expect(isRetryableError(null)).toBe(false);
+    expect(isRetryableError(undefined)).toBe(false);
+  });
+
+  it('returns false for non-retryable errors', () => {
+    expect(isRetryableError(new Error('Not authorized'))).toBe(false);
+    expect(isRetryableError(new Error('Invalid amount'))).toBe(false);
   });
 });
