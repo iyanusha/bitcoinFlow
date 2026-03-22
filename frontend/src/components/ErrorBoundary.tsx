@@ -18,10 +18,13 @@ export class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return this.props.fallback || (
-        <div className="error-boundary">
+        <div className="error-boundary" role="alert">
           <h2>Something went wrong</h2>
-          <p>{this.state.error?.message}</p>
-          <button onClick={() => this.setState({ hasError: false, error: null })}>Try Again</button>
+          <p>{this.state.error?.message || 'An unexpected error occurred'}</p>
+          <button onClick={() => {
+            logger.info('User clicked Try Again in ErrorBoundary');
+            this.setState({ hasError: false, error: null });
+          }}>Try Again</button>
         </div>
       );
     }
