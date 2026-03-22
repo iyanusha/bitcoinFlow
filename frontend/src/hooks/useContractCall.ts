@@ -1,13 +1,15 @@
 import { useState, useCallback } from 'react';
 import { openContractCall } from '@stacks/connect';
-import { PostConditionMode, type ClarityValue } from '@stacks/transactions';
+import { PostConditionMode, type ClarityValue, type PostCondition } from '@stacks/transactions';
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { parseTransactionError } from '../lib/errorUtils';
+import { handleContractError } from '../lib/contractErrors';
 import { logger } from '../lib/logger';
 
 interface UseContractCallOptions {
   functionName: string;
   functionArgs: ClarityValue[];
+  postConditions?: PostCondition[];
   onSuccess?: () => void;
   onError?: (error: string) => void;
 }
