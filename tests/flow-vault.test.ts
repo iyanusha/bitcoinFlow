@@ -660,6 +660,40 @@ describe("flow-vault", () => {
     expect(result).toBeErr(Cl.uint(100));
   });
 
+  it("full deposit-withdraw lifecycle works correctly", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+
+    // Deposit
+    const { result: depositResult } = simnet.callPublicFn(
+      "flow-vault",
+      "deposit",
+      [Cl.uint(3000000)],
+      wallet1
+    );
+    expect(depositResult).toBeOk(Cl.bool(true));
+
+    // Check balance after deposit
+    const { result: balAfterDeposit } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-user-deposit",
+      [Cl.principal(wallet1)],
+      deployer
+    );
+    expect(Number(balAfterDeposit.expectUint())).toBeGreaterThanOrEqual(3000000);
+
+    // Wait for cooldown
+    simnet.mineEmptyBlocks(7);
+
+    // Withdraw full amount
+    const { result: withdrawResult } = simnet.callPublicFn(
+      "flow-vault",
+      "withdraw",
+      [Cl.uint(3000000)],
+      wallet1
+    );
+    expect(withdrawResult).toBeOk(Cl.bool(true));
+  });
+
   it("stack-aggregated-stx rejects below threshold", () => {
     // First need some STX balance via deposit-stx
     simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
