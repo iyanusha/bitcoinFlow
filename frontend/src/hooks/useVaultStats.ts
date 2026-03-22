@@ -20,8 +20,8 @@ export function useVaultStats(userAddress: string | null) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchStats = useCallback(async () => {
-    setLoading(true);
+  const fetchStats = useCallback(async (silent = false) => {
+    if (!silent) setLoading(true);
     setError(null);
 
     try {
@@ -70,7 +70,7 @@ export function useVaultStats(userAddress: string | null) {
 
   useEffect(() => {
     fetchStats();
-    const interval = setInterval(fetchStats, REFRESH_INTERVAL_MS);
+    const interval = setInterval(() => fetchStats(true), REFRESH_INTERVAL_MS);
     return () => clearInterval(interval);
   }, [fetchStats]);
 
