@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 interface SpinnerProps {
   size?: 'sm' | 'md' | 'lg';
   color?: string;
@@ -5,7 +7,7 @@ interface SpinnerProps {
   decorative?: boolean;
 }
 
-export function Spinner({ size = 'md', color, label = 'Loading', decorative = false }: SpinnerProps) {
+export const Spinner = memo(function Spinner({ size = 'md', color, label = 'Loading', decorative = false }: SpinnerProps) {
   const px = { sm: 16, md: 24, lg: 40 }[size];
   const borderWidth = size === 'sm' ? 2 : 3;
   const spinnerColor = color || 'var(--accent, #667eea)';
@@ -27,4 +29,4 @@ export function Spinner({ size = 'md', color, label = 'Loading', decorative = fa
       }}
     />
   );
-}
+});
