@@ -214,7 +214,7 @@ function App() {
                 {formatAddress(getAddress()!)}
               </a>
             )}</p>
-            <button className="disconnect-btn" onClick={disconnect}>
+            <button className="disconnect-btn" onClick={disconnect} aria-label="Disconnect Stacks wallet">
               Disconnect
             </button>
           </div>
