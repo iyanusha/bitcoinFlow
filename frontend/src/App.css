@@ -233,6 +233,10 @@
   color: #667eea;
 }
 
+.dark .connect-btn:hover {
+  color: #4338ca;
+}
+
 .connect-btn:active {
   transform: scale(0.97);
 }
