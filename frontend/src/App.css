@@ -559,6 +559,14 @@
   transform: none;
 }
 
+.dark .action-card button {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.dark .action-card button:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
 .info-section {
   background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
   padding: 2rem;
