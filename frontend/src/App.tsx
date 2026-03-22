@@ -254,12 +254,12 @@ function App() {
               <label htmlFor="withdraw-amount" className="sr-only">Withdrawal amount in FLOW tokens</label>
               <input
                 id="withdraw-amount"
-                type="number"
-                placeholder="Flow tokens to burn"
+                type="text"
+                inputMode="decimal"
+                placeholder="0.0000"
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(sanitizeNumericInput(e.target.value))}
-                min="0.0001"
-                step="0.0001"
+                autoComplete="off"
                 aria-describedby="withdraw-help"
               />
               <small id="withdraw-help">Burns FLOW tokens and returns sBTC</small>
