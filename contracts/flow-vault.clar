@@ -18,6 +18,8 @@
 (define-constant ERR-VAULT-PAUSED (err u105))
 (define-constant CONTRACT-OWNER tx-sender)
 (define-constant STACKING-THRESHOLD u10000000) ;; 10 STX minimum for stacking
+(define-constant WITHDRAWAL-COOLDOWN u6) ;; ~1 hour cooldown between deposit and withdraw
+(define-constant ERR-COOLDOWN-ACTIVE (err u106))
 ;; sBTC token contract (testnet placeholder)
 (define-constant SBTC-TOKEN-CONTRACT 'SP000000000000000000002Q6VF78.sbtc-token)
 
@@ -32,6 +34,7 @@
 ;; data maps
 (define-map user-deposits principal uint)
 (define-map user-flow-tokens principal uint)
+(define-map user-last-deposit principal uint)
 
 ;; public functions
 (define-public (deposit (amount uint))
