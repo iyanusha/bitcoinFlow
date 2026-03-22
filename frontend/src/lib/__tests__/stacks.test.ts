@@ -4,9 +4,12 @@ import {
   CLARITY_VERSION,
   STACKING_THRESHOLD,
   WITHDRAWAL_COOLDOWN_BLOCKS,
+  CONTRACT_ID,
   getTxExplorerUrl,
   getAddressExplorerUrl,
   getContractExplorerUrl,
+  getContractEventsUrl,
+  getAddressTxsUrl,
 } from '../stacks';
 
 describe('stacks constants', () => {
@@ -77,5 +80,46 @@ describe('URL format consistency', () => {
   it('contract URL starts with https', () => {
     const url = getContractExplorerUrl();
     expect(url.startsWith('https://')).toBe(true);
+  });
+});
+
+describe('CONTRACT_ID', () => {
+  it('contains contract name', () => {
+    expect(CONTRACT_ID).toContain(CONTRACT_NAME);
+  });
+
+  it('is in address.name format', () => {
+    expect(CONTRACT_ID).toMatch(/^S\w+\.flow-vault$/);
+  });
+});
+
+describe('getContractEventsUrl', () => {
+  it('includes contract ID in path', () => {
+    const url = getContractEventsUrl();
+    expect(url).toContain(CONTRACT_ID);
+  });
+
+  it('includes limit and offset params', () => {
+    const url = getContractEventsUrl(10, 5);
+    expect(url).toContain('limit=10');
+    expect(url).toContain('offset=5');
+  });
+
+  it('uses default limit of 20', () => {
+    const url = getContractEventsUrl();
+    expect(url).toContain('limit=20');
+  });
+});
+
+describe('getAddressTxsUrl', () => {
+  it('includes address in path', () => {
+    const url = getAddressTxsUrl('ST123');
+    expect(url).toContain('address/ST123');
+  });
+
+  it('includes pagination params', () => {
+    const url = getAddressTxsUrl('ST123', 50, 10);
+    expect(url).toContain('limit=50');
+    expect(url).toContain('offset=10');
   });
 });
