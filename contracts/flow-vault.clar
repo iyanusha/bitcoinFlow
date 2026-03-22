@@ -65,6 +65,20 @@
   )
 )
 
+(define-public (deposit-stx (amount uint))
+  (begin
+    (asserts! (not (var-get vault-paused)) ERR-VAULT-PAUSED)
+    (asserts! (> amount u0) ERR-INVALID-AMOUNT)
+    (try! (stx-transfer? amount tx-sender (as-contract tx-sender)))
+    (var-set stx-balance (+ (var-get stx-balance) amount))
+    (map-set user-deposits tx-sender
+      (+ (default-to u0 (map-get? user-deposits tx-sender)) amount))
+    (var-set total-deposits (+ (var-get total-deposits) amount))
+    (map-set user-last-deposit tx-sender block-height)
+    (ft-mint? flow-token amount tx-sender)
+  )
+)
+
 (define-public (delegate-stacking (pool-address principal))
   (begin
     (asserts! (is-eq tx-sender CONTRACT-OWNER) ERR-NOT-AUTHORIZED)
