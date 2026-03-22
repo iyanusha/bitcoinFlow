@@ -38,8 +38,6 @@ function App() {
     } catch (err) {
       setError(err instanceof Error ? err.message : "Deposit failed");
     }
-      },
-    })
   }
 
   const handleWithdraw = async () => {
@@ -61,8 +59,6 @@ function App() {
     } catch (err) {
       setError(err instanceof Error ? err.message : "Withdrawal failed");
     }
-      },
-    })
   }
 
   return (
