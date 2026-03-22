@@ -143,6 +143,7 @@ function App() {
 
   return (
     <div className="app">
+      <ToastContainer toasts={toasts} onDismiss={removeToast} />
       <SkipLink targetId="main-content" />
       <header className="app-header" role="banner">
         <div className="header-top">
