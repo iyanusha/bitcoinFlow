@@ -95,6 +95,13 @@ function App() {
         )}
       </header>
 
+      {error && (
+        <div className="error-banner" role="alert">
+          <p>{error}</p>
+          <button className="dismiss-btn" onClick={() => setError(null)}>Dismiss</button>
+        </div>
+      )}
+
       {isConnected && (
         <main className="main-content">
           <div className="vault-stats">
