@@ -79,14 +79,16 @@
 )
 
 (define-public (compound-rewards)
-  (let ((current-cycle (get-burn-block-info? header-hash (- burn-block-height u1))))
-    (begin
-      (asserts! (is-eq tx-sender CONTRACT-OWNER) ERR-NOT-AUTHORIZED)
-      ;; Placeholder for reward calculation and compounding
-      ;; In real implementation, would calculate stacking rewards and reinvest
-      (var-set total-rewards (+ (var-get total-rewards) u1000)) ;; Mock reward
-      (var-set last-compound-cycle burn-block-height)
-      (ok (var-get total-rewards))
+  (begin
+    (asserts! (is-eq tx-sender CONTRACT-OWNER) ERR-NOT-AUTHORIZED)
+    (asserts! (not (var-get vault-paused)) ERR-VAULT-PAUSED)
+    (asserts! (> (var-get total-deposits) u0) ERR-INSUFFICIENT-BALANCE)
+    ;; Calculate rewards proportional to total deposits and elapsed blocks
+    (let ((blocks-since-last (- block-height (var-get last-compound-cycle)))
+          (reward-amount (/ (* (var-get total-deposits) blocks-since-last) u100000)))
+      (var-set total-rewards (+ (var-get total-rewards) reward-amount))
+      (var-set last-compound-cycle block-height)
+      (ok reward-amount)
     )
   )
 )
