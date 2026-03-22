@@ -1343,6 +1343,14 @@
 .gap-md { gap: 1rem; }
 .gap-lg { gap: 1.5rem; }
 
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-sm { font-size: 0.85rem; }
+.text-xs { font-size: 0.75rem; }
+.text-muted { color: var(--text-muted); }
+.font-mono { font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace; }
+
 @media (max-height: 500px) and (orientation: landscape) {
   .app-header {
     padding: 1rem;
