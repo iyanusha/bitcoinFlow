@@ -316,7 +316,7 @@
 }
 
 .loading-dot {
-  color: #667eea;
+  color: var(--accent);
   font-size: 1.2rem;
   animation: pulse 1s ease-in-out infinite;
 }
