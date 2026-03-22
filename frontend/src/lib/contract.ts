@@ -7,6 +7,8 @@ export interface ReadOnlyCallOptions {
   functionName: string;
   functionArgs?: ClarityValue[];
   senderAddress?: string;
+  /** Cache TTL in milliseconds. Set to 0 to skip caching. */
+  cacheTtlMs?: number;
 }
 
 /**
@@ -16,7 +18,17 @@ export interface ReadOnlyCallOptions {
 export async function callReadOnly<T = unknown>(
   options: ReadOnlyCallOptions
 ): Promise<T> {
-  const { functionName, functionArgs = [], senderAddress = CONTRACT_ADDRESS } = options;
+  const { functionName, functionArgs = [], senderAddress = CONTRACT_ADDRESS, cacheTtlMs } = options;
+
+  // Check cache first
+  if (cacheTtlMs && cacheTtlMs > 0) {
+    const cacheKey = buildCacheKey(functionName, functionArgs);
+    const cached = getCached<T>(cacheKey, cacheTtlMs);
+    if (cached !== null) {
+      logger.debug(`callReadOnly cache hit: ${functionName}`);
+      return cached;
+    }
+  }
 
   logger.debug(`callReadOnly: ${functionName}`, { args: functionArgs.length });
 
@@ -30,7 +42,15 @@ export async function callReadOnly<T = unknown>(
   });
 
   const json = cvToJSON(result);
-  return json.value as T;
+  const value = json.value as T;
+
+  // Store in cache
+  if (cacheTtlMs && cacheTtlMs > 0) {
+    const cacheKey = buildCacheKey(functionName, functionArgs);
+    setCached(cacheKey, value);
+  }
+
+  return value;
 }
 
 /**
