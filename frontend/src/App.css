@@ -1221,6 +1221,7 @@
   text-align: center;
   padding: 2rem 0;
   font-size: 0.9rem;
+  transition: color 0.3s;
 }
 
 .tx-list {
