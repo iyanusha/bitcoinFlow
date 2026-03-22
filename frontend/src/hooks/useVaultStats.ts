@@ -29,14 +29,16 @@ export function useVaultStats(userAddress: string | null) {
     setError(null);
 
     try {
-      const statusResult = await fetchCallReadOnlyFunction({
-        contractAddress: CONTRACT_ADDRESS,
-        contractName: CONTRACT_NAME,
-        functionName: 'get-vault-status',
-        functionArgs: [],
-        network,
-        senderAddress: CONTRACT_ADDRESS,
-      });
+      const statusResult = await withRetry(() =>
+        fetchCallReadOnlyFunction({
+          contractAddress: CONTRACT_ADDRESS,
+          contractName: CONTRACT_NAME,
+          functionName: 'get-vault-status',
+          functionArgs: [],
+          network,
+          senderAddress: CONTRACT_ADDRESS,
+        })
+      );
 
       const statusJson = cvToJSON(statusResult);
       const statusValue = statusJson.value as VaultStatusResponse;
