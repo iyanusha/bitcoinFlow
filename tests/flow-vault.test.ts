@@ -188,6 +188,20 @@ describe("flow-vault", () => {
     expect(remaining).toBeLessThanOrEqual(6);
   });
 
+  it("allows withdrawal after cooldown period expires", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(5000000)], wallet1);
+    simnet.mineEmptyBlocks(7);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "withdraw",
+      [Cl.uint(2000000)],
+      wallet1
+    );
+    expect(result).toBeOk(Cl.bool(true));
+  });
+
   it("cooldown expires after mining enough blocks", () => {
     simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
     simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(1000000)], wallet1);
