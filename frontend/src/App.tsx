@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useWallet } from './hooks/useWallet'
 import { useVaultStats } from './hooks/useVaultStats'
+import { useUserPosition } from './hooks/useUserPosition'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './lib/stacks'
@@ -18,6 +19,7 @@ function App() {
   const [isDepositing, setIsDepositing] = useState(false)
   const [isWithdrawing, setIsWithdrawing] = useState(false)
   const { stats: vaultStats, loading: statsLoading, refresh: refreshStats } = useVaultStats(getAddress())
+  const { position, cooldown, loading: positionLoading, refresh: refreshPosition } = useUserPosition(getAddress())
 
   const handleDeposit = async () => {
     if (!isConnected || !depositAmount) return
