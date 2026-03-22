@@ -125,6 +125,16 @@
   }
 )
 
+(define-read-only (get-exchange-rate)
+  (let ((deposits (var-get total-deposits))
+        (rewards (var-get total-rewards)))
+    (if (is-eq deposits u0)
+      u1000000 ;; 1:1 ratio when no deposits (6 decimal precision)
+      (/ (* (+ deposits rewards) u1000000) deposits)
+    )
+  )
+)
+
 ;; Pause vault operations
 (define-public (pause-vault)
   (begin
