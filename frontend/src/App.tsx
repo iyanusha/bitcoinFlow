@@ -247,7 +247,10 @@ function App() {
                 inputMode="decimal"
                 placeholder="0.0000"
                 value={depositAmount}
-                onChange={(e) => setDepositAmount(sanitizeNumericInput(e.target.value))}
+                onChange={(e) => {
+                  setDepositAmount(sanitizeNumericInput(e.target.value))
+                  if (error) setError(null)
+                }}
                 autoComplete="off"
                 aria-describedby="deposit-help"
               />
