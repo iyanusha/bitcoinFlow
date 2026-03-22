@@ -365,17 +365,39 @@
   .app {
     padding: 1rem;
   }
-  
+
+  .app-header {
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+
   .app-header h1 {
     font-size: 2rem;
   }
-  
+
+  .app-header p {
+    font-size: 1rem;
+  }
+
   .actions {
     grid-template-columns: 1fr;
   }
-  
+
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .wallet-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .stat-card p {
+    font-size: 1.5rem;
+  }
+
+  .action-card {
+    padding: 1.5rem;
   }
 }
 
