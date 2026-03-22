@@ -20,6 +20,7 @@ import {
   SEO,
   BREAKPOINTS,
   KEYS,
+  THEME,
 } from '../constants';
 
 describe('constants', () => {
@@ -142,5 +143,23 @@ describe('KEYS', () => {
     expect(KEYS.ESCAPE).toBe('Escape');
     expect(KEYS.TAB).toBe('Tab');
     expect(KEYS.SPACE).toBe(' ');
+  });
+});
+
+describe('THEME constants', () => {
+  it('has a storage key', () => {
+    expect(THEME.STORAGE_KEY).toBe('bf-dark-mode');
+  });
+
+  it('has a positive transition duration', () => {
+    expect(THEME.TRANSITION_DURATION_MS).toBeGreaterThan(0);
+  });
+
+  it('has a class name', () => {
+    expect(THEME.CLASS_NAME).toBe('dark');
+  });
+
+  it('has a system preference query', () => {
+    expect(THEME.SYSTEM_PREFERENCE_QUERY).toContain('prefers-color-scheme');
   });
 });
