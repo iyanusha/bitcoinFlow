@@ -45,32 +45,36 @@ export function useVaultStats(userAddress: string | null) {
 
       let userBalance = 0;
       if (userAddress) {
-        const balanceResult = await fetchCallReadOnlyFunction({
-          contractAddress: CONTRACT_ADDRESS,
-          contractName: CONTRACT_NAME,
-          functionName: 'get-user-flow-balance',
-          functionArgs: [principalCV(userAddress)],
-          network,
-          senderAddress: CONTRACT_ADDRESS,
-        });
+        const balanceResult = await withRetry(() =>
+          fetchCallReadOnlyFunction({
+            contractAddress: CONTRACT_ADDRESS,
+            contractName: CONTRACT_NAME,
+            functionName: 'get-user-flow-balance',
+            functionArgs: [principalCV(userAddress)],
+            network,
+            senderAddress: CONTRACT_ADDRESS,
+          })
+        );
         const balanceJson = cvToJSON(balanceResult);
-        userBalance = parseInt(balanceJson.value, 10);
+        userBalance = parseClarityInt(balanceJson.value);
       }
 
       let tvl = 0;
       try {
-        const tvlResult = await fetchCallReadOnlyFunction({
-          contractAddress: CONTRACT_ADDRESS,
-          contractName: CONTRACT_NAME,
-          functionName: 'get-vault-tvl',
-          functionArgs: [],
-          network,
-          senderAddress: CONTRACT_ADDRESS,
-        });
+        const tvlResult = await withRetry(() =>
+          fetchCallReadOnlyFunction({
+            contractAddress: CONTRACT_ADDRESS,
+            contractName: CONTRACT_NAME,
+            functionName: 'get-vault-tvl',
+            functionArgs: [],
+            network,
+            senderAddress: CONTRACT_ADDRESS,
+          })
+        );
         const tvlJson = cvToJSON(tvlResult);
-        tvl = parseInt(tvlJson.value, 10);
+        tvl = parseClarityInt(tvlJson.value);
       } catch {
-        // TVL fetch is optional
+        // TVL fetch is optional — falls back to stx-balance
       }
 
       setStats({
