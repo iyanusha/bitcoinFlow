@@ -24,7 +24,15 @@ function StatusBadge({ status }: { status: TransactionRecord['status'] }) {
     confirmed: 'Confirmed',
     failed: 'Failed',
   };
-  return <span className={`tx-status tx-status-${status}`}>{labels[status]}</span>;
+  return (
+    <span
+      className={`tx-status tx-status-${status}`}
+      role="status"
+      aria-label={`Transaction status: ${labels[status]}`}
+    >
+      {labels[status]}
+    </span>
+  );
 }
 
 export function TransactionHistory({ transactions, onClear }: TransactionHistoryProps) {
