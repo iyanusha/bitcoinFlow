@@ -570,9 +570,10 @@
   background: rgba(255,255,255,0.7);
   margin-bottom: 1rem;
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   position: relative;
   padding-left: 3rem;
+  transition: background 0.3s;
 }
 
 .info-section li:before {
