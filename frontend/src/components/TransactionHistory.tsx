@@ -1,6 +1,8 @@
 import { useState, useMemo } from 'react';
 import type { TransactionRecord, TransactionStatus } from '../types';
 import { TransactionItem } from './TransactionItem';
+import { TransactionSummary } from './TransactionSummary';
+import { EmptyTransactions } from './EmptyTransactions';
 import { Pagination } from './Pagination';
 import { usePagination } from '../hooks/usePagination';
 
