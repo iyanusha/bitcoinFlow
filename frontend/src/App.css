@@ -679,6 +679,31 @@
     padding: 1.25rem;
     max-width: calc(100vw - 2rem);
   }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .vault-stats {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .user-position {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .tx-history {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .app-footer {
+    padding: 1.5rem 0.5rem;
+    margin-top: 2rem;
+  }
 }
 
 .error-boundary {
