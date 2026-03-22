@@ -29,6 +29,7 @@ export function createMockVaultStats(
     withdrawCount: 0,
     isPaused: false,
     userBalance: 0,
+    currentBlock: 100,
     ...overrides,
   };
 }
@@ -39,6 +40,8 @@ export function createMockUserPosition(
   return {
     depositedAmount: 0,
     flowTokenBalance: 0,
+    pendingRewards: 0,
+    lastDepositTime: null,
     sharePct: 0,
     ...overrides,
   };
