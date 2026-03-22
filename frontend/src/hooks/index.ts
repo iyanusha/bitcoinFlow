@@ -2,6 +2,7 @@ export { useAsync } from './useAsync';
 export { useClipboard } from './useClipboard';
 export { useConfirm } from './useConfirm';
 export { useContractCall } from './useContractCall';
+export { useCooldownTimer } from './useCooldownTimer';
 export { useDebounce, useDebouncedCallback } from './useDebounce';
 export { useDocumentTitle } from './useDocumentTitle';
 export { useEventListener } from './useEventListener';
