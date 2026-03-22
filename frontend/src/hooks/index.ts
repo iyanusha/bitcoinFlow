@@ -30,6 +30,7 @@ export { useToast } from './useToast';
 export { useTransactionHistory } from './useTransactionHistory';
 export { useTransactionStatus } from './useTransactionStatus';
 export { useUserPosition } from './useUserPosition';
+export { useVaultHealth } from './useVaultHealth';
 export { useVaultStats } from './useVaultStats';
 export { useWallet } from './useWallet';
 export { useWindowSize } from './useWindowSize';
