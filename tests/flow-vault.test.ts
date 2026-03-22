@@ -272,6 +272,20 @@ describe("flow-vault", () => {
     expect(result).toBeErr(Cl.uint(105));
   });
 
+  it("owner can compound rewards when deposits exist", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(5000000)], wallet1);
+    simnet.mineEmptyBlocks(10);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "compound-rewards",
+      [],
+      deployer
+    );
+    expect(result).toBeOk(Cl.uint(expect.any(Number)));
+  });
+
   it("exchange rate increases after reward compounding", () => {
     simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
     simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(10000000)], wallet1);
