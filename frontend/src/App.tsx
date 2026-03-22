@@ -128,6 +128,9 @@ function App() {
           </button>
         </div>
         <p>Smart sBTC Stacking Vault</p>
+        <span className="network-badge">
+          {import.meta.env.VITE_NETWORK === 'mainnet' ? 'Mainnet' : 'Testnet'}
+        </span>
 
         {!isConnected ? (
           <button className="connect-btn" onClick={connect}>
