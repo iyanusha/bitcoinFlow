@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeEach, vi } from 'vitest';
-import { getColorScheme } from '../theme';
+import { getColorScheme, applyTheme, persistTheme } from '../theme';
 
 describe('getColorScheme', () => {
   it('returns "dark" when isDark is true', () => {
@@ -44,5 +44,38 @@ describe('getStoredTheme', () => {
     localStorage.setItem('bf-dark-mode', 'false');
     const { getStoredTheme } = await import('../theme');
     expect(getStoredTheme()).toBe(false);
+  });
+});
+
+describe('applyTheme', () => {
+  beforeEach(() => {
+    document.documentElement.classList.remove('dark');
+  });
+
+  it('adds dark class when isDark is true', () => {
+    applyTheme(true);
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
+  });
+
+  it('removes dark class when isDark is false', () => {
+    document.documentElement.classList.add('dark');
+    applyTheme(false);
+    expect(document.documentElement.classList.contains('dark')).toBe(false);
+  });
+});
+
+describe('persistTheme', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it('stores "true" for dark mode', () => {
+    persistTheme(true);
+    expect(localStorage.getItem('bf-dark-mode')).toBe('true');
+  });
+
+  it('stores "false" for light mode', () => {
+    persistTheme(false);
+    expect(localStorage.getItem('bf-dark-mode')).toBe('false');
   });
 });
