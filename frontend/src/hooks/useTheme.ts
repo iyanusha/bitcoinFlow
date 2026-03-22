@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getStoredTheme, applyTheme, persistTheme } from '../lib/theme';
+import { getStoredTheme, applyTheme, persistTheme, getColorScheme } from '../lib/theme';
 
 export function useTheme() {
   const [isDark, setIsDark] = useState(getStoredTheme);
@@ -7,6 +7,10 @@ export function useTheme() {
   useEffect(() => {
     applyTheme(isDark);
     persistTheme(isDark);
+    const meta = document.querySelector('meta[name="color-scheme"]');
+    if (meta) {
+      meta.setAttribute('content', getColorScheme(isDark));
+    }
   }, [isDark]);
 
   const toggle = useCallback(() => setIsDark(prev => !prev), []);
