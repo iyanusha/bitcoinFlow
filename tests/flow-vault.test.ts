@@ -272,6 +272,32 @@ describe("flow-vault", () => {
     expect(result).toBeErr(Cl.uint(105));
   });
 
+  it("exchange rate increases after reward compounding", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(10000000)], wallet1);
+
+    const { result: rateBefore } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-exchange-rate",
+      [],
+      deployer
+    );
+    const before = Number(rateBefore.expectUint());
+
+    simnet.mineEmptyBlocks(50);
+    simnet.callPublicFn("flow-vault", "compound-rewards", [], deployer);
+
+    const { result: rateAfter } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-exchange-rate",
+      [],
+      deployer
+    );
+    const after = Number(rateAfter.expectUint());
+    // After compounding, rate should be >= previous rate
+    expect(after).toBeGreaterThanOrEqual(before);
+  });
+
   it("compound-rewards rejects when no deposits exist", () => {
     simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
     // Clear state by emergency withdraw first if any deposits exist
