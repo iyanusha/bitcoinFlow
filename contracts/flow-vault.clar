@@ -136,6 +136,10 @@
   )
 )
 
+(define-read-only (get-vault-tvl)
+  (+ (var-get total-deposits) (var-get total-rewards))
+)
+
 (define-read-only (get-exchange-rate)
   (let ((deposits (var-get total-deposits))
         (rewards (var-get total-rewards)))
