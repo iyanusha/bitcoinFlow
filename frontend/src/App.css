@@ -1581,6 +1581,15 @@
   .wallet-address-link::after {
     content: none;
   }
+
+  /* Force light colors in print regardless of theme */
+  .dark .stat-card,
+  .dark .action-card,
+  .dark .tx-history,
+  .dark .vault-stats {
+    background: #fff !important;
+    color: #000 !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
