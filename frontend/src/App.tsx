@@ -265,6 +265,15 @@ function App() {
           </div>
         </main>
       )}
+
+      <footer className="app-footer" role="contentinfo">
+        <p>BitcoinFlow — Built on Stacks</p>
+        <p className="footer-links">
+          <a href="https://www.stacks.co" target="_blank" rel="noopener noreferrer">Stacks</a>
+          {' | '}
+          <a href="https://explorer.hiro.so" target="_blank" rel="noopener noreferrer">Explorer</a>
+        </p>
+      </footer>
     </div>
   )
 }
