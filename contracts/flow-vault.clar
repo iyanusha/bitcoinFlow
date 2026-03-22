@@ -79,6 +79,21 @@
   )
 )
 
+(define-public (withdraw-stx (amount uint))
+  (let ((user-balance (default-to u0 (map-get? user-deposits tx-sender))))
+    (asserts! (not (var-get vault-paused)) ERR-VAULT-PAUSED)
+    (asserts! (> amount u0) ERR-INVALID-AMOUNT)
+    (asserts! (>= user-balance amount) ERR-INSUFFICIENT-BALANCE)
+    (asserts! (>= (- block-height (default-to u0 (map-get? user-last-deposit tx-sender)))
+                  WITHDRAWAL-COOLDOWN) ERR-COOLDOWN-ACTIVE)
+    (try! (as-contract (stx-transfer? amount tx-sender tx-sender)))
+    (map-set user-deposits tx-sender (- user-balance amount))
+    (var-set total-deposits (- (var-get total-deposits) amount))
+    (var-set stx-balance (- (var-get stx-balance) amount))
+    (ft-burn? flow-token amount tx-sender)
+  )
+)
+
 (define-public (delegate-stacking (pool-address principal))
   (begin
     (asserts! (is-eq tx-sender CONTRACT-OWNER) ERR-NOT-AUTHORIZED)
