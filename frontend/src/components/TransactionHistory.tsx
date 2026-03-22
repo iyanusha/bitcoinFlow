@@ -30,17 +30,17 @@ function StatusBadge({ status }: { status: TransactionRecord['status'] }) {
 export function TransactionHistory({ transactions, onClear }: TransactionHistoryProps) {
   if (transactions.length === 0) {
     return (
-      <div className="tx-history">
-        <h3>Transaction History</h3>
+      <section className="tx-history" aria-labelledby="tx-history-heading">
+        <h3 id="tx-history-heading">Transaction History</h3>
         <p className="tx-empty">No transactions yet. Make a deposit or withdrawal to get started.</p>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div className="tx-history">
+    <section className="tx-history" aria-labelledby="tx-history-heading-full">
       <div className="tx-history-header">
-        <h3>Transaction History <span className="tx-count">({transactions.length})</span></h3>
+        <h3 id="tx-history-heading-full">Transaction History <span className="tx-count">({transactions.length})</span></h3>
         <button
           className="tx-clear-btn"
           onClick={() => {
@@ -78,6 +78,6 @@ export function TransactionHistory({ transactions, onClear }: TransactionHistory
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
