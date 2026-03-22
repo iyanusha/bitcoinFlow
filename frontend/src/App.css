@@ -1026,9 +1026,9 @@
   animation: spin 0.6s linear infinite;
 }
 
-.field-error { color: var(--error-text); font-size: 0.85rem; margin-top: 4px; min-height: 1.2em; }
-.action-card input.invalid { border-color: var(--error-text); background: var(--error-bg); }
-.action-card input.valid { border-color: var(--success); }
+.field-error { color: var(--error-text); font-size: 0.85rem; margin-top: 4px; min-height: 1.2em; transition: color 0.3s; }
+.action-card input.invalid { border-color: var(--error-text); background: var(--error-bg); transition: border-color 0.3s, background 0.3s; }
+.action-card input.valid { border-color: var(--success); transition: border-color 0.3s; }
 
 .app-footer {
   text-align: center;
