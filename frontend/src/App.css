@@ -1019,6 +1019,12 @@
   border: 1px solid #3b82f6;
 }
 
+.toast-warning {
+  background: #451a03;
+  color: #fde68a;
+  border: 1px solid #d97706;
+}
+
 .toast-message {
   flex: 1;
 }
