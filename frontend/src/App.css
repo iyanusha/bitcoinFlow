@@ -1292,9 +1292,10 @@
   background: none;
   border: 1px solid var(--border-color);
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   color: var(--text-secondary);
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .confirm-dialog-confirm {
@@ -1302,8 +1303,9 @@
   color: white;
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
+  transition: background 0.2s;
 }
 
 .confirm-dialog-confirm:hover {
