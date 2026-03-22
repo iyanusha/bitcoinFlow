@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { cvToJSON, fetchCallReadOnlyFunction } from '@stacks/transactions';
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { REFRESH_INTERVAL_MS } from '../lib/constants';
+import { logger } from '../lib/logger';
 import type { ExchangeRate } from '../types';
 
 export function useExchangeRate() {
@@ -28,8 +29,8 @@ export function useExchangeRate() {
         rate,
         formattedRate: (rate / 1_000_000).toFixed(6),
       });
-    } catch {
-      // Keep current rate on error
+    } catch (err) {
+      logger.warn('Failed to fetch exchange rate, keeping current value', err);
     }
   }, []);
 
