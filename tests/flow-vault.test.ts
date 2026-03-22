@@ -439,6 +439,20 @@ describe("flow-vault", () => {
     expect(result).toBeOk(Cl.bool(true));
   });
 
+  it("rejects STX over-withdrawal", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit-stx", [Cl.uint(1000000)], wallet2);
+    simnet.mineEmptyBlocks(7);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "withdraw-stx",
+      [Cl.uint(99999999)],
+      wallet2
+    );
+    expect(result).toBeErr(Cl.uint(101));
+  });
+
   it("rejects STX withdrawal with zero amount", () => {
     simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
     simnet.callPublicFn("flow-vault", "deposit-stx", [Cl.uint(3000000)], wallet1);
