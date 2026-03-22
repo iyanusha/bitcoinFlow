@@ -83,6 +83,7 @@ function App() {
 
     const validation = validateDeposit(depositAmount)
     if (!validation.isValid) {
+      logger.warn('Deposit validation failed', { amount: depositAmount, error: validation.error })
       setError(validation.error)
       return
     }
