@@ -1032,6 +1032,7 @@
   color: var(--text-muted);
   font-size: 0.9rem;
   border-top: 1px solid var(--border-color);
+  transition: color 0.3s, border-color 0.3s;
 }
 
 .footer-links {
