@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { cvToJSON, fetchCallReadOnlyFunction, principalCV } from '@stacks/transactions';
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { logger } from '../lib/logger';
+import { parseClarityInt } from '../lib/contractParsers';
 import type { UserPosition, CooldownInfo, UserShareResponse } from '../types';
 
 export function useUserPosition(userAddress: string | null) {
@@ -41,14 +42,14 @@ export function useUserPosition(userAddress: string | null) {
       });
 
       const cooldownJson = cvToJSON(cooldownResult);
-      const blocksRemaining = parseInt(cooldownJson.value, 10);
+      const blocksRemaining = parseClarityInt(cooldownJson.value);
 
       setPosition({
-        depositedAmount: parseInt(shareValue.deposited.value, 10),
-        flowTokenBalance: parseInt(shareValue['flow-balance'].value, 10),
+        depositedAmount: parseClarityInt(shareValue.deposited.value),
+        flowTokenBalance: parseClarityInt(shareValue['flow-balance'].value),
         pendingRewards: 0,
         lastDepositTime: null,
-        sharePct: parseInt(shareValue['share-pct'].value, 10),
+        sharePct: parseClarityInt(shareValue['share-pct'].value),
       });
 
       setCooldown({
