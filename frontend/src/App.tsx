@@ -118,7 +118,10 @@ function App() {
       functionName: 'withdraw',
       functionArgs: [uintCV(Math.round(parseFloat(withdrawAmount) * SATS_PER_BTC))],
       postConditionMode: PostConditionMode.Deny,
-      onFinish: () => {
+      onFinish: (data) => {
+        const txId = data.txId;
+        addTransaction({ txId, type: 'withdraw', amount: Math.round(parseFloat(withdrawAmount) * SATS_PER_BTC) })
+        toastSuccess(`Withdrawal of ${withdrawAmount} FLOW submitted`, txId)
         setWithdrawAmount('')
         setError(null)
         setIsWithdrawing(false)
@@ -130,6 +133,7 @@ function App() {
       },
     });
     } catch (err) {
+      toastError(parseTransactionError(err))
       setError(parseTransactionError(err));
       setIsWithdrawing(false)
     }
