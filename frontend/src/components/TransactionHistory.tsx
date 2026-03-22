@@ -87,7 +87,7 @@ export function TransactionHistory({ transactions, onClear, pendingCount = 0 }: 
     return (
       <section className="tx-history" aria-labelledby="tx-history-heading">
         <h3 id="tx-history-heading">Transaction History</h3>
-        <p className="tx-empty">No transactions yet. Make a deposit or withdrawal to get started.</p>
+        <EmptyTransactions />
       </section>
     );
   }
