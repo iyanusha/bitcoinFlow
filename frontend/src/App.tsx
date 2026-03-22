@@ -303,6 +303,8 @@ function App() {
             </div>
           </div>
 
+          <TransactionHistory transactions={transactions} onClear={clearHistory} />
+
           <div className="info-section">
             <h3>How BitcoinFlow Works</h3>
             <ul>
