@@ -9,6 +9,7 @@ import {
   isValidStxAddress,
   validateStxAddress,
   combineValidators,
+  validateBtcAmount,
 } from '../validation';
 
 describe('validateAmount', () => {
@@ -225,5 +226,35 @@ describe('combineValidators', () => {
     const result = combined('0.00001');
     expect(result.isValid).toBe(false);
     expect(result.error).toBe('Minimum deposit is 0.0001 sBTC');
+  });
+});
+
+describe('validateBtcAmount', () => {
+  it('accepts valid BTC amount', () => {
+    const result = validateBtcAmount('1.5');
+    expect(result.isValid).toBe(true);
+  });
+
+  it('rejects amount exceeding 21M cap', () => {
+    const result = validateBtcAmount('22000000');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('21M');
+  });
+
+  it('rejects more than 8 decimal places', () => {
+    const result = validateBtcAmount('1.123456789');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('8 decimal');
+  });
+
+  it('inherits base validation for empty input', () => {
+    const result = validateBtcAmount('');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Amount is required');
+  });
+
+  it('accepts 8 decimal places exactly', () => {
+    const result = validateBtcAmount('0.12345678');
+    expect(result.isValid).toBe(true);
   });
 });
