@@ -503,6 +503,10 @@
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
 }
 
+.dark .action-card input:focus {
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+}
+
 .action-card small {
   display: block;
   color: var(--text-muted);
