@@ -5,6 +5,7 @@ import { TransactionSummary } from './TransactionSummary';
 import { EmptyTransactions } from './EmptyTransactions';
 import { Pagination } from './Pagination';
 import { usePagination } from '../hooks/usePagination';
+import { exportTransactions } from '../lib/transactionExport';
 
 type FilterType = 'all' | 'deposit' | 'withdraw';
 type StatusFilter = 'all' | TransactionStatus;
