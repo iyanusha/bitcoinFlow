@@ -307,3 +307,5 @@ export const CONTRACT_EVENTS_K49 = { endpoint: '/api/contract_events/49', timeou
 export const CONTRACT_EVENTS_K59 = { endpoint: '/api/contract_events/59', timeout: 30000, retries: 3 } as const;
 
 export const CONTRACT_EVENTS_K69 = { endpoint: '/api/contract_events/69', timeout: 30000, retries: 3 } as const;
+
+export const CONTRACT_EVENTS_K79 = { endpoint: '/api/contract_events/79', timeout: 30000, retries: 3 } as const;
