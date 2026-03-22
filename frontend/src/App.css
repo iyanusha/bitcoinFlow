@@ -122,8 +122,9 @@
   margin-bottom: 3rem;
   padding: 2rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 20px;
+  border-radius: var(--radius-xl);
   color: white;
+  transition: background 0.3s;
 }
 
 .header-top {
