@@ -235,12 +235,12 @@ function App() {
               <label htmlFor="deposit-amount" className="sr-only">Deposit amount in sBTC</label>
               <input
                 id="deposit-amount"
-                type="number"
-                placeholder="Amount to deposit"
+                type="text"
+                inputMode="decimal"
+                placeholder="0.0000"
                 value={depositAmount}
                 onChange={(e) => setDepositAmount(sanitizeNumericInput(e.target.value))}
-                min="0.0001"
-                step="0.0001"
+                autoComplete="off"
                 aria-describedby="deposit-help"
               />
               <small id="deposit-help">Minimum: 0.0001 sBTC</small>
