@@ -333,7 +333,7 @@ function App() {
               </button>
             </div>
 
-            <div className="action-card" role="form" aria-label="Withdraw sBTC">
+            <div className="action-card" role="form" aria-label="Withdraw sBTC" aria-description={ARIA_DESCRIPTIONS.withdrawForm}>
               <h3>Withdraw sBTC</h3>
               <label htmlFor="withdraw-amount" className="sr-only">Withdrawal amount in FLOW tokens</label>
               <input
