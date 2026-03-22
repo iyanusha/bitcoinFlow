@@ -6,6 +6,7 @@ import { useExchangeRate } from './hooks/useExchangeRate'
 import { useTransactionHistory } from './hooks/useTransactionHistory'
 import { useToast } from './hooks/useToast'
 import { useTransactionStatus } from './hooks/useTransactionStatus'
+import { useDocumentTitle } from './hooks/useDocumentTitle'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network, getAddressExplorerUrl, getContractExplorerUrl } from './lib/stacks'
@@ -166,6 +167,7 @@ function App() {
   }
 
   const pendingCount = transactions.filter(tx => tx.status === 'pending').length;
+  useDocumentTitle(pendingCount > 0 ? `(${pendingCount}) BitcoinFlow` : 'BitcoinFlow');
 
   return (
     <div className="app">
