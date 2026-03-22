@@ -8,7 +8,11 @@ interface ToastProps {
 
 export function Toast({ toast, onDismiss }: ToastProps) {
   return (
-    <div className={`toast toast-${toast.type}`} role="status" aria-live="polite">
+    <div
+      className={`toast toast-${toast.type}`}
+      role={toast.type === 'error' ? 'alert' : 'status'}
+      aria-live={toast.type === 'error' ? 'assertive' : 'polite'}
+    >
       <span className="toast-message">{toast.message}</span>
       {toast.txId && (
         <a
