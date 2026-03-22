@@ -26,6 +26,8 @@ export function ButtonWithLoading({
       disabled={disabled || loading}
       className={`${className || ''} ${loading ? 'btn-loading' : ''}`.trim()}
       aria-busy={loading}
+      aria-disabled={disabled || loading}
+      aria-label={loading ? loadingText : undefined}
     >
       {loading ? loadingText : children}
     </button>
