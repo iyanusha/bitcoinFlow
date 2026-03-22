@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeEach, vi } from 'vitest';
-import { getColorScheme, applyTheme, persistTheme } from '../theme';
+import { getColorScheme, applyTheme, persistTheme, systemPrefersDark } from '../theme';
 
 describe('getColorScheme', () => {
   it('returns "dark" when isDark is true', () => {
@@ -77,5 +77,37 @@ describe('persistTheme', () => {
   it('stores "false" for light mode', () => {
     persistTheme(false);
     expect(localStorage.getItem('bf-dark-mode')).toBe('false');
+  });
+});
+
+describe('systemPrefersDark', () => {
+  it('returns false when matchMedia reports no dark preference', () => {
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: vi.fn().mockImplementation((query: string) => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      })),
+    });
+    expect(systemPrefersDark()).toBe(false);
+  });
+
+  it('returns true when matchMedia reports dark preference', () => {
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: vi.fn().mockImplementation((query: string) => ({
+        matches: true,
+        media: query,
+        onchange: null,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      })),
+    });
+    expect(systemPrefersDark()).toBe(true);
   });
 });
