@@ -1,4 +1,4 @@
-import { describe, expect, it, beforeEach } from 'vitest';
+import { describe, expect, it, vi, beforeEach } from 'vitest';
 import {
   generateId,
   resetIdCounter,
@@ -8,6 +8,7 @@ import {
   externalLinkLabel,
   formatForScreenReader,
   isActivationKey,
+  announceToScreenReader,
   ARIA_DESCRIPTIONS,
   LANDMARK_LABELS,
   KEYS,
@@ -138,5 +139,38 @@ describe('KEYS', () => {
     expect(KEYS.TAB).toBe('Tab');
     expect(KEYS.ARROW_UP).toBe('ArrowUp');
     expect(KEYS.ARROW_DOWN).toBe('ArrowDown');
+  });
+});
+
+describe('announceToScreenReader', () => {
+  it('creates a live region element in the DOM', () => {
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation(cb => {
+      cb(0);
+      return 0;
+    });
+    announceToScreenReader('Test announcement');
+    const liveRegion = document.querySelector('[aria-live="polite"]');
+    expect(liveRegion).toBeTruthy();
+    expect(liveRegion?.textContent).toBe('Test announcement');
+  });
+
+  it('supports assertive priority', () => {
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation(cb => {
+      cb(0);
+      return 0;
+    });
+    announceToScreenReader('Urgent', 'assertive');
+    const liveRegion = document.querySelector('[aria-live="assertive"]');
+    expect(liveRegion).toBeTruthy();
+  });
+
+  it('uses sr-only class for visual hiding', () => {
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation(cb => {
+      cb(0);
+      return 0;
+    });
+    announceToScreenReader('Hidden message');
+    const liveRegion = document.querySelector('.sr-only[aria-live]');
+    expect(liveRegion).toBeTruthy();
   });
 });
