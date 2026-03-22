@@ -241,3 +241,5 @@ export const VAULT_ANALYTICS_K39 = { endpoint: '/api/vault_analytics/39', timeou
 export const VAULT_ANALYTICS_K49 = { endpoint: '/api/vault_analytics/49', timeout: 30000, retries: 3 } as const;
 
 export const VAULT_ANALYTICS_K59 = { endpoint: '/api/vault_analytics/59', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_ANALYTICS_K69 = { endpoint: '/api/vault_analytics/69', timeout: 30000, retries: 3 } as const;
