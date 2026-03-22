@@ -2025,6 +2025,11 @@
   }
 }
 
+/* Remove focus ring on programmatic focus targets */
+#main-content:focus {
+  outline: none;
+}
+
 /* Focus ring container */
 .focus-ring-container {
   position: relative;
