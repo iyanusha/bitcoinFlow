@@ -288,6 +288,9 @@ describe("flow-vault", () => {
       deployer
     );
     expect(result).toBeDefined();
+    // Flow tokens should be minted 1:1
+    const balance = Number(result.expectUint());
+    expect(balance).toBeGreaterThanOrEqual(7000000);
   });
 
   it("returns delegation pool status", () => {
