@@ -244,8 +244,8 @@ function App() {
                 aria-describedby="deposit-help"
               />
               <small id="deposit-help">Minimum: 0.0001 sBTC</small>
-              <button onClick={handleDeposit} disabled={!depositAmount || isDepositing}>
-                {isDepositing ? 'Processing...' : 'Deposit & Get Flow Tokens'}
+              <button onClick={handleDeposit} disabled={!depositAmount || isDepositing || vaultStats.isPaused}>
+                {isDepositing ? 'Processing...' : vaultStats.isPaused ? 'Vault Paused' : 'Deposit & Get Flow Tokens'}
               </button>
             </div>
 
@@ -263,8 +263,8 @@ function App() {
                 aria-describedby="withdraw-help"
               />
               <small id="withdraw-help">Burns FLOW tokens and returns sBTC</small>
-              <button onClick={handleWithdraw} disabled={!withdrawAmount || isWithdrawing}>
-                {isWithdrawing ? 'Processing...' : 'Burn Flow & Withdraw'}
+              <button onClick={handleWithdraw} disabled={!withdrawAmount || isWithdrawing || vaultStats.isPaused}>
+                {isWithdrawing ? 'Processing...' : vaultStats.isPaused ? 'Vault Paused' : 'Burn Flow & Withdraw'}
               </button>
             </div>
           </div>
