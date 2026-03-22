@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { cvToJSON, fetchCallReadOnlyFunction, principalCV } from '@stacks/transactions';
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { REFRESH_INTERVAL_MS } from '../lib/constants';
+import { logger } from '../lib/logger';
 import type { VaultStats } from '../types';
 
 const defaultStats: VaultStats = {
@@ -79,8 +80,11 @@ export function useVaultStats(userAddress: string | null) {
         currentBlock: parseInt(statusValue['current-block'].value, 10),
       });
       setLastUpdated(Date.now());
+      logger.debug('Vault stats fetched successfully');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch vault stats');
+      const msg = err instanceof Error ? err.message : 'Failed to fetch vault stats';
+      logger.error('Failed to fetch vault stats', err);
+      setError(msg);
     } finally {
       setLoading(false);
     }
