@@ -416,6 +416,7 @@
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  transition: color 0.3s;
 }
 
 .stat-card p {
@@ -424,6 +425,7 @@
   color: var(--text-primary);
   margin: 0;
   word-break: break-word;
+  transition: color 0.3s;
 }
 
 .skeleton {
