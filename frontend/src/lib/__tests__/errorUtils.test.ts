@@ -36,3 +36,41 @@ describe('getContractErrorMessage', () => {
     expect(msg).toContain('999');
   });
 });
+
+describe('parseTransactionError', () => {
+  it('handles UserRejected error', () => {
+    const err = new Error('UserRejected: user cancelled');
+    expect(parseTransactionError(err)).toBe('Transaction was cancelled by user');
+  });
+
+  it('handles ContractCall error', () => {
+    const err = new Error('ContractCall failed');
+    expect(parseTransactionError(err)).toBe('Contract call failed — check your inputs');
+  });
+
+  it('handles InsufficientFunds error', () => {
+    const err = new Error('InsufficientFunds for transaction');
+    expect(parseTransactionError(err)).toBe('Insufficient funds for this transaction');
+  });
+
+  it('handles network error', () => {
+    const err = new Error('network timeout');
+    expect(parseTransactionError(err)).toBe('Network error — please check your connection');
+  });
+
+  it('extracts contract error code from message', () => {
+    const err = new Error('Transaction failed: (err u105)');
+    expect(parseTransactionError(err)).toBe('Vault operations are currently paused');
+  });
+
+  it('returns raw message for unknown Error', () => {
+    const err = new Error('Something weird happened');
+    expect(parseTransactionError(err)).toBe('Something weird happened');
+  });
+
+  it('returns fallback for non-Error input', () => {
+    expect(parseTransactionError('string error')).toBe('An unexpected error occurred');
+    expect(parseTransactionError(null)).toBe('An unexpected error occurred');
+    expect(parseTransactionError(undefined)).toBe('An unexpected error occurred');
+  });
+});
