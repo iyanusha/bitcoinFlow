@@ -7,6 +7,8 @@
   --text-muted: #6b7280;
   --border-color: #e1e8ed;
   --accent: #667eea;
+  --accent-hover: #5a6fd8;
+  --accent-active: #4f63c6;
   --accent-secondary: #764ba2;
   --error-bg: #fee2e2;
   --error-text: #dc2626;
@@ -17,6 +19,14 @@
   --success-text: #065f46;
   --info-bg: #dbeafe;
   --info-text: #1d4ed8;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 5px 15px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 15px;
+  --radius-xl: 20px;
 }
 
 .dark {
