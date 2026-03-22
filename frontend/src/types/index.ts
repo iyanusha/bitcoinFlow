@@ -114,6 +114,24 @@ export interface ToastMessage {
   duration?: number;
 }
 
+/** Parsed response from get-vault-status read-only call */
+export interface VaultStatusResponse {
+  'total-deposits': { value: string };
+  'total-rewards': { value: string };
+  'stx-balance': { value: string };
+  'deposit-count': { value: string };
+  'withdraw-count': { value: string };
+  paused: { value: boolean };
+  'current-block': { value: string };
+}
+
+/** Parsed response from get-user-share read-only call */
+export interface UserShareResponse {
+  deposited: { value: string };
+  'flow-balance': { value: string };
+  'share-pct': { value: string };
+}
+
 /** Raw response shape from Hiro API for transaction status */
 export interface HiroTxResponse {
   tx_id: string;
