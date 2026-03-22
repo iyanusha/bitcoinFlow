@@ -1,3 +1,20 @@
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --bg-card: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: #9ca3af;
+  --border-color: #e1e8ed;
+  --accent: #667eea;
+  --accent-secondary: #764ba2;
+  --error-bg: #fee2e2;
+  --error-text: #dc2626;
+  --warning-bg: #fef3c7;
+  --warning-text: #92400e;
+  --success: #16a34a;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
