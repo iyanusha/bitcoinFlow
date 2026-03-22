@@ -8,6 +8,7 @@ import { useToast } from './hooks/useToast'
 import { useTransactionStatus } from './hooks/useTransactionStatus'
 import { useDocumentTitle } from './hooks/useDocumentTitle'
 import { useKeyboard } from './hooks/useKeyboard'
+import { useOnlineStatus } from './hooks/useOnlineStatus'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network, getAddressExplorerUrl, getContractExplorerUrl } from './lib/stacks'
@@ -35,6 +36,7 @@ function App() {
   const { transactions, addTransaction, updateStatus, clearHistory } = useTransactionHistory()
   const { toasts, removeToast, success: toastSuccess, error: toastError, info: toastInfo } = useToast()
   const { checkStatus } = useTransactionStatus()
+  const isOnline = useOnlineStatus()
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('bf-dark-mode') === 'true'
@@ -224,6 +226,12 @@ function App() {
         <div className="error-banner" role="alert">
           <p>{error}</p>
           <button className="dismiss-btn" onClick={() => setError(null)}>Dismiss</button>
+        </div>
+      )}
+
+      {!isOnline && (
+        <div className="offline-banner" role="alert">
+          <strong>You are offline</strong> — Some features may not work until your connection is restored.
         </div>
       )}
 
