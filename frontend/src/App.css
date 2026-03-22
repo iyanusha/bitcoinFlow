@@ -1952,6 +1952,11 @@
   .refresh-btn,
   .action-card button,
   .tx-clear-btn,
+  .tx-export-btn,
+  .tx-reset-filters-btn,
+  .tx-filters,
+  .tx-search,
+  .pagination,
   .copy-btn,
   .footer-links {
     display: none !important;
