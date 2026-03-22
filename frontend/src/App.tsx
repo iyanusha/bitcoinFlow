@@ -327,6 +327,8 @@ function App() {
           <a href="https://www.stacks.co" target="_blank" rel="noopener noreferrer">Stacks</a>
           {' | '}
           <a href="https://explorer.hiro.so" target="_blank" rel="noopener noreferrer">Explorer</a>
+          {' | '}
+          <a href={getAddressExplorerUrl(`${CONTRACT_ADDRESS}.${CONTRACT_NAME}`)} target="_blank" rel="noopener noreferrer">Contract</a>
         </p>
       </footer>
     </div>
