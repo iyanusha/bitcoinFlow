@@ -30,3 +30,20 @@ export interface ErrorDisplayProps {
   error: AppError | null;
   onDismiss: () => void;
 }
+
+export type Breakpoint = 'mobile' | 'tablet' | 'desktop' | 'wide';
+
+export interface ResponsiveValue<T> {
+  mobile?: T;
+  tablet?: T;
+  desktop?: T;
+  wide?: T;
+}
+
+export interface AccessibleProps {
+  'aria-label'?: string;
+  'aria-describedby'?: string;
+  'aria-labelledby'?: string;
+  'aria-live'?: 'polite' | 'assertive' | 'off';
+  role?: string;
+}
