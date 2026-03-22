@@ -123,15 +123,19 @@ function App() {
             <div className="stats-grid" aria-live="polite">
               <div className="stat-card">
                 <h3>Total Deposits</h3>
-                <p>{vaultStats.totalDeposits} sBTC</p>
+                <p>{formatSTX(vaultStats.totalDeposits)} STX</p>
               </div>
               <div className="stat-card">
                 <h3>Total Rewards</h3>
-                <p>{vaultStats.totalRewards} STX</p>
+                <p>{formatSTX(vaultStats.totalRewards)} STX</p>
               </div>
               <div className="stat-card">
                 <h3>Your Flow Tokens</h3>
-                <p>{vaultStats.userBalance} FLOW</p>
+                <p>{formatCompact(vaultStats.userBalance / MICROSTX_PER_STX)} FLOW</p>
+              </div>
+              <div className="stat-card">
+                <h3>Vault Operations</h3>
+                <p>{vaultStats.depositCount + vaultStats.withdrawCount} total</p>
               </div>
             </div>
           </div>
