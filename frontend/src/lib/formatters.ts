@@ -40,6 +40,15 @@ export function formatTxId(txId: string): string {
   return formatAddress(txId, 10, 6);
 }
 
+export function formatDate(timestamp: number): string {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(new Date(timestamp));
+}
+
 export function formatTimeSince(timestamp: number): string {
   const seconds = Math.floor((Date.now() - timestamp) / 1000);
   if (seconds < 5) return 'just now';
