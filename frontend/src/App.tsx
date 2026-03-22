@@ -361,6 +361,7 @@ function App() {
                 onClick={handleWithdraw}
                 disabled={!withdrawAmount || isWithdrawing || vaultStats.isPaused || !isOnline}
                 aria-busy={isWithdrawing}
+                aria-describedby="withdraw-help"
               >
                 {isWithdrawing ? 'Processing withdrawal...' : !isOnline ? 'Offline — connect to withdraw' : vaultStats.isPaused ? 'Vault Paused' : 'Burn Flow & Withdraw'}
               </button>
