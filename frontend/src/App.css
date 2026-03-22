@@ -15,6 +15,23 @@
   --success: #16a34a;
 }
 
+.dark {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-color: #334155;
+  --accent: #818cf8;
+  --accent-secondary: #a78bfa;
+  --error-bg: #450a0a;
+  --error-text: #fca5a5;
+  --warning-bg: #451a03;
+  --warning-text: #fcd34d;
+  --success: #4ade80;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
