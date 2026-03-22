@@ -51,5 +51,16 @@ export function useExchangeRate() {
     return () => clearInterval(interval);
   }, [fetchRate]);
 
+  // Refresh when tab becomes visible
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        fetchRate();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => document.removeEventListener('visibilitychange', handleVisibility);
+  }, [fetchRate]);
+
   return { ...exchangeRate, loading, error, refresh: fetchRate };
 }
