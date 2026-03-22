@@ -65,7 +65,10 @@ function App() {
       functionName: 'deposit',
       functionArgs: [uintCV(Math.round(parseFloat(depositAmount) * SATS_PER_BTC))],
       postConditionMode: PostConditionMode.Deny,
-      onFinish: () => {
+      onFinish: (data) => {
+        const txId = data.txId;
+        addTransaction({ txId, type: 'deposit', amount: Math.round(parseFloat(depositAmount) * SATS_PER_BTC) })
+        toastSuccess(`Deposit of ${depositAmount} sBTC submitted`, txId)
         setDepositAmount('')
         setError(null)
         setIsDepositing(false)
@@ -77,6 +80,7 @@ function App() {
       },
     });
     } catch (err) {
+      toastError(parseTransactionError(err))
       setError(parseTransactionError(err));
       setIsDepositing(false)
     }
