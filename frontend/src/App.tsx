@@ -319,7 +319,11 @@ function App() {
                 aria-describedby="deposit-help"
               />
               <small id="deposit-help">Minimum: 0.0001 sBTC</small>
-              <button onClick={handleDeposit} disabled={!depositAmount || isDepositing || vaultStats.isPaused}>
+              <button
+                onClick={handleDeposit}
+                disabled={!depositAmount || isDepositing || vaultStats.isPaused}
+                aria-busy={isDepositing}
+              >
                 {isDepositing ? 'Processing...' : vaultStats.isPaused ? 'Vault Paused' : 'Deposit & Get Flow Tokens'}
               </button>
             </div>
