@@ -6,6 +6,8 @@ import {
   validateDecimalPrecision,
   sanitizeNumericInput,
   isPositiveInteger,
+  isValidStxAddress,
+  validateStxAddress,
 } from '../validation';
 
 describe('validateAmount', () => {
@@ -161,5 +163,43 @@ describe('isPositiveInteger', () => {
 
   it('returns false for negative', () => {
     expect(isPositiveInteger('-3')).toBe(false);
+  });
+});
+
+describe('isValidStxAddress', () => {
+  it('accepts valid ST address', () => {
+    expect(isValidStxAddress('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM')).toBe(true);
+  });
+
+  it('accepts valid SP address', () => {
+    expect(isValidStxAddress('SP000000000000000000002Q6VF78')).toBe(true);
+  });
+
+  it('rejects address without S prefix', () => {
+    expect(isValidStxAddress('XX1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM')).toBe(false);
+  });
+
+  it('rejects short address', () => {
+    expect(isValidStxAddress('ST1PQ')).toBe(false);
+  });
+});
+
+describe('validateStxAddress', () => {
+  it('rejects empty address', () => {
+    const result = validateStxAddress('');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Address is required');
+  });
+
+  it('rejects invalid format', () => {
+    const result = validateStxAddress('notanaddress');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Invalid Stacks address format');
+  });
+
+  it('accepts valid Stacks address', () => {
+    const result = validateStxAddress('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM');
+    expect(result.isValid).toBe(true);
+    expect(result.error).toBeNull();
   });
 });
