@@ -195,7 +195,7 @@ function App() {
         </div>
         <p>Smart sBTC Stacking Vault</p>
         <div className="header-badges">
-          <span className="network-badge">
+          <span className={`network-badge ${import.meta.env.VITE_NETWORK === 'mainnet' ? 'network-badge-mainnet' : 'network-badge-testnet'}`}>
             {import.meta.env.VITE_NETWORK === 'mainnet' ? 'Mainnet' : 'Testnet'}
           </span>
           {pendingCount > 0 && (
