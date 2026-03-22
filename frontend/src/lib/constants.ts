@@ -279,3 +279,5 @@ export const WITHDRAW_HISTORY_K69 = { endpoint: '/api/withdraw_history/69', time
 export const WITHDRAW_HISTORY_K79 = { endpoint: '/api/withdraw_history/79', timeout: 30000, retries: 3 } as const;
 
 export const STX_CONVERTER_K9 = { endpoint: '/api/stx_converter/9', timeout: 30000, retries: 3 } as const;
+
+export const STX_CONVERTER_K19 = { endpoint: '/api/stx_converter/19', timeout: 30000, retries: 3 } as const;
