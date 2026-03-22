@@ -13,6 +13,7 @@ export { useFormValidation } from './useFormValidation';
 export { useIdleCallback } from './useIdleCallback';
 export { useIntersectionObserver } from './useIntersectionObserver';
 export { useKeyboard } from './useKeyboard';
+export { useListNavigation } from './useListNavigation';
 export { useLocalStorage } from './useLocalStorage';
 export { useMediaQuery, useIsMobile, useIsTablet, useIsDesktop } from './useMediaQuery';
 export { useMounted } from './useMounted';
