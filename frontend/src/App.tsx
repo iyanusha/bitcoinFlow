@@ -386,9 +386,9 @@ function App() {
         <p>BitcoinFlow — Built on Stacks</p>
         <nav className="footer-links" aria-label="External links">
           <a href="https://www.stacks.co" target="_blank" rel="noopener noreferrer" aria-label="Stacks blockchain (opens in new tab)">Stacks</a>
-          {' | '}
+          <span aria-hidden="true"> | </span>
           <a href="https://explorer.hiro.so" target="_blank" rel="noopener noreferrer" aria-label="Hiro block explorer (opens in new tab)">Explorer</a>
-          {' | '}
+          <span aria-hidden="true"> | </span>
           <a href={getAddressExplorerUrl(`${CONTRACT_ADDRESS}.${CONTRACT_NAME}`)} target="_blank" rel="noopener noreferrer" aria-label="View flow vault contract (opens in new tab)">Contract</a>
         </nav>
       </footer>
