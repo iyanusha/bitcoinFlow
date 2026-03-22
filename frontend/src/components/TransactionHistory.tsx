@@ -1,7 +1,6 @@
 import { useState, useMemo } from 'react';
 import type { TransactionRecord, TransactionStatus } from '../types';
-import { getTxExplorerUrl } from '../lib/stacks';
-import { formatBTC, formatTimeSince } from '../lib/formatters';
+import { TransactionItem } from './TransactionItem';
 
 type FilterType = 'all' | 'deposit' | 'withdraw';
 type StatusFilter = 'all' | TransactionStatus;
@@ -10,23 +9,6 @@ interface TransactionHistoryProps {
   transactions: TransactionRecord[];
   onClear: () => void;
   pendingCount?: number;
-}
-
-function StatusBadge({ status }: { status: TransactionRecord['status'] }) {
-  const labels: Record<string, string> = {
-    pending: 'Pending',
-    confirmed: 'Confirmed',
-    failed: 'Failed',
-  };
-  return (
-    <span
-      className={`tx-status tx-status-${status}`}
-      role="status"
-      aria-label={`Transaction status: ${labels[status]}`}
-    >
-      {labels[status]}
-    </span>
-  );
 }
 
 function FilterButton({
@@ -114,27 +96,7 @@ export function TransactionHistory({ transactions, onClear, pendingCount = 0 }: 
       ) : (
         <ul className="tx-list" aria-label="Transaction history">
           {filteredTransactions.map(tx => (
-            <li key={tx.txId} className="tx-item">
-              <div className="tx-item-left">
-                <span className={`tx-type tx-type-${tx.type}`}>
-                  {tx.type === 'deposit' ? 'Deposit' : 'Withdraw'}
-                </span>
-                <span className="tx-amount">{formatBTC(tx.amount)} sBTC</span>
-              </div>
-              <div className="tx-item-right">
-                <StatusBadge status={tx.status} />
-                <span className="tx-time">{formatTimeSince(tx.timestamp)}</span>
-                <a
-                  href={getTxExplorerUrl(tx.txId)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="tx-explorer-link"
-                  aria-label={`View transaction ${tx.txId.slice(0, 8)} in explorer`}
-                >
-                  View
-                </a>
-              </div>
-            </li>
+            <TransactionItem key={tx.txId} transaction={tx} />
           ))}
         </ul>
       )}
