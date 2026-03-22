@@ -346,6 +346,15 @@
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
+.stat-card.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.stat-card.loading p {
+  color: var(--text-muted);
+}
+
 .stat-card h3 {
   color: var(--text-secondary);
   font-size: 0.9rem;
