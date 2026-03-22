@@ -6,6 +6,13 @@ export function formatBTC(sats: number): string {
   return (sats / 100_000_000).toFixed(8);
 }
 
+export function formatSBTC(sats: number, decimals = 4): string {
+  const btc = sats / 100_000_000;
+  if (btc === 0) return '0';
+  if (btc < 0.0001) return '< 0.0001';
+  return btc.toFixed(decimals);
+}
+
 export function formatCompact(num: number): string {
   if (num >= 1e6) return `${(num / 1e6).toFixed(2)}M`;
   if (num >= 1e3) return `${(num / 1e3).toFixed(2)}K`;
