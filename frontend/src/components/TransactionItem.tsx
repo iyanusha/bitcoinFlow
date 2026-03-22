@@ -1,6 +1,6 @@
 import type { TransactionRecord } from '../types';
 import { getTxExplorerUrl } from '../lib/stacks';
-import { formatBTC, formatTimeSince, formatDateFull } from '../lib/formatters';
+import { formatBTC, formatTimeSince, formatDateFull, formatTxId } from '../lib/formatters';
 
 interface TransactionItemProps {
   transaction: TransactionRecord;
@@ -20,6 +20,7 @@ export function TransactionItem({ transaction: tx }: TransactionItemProps) {
           {tx.type === 'deposit' ? 'Deposit' : 'Withdraw'}
         </span>
         <span className="tx-amount">{formatBTC(tx.amount)} sBTC</span>
+        <span className="tx-id" title={tx.txId}>{formatTxId(tx.txId)}</span>
       </div>
       <div className="tx-item-right">
         <span
