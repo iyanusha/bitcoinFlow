@@ -342,6 +342,10 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
+.dark .user-position {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+}
+
 .user-position h2 {
   text-align: center;
   margin-bottom: 1.5rem;
