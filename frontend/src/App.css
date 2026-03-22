@@ -1519,6 +1519,20 @@
     border-top-color: Highlight;
   }
 
+  .error-boundary {
+    border: 2px solid ButtonText;
+  }
+
+  .confirm-dialog {
+    border: 2px solid ButtonText;
+  }
+
+  .error-banner,
+  .paused-banner,
+  .offline-banner {
+    border: 1px solid ButtonText;
+  }
+
   *:focus-visible {
     outline: 2px solid Highlight;
   }
