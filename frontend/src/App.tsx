@@ -116,6 +116,12 @@ function App() {
         </div>
       )}
 
+      {vaultStats.isPaused && (
+        <div className="paused-banner" role="status">
+          <strong>Vault Paused</strong> — Deposits and withdrawals are temporarily disabled.
+        </div>
+      )}
+
       {isConnected && (
         <main className="main-content">
           <div className="vault-stats">
