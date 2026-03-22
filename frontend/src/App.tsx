@@ -23,6 +23,13 @@ function App() {
 
   const handleDeposit = async () => {
     if (!isConnected || !depositAmount) return
+
+    const validation = validateDeposit(depositAmount)
+    if (!validation.isValid) {
+      setError(validation.error)
+      return
+    }
+
     setIsDepositing(true)
     setError(null)
 
@@ -44,7 +51,7 @@ function App() {
       },
     });
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Deposit failed");
+      setError(parseTransactionError(err));
       setIsDepositing(false)
     }
   }
