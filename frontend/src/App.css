@@ -733,6 +733,31 @@
   .header-badges {
     flex-wrap: wrap;
   }
+
+  .tx-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .tx-filters {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tx-filter-group {
+    flex-wrap: wrap;
+  }
+
+  .tx-history-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .tx-header-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }
 
 @media (max-width: 480px) {
