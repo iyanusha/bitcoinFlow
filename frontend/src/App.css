@@ -605,6 +605,20 @@
   margin-bottom: 0.25rem;
 }
 
+.offline-banner {
+  background: #1e293b;
+  color: #94a3b8;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  text-align: center;
+  border: 1px solid #475569;
+}
+
+.offline-banner strong {
+  color: #e2e8f0;
+}
+
 .dismiss-btn {
   background: none;
   border: none;
