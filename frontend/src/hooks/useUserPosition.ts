@@ -21,26 +21,30 @@ export function useUserPosition(userAddress: string | null) {
 
     setLoading(true);
     try {
-      const shareResult = await fetchCallReadOnlyFunction({
-        contractAddress: CONTRACT_ADDRESS,
-        contractName: CONTRACT_NAME,
-        functionName: 'get-user-share',
-        functionArgs: [principalCV(userAddress)],
-        network,
-        senderAddress: CONTRACT_ADDRESS,
-      });
+      const shareResult = await withRetry(() =>
+        fetchCallReadOnlyFunction({
+          contractAddress: CONTRACT_ADDRESS,
+          contractName: CONTRACT_NAME,
+          functionName: 'get-user-share',
+          functionArgs: [principalCV(userAddress)],
+          network,
+          senderAddress: CONTRACT_ADDRESS,
+        })
+      );
 
       const shareJson = cvToJSON(shareResult);
       const shareValue = shareJson.value as UserShareResponse;
 
-      const cooldownResult = await fetchCallReadOnlyFunction({
-        contractAddress: CONTRACT_ADDRESS,
-        contractName: CONTRACT_NAME,
-        functionName: 'get-cooldown-remaining',
-        functionArgs: [principalCV(userAddress)],
-        network,
-        senderAddress: CONTRACT_ADDRESS,
-      });
+      const cooldownResult = await withRetry(() =>
+        fetchCallReadOnlyFunction({
+          contractAddress: CONTRACT_ADDRESS,
+          contractName: CONTRACT_NAME,
+          functionName: 'get-cooldown-remaining',
+          functionArgs: [principalCV(userAddress)],
+          network,
+          senderAddress: CONTRACT_ADDRESS,
+        })
+      );
 
       const cooldownJson = cvToJSON(cooldownResult);
       const blocksRemaining = parseClarityInt(cooldownJson.value);
