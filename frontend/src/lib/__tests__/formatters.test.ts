@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { formatSTX, formatBTC, formatSBTC, formatCompact } from '../formatters';
+import {
+  formatSTX, formatBTC, formatSBTC, formatCompact,
+  formatPercentage, formatBlocks,
+} from '../formatters';
 
 describe('formatSTX', () => {
   it('converts micro-STX to STX with 6 decimals', () => {
@@ -70,5 +73,37 @@ describe('formatCompact', () => {
 
   it('formats exactly 1 thousand', () => {
     expect(formatCompact(1_000)).toBe('1.00K');
+  });
+});
+
+describe('formatPercentage', () => {
+  it('converts basis points to percentage', () => {
+    expect(formatPercentage(5000)).toBe('50.00%');
+  });
+
+  it('handles zero', () => {
+    expect(formatPercentage(0)).toBe('0.00%');
+  });
+
+  it('handles 100%', () => {
+    expect(formatPercentage(10000)).toBe('100.00%');
+  });
+
+  it('handles fractional basis points', () => {
+    expect(formatPercentage(1)).toBe('0.01%');
+  });
+});
+
+describe('formatBlocks', () => {
+  it('formats few blocks as minutes', () => {
+    expect(formatBlocks(3)).toBe('~30m');
+  });
+
+  it('formats many blocks as hours', () => {
+    expect(formatBlocks(6)).toBe('~1h');
+  });
+
+  it('formats 1 block as 10 minutes', () => {
+    expect(formatBlocks(1)).toBe('~10m');
   });
 });
