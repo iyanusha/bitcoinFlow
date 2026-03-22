@@ -12,3 +12,5 @@ export { Toast } from './Toast';
 export { ToastContainer } from './ToastContainer';
 export { TransactionHistory } from './TransactionHistory';
 export { CopyButton } from './CopyButton';
+export { ConfirmDialog } from './ConfirmDialog';
+export { ExplorerLink } from './ExplorerLink';
