@@ -113,6 +113,13 @@
   background: rgba(255,255,255,0.3);
 }
 
+.header-badges {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
 .network-badge {
   display: inline-block;
   background: rgba(255,255,255,0.2);
@@ -122,7 +129,16 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 1rem;
+}
+
+.pending-badge {
+  display: inline-block;
+  background: rgba(255, 200, 50, 0.3);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .app-header h1 {
