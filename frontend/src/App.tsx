@@ -21,6 +21,8 @@ function App() {
 
   const handleDeposit = async () => {
     if (!isConnected || !depositAmount) return
+    setIsDepositing(true)
+    setError(null)
 
     try {
     await openContractCall({
@@ -33,10 +35,15 @@ function App() {
       onFinish: () => {
         setDepositAmount('')
         setError(null)
+        setIsDepositing(false)
+      },
+      onCancel: () => {
+        setIsDepositing(false)
       },
     });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Deposit failed");
+      setIsDepositing(false)
     }
   }
 
