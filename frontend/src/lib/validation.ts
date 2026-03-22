@@ -53,6 +53,16 @@ export function validateStxAddress(address: string): ValidationResult {
   return { isValid: true, error: null };
 }
 
+export function validateBtcAmount(value: string): ValidationResult {
+  const base = validateAmount(value);
+  if (!base.isValid) return base;
+  const num = parseFloat(value);
+  if (num > 21_000_000) return { isValid: false, error: 'Amount exceeds Bitcoin max supply (21M)' };
+  const precision = validateDecimalPrecision(value, 8);
+  if (!precision.isValid) return precision;
+  return { isValid: true, error: null };
+}
+
 export function combineValidators(...validators: ((v: string) => ValidationResult)[]): (v: string) => ValidationResult {
   return (value: string) => {
     for (const validator of validators) {
