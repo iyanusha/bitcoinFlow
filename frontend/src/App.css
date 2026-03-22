@@ -1390,6 +1390,10 @@
   background: var(--bg-secondary);
 }
 
+.dark .confirm-dialog-confirm {
+  background: var(--accent);
+}
+
 .confirm-dialog-confirm:active,
 .confirm-dialog-cancel:active {
   transform: scale(0.97);
