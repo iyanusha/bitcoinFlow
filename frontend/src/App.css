@@ -568,6 +568,70 @@
   }
 }
 
+@media (max-width: 480px) {
+  .app {
+    padding: 0.75rem;
+  }
+
+  .app-header {
+    padding: 1rem 0.75rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .app-header p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .stat-card h3 {
+    font-size: 0.75rem;
+  }
+
+  .stat-card p {
+    font-size: 1.25rem;
+  }
+
+  .action-card {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .action-card h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .action-card button {
+    font-size: 0.95rem;
+    padding: 0.85rem;
+  }
+
+  .connect-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .info-section {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .confirm-dialog {
+    padding: 1.25rem;
+    max-width: calc(100vw - 2rem);
+  }
+}
+
 .error-boundary {
   text-align: center;
   padding: 3rem;
