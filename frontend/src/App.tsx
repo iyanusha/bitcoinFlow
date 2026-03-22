@@ -181,8 +181,9 @@ function App() {
             className="theme-toggle"
             onClick={toggleTheme}
             aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-pressed={darkMode}
           >
-            {darkMode ? '☀' : '☾'}
+            <span aria-hidden="true">{darkMode ? '☀' : '☾'}</span>
           </button>
         </div>
         <p>Smart sBTC Stacking Vault</p>
