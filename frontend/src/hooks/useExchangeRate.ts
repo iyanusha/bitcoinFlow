@@ -13,9 +13,11 @@ export function useExchangeRate() {
     formattedRate: '1.000000',
   });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchRate = useCallback(async () => {
     setLoading(true);
+    setError(null);
     try {
       const result = await withRetry(() =>
         fetchCallReadOnlyFunction({
@@ -37,6 +39,7 @@ export function useExchangeRate() {
       });
     } catch (err) {
       logger.warn('Failed to fetch exchange rate, keeping current value', err);
+      setError(err instanceof Error ? err.message : 'Failed to fetch exchange rate');
     } finally {
       setLoading(false);
     }
@@ -48,5 +51,5 @@ export function useExchangeRate() {
     return () => clearInterval(interval);
   }, [fetchRate]);
 
-  return { ...exchangeRate, loading, refresh: fetchRate };
+  return { ...exchangeRate, loading, error, refresh: fetchRate };
 }
