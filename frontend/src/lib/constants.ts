@@ -403,3 +403,5 @@ export const VAULT_HEALTH_K49 = { endpoint: '/api/vault_health/49', timeout: 300
 export const VAULT_HEALTH_K59 = { endpoint: '/api/vault_health/59', timeout: 30000, retries: 3 } as const;
 
 export const VAULT_HEALTH_K69 = { endpoint: '/api/vault_health/69', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_HEALTH_K79 = { endpoint: '/api/vault_health/79', timeout: 30000, retries: 3 } as const;
