@@ -536,6 +536,7 @@
   color: var(--text-muted);
   font-size: 0.85rem;
   margin-bottom: 1rem;
+  transition: color 0.3s;
 }
 
 .action-card button {
