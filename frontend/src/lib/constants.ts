@@ -249,3 +249,5 @@ export const VAULT_ANALYTICS_K79 = { endpoint: '/api/vault_analytics/79', timeou
 export const DEPOSIT_HISTORY_K9 = { endpoint: '/api/deposit_history/9', timeout: 30000, retries: 3 } as const;
 
 export const DEPOSIT_HISTORY_K19 = { endpoint: '/api/deposit_history/19', timeout: 30000, retries: 3 } as const;
+
+export const DEPOSIT_HISTORY_K29 = { endpoint: '/api/deposit_history/29', timeout: 30000, retries: 3 } as const;
