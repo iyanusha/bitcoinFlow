@@ -826,3 +826,14 @@
   cursor: pointer;
 }
 
+.explorer-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+.explorer-link:hover {
+  text-decoration: underline;
+}
+
