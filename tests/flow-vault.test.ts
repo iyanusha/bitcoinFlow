@@ -581,4 +581,72 @@ describe("flow-vault", () => {
     );
     expect(result).toBeErr(Cl.uint(100));
   });
+
+  it("emergency withdraw burns flow tokens to zero", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(6000000)], wallet2);
+
+    simnet.callPublicFn("flow-vault", "emergency-withdraw", [Cl.principal(wallet2)], deployer);
+
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-user-flow-balance",
+      [Cl.principal(wallet2)],
+      deployer
+    );
+    // After emergency withdraw, flow token balance should be 0
+    expect(result).toBeUint(0);
+  });
+
+  it("user share returns zero for non-depositor", () => {
+    const wallet3 = accounts.get("wallet_3")!;
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-user-share",
+      [Cl.principal(wallet3)],
+      deployer
+    );
+    const share = result.expectTuple();
+    expect(share["deposited"]).toBeUint(0);
+    expect(share["share-pct"]).toBeUint(0);
+  });
+
+  it("get-user-flow-balance returns zero for non-depositor", () => {
+    const wallet3 = accounts.get("wallet_3")!;
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-user-flow-balance",
+      [Cl.principal(wallet3)],
+      deployer
+    );
+    expect(result).toBeUint(0);
+  });
+
+  it("vault status includes all expected fields", () => {
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-vault-status",
+      [],
+      deployer
+    );
+    const status = result.expectTuple();
+    expect(status["total-deposits"]).toBeDefined();
+    expect(status["total-rewards"]).toBeDefined();
+    expect(status["stx-balance"]).toBeDefined();
+    expect(status["last-compound"]).toBeDefined();
+    expect(status["paused"]).toBeDefined();
+    expect(status["current-block"]).toBeDefined();
+    expect(status["deposit-count"]).toBeDefined();
+    expect(status["withdraw-count"]).toBeDefined();
+  });
+
+  it("delegation pool is none by default", () => {
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-delegation-pool",
+      [],
+      deployer
+    );
+    expect(result).toBeNone();
+  });
 });
