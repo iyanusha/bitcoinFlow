@@ -56,6 +56,8 @@
     (asserts! (not (var-get vault-paused)) ERR-VAULT-PAUSED)
     (asserts! (> amount u0) ERR-INVALID-AMOUNT)
     (asserts! (>= user-balance amount) ERR-INSUFFICIENT-BALANCE)
+    (asserts! (>= (- block-height (default-to u0 (map-get? user-last-deposit tx-sender)))
+                  WITHDRAWAL-COOLDOWN) ERR-COOLDOWN-ACTIVE)
     (map-set user-deposits tx-sender (- user-balance amount))
     (var-set total-deposits (- (var-get total-deposits) amount))
     ;; Burn flow tokens
