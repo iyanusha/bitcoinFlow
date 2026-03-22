@@ -156,6 +156,11 @@
 
 .theme-toggle:hover {
   background: rgba(255,255,255,0.3);
+  transform: rotate(15deg);
+}
+
+.theme-toggle:active {
+  transform: rotate(30deg) scale(0.9);
 }
 
 .header-badges {
