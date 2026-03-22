@@ -105,17 +105,26 @@ export function TransactionHistory({ transactions, onClear, pendingCount = 0 }: 
             </span>
           )}
         </h3>
-        <button
-          className="tx-clear-btn"
-          onClick={() => {
-            if (window.confirm('Clear all transaction history?')) {
-              onClear();
-            }
-          }}
-          aria-label="Clear transaction history"
-        >
-          Clear
-        </button>
+        <div className="tx-header-actions">
+          <button
+            className="tx-export-btn"
+            onClick={() => exportTransactions(transactions)}
+            aria-label="Export transactions as CSV"
+          >
+            Export
+          </button>
+          <button
+            className="tx-clear-btn"
+            onClick={() => {
+              if (window.confirm('Clear all transaction history?')) {
+                onClear();
+              }
+            }}
+            aria-label="Clear transaction history"
+          >
+            Clear
+          </button>
+        </div>
       </div>
 
       <TransactionSummary transactions={transactions} />
