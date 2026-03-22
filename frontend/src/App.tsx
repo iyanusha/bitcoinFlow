@@ -62,6 +62,11 @@ function App() {
   const handleWithdraw = async () => {
     if (!isConnected || !withdrawAmount) return
 
+    if (!cooldown.isExpired) {
+      setError(`Withdrawal cooldown active — ${formatBlocks(cooldown.blocksRemaining)} remaining`)
+      return
+    }
+
     const userBalance = position ? position.flowTokenBalance / MICROSTX_PER_STX : 0
     const validation = validateWithdraw(withdrawAmount, userBalance)
     if (!validation.isValid) {
