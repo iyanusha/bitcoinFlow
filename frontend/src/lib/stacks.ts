@@ -39,3 +39,16 @@ export function getContractExplorerUrl(): string {
   const chain = isMainnet ? '' : '&chain=testnet';
   return `https://explorer.hiro.so/address/${CONTRACT_ADDRESS}.${CONTRACT_NAME}?${chain}`;
 }
+
+/** Full contract identifier for API calls */
+export const CONTRACT_ID = `${CONTRACT_ADDRESS}.${CONTRACT_NAME}`;
+
+/** API endpoint for contract events */
+export function getContractEventsUrl(limit = 20, offset = 0): string {
+  return `${API_URL}/extended/v1/contract/${CONTRACT_ID}/events?limit=${limit}&offset=${offset}`;
+}
+
+/** API endpoint for address transactions */
+export function getAddressTxsUrl(address: string, limit = 20, offset = 0): string {
+  return `${API_URL}/extended/v1/address/${address}/transactions?limit=${limit}&offset=${offset}`;
+}
