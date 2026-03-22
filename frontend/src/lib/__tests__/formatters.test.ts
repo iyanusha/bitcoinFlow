@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
   formatSTX, formatBTC, formatSBTC, formatCompact,
-  formatPercentage, formatBlocks,
+  formatPercentage, formatBlocks, formatExchangeRate,
+  formatAddress,
 } from '../formatters';
 
 describe('formatSTX', () => {
@@ -105,5 +106,35 @@ describe('formatBlocks', () => {
 
   it('formats 1 block as 10 minutes', () => {
     expect(formatBlocks(1)).toBe('~10m');
+  });
+});
+
+describe('formatExchangeRate', () => {
+  it('formats 1:1 rate from contract value', () => {
+    expect(formatExchangeRate(1_000_000)).toBe('1.000000');
+  });
+
+  it('formats higher rate', () => {
+    expect(formatExchangeRate(1_050_000)).toBe('1.050000');
+  });
+});
+
+describe('formatAddress', () => {
+  it('truncates long address with ellipsis', () => {
+    const addr = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+    const formatted = formatAddress(addr);
+    expect(formatted).toContain('...');
+    expect(formatted.startsWith('ST1PQHQK')).toBe(true);
+    expect(formatted.endsWith('GZGM')).toBe(true);
+  });
+
+  it('returns short string unchanged', () => {
+    expect(formatAddress('SHORT')).toBe('SHORT');
+  });
+
+  it('supports custom start and end lengths', () => {
+    const addr = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+    const formatted = formatAddress(addr, 4, 4);
+    expect(formatted).toBe('ST1P...GZGM');
   });
 });
