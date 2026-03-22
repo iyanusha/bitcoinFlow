@@ -339,3 +339,5 @@ export const FEE_ESTIMATOR_K49 = { endpoint: '/api/fee_estimator/49', timeout: 3
 export const FEE_ESTIMATOR_K59 = { endpoint: '/api/fee_estimator/59', timeout: 30000, retries: 3 } as const;
 
 export const FEE_ESTIMATOR_K69 = { endpoint: '/api/fee_estimator/69', timeout: 30000, retries: 3 } as const;
+
+export const FEE_ESTIMATOR_K79 = { endpoint: '/api/fee_estimator/79', timeout: 30000, retries: 3 } as const;
