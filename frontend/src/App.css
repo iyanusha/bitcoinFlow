@@ -1346,11 +1346,14 @@
 
 .confirm-dialog h3 {
   margin: 0 0 0.75rem;
+  color: var(--text-primary);
+  transition: color 0.3s;
 }
 
 .confirm-dialog p {
   color: var(--text-secondary);
   margin: 0 0 1.5rem;
+  transition: color 0.3s;
 }
 
 .confirm-dialog-actions {
