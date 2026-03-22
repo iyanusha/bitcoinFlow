@@ -1217,6 +1217,10 @@
   border-bottom: none;
 }
 
+.dark .tx-item {
+  border-bottom-color: var(--border-color);
+}
+
 .tx-item-left, .tx-item-right {
   display: flex;
   align-items: center;
