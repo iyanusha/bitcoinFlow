@@ -307,7 +307,7 @@ function App() {
           )}
 
           <div className="actions" role="region" aria-label="Vault actions">
-            <div className="action-card" role="form" aria-label="Deposit sBTC">
+            <div className="action-card" role="form" aria-label="Deposit sBTC" aria-description={ARIA_DESCRIPTIONS.depositForm}>
               <h3>Deposit sBTC</h3>
               <label htmlFor="deposit-amount" className="sr-only">Deposit amount in sBTC</label>
               <input
