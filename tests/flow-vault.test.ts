@@ -324,6 +324,22 @@ describe("flow-vault", () => {
     expect(balance).toBeGreaterThanOrEqual(7000000);
   });
 
+  it("increments deposit count on each deposit", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(1000000)], wallet1);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(2000000)], wallet1);
+
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-vault-status",
+      [],
+      deployer
+    );
+    const status = result.expectTuple();
+    const depositCount = Number(status["deposit-count"].expectUint());
+    expect(depositCount).toBeGreaterThanOrEqual(2);
+  });
+
   it("returns delegation pool status", () => {
     const { result } = simnet.callReadOnlyFn(
       "flow-vault",
