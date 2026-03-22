@@ -748,6 +748,27 @@
   opacity: 0.9;
 }
 
+.error-boundary button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.error-boundary button:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 480px) {
+  .error-boundary {
+    padding: 1.5rem;
+    margin: 1rem;
+    max-width: none;
+  }
+
+  .error-boundary h2 {
+    font-size: 1.2rem;
+  }
+}
+
 .error-banner {
   background: var(--error-bg);
   color: var(--error-text);
