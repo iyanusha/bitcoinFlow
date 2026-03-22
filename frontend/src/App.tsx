@@ -370,15 +370,15 @@ function App() {
 
           <TransactionHistory transactions={transactions} onClear={clearHistory} />
 
-          <div className="info-section">
-            <h3>How BitcoinFlow Works</h3>
+          <section className="info-section" aria-labelledby="how-it-works">
+            <h3 id="how-it-works">How BitcoinFlow Works</h3>
             <ul>
               <li>Deposit sBTC to get liquid Flow tokens (1:1 ratio)</li>
               <li>Your sBTC is auto-stacked to earn STX rewards</li>
               <li>Rewards are automatically compounded</li>
               <li>Withdraw anytime by burning Flow tokens</li>
             </ul>
-          </div>
+          </section>
         </main>
       </ErrorBoundary>)}
 
