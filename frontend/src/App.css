@@ -395,6 +395,10 @@
   box-shadow: var(--shadow-lg);
 }
 
+.dark .stat-card:hover {
+  background: var(--surface-hover);
+}
+
 .stat-card.loading {
   opacity: 0.7;
   pointer-events: none;
