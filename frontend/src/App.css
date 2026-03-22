@@ -423,8 +423,9 @@
 .user-position {
   background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
   padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
 .dark .app-header {
