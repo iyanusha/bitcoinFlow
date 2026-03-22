@@ -451,14 +451,18 @@ describe("flow-vault", () => {
     expect(depositCount).toBeGreaterThanOrEqual(2);
   });
 
-  it("returns delegation pool status", () => {
+  it("returns delegation pool as optional principal", () => {
     const { result } = simnet.callReadOnlyFn(
       "flow-vault",
       "get-delegation-pool",
       [],
       deployer
     );
+    // Result should be either none or some(principal)
+    // In test context after delegate-stacking may have run, accept both
     expect(result).toBeDefined();
+    const str = result.toString();
+    expect(str.includes('none') || str.includes('some')).toBe(true);
   });
 
   it("returns total rewards as uint", () => {
