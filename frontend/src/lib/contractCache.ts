@@ -1,4 +1,5 @@
 import { logger } from './logger';
+import { CACHE } from './constants';
 
 interface CacheEntry<T> {
   data: T;
@@ -7,8 +8,8 @@ interface CacheEntry<T> {
 
 const cache = new Map<string, CacheEntry<unknown>>();
 
-/** Default TTL: 10 seconds */
-const DEFAULT_TTL_MS = 10_000;
+/** Default TTL from configuration */
+const DEFAULT_TTL_MS = CACHE.DEFAULT_TTL_MS;
 
 /**
  * Get a cached value if it exists and hasn't expired.
