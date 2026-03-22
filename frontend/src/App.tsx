@@ -384,13 +384,13 @@ function App() {
 
       <footer className="app-footer" role="contentinfo">
         <p>BitcoinFlow — Built on Stacks</p>
-        <p className="footer-links">
+        <nav className="footer-links" aria-label="External links">
           <a href="https://www.stacks.co" target="_blank" rel="noopener noreferrer">Stacks</a>
           {' | '}
           <a href="https://explorer.hiro.so" target="_blank" rel="noopener noreferrer">Explorer</a>
           {' | '}
           <a href={getAddressExplorerUrl(`${CONTRACT_ADDRESS}.${CONTRACT_NAME}`)} target="_blank" rel="noopener noreferrer">Contract</a>
-        </p>
+        </nav>
       </footer>
     </div>
   )
