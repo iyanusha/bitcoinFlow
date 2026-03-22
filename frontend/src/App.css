@@ -848,6 +848,10 @@
   flex: 1;
 }
 
+.dark .error-banner {
+  border-color: var(--error-text);
+}
+
 .paused-banner {
   background: var(--warning-bg);
   color: var(--warning-text);
