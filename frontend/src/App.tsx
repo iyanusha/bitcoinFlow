@@ -58,6 +58,13 @@ function App() {
 
   const handleWithdraw = async () => {
     if (!isConnected || !withdrawAmount) return
+
+    const validation = validateAmount(withdrawAmount)
+    if (!validation.isValid) {
+      setError(validation.error)
+      return
+    }
+
     setIsWithdrawing(true)
     setError(null)
 
@@ -79,7 +86,7 @@ function App() {
       },
     });
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Withdrawal failed");
+      setError(parseTransactionError(err));
       setIsWithdrawing(false)
     }
   }
