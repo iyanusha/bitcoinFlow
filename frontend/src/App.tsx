@@ -6,7 +6,7 @@ import { useExchangeRate } from './hooks/useExchangeRate'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './lib/stacks'
-import { validateDeposit, validateAmount } from './lib/validation'
+import { validateDeposit, validateWithdraw } from './lib/validation'
 import { parseTransactionError } from './lib/errorUtils'
 import { formatSTX, formatCompact, formatBlocks } from './lib/formatters'
 import { MICROSTX_PER_STX } from './lib/constants'
@@ -62,7 +62,8 @@ function App() {
   const handleWithdraw = async () => {
     if (!isConnected || !withdrawAmount) return
 
-    const validation = validateAmount(withdrawAmount)
+    const userBalance = position ? position.flowTokenBalance / MICROSTX_PER_STX : 0
+    const validation = validateWithdraw(withdrawAmount, userBalance)
     if (!validation.isValid) {
       setError(validation.error)
       return
