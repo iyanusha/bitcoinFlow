@@ -649,4 +649,29 @@ describe("flow-vault", () => {
     );
     expect(result).toBeNone();
   });
+
+  it("non-owner cannot call stack-aggregated-stx", () => {
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "stack-aggregated-stx",
+      [Cl.uint(10000000)],
+      wallet1
+    );
+    expect(result).toBeErr(Cl.uint(100));
+  });
+
+  it("stack-aggregated-stx rejects below threshold", () => {
+    // First need some STX balance via deposit-stx
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit-stx", [Cl.uint(1000000)], wallet1);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "stack-aggregated-stx",
+      [Cl.uint(500000)],
+      deployer
+    );
+    // If STX balance < STACKING_THRESHOLD (10M), should return insufficient balance
+    expect(result).toBeErr(Cl.uint(101));
+  });
 });
