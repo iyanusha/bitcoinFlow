@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   formatSTX, formatBTC, formatSBTC, formatCompact,
   formatPercentage, formatBlocks, formatExchangeRate,
-  formatAddress,
+  formatAddress, formatTxId, formatUSD,
 } from '../formatters';
 
 describe('formatSTX', () => {
@@ -136,5 +136,33 @@ describe('formatAddress', () => {
     const addr = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
     const formatted = formatAddress(addr, 4, 4);
     expect(formatted).toBe('ST1P...GZGM');
+  });
+});
+
+describe('formatTxId', () => {
+  it('truncates transaction ID with 10+6 chars', () => {
+    const txId = '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef';
+    const formatted = formatTxId(txId);
+    expect(formatted).toContain('...');
+    expect(formatted.length).toBeLessThan(txId.length);
+  });
+
+  it('preserves start and end of txId', () => {
+    const txId = '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef';
+    const formatted = formatTxId(txId);
+    expect(formatted.startsWith('0x12345678')).toBe(true);
+    expect(formatted.endsWith('abcdef')).toBe(true);
+  });
+});
+
+describe('formatUSD', () => {
+  it('formats as US currency', () => {
+    const result = formatUSD(1234.56);
+    expect(result).toContain('1,234.56');
+  });
+
+  it('formats zero', () => {
+    const result = formatUSD(0);
+    expect(result).toContain('0.00');
   });
 });
