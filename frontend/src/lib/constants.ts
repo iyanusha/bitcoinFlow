@@ -233,3 +233,5 @@ export const ADMIN_PANEL_S49 = { pageSize: 20, refreshMs: 30000 } as const;
 export const VAULT_ANALYTICS_K9 = { endpoint: '/api/vault_analytics/9', timeout: 30000, retries: 3 } as const;
 
 export const VAULT_ANALYTICS_K19 = { endpoint: '/api/vault_analytics/19', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_ANALYTICS_K29 = { endpoint: '/api/vault_analytics/29', timeout: 30000, retries: 3 } as const;
