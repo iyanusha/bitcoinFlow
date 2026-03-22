@@ -1,7 +1,7 @@
 ;; title: BitcoinFlow Vault
-;; version: 2.0.0
-;; summary: A liquid stacking vault for sBTC auto-compounding
-;; description: Users deposit sBTC, vault stakes underlying STX for rewards, auto-compounds and issues liquid tokens
+;; version: 2.1.0
+;; summary: A liquid stacking vault for STX/sBTC auto-compounding
+;; description: Users deposit STX or sBTC, vault stakes for rewards, auto-compounds and issues FLOW liquid tokens
 
 ;; traits
 ;;
