@@ -4,6 +4,7 @@ import {
   extractErrorCode,
   classifyContractError,
   handleContractError,
+  isKnownErrorCode,
 } from '../contractErrors';
 
 describe('getContractError', () => {
@@ -83,5 +84,24 @@ describe('handleContractError', () => {
   it('returns fallback for non-Error values', () => {
     const result = handleContractError('oops');
     expect(result).toBe('An unexpected error occurred');
+  });
+});
+
+describe('isKnownErrorCode', () => {
+  it('returns true for all known codes', () => {
+    expect(isKnownErrorCode(100)).toBe(true);
+    expect(isKnownErrorCode(101)).toBe(true);
+    expect(isKnownErrorCode(102)).toBe(true);
+    expect(isKnownErrorCode(103)).toBe(true);
+    expect(isKnownErrorCode(104)).toBe(true);
+    expect(isKnownErrorCode(105)).toBe(true);
+    expect(isKnownErrorCode(106)).toBe(true);
+  });
+
+  it('returns false for unknown codes', () => {
+    expect(isKnownErrorCode(0)).toBe(false);
+    expect(isKnownErrorCode(99)).toBe(false);
+    expect(isKnownErrorCode(107)).toBe(false);
+    expect(isKnownErrorCode(999)).toBe(false);
   });
 });
