@@ -43,6 +43,7 @@ function App() {
         setDepositAmount('')
         setError(null)
         setIsDepositing(false)
+        refreshStats()
       },
       onCancel: () => {
         setIsDepositing(false)
@@ -78,6 +79,7 @@ function App() {
         setWithdrawAmount('')
         setError(null)
         setIsWithdrawing(false)
+        refreshStats()
       },
       onCancel: () => {
         setIsWithdrawing(false)
