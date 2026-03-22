@@ -222,9 +222,9 @@ function App() {
       </header>
 
       {error && (
-        <div className="error-banner" role="alert">
+        <div className="error-banner" role="alert" aria-live="assertive">
           <p>{error}</p>
-          <button className="dismiss-btn" onClick={() => setError(null)}>Dismiss</button>
+          <button className="dismiss-btn" onClick={() => setError(null)} aria-label="Dismiss error message">Dismiss</button>
         </div>
       )}
 
