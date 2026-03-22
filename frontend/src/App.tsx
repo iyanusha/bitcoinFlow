@@ -241,7 +241,7 @@ function App() {
       )}
 
       {isConnected && (<ErrorBoundary>
-        <main id="main-content" className="main-content">
+        <main id="main-content" className="main-content" tabIndex={-1}>
           <div className="vault-stats">
             <div className="stats-header">
               <h2>Vault Statistics</h2>
