@@ -74,11 +74,7 @@
 .action-card input:focus-visible {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.25);
-}
-
-.dark .action-card input:focus-visible {
-  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.3);
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
 .sr-only {
@@ -524,11 +520,7 @@
 .action-card input:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
-}
-
-.dark .action-card input:focus {
-  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
 .action-card small {
