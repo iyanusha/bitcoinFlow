@@ -11,3 +11,4 @@ export { ButtonWithLoading } from './ButtonWithLoading';
 export { Toast } from './Toast';
 export { ToastContainer } from './ToastContainer';
 export { TransactionHistory } from './TransactionHistory';
+export { CopyButton } from './CopyButton';
