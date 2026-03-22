@@ -48,6 +48,7 @@ function App() {
         setError(null)
         setIsDepositing(false)
         refreshStats()
+        refreshPosition()
       },
       onCancel: () => {
         setIsDepositing(false)
@@ -90,6 +91,7 @@ function App() {
         setError(null)
         setIsWithdrawing(false)
         refreshStats()
+        refreshPosition()
       },
       onCancel: () => {
         setIsWithdrawing(false)
