@@ -475,10 +475,10 @@
   width: 100%;
   padding: 1rem;
   border: 2px solid var(--border-color);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   font-size: 1rem;
   margin-bottom: 1rem;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s, color 0.3s;
   background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 48px;
