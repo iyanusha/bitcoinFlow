@@ -14,7 +14,7 @@ import { CONTRACT_ADDRESS, CONTRACT_NAME, network, getAddressExplorerUrl, getCon
 import { validateDeposit, validateWithdraw, validateDecimalPrecision, sanitizeNumericInput } from './lib/validation'
 import { parseTransactionError } from './lib/errorUtils'
 import { formatSTX, formatCompact, formatBlocks, formatAddress } from './lib/formatters'
-import { MICROSTX_PER_STX, SATS_PER_BTC } from './lib/constants'
+import { MICROSTX_PER_STX, SATS_PER_BTC, TX_POLL_INTERVAL_MS } from './lib/constants'
 import { logger } from './lib/logger'
 import { SkipLink } from './components/SkipLink'
 import { ToastContainer } from './components/ToastContainer'
@@ -64,7 +64,7 @@ function App() {
   useEffect(() => {
     const hasPending = transactions.some(tx => tx.status === 'pending');
     if (!hasPending) return;
-    const interval = setInterval(pollPendingTransactions, 15000);
+    const interval = setInterval(pollPendingTransactions, TX_POLL_INTERVAL_MS);
     return () => clearInterval(interval);
   }, [transactions, pollPendingTransactions]);
 
