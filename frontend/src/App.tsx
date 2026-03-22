@@ -141,12 +141,18 @@ function App() {
           <div className="actions">
             <div className="action-card">
               <h3>Deposit sBTC</h3>
+              <label htmlFor="deposit-amount" className="sr-only">Deposit amount in sBTC</label>
               <input
+                id="deposit-amount"
                 type="number"
                 placeholder="Amount to deposit"
                 value={depositAmount}
                 onChange={(e) => setDepositAmount(e.target.value)}
+                min="0.0001"
+                step="0.0001"
+                aria-describedby="deposit-help"
               />
+              <small id="deposit-help">Minimum: 0.0001 sBTC</small>
               <button onClick={handleDeposit} disabled={!depositAmount || isDepositing}>
                 {isDepositing ? 'Processing...' : 'Deposit & Get Flow Tokens'}
               </button>
