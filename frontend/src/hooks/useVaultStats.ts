@@ -3,7 +3,7 @@ import { cvToJSON, fetchCallReadOnlyFunction, principalCV } from '@stacks/transa
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { REFRESH_INTERVAL_MS } from '../lib/constants';
 import { logger } from '../lib/logger';
-import type { VaultStats } from '../types';
+import type { VaultStats, VaultStatusResponse } from '../types';
 
 const defaultStats: VaultStats = {
   totalDeposits: 0,
@@ -37,7 +37,7 @@ export function useVaultStats(userAddress: string | null) {
       });
 
       const statusJson = cvToJSON(statusResult);
-      const statusValue = statusJson.value;
+      const statusValue = statusJson.value as VaultStatusResponse;
 
       let userBalance = 0;
       if (userAddress) {
