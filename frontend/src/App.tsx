@@ -80,6 +80,12 @@ function App() {
   const handleWithdraw = async () => {
     if (!isConnected || !withdrawAmount) return
 
+    const withdrawPrecision = validateDecimalPrecision(withdrawAmount)
+    if (!withdrawPrecision.isValid) {
+      setError(withdrawPrecision.error)
+      return
+    }
+
     if (!cooldown.isExpired) {
       setError(`Withdrawal cooldown active — ${formatBlocks(cooldown.blocksRemaining)} remaining`)
       return
