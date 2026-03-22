@@ -47,7 +47,7 @@ export function TransactionHistory({ transactions, onClear }: TransactionHistory
           }
         }}>Clear</button>
       </div>
-      <ul className="tx-list">
+      <ul className="tx-list" aria-label="Transaction history">
         {transactions.map(tx => (
           <li key={tx.txId} className="tx-item">
             <div className="tx-item-left">
