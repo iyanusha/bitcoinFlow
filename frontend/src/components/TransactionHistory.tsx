@@ -49,7 +49,7 @@ function PaginatedList({ transactions }: { transactions: TransactionRecord[] }) 
   } = usePagination(transactions, PAGE_SIZE);
 
   if (transactions.length === 0) {
-    return <p className="tx-empty">No transactions match the selected filters.</p>;
+    return <EmptyTransactions filtered />;
   }
 
   return (
