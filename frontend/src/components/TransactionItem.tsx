@@ -1,6 +1,6 @@
 import type { TransactionRecord } from '../types';
 import { getTxExplorerUrl } from '../lib/stacks';
-import { formatBTC, formatTimeSince } from '../lib/formatters';
+import { formatBTC, formatTimeSince, formatDateFull } from '../lib/formatters';
 
 interface TransactionItemProps {
   transaction: TransactionRecord;
@@ -29,7 +29,9 @@ export function TransactionItem({ transaction: tx }: TransactionItemProps) {
         >
           {STATUS_LABELS[tx.status]}
         </span>
-        <span className="tx-time">{formatTimeSince(tx.timestamp)}</span>
+        <span className="tx-time" title={formatDateFull(tx.timestamp)}>
+          {formatTimeSince(tx.timestamp)}
+        </span>
         <a
           href={getTxExplorerUrl(tx.txId)}
           target="_blank"
