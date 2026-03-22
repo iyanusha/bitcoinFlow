@@ -257,7 +257,7 @@ function App() {
                 type="number"
                 placeholder="Flow tokens to burn"
                 value={withdrawAmount}
-                onChange={(e) => setWithdrawAmount(e.target.value)}
+                onChange={(e) => setWithdrawAmount(sanitizeNumericInput(e.target.value))}
                 min="0.0001"
                 step="0.0001"
                 aria-describedby="withdraw-help"
