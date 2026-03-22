@@ -28,8 +28,9 @@ function App() {
   const { stats: vaultStats, loading: statsLoading, refresh: refreshStats } = useVaultStats(getAddress())
   const { position, cooldown, loading: positionLoading, refresh: refreshPosition } = useUserPosition(getAddress())
   const exchangeRate = useExchangeRate()
-  const { transactions, addTransaction, clearHistory } = useTransactionHistory()
-  const { toasts, removeToast, success: toastSuccess, error: toastError } = useToast()
+  const { transactions, addTransaction, updateStatus, clearHistory } = useTransactionHistory()
+  const { toasts, removeToast, success: toastSuccess, error: toastError, info: toastInfo } = useToast()
+  const { checkStatus } = useTransactionStatus()
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('bf-dark-mode') === 'true'
@@ -41,6 +42,28 @@ function App() {
     document.documentElement.classList.toggle('dark', darkMode)
     localStorage.setItem('bf-dark-mode', String(darkMode))
   }, [darkMode])
+
+  const pollPendingTransactions = useCallback(async () => {
+    const pending = transactions.filter(tx => tx.status === 'pending');
+    for (const tx of pending) {
+      const status = await checkStatus(tx.txId);
+      if (status !== 'pending') {
+        updateStatus(tx.txId, status);
+        if (status === 'confirmed') {
+          toastInfo(`Transaction confirmed: ${tx.type}`);
+        } else if (status === 'failed') {
+          toastError(`Transaction failed: ${tx.type}`);
+        }
+      }
+    }
+  }, [transactions, checkStatus, updateStatus, toastInfo, toastError]);
+
+  useEffect(() => {
+    const hasPending = transactions.some(tx => tx.status === 'pending');
+    if (!hasPending) return;
+    const interval = setInterval(pollPendingTransactions, 15000);
+    return () => clearInterval(interval);
+  }, [transactions, pollPendingTransactions]);
 
   const handleDeposit = async () => {
     if (!isConnected || !depositAmount) return
