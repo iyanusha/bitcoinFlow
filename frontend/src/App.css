@@ -157,6 +157,16 @@
   letter-spacing: 1px;
 }
 
+.network-badge-mainnet {
+  background: rgba(22, 163, 74, 0.3);
+  border: 1px solid rgba(22, 163, 74, 0.5);
+}
+
+.network-badge-testnet {
+  background: rgba(255, 200, 50, 0.2);
+  border: 1px solid rgba(255, 200, 50, 0.4);
+}
+
 .pending-badge {
   display: inline-block;
   background: rgba(255, 200, 50, 0.3);
