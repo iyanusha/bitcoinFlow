@@ -56,6 +56,17 @@ export function formatDate(timestamp: number): string {
   }).format(new Date(timestamp));
 }
 
+export function formatDateFull(timestamp: number): string {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  }).format(new Date(timestamp));
+}
+
 export function formatTimeSince(timestamp: number): string {
   const seconds = Math.floor((Date.now() - timestamp) / 1000);
   if (seconds < 5) return 'just now';
