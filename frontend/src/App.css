@@ -2107,7 +2107,24 @@
   font-size: 0.9rem;
 }
 
-/* High contrast / forced colors mode */
+/* High contrast preferences */
+@media (prefers-contrast: more) {
+  :root {
+    --border-color: #666;
+    --text-secondary: #444;
+  }
+
+  .dark {
+    --border-color: #999;
+    --text-secondary: #ccc;
+  }
+
+  .stat-card,
+  .action-card {
+    border-width: 2px;
+  }
+}
+
 @media (forced-colors: active) {
   .stat-card,
   .action-card,
