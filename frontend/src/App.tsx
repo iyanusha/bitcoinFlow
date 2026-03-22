@@ -280,7 +280,7 @@ function App() {
           </div>
 
           {position && (
-            <div className="user-position">
+            <div className="user-position" role="region" aria-label="Your position" aria-description={ARIA_DESCRIPTIONS.userPosition}>
               <div className="stats-header">
                 <h2>Your Position</h2>
                 {positionLoading && <span className="loading-dot" aria-label="Loading position">●</span>}
