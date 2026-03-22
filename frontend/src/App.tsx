@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useWallet } from './hooks/useWallet'
 import { useVaultStats } from './hooks/useVaultStats'
 import { useUserPosition } from './hooks/useUserPosition'
@@ -22,6 +22,17 @@ function App() {
   const { stats: vaultStats, loading: statsLoading, refresh: refreshStats } = useVaultStats(getAddress())
   const { position, cooldown, loading: positionLoading, refresh: refreshPosition } = useUserPosition(getAddress())
   const exchangeRate = useExchangeRate()
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('bf-dark-mode') === 'true'
+    }
+    return false
+  })
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', darkMode)
+    localStorage.setItem('bf-dark-mode', String(darkMode))
+  }, [darkMode])
 
   const handleDeposit = async () => {
     if (!isConnected || !depositAmount) return
