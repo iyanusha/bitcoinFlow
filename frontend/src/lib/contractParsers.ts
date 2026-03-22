@@ -39,3 +39,17 @@ export function parseClarityOptional<T>(value: { value: T } | null | undefined):
 export function isClarityError(response: { type: string }): boolean {
   return response.type === 'err';
 }
+
+/**
+ * Convert a STX amount to micro-STX (multiply by 1e6).
+ */
+export function stxToMicro(stx: number): number {
+  return Math.round(stx * 1_000_000);
+}
+
+/**
+ * Convert a BTC amount to satoshis (multiply by 1e8).
+ */
+export function btcToSats(btc: number): number {
+  return Math.round(btc * 100_000_000);
+}
