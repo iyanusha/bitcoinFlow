@@ -125,6 +125,17 @@
   }
 )
 
+(define-read-only (get-user-share (user principal))
+  (let ((user-deposit (default-to u0 (map-get? user-deposits user)))
+        (deposits (var-get total-deposits)))
+    {
+      deposited: user-deposit,
+      share-pct: (if (is-eq deposits u0) u0 (/ (* user-deposit u10000) deposits)),
+      flow-balance: (ft-get-balance flow-token user)
+    }
+  )
+)
+
 (define-read-only (get-exchange-rate)
   (let ((deposits (var-get total-deposits))
         (rewards (var-get total-rewards)))
