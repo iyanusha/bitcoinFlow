@@ -261,19 +261,19 @@ function App() {
                 <h3>STX Balance</h3>
                 <p>{formatSTX(vaultStats.stxBalance)} STX</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Your Flow Tokens: ${formatCompact(vaultStats.userBalance / MICROSTX_PER_STX)} FLOW`}>
                 <h3>Your Flow Tokens</h3>
                 <p>{formatCompact(vaultStats.userBalance / MICROSTX_PER_STX)} FLOW</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Exchange Rate: ${exchangeRate.formattedRate} sBTC per FLOW`}>
                 <h3>Exchange Rate</h3>
                 <p>{exchangeRate.formattedRate} sBTC/FLOW</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Deposit Count: ${vaultStats.depositCount}`}>
                 <h3>Deposits</h3>
                 <p>{vaultStats.depositCount}</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Withdrawal Count: ${vaultStats.withdrawCount}`}>
                 <h3>Withdrawals</h3>
                 <p>{vaultStats.withdrawCount}</p>
               </div>
