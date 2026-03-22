@@ -753,4 +753,63 @@ describe("flow-vault", () => {
     // If STX balance < STACKING_THRESHOLD (10M), should return insufficient balance
     expect(result).toBeErr(Cl.uint(101));
   });
+
+  it("paused vault rejects STX withdrawals", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit-stx", [Cl.uint(3000000)], wallet1);
+    simnet.mineEmptyBlocks(7);
+    simnet.callPublicFn("flow-vault", "pause-vault", [], deployer);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "withdraw-stx",
+      [Cl.uint(1000000)],
+      wallet1
+    );
+    expect(result).toBeErr(Cl.uint(105));
+  });
+
+  it("STX withdrawal during cooldown is rejected", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit-stx", [Cl.uint(2000000)], wallet2);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "withdraw-stx",
+      [Cl.uint(1000000)],
+      wallet2
+    );
+    expect(result).toBeErr(Cl.uint(106));
+  });
+
+  it("delegation pool updates after delegate-stacking", () => {
+    simnet.callPublicFn("flow-vault", "delegate-stacking", [Cl.principal(wallet2)], deployer);
+
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-delegation-pool",
+      [],
+      deployer
+    );
+    expect(result).toBeSome(Cl.principal(wallet2));
+  });
+
+  it("total-deposits read-only matches vault status field", () => {
+    const { result: totalDeposits } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-total-deposits",
+      [],
+      deployer
+    );
+
+    const { result: status } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-vault-status",
+      [],
+      deployer
+    );
+    const statusDeposits = status.expectTuple()["total-deposits"];
+
+    expect(totalDeposits.expectUint()).toBe(statusDeposits.expectUint());
+  });
 });
