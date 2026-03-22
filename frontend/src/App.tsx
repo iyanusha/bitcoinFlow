@@ -314,8 +314,8 @@ function App() {
             </div>
           )}
 
-          <div className="actions">
-            <div className="action-card">
+          <div className="actions" role="region" aria-label="Vault actions">
+            <div className="action-card" role="form" aria-label="Deposit sBTC">
               <h3>Deposit sBTC</h3>
               <label htmlFor="deposit-amount" className="sr-only">Deposit amount in sBTC</label>
               <input
@@ -341,7 +341,7 @@ function App() {
               </button>
             </div>
 
-            <div className="action-card">
+            <div className="action-card" role="form" aria-label="Withdraw sBTC">
               <h3>Withdraw sBTC</h3>
               <label htmlFor="withdraw-amount" className="sr-only">Withdrawal amount in FLOW tokens</label>
               <input
