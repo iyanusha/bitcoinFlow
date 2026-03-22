@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatSTX, formatBTC } from '../formatters';
+import { formatSTX, formatBTC, formatSBTC } from '../formatters';
 
 describe('formatSTX', () => {
   it('converts micro-STX to STX with 6 decimals', () => {
@@ -30,5 +30,23 @@ describe('formatBTC', () => {
 
   it('formats single satoshi', () => {
     expect(formatBTC(1)).toBe('0.00000001');
+  });
+});
+
+describe('formatSBTC', () => {
+  it('formats zero as "0"', () => {
+    expect(formatSBTC(0)).toBe('0');
+  });
+
+  it('formats small value below threshold as "< 0.0001"', () => {
+    expect(formatSBTC(100)).toBe('< 0.0001');
+  });
+
+  it('formats normal amount with 4 decimals', () => {
+    expect(formatSBTC(50_000_000)).toBe('0.5000');
+  });
+
+  it('supports custom decimal places', () => {
+    expect(formatSBTC(50_000_000, 2)).toBe('0.50');
   });
 });
