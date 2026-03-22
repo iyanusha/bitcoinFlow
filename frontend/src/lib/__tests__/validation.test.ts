@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { validateAmount, validateDeposit } from '../validation';
+import { validateAmount, validateDeposit, validateWithdraw } from '../validation';
 
 describe('validateAmount', () => {
   it('rejects empty string', () => {
@@ -68,5 +68,31 @@ describe('validateDeposit', () => {
     const result = validateDeposit('0.0001');
     expect(result.isValid).toBe(true);
     expect(result.error).toBeNull();
+  });
+});
+
+describe('validateWithdraw', () => {
+  it('rejects amount exceeding balance', () => {
+    const result = validateWithdraw('10', 5);
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('Insufficient balance');
+  });
+
+  it('accepts amount equal to balance', () => {
+    const result = validateWithdraw('5', 5);
+    expect(result.isValid).toBe(true);
+    expect(result.error).toBeNull();
+  });
+
+  it('accepts amount below balance', () => {
+    const result = validateWithdraw('2.5', 10);
+    expect(result.isValid).toBe(true);
+    expect(result.error).toBeNull();
+  });
+
+  it('inherits base validation for zero amount', () => {
+    const result = validateWithdraw('0', 100);
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Amount must be greater than zero');
   });
 });
