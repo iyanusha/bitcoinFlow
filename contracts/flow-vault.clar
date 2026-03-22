@@ -30,6 +30,8 @@
 (define-data-var delegation-pool (optional principal) none)
 (define-data-var last-compound-cycle uint u0)
 (define-data-var vault-paused bool false)
+(define-data-var total-deposit-count uint u0)
+(define-data-var total-withdraw-count uint u0)
 
 ;; data maps
 (define-map user-deposits principal uint)
