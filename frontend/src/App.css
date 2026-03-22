@@ -1037,6 +1037,10 @@
   border-radius: 2px;
 }
 
+.dark .app-footer {
+  border-top-color: var(--border-color);
+}
+
 .toast-container {
   position: fixed;
   top: 1rem;
