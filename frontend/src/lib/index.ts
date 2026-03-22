@@ -39,3 +39,23 @@ export {
 } from './balanceValidation';
 export { withRetry, isRetryableError } from './retry';
 export type { RetryOptions } from './retry';
+export { transactionsToCSV, downloadCSV, exportTransactions } from './transactionExport';
+export { searchTransactions, highlightMatch } from './transactionSearch';
+export {
+  sortTransactions,
+  toggleDirection,
+  DEFAULT_SORT,
+} from './transactionSort';
+export type { SortField, SortDirection, SortConfig } from './transactionSort';
+export {
+  getPresetDateRange,
+  isWithinDateRange,
+  DATE_RANGE_LABELS,
+} from './dateRanges';
+export type { DateRangePreset, DateRange } from './dateRanges';
+export {
+  isNotificationSupported,
+  requestNotificationPermission,
+  hasNotificationPermission,
+  showTransactionNotification,
+} from './transactionNotifications';
