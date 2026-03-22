@@ -886,6 +886,11 @@
   color: #93c5fd;
 }
 
+.dark .offline-banner {
+  background: #0f172a;
+  border-color: #334155;
+}
+
 .dismiss-btn {
   background: none;
   border: none;
