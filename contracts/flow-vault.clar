@@ -49,6 +49,7 @@
 
 (define-public (withdraw (amount uint))
   (let ((user-balance (default-to u0 (map-get? user-deposits tx-sender))))
+    (asserts! (> amount u0) ERR-INVALID-AMOUNT)
     (asserts! (>= user-balance amount) ERR-INSUFFICIENT-BALANCE)
     (map-set user-deposits tx-sender (- user-balance amount))
     (var-set total-deposits (- (var-get total-deposits) amount))
