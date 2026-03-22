@@ -52,11 +52,27 @@ export function useVaultStats(userAddress: string | null) {
         userBalance = parseInt(balanceJson.value, 10);
       }
 
+      let tvl = 0;
+      try {
+        const tvlResult = await fetchCallReadOnlyFunction({
+          contractAddress: CONTRACT_ADDRESS,
+          contractName: CONTRACT_NAME,
+          functionName: 'get-vault-tvl',
+          functionArgs: [],
+          network,
+          senderAddress: CONTRACT_ADDRESS,
+        });
+        const tvlJson = cvToJSON(tvlResult);
+        tvl = parseInt(tvlJson.value, 10);
+      } catch {
+        // TVL fetch is optional
+      }
+
       setStats({
         totalDeposits: parseInt(statusValue['total-deposits'].value, 10),
         totalRewards: parseInt(statusValue['total-rewards'].value, 10),
         userBalance,
-        stxBalance: parseInt(statusValue['stx-balance'].value, 10),
+        stxBalance: tvl || parseInt(statusValue['stx-balance'].value, 10),
         depositCount: parseInt(statusValue['deposit-count'].value, 10),
         withdrawCount: parseInt(statusValue['withdraw-count'].value, 10),
         isPaused: statusValue.paused.value,
