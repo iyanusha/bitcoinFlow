@@ -3,6 +3,7 @@ import {
   formatSTX, formatBTC, formatSBTC, formatCompact,
   formatPercentage, formatBlocks, formatExchangeRate,
   formatAddress, formatTxId, formatUSD, formatTimeSince,
+  formatDate,
 } from '../formatters';
 
 describe('formatSTX', () => {
@@ -185,5 +186,21 @@ describe('formatTimeSince', () => {
   it('returns hours for >= 60m', () => {
     const result = formatTimeSince(Date.now() - 7_200_000);
     expect(result).toMatch(/\d+h ago/);
+  });
+});
+
+describe('formatDate', () => {
+  it('formats timestamp as readable date', () => {
+    const ts = new Date('2026-03-22T10:30:00').getTime();
+    const result = formatDate(ts);
+    expect(result).toContain('Mar');
+    expect(result).toContain('22');
+  });
+
+  it('includes time component', () => {
+    const ts = new Date('2026-01-15T14:45:00').getTime();
+    const result = formatDate(ts);
+    // Should include hour/minute
+    expect(result.length).toBeGreaterThan(5);
   });
 });
