@@ -40,7 +40,7 @@ export function TransactionHistory({ transactions, onClear }: TransactionHistory
   return (
     <div className="tx-history">
       <div className="tx-history-header">
-        <h3>Transaction History</h3>
+        <h3>Transaction History <span className="tx-count">({transactions.length})</span></h3>
         <button className="tx-clear-btn" onClick={() => {
           if (window.confirm('Clear all transaction history?')) {
             onClear();
