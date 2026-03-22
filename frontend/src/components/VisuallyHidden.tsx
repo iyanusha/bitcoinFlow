@@ -1,4 +1,10 @@
-import type { ReactNode } from 'react';
-export function VisuallyHidden({ children }: { children: ReactNode }) {
-  return <span className="sr-only">{children}</span>;
+import { type ReactNode, type ElementType } from 'react';
+
+interface VisuallyHiddenProps {
+  children: ReactNode;
+  as?: ElementType;
+}
+
+export function VisuallyHidden({ children, as: Component = 'span' }: VisuallyHiddenProps) {
+  return <Component className="sr-only">{children}</Component>;
 }
