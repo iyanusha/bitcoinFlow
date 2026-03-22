@@ -234,6 +234,9 @@ function App() {
               <button className="refresh-btn" onClick={refreshStats} disabled={statsLoading} aria-label="Refresh stats">
                 ↻
               </button>
+              <a href={getContractExplorerUrl()} target="_blank" rel="noopener noreferrer" className="stats-contract-link">
+                View Contract
+              </a>
             </div>
             <div className="stats-grid" aria-live="polite">
               <div className="stat-card">
