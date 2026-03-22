@@ -283,3 +283,5 @@ export const STX_CONVERTER_K9 = { endpoint: '/api/stx_converter/9', timeout: 300
 export const STX_CONVERTER_K19 = { endpoint: '/api/stx_converter/19', timeout: 30000, retries: 3 } as const;
 
 export const STX_CONVERTER_K29 = { endpoint: '/api/stx_converter/29', timeout: 30000, retries: 3 } as const;
+
+export const STX_CONVERTER_K39 = { endpoint: '/api/stx_converter/39', timeout: 30000, retries: 3 } as const;
