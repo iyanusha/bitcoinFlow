@@ -742,6 +742,10 @@
   margin-bottom: 0.25rem;
 }
 
+.dark .paused-banner {
+  border-color: #854d0e;
+}
+
 .offline-banner {
   background: #1e293b;
   color: #94a3b8;
