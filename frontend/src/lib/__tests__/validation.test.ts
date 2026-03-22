@@ -4,6 +4,8 @@ import {
   validateDeposit,
   validateWithdraw,
   validateDecimalPrecision,
+  sanitizeNumericInput,
+  isPositiveInteger,
 } from '../validation';
 
 describe('validateAmount', () => {
@@ -123,5 +125,41 @@ describe('validateDecimalPrecision', () => {
     const result = validateDecimalPrecision('1.123', 2);
     expect(result.isValid).toBe(false);
     expect(result.error).toBe('Maximum 2 decimal places');
+  });
+});
+
+describe('sanitizeNumericInput', () => {
+  it('strips non-numeric characters', () => {
+    expect(sanitizeNumericInput('12abc34')).toBe('1234');
+  });
+
+  it('preserves single decimal point', () => {
+    expect(sanitizeNumericInput('12.34')).toBe('12.34');
+  });
+
+  it('removes extra decimal points', () => {
+    expect(sanitizeNumericInput('1.2.3')).toBe('1.23');
+  });
+
+  it('returns empty string for non-numeric input', () => {
+    expect(sanitizeNumericInput('abc')).toBe('');
+  });
+});
+
+describe('isPositiveInteger', () => {
+  it('returns true for positive integer string', () => {
+    expect(isPositiveInteger('42')).toBe(true);
+  });
+
+  it('returns false for zero', () => {
+    expect(isPositiveInteger('0')).toBe(false);
+  });
+
+  it('returns false for decimal', () => {
+    expect(isPositiveInteger('1.5')).toBe(false);
+  });
+
+  it('returns false for negative', () => {
+    expect(isPositiveInteger('-3')).toBe(false);
   });
 });
