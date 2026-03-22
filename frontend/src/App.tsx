@@ -337,7 +337,7 @@ function App() {
                 disabled={!depositAmount || isDepositing || vaultStats.isPaused || !isOnline}
                 aria-busy={isDepositing}
               >
-                {isDepositing ? 'Processing...' : !isOnline ? 'Offline' : vaultStats.isPaused ? 'Vault Paused' : 'Deposit & Get Flow Tokens'}
+                {isDepositing ? 'Processing deposit...' : !isOnline ? 'Offline — connect to deposit' : vaultStats.isPaused ? 'Vault Paused' : 'Deposit & Get Flow Tokens'}
               </button>
             </div>
 
@@ -363,7 +363,7 @@ function App() {
                 disabled={!withdrawAmount || isWithdrawing || vaultStats.isPaused || !isOnline}
                 aria-busy={isWithdrawing}
               >
-                {isWithdrawing ? 'Processing...' : !isOnline ? 'Offline' : vaultStats.isPaused ? 'Vault Paused' : 'Burn Flow & Withdraw'}
+                {isWithdrawing ? 'Processing withdrawal...' : !isOnline ? 'Offline — connect to withdraw' : vaultStats.isPaused ? 'Vault Paused' : 'Burn Flow & Withdraw'}
               </button>
             </div>
           </div>
