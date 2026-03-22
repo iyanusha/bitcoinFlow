@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 interface SkeletonCardProps {
   lines?: number;
   className?: string;
 }
 
-export function SkeletonCard({ lines = 2, className = 'stat-card' }: SkeletonCardProps) {
+export const SkeletonCard = memo(function SkeletonCard({ lines = 2, className = 'stat-card' }: SkeletonCardProps) {
   return (
     <div className={className} role="status" aria-label="Loading content">
       <div className="skeleton" style={{ width: '60%', height: 14, marginBottom: 8, margin: '0 auto 8px' }} />
@@ -12,4 +14,4 @@ export function SkeletonCard({ lines = 2, className = 'stat-card' }: SkeletonCar
       ))}
     </div>
   );
-}
+});
