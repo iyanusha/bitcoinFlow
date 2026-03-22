@@ -12,7 +12,7 @@ export const CONTRACT_ADDRESS =
 
 export const CONTRACT_NAME = "flow-vault";
 
-export const CLARITY_VERSION = 4;
+export const CLARITY_VERSION = 3;
 
 export const EXPLORER_URL = isMainnet
   ? "https://explorer.hiro.so"
