@@ -25,6 +25,8 @@ function App() {
   const { stats: vaultStats, loading: statsLoading, refresh: refreshStats } = useVaultStats(getAddress())
   const { position, cooldown, loading: positionLoading, refresh: refreshPosition } = useUserPosition(getAddress())
   const exchangeRate = useExchangeRate()
+  const { transactions, addTransaction, clearHistory } = useTransactionHistory()
+  const { toasts, removeToast, success: toastSuccess, error: toastError } = useToast()
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('bf-dark-mode') === 'true'
