@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatSTX, formatBTC, formatSBTC } from '../formatters';
+import { formatSTX, formatBTC, formatSBTC, formatCompact } from '../formatters';
 
 describe('formatSTX', () => {
   it('converts micro-STX to STX with 6 decimals', () => {
@@ -48,5 +48,27 @@ describe('formatSBTC', () => {
 
   it('supports custom decimal places', () => {
     expect(formatSBTC(50_000_000, 2)).toBe('0.50');
+  });
+});
+
+describe('formatCompact', () => {
+  it('formats millions with M suffix', () => {
+    expect(formatCompact(2_500_000)).toBe('2.50M');
+  });
+
+  it('formats thousands with K suffix', () => {
+    expect(formatCompact(45_000)).toBe('45.00K');
+  });
+
+  it('formats small numbers with 2 decimals', () => {
+    expect(formatCompact(123.456)).toBe('123.46');
+  });
+
+  it('formats exactly 1 million', () => {
+    expect(formatCompact(1_000_000)).toBe('1.00M');
+  });
+
+  it('formats exactly 1 thousand', () => {
+    expect(formatCompact(1_000)).toBe('1.00K');
   });
 });
