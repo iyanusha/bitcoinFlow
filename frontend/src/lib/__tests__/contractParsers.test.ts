@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseClarityInt, parseClarityBool, microToDecimal, parseClarityOptional, isClarityError } from '../contractParsers';
+import { parseClarityInt, parseClarityBool, microToDecimal, parseClarityOptional, isClarityError, stxToMicro, btcToSats } from '../contractParsers';
 
 describe('parseClarityInt', () => {
   it('parses valid integer string', () => {
@@ -100,5 +100,41 @@ describe('isClarityError', () => {
 
   it('returns false for other types', () => {
     expect(isClarityError({ type: 'uint' })).toBe(false);
+  });
+});
+
+describe('stxToMicro', () => {
+  it('converts 1 STX to 1_000_000 micro', () => {
+    expect(stxToMicro(1)).toBe(1_000_000);
+  });
+
+  it('converts fractional STX', () => {
+    expect(stxToMicro(0.5)).toBe(500_000);
+  });
+
+  it('rounds to avoid floating point errors', () => {
+    expect(stxToMicro(0.000001)).toBe(1);
+  });
+
+  it('handles zero', () => {
+    expect(stxToMicro(0)).toBe(0);
+  });
+});
+
+describe('btcToSats', () => {
+  it('converts 1 BTC to 100_000_000 sats', () => {
+    expect(btcToSats(1)).toBe(100_000_000);
+  });
+
+  it('converts fractional BTC', () => {
+    expect(btcToSats(0.5)).toBe(50_000_000);
+  });
+
+  it('rounds correctly', () => {
+    expect(btcToSats(0.00000001)).toBe(1);
+  });
+
+  it('handles zero', () => {
+    expect(btcToSats(0)).toBe(0);
   });
 });
