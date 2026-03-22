@@ -83,6 +83,10 @@
   top: 0;
 }
 
+[id] {
+  scroll-margin-top: 1rem;
+}
+
 .app {
   max-width: 1200px;
   margin: 0 auto;
