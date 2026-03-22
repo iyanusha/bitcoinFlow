@@ -1245,6 +1245,10 @@
 .tx-status-confirmed { background: var(--success-bg); color: var(--success-text); }
 .tx-status-failed { background: var(--error-bg); color: var(--error-text); }
 
+.dark .tx-status-pending { border: 1px solid rgba(252, 211, 77, 0.3); }
+.dark .tx-status-confirmed { border: 1px solid rgba(134, 239, 172, 0.3); }
+.dark .tx-status-failed { border: 1px solid rgba(252, 165, 165, 0.3); }
+
 .tx-time {
   color: var(--text-muted);
   font-size: 0.8rem;
