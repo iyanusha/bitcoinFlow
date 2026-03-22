@@ -374,7 +374,7 @@ function App() {
         </main>
       </ErrorBoundary>)}
 
-      <footer className="app-footer" role="contentinfo">
+      <footer className="app-footer" role="contentinfo" aria-label={LANDMARK_LABELS.footer}>
         <p>BitcoinFlow — Built on Stacks</p>
         <nav className="footer-links" aria-label="External links">
           <a href="https://www.stacks.co" target="_blank" rel="noopener noreferrer">Stacks</a>
