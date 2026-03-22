@@ -980,6 +980,7 @@
   min-height: 36px;
   min-width: 36px;
   padding: 0.25rem 0.5rem;
+  transition: opacity 0.2s, color 0.3s;
 }
 
 .dismiss-btn:focus-visible {
