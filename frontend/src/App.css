@@ -487,6 +487,10 @@
   border-color: var(--accent);
 }
 
+.dark .action-card {
+  border-color: var(--border-color);
+}
+
 .action-card h3 {
   color: var(--text-primary);
   margin-bottom: 1.5rem;
