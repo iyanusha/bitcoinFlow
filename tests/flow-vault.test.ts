@@ -439,6 +439,18 @@ describe("flow-vault", () => {
     expect(result).toBeOk(Cl.bool(true));
   });
 
+  it("paused vault rejects STX deposits", () => {
+    simnet.callPublicFn("flow-vault", "pause-vault", [], deployer);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "deposit-stx",
+      [Cl.uint(1000000)],
+      wallet1
+    );
+    expect(result).toBeErr(Cl.uint(105));
+  });
+
   it("non-owner cannot unpause vault", () => {
     simnet.callPublicFn("flow-vault", "pause-vault", [], deployer);
 
