@@ -7,7 +7,7 @@ import { useTransactionHistory } from './hooks/useTransactionHistory'
 import { useToast } from './hooks/useToast'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
-import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './lib/stacks'
+import { CONTRACT_ADDRESS, CONTRACT_NAME, network, getAddressExplorerUrl } from './lib/stacks'
 import { validateDeposit, validateWithdraw, validateDecimalPrecision, sanitizeNumericInput } from './lib/validation'
 import { parseTransactionError } from './lib/errorUtils'
 import { formatSTX, formatCompact, formatBlocks, formatAddress } from './lib/formatters'
@@ -167,7 +167,11 @@ function App() {
           </button>
         ) : (
           <div className="wallet-info">
-            <p>Connected: {getAddress() ? formatAddress(getAddress()!) : ''}</p>
+            <p>Connected: {getAddress() && (
+              <a href={getAddressExplorerUrl(getAddress()!)} target="_blank" rel="noopener noreferrer" className="wallet-address-link">
+                {formatAddress(getAddress()!)}
+              </a>
+            )}</p>
             <button className="disconnect-btn" onClick={disconnect}>
               Disconnect
             </button>
