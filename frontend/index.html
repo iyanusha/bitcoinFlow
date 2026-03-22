@@ -51,6 +51,10 @@
     </script>
   </head>
   <body>
+    <script>
+      // Prevent FOUC: apply dark class before first paint
+      (function(){try{if(localStorage.getItem('bf-dark-mode')==='true'||(!localStorage.getItem('bf-dark-mode')&&matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
