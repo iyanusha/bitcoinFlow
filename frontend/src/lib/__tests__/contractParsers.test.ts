@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseClarityInt, parseClarityBool, microToDecimal } from '../contractParsers';
+import { parseClarityInt, parseClarityBool, microToDecimal, parseClarityOptional, isClarityError } from '../contractParsers';
 
 describe('parseClarityInt', () => {
   it('parses valid integer string', () => {
@@ -72,5 +72,33 @@ describe('microToDecimal', () => {
 
   it('handles fractional amounts', () => {
     expect(microToDecimal(500_000, 6)).toBe('0.500000');
+  });
+});
+
+describe('parseClarityOptional', () => {
+  it('returns value when present', () => {
+    expect(parseClarityOptional({ value: 'hello' })).toBe('hello');
+  });
+
+  it('returns null for null input', () => {
+    expect(parseClarityOptional(null)).toBeNull();
+  });
+
+  it('returns null for undefined input', () => {
+    expect(parseClarityOptional(undefined)).toBeNull();
+  });
+});
+
+describe('isClarityError', () => {
+  it('returns true for err type', () => {
+    expect(isClarityError({ type: 'err' })).toBe(true);
+  });
+
+  it('returns false for ok type', () => {
+    expect(isClarityError({ type: 'ok' })).toBe(false);
+  });
+
+  it('returns false for other types', () => {
+    expect(isClarityError({ type: 'uint' })).toBe(false);
   });
 });
