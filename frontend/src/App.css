@@ -1311,6 +1311,116 @@
   border-radius: 2px;
 }
 
+.tx-pending-badge {
+  display: inline-block;
+  background: var(--warning-bg);
+  color: var(--warning-text);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.tx-filters {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.tx-filter-group {
+  display: flex;
+  gap: 0.25rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+.tx-filter-btn {
+  background: transparent;
+  border: none;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  border-radius: calc(var(--radius-sm) - 2px);
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: background 0.2s, color 0.2s;
+}
+
+.tx-filter-btn:hover {
+  color: var(--text-primary);
+}
+
+.tx-filter-active {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+  font-weight: 600;
+}
+
+.tx-summary {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.tx-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.tx-summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.tx-summary-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tx-summary-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.tx-summary-count {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.tx-summary-deposit { color: var(--success); }
+.tx-summary-withdraw { color: var(--accent); }
+.tx-summary-positive { color: var(--success); }
+.tx-summary-negative { color: var(--error-text); }
+.tx-summary-pending { color: var(--warning-text); }
+
+.dark .tx-summary {
+  background: rgba(255,255,255,0.03);
+}
+
+.dark .tx-filter-group {
+  background: rgba(255,255,255,0.05);
+}
+
+.dark .tx-filter-active {
+  background: rgba(255,255,255,0.1);
+  color: #e5e7eb;
+}
+
+.dark .tx-pending-badge {
+  background: rgba(252, 211, 77, 0.15);
+  border: 1px solid rgba(252, 211, 77, 0.3);
+}
+
 .copy-btn {
   background: none;
   border: 1px solid var(--border-color);
