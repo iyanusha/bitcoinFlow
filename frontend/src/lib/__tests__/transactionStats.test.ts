@@ -102,4 +102,33 @@ describe('getPendingTxIds', () => {
     const confirmed = mockTxs.filter(tx => tx.status === 'confirmed');
     expect(getPendingTxIds(confirmed)).toEqual([]);
   });
+
+  it('returns empty for empty array', () => {
+    expect(getPendingTxIds([])).toEqual([]);
+  });
+
+  it('returns multiple pending IDs', () => {
+    const txs: TransactionRecord[] = [
+      { txId: '0xa', type: 'deposit', amount: 100, status: 'pending', timestamp: 1 },
+      { txId: '0xb', type: 'withdraw', amount: 200, status: 'pending', timestamp: 2 },
+    ];
+    expect(getPendingTxIds(txs)).toEqual(['0xa', '0xb']);
+  });
+});
+
+describe('edge cases', () => {
+  it('calculateTransactionStats handles empty array', () => {
+    const stats = calculateTransactionStats([]);
+    expect(stats.totalDeposits).toBe(0);
+    expect(stats.totalWithdrawals).toBe(0);
+    expect(stats.netFlow).toBe(0);
+  });
+
+  it('getLatestTransaction returns null for empty array', () => {
+    expect(getLatestTransaction([])).toBeNull();
+  });
+
+  it('filterTransactions with no criteria returns all', () => {
+    expect(filterTransactions(mockTxs, {})).toEqual(mockTxs);
+  });
 });
