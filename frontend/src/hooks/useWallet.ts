@@ -39,13 +39,17 @@ export function useWallet() {
   return { isConnected, connect, disconnect, getAddress, userSession };
 }
 
-export function getStxBalance(address: string): Promise<number> {
+export async function getStxBalance(address: string): Promise<number> {
   const isMainnet = import.meta.env.VITE_NETWORK === "mainnet";
   const baseUrl = isMainnet
     ? "https://api.mainnet.hiro.so"
     : "https://api.testnet.hiro.so";
-  return fetch(`${baseUrl}/extended/v1/address/${address}/balances`)
-    .then(res => res.json())
-    .then(data => parseInt(data.stx?.balance || '0'))
-    .catch(() => 0);
+  try {
+    const res = await fetch(`${baseUrl}/extended/v1/address/${address}/balances`);
+    if (!res.ok) return 0;
+    const data = await res.json() as { stx?: { balance?: string } };
+    return parseInt(data.stx?.balance || '0', 10);
+  } catch {
+    return 0;
+  }
 }
