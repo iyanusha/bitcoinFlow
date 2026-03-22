@@ -29,6 +29,7 @@
   --radius-xl: 20px;
   --surface-hover: rgba(0,0,0,0.04);
   --overlay-bg: rgba(0,0,0,0.5);
+  --focus-ring: rgba(102, 126, 234, 0.25);
 }
 
 .dark {
@@ -58,6 +59,7 @@
   --shadow-xl: 0 20px 60px rgba(0,0,0,0.4);
   --surface-hover: rgba(255,255,255,0.06);
   --overlay-bg: rgba(0,0,0,0.7);
+  --focus-ring: rgba(129, 140, 248, 0.3);
 }
 
 *:focus-visible {
