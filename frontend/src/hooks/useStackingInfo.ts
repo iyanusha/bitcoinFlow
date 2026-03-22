@@ -4,6 +4,7 @@ import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { REFRESH_INTERVAL_MS } from '../lib/constants';
 import { logger } from '../lib/logger';
 import { parseClarityInt, parseClarityBool } from '../lib/contractParsers';
+import { withRetry } from '../lib/retry';
 import type { StackingInfo } from '../types';
 
 const defaultInfo: StackingInfo = {
@@ -23,25 +24,29 @@ export function useStackingInfo() {
     setError(null);
 
     try {
-      const poolResult = await fetchCallReadOnlyFunction({
-        contractAddress: CONTRACT_ADDRESS,
-        contractName: CONTRACT_NAME,
-        functionName: 'get-delegation-pool',
-        functionArgs: [],
-        network,
-        senderAddress: CONTRACT_ADDRESS,
-      });
+      const poolResult = await withRetry(() =>
+        fetchCallReadOnlyFunction({
+          contractAddress: CONTRACT_ADDRESS,
+          contractName: CONTRACT_NAME,
+          functionName: 'get-delegation-pool',
+          functionArgs: [],
+          network,
+          senderAddress: CONTRACT_ADDRESS,
+        })
+      );
 
       const poolJson = cvToJSON(poolResult);
 
-      const statusResult = await fetchCallReadOnlyFunction({
-        contractAddress: CONTRACT_ADDRESS,
-        contractName: CONTRACT_NAME,
-        functionName: 'get-vault-status',
-        functionArgs: [],
-        network,
-        senderAddress: CONTRACT_ADDRESS,
-      });
+      const statusResult = await withRetry(() =>
+        fetchCallReadOnlyFunction({
+          contractAddress: CONTRACT_ADDRESS,
+          contractName: CONTRACT_NAME,
+          functionName: 'get-vault-status',
+          functionArgs: [],
+          network,
+          senderAddress: CONTRACT_ADDRESS,
+        })
+      );
 
       const statusJson = cvToJSON(statusResult);
       const statusValue = statusJson.value;
