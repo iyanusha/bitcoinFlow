@@ -1,4 +1,5 @@
 import { logger } from './logger';
+import { RETRY } from './constants';
 
 export interface RetryOptions {
   maxRetries?: number;
@@ -7,9 +8,9 @@ export interface RetryOptions {
 }
 
 const DEFAULT_OPTIONS: Required<RetryOptions> = {
-  maxRetries: 3,
-  baseDelayMs: 1000,
-  maxDelayMs: 10000,
+  maxRetries: RETRY.MAX_RETRIES,
+  baseDelayMs: RETRY.BASE_DELAY_MS,
+  maxDelayMs: RETRY.MAX_DELAY_MS,
 };
 
 /**
