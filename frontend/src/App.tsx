@@ -30,9 +30,9 @@ function App() {
       functionName: 'deposit',
       functionArgs: [uintCV(parseInt(depositAmount) * 100000000)],
       postConditionMode: PostConditionMode.Deny,
-      onFinish: (data) => {
-        console.log('Deposit tx:', data.txId)
+      onFinish: () => {
         setDepositAmount('')
+        setError(null)
       },
     });
     } catch (err) {
@@ -51,9 +51,9 @@ function App() {
       functionName: 'withdraw',
       functionArgs: [uintCV(parseInt(withdrawAmount) * 100000000)],
       postConditionMode: PostConditionMode.Deny,
-      onFinish: (data) => {
-        console.log('Withdraw tx:', data.txId)
+      onFinish: () => {
         setWithdrawAmount('')
+        setError(null)
       },
     });
     } catch (err) {
