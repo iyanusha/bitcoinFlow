@@ -10,6 +10,7 @@ import { validateDeposit, validateWithdraw, validateDecimalPrecision, sanitizeNu
 import { parseTransactionError } from './lib/errorUtils'
 import { formatSTX, formatCompact, formatBlocks } from './lib/formatters'
 import { MICROSTX_PER_STX, SATS_PER_BTC } from './lib/constants'
+import { SkipLink } from './components/SkipLink'
 import './App.css'
 
 function App() {
@@ -128,6 +129,7 @@ function App() {
 
   return (
     <div className="app">
+      <SkipLink targetId="main-content" />
       <header className="app-header" role="banner">
         <div className="header-top">
           <h1>BitcoinFlow</h1>
@@ -172,7 +174,7 @@ function App() {
       )}
 
       {isConnected && (
-        <main className="main-content">
+        <main id="main-content" className="main-content">
           <div className="vault-stats">
             <div className="stats-header">
               <h2>Vault Statistics</h2>
