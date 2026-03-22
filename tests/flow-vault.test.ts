@@ -794,6 +794,23 @@ describe("flow-vault", () => {
     expect(result).toBeSome(Cl.principal(wallet2));
   });
 
+  it("multiple sequential deposits accumulate for same user", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+
+    const wallet5 = accounts.get("wallet_5")!;
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(1000000)], wallet5);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(2000000)], wallet5);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(3000000)], wallet5);
+
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-user-deposit",
+      [Cl.principal(wallet5)],
+      deployer
+    );
+    expect(result).toBeUint(6000000);
+  });
+
   it("total-deposits read-only matches vault status field", () => {
     const { result: totalDeposits } = simnet.callReadOnlyFn(
       "flow-vault",
