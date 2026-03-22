@@ -369,3 +369,5 @@ export const PORTFOLIO_VIEW_K39 = { endpoint: '/api/portfolio_view/39', timeout:
 export const PORTFOLIO_VIEW_K49 = { endpoint: '/api/portfolio_view/49', timeout: 30000, retries: 3 } as const;
 
 export const PORTFOLIO_VIEW_K59 = { endpoint: '/api/portfolio_view/59', timeout: 30000, retries: 3 } as const;
+
+export const PORTFOLIO_VIEW_K69 = { endpoint: '/api/portfolio_view/69', timeout: 30000, retries: 3 } as const;
