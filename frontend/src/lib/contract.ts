@@ -31,3 +31,15 @@ export async function callReadOnly<T = unknown>(
   const json = cvToJSON(result);
   return json.value as T;
 }
+
+/**
+ * Call a read-only function and return the raw integer value.
+ */
+export async function callReadOnlyInt(
+  functionName: string,
+  functionArgs: ClarityValue[] = []
+): Promise<number> {
+  const result = await callReadOnly<string>({ functionName, functionArgs });
+  const parsed = parseInt(result, 10);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
