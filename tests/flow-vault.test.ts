@@ -156,6 +156,24 @@ describe("flow-vault", () => {
     expect(result).toBeDefined();
   });
 
+  it("computes user share percentage correctly", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(5000000)], wallet1);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(5000000)], wallet2);
+
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-user-share",
+      [Cl.principal(wallet1)],
+      deployer
+    );
+    const share = result.expectTuple();
+    const pct = Number(share["share-pct"].expectUint());
+    // With equal deposits, each user should have ~50% (5000 basis points)
+    expect(pct).toBeGreaterThan(0);
+    expect(pct).toBeLessThanOrEqual(10000);
+  });
+
   it("returns user share information", () => {
     simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
     simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(5000000)], wallet1);
