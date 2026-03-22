@@ -188,6 +188,20 @@ describe("flow-vault", () => {
     expect(remaining).toBeLessThanOrEqual(6);
   });
 
+  it("cooldown expires after mining enough blocks", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(1000000)], wallet1);
+    simnet.mineEmptyBlocks(7);
+
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-cooldown-remaining",
+      [Cl.principal(wallet1)],
+      deployer
+    );
+    expect(result).toBeUint(0);
+  });
+
   it("only owner can compound rewards", () => {
     const { result } = simnet.callPublicFn(
       "flow-vault",
