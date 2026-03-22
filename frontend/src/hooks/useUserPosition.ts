@@ -8,6 +8,7 @@ export function useUserPosition(userAddress: string | null) {
   const [cooldown, setCooldown] = useState<CooldownInfo>({ blocksRemaining: 0, isExpired: true });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<number | null>(null);
 
   const fetchPosition = useCallback(async () => {
     if (!userAddress) {
@@ -53,6 +54,7 @@ export function useUserPosition(userAddress: string | null) {
         blocksRemaining,
         isExpired: blocksRemaining === 0,
       });
+      setLastUpdated(Date.now());
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch position');
       setPosition(null);
@@ -65,5 +67,5 @@ export function useUserPosition(userAddress: string | null) {
     fetchPosition();
   }, [fetchPosition]);
 
-  return { position, cooldown, loading, error, refresh: fetchPosition };
+  return { position, cooldown, loading, error, lastUpdated, refresh: fetchPosition };
 }
