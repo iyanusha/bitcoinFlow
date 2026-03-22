@@ -1077,6 +1077,25 @@
   cursor: pointer;
 }
 
+.confirm-dialog-confirm:hover {
+  opacity: 0.9;
+}
+
+.confirm-dialog-cancel:hover {
+  background: var(--bg-secondary);
+}
+
+.confirm-dialog-confirm:active,
+.confirm-dialog-cancel:active {
+  transform: scale(0.97);
+}
+
+.confirm-dialog-confirm,
+.confirm-dialog-cancel {
+  min-height: 44px;
+  min-width: 80px;
+}
+
 .explorer-link {
   color: var(--accent);
   text-decoration: none;
