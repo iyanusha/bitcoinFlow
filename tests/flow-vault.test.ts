@@ -146,14 +146,28 @@ describe("flow-vault", () => {
     expect(result).toBeUint(1000000);
   });
 
-  it("returns vault TVL", () => {
+  it("returns vault TVL equal to deposits plus rewards", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(8000000)], wallet1);
+
+    const { result: statusResult } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-vault-status",
+      [],
+      deployer
+    );
+    const status = statusResult.expectTuple();
+    const deposits = Number(status["total-deposits"].expectUint());
+    const rewards = Number(status["total-rewards"].expectUint());
+
     const { result } = simnet.callReadOnlyFn(
       "flow-vault",
       "get-vault-tvl",
       [],
       deployer
     );
-    expect(result).toBeDefined();
+    const tvl = Number(result.expectUint());
+    expect(tvl).toBe(deposits + rewards);
   });
 
   it("computes user share percentage correctly", () => {
