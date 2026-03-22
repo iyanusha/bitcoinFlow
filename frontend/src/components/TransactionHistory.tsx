@@ -79,16 +79,18 @@ export function TransactionHistory({ transactions, onClear, pendingCount = 0 }: 
   const [typeFilter, setTypeFilter] = useState<FilterType>('all');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [datePreset, setDatePreset] = useState<DateRangePreset>('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const filteredTransactions = useMemo(() => {
     const dateRange = getPresetDateRange(datePreset);
-    return transactions.filter(tx => {
+    const filtered = transactions.filter(tx => {
       if (typeFilter !== 'all' && tx.type !== typeFilter) return false;
       if (statusFilter !== 'all' && tx.status !== statusFilter) return false;
       if (!isWithinDateRange(tx.timestamp, dateRange)) return false;
       return true;
     });
-  }, [transactions, typeFilter, statusFilter, datePreset]);
+    return searchTransactions(filtered, searchQuery);
+  }, [transactions, typeFilter, statusFilter, datePreset, searchQuery]);
 
   if (transactions.length === 0) {
     return (
