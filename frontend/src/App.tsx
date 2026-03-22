@@ -8,7 +8,7 @@ import { uintCV, PostConditionMode } from '@stacks/transactions'
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './lib/stacks'
 import { validateDeposit, validateAmount } from './lib/validation'
 import { parseTransactionError } from './lib/errorUtils'
-import { formatSTX, formatCompact } from './lib/formatters'
+import { formatSTX, formatCompact, formatBlocks } from './lib/formatters'
 import { MICROSTX_PER_STX } from './lib/constants'
 import './App.css'
 
@@ -157,6 +157,30 @@ function App() {
               </div>
             </div>
           </div>
+
+          {position && (
+            <div className="user-position">
+              <h2>Your Position</h2>
+              <div className="stats-grid">
+                <div className="stat-card">
+                  <h3>Deposited</h3>
+                  <p>{formatSTX(position.depositedAmount)} sBTC</p>
+                </div>
+                <div className="stat-card">
+                  <h3>FLOW Balance</h3>
+                  <p>{formatCompact(position.flowTokenBalance / MICROSTX_PER_STX)} FLOW</p>
+                </div>
+                <div className="stat-card">
+                  <h3>Vault Share</h3>
+                  <p>{(position.sharePct / 100).toFixed(2)}%</p>
+                </div>
+                <div className="stat-card">
+                  <h3>Cooldown</h3>
+                  <p>{cooldown.isExpired ? 'Ready' : `${formatBlocks(cooldown.blocksRemaining)} remaining`}</p>
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className="actions">
             <div className="action-card">
