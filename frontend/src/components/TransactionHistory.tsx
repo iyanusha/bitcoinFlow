@@ -41,11 +41,17 @@ export function TransactionHistory({ transactions, onClear }: TransactionHistory
     <div className="tx-history">
       <div className="tx-history-header">
         <h3>Transaction History <span className="tx-count">({transactions.length})</span></h3>
-        <button className="tx-clear-btn" onClick={() => {
-          if (window.confirm('Clear all transaction history?')) {
-            onClear();
-          }
-        }}>Clear</button>
+        <button
+          className="tx-clear-btn"
+          onClick={() => {
+            if (window.confirm('Clear all transaction history?')) {
+              onClear();
+            }
+          }}
+          aria-label="Clear transaction history"
+        >
+          Clear
+        </button>
       </div>
       <ul className="tx-list" aria-label="Transaction history">
         {transactions.map(tx => (
