@@ -1,21 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
-import { THEME } from '../lib/constants';
-
-export type ThemeMode = 'light' | 'dark' | 'system';
-
-function getInitialMode(): boolean {
-  if (typeof window === 'undefined') return false;
-  const stored = localStorage.getItem(THEME.STORAGE_KEY);
-  if (stored !== null) return stored === 'true';
-  return window.matchMedia(THEME.SYSTEM_PREFERENCE_QUERY).matches;
-}
+import { getStoredTheme, applyTheme, persistTheme } from '../lib/theme';
 
 export function useTheme() {
-  const [isDark, setIsDark] = useState(getInitialMode);
+  const [isDark, setIsDark] = useState(getStoredTheme);
 
   useEffect(() => {
-    document.documentElement.classList.toggle(THEME.CLASS_NAME, isDark);
-    localStorage.setItem(THEME.STORAGE_KEY, String(isDark));
+    applyTheme(isDark);
+    persistTheme(isDark);
   }, [isDark]);
 
   const toggle = useCallback(() => setIsDark(prev => !prev), []);
