@@ -49,6 +49,8 @@ function App() {
 
   const handleWithdraw = async () => {
     if (!isConnected || !withdrawAmount) return
+    setIsWithdrawing(true)
+    setError(null)
 
     try {
     await openContractCall({
@@ -61,10 +63,15 @@ function App() {
       onFinish: () => {
         setWithdrawAmount('')
         setError(null)
+        setIsWithdrawing(false)
+      },
+      onCancel: () => {
+        setIsWithdrawing(false)
       },
     });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Withdrawal failed");
+      setIsWithdrawing(false)
     }
   }
 
