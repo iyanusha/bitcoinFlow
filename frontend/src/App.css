@@ -49,6 +49,9 @@
   margin: 0 auto;
   padding: 2rem;
   min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.3s, color 0.3s;
 }
 
 .app-header {
