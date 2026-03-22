@@ -537,3 +537,7 @@ button:focus-visible {
 .fee_estimator-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
 .fee_estimator-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
 .fee_estimator-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_comparison-sec6 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_comparison-sec6 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_comparison-sec6 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
