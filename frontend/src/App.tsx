@@ -119,7 +119,13 @@ function App() {
       {isConnected && (
         <main className="main-content">
           <div className="vault-stats">
-            <h2>Vault Statistics</h2>
+            <div className="stats-header">
+              <h2>Vault Statistics</h2>
+              {statsLoading && <span className="loading-dot" aria-label="Loading stats">●</span>}
+              <button className="refresh-btn" onClick={refreshStats} disabled={statsLoading} aria-label="Refresh stats">
+                ↻
+              </button>
+            </div>
             <div className="stats-grid" aria-live="polite">
               <div className="stat-card">
                 <h3>Total Deposits</h3>
