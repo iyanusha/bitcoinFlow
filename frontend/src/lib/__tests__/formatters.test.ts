@@ -3,7 +3,7 @@ import {
   formatSTX, formatBTC, formatSBTC, formatCompact,
   formatPercentage, formatBlocks, formatExchangeRate,
   formatAddress, formatTxId, formatUSD, formatTimeSince,
-  formatDate, formatNumber, formatDuration,
+  formatDate, formatDateFull, formatNumber, formatDuration,
   formatSharePct, formatTVL,
 } from '../formatters';
 
