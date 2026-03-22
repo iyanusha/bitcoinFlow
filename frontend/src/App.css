@@ -760,6 +760,10 @@
   color: #e2e8f0;
 }
 
+.offline-banner a {
+  color: #93c5fd;
+}
+
 .dismiss-btn {
   background: none;
   border: none;
