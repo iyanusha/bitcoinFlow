@@ -30,7 +30,10 @@ export function useWallet() {
   const getAddress = useCallback(() => {
     if (!isConnected) return null;
     const userData = userSession.loadUserData();
-    return userData.profile.stxAddress.testnet;
+    const isMainnet = import.meta.env.VITE_NETWORK === "mainnet";
+    return isMainnet
+      ? userData.profile.stxAddress.mainnet
+      : userData.profile.stxAddress.testnet;
   }, [isConnected]);
 
   return { isConnected, connect, disconnect, getAddress, userSession };
