@@ -1018,11 +1018,16 @@
   background: none;
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  padding: 0.15rem 0.4rem;
+  padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
   cursor: pointer;
   color: var(--text-muted);
   transition: all 0.2s;
+  min-height: 32px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .copy-btn:hover {
