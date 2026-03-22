@@ -43,6 +43,7 @@ export function isPositiveInteger(value: string): boolean {
 }
 
 export function isValidStxAddress(address: string): boolean {
+  if (address.length < 40 || address.length > 42) return false;
   return /^S[TPM][0-9A-Z]{38,40}$/.test(address);
 }
 
