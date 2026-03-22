@@ -10,7 +10,7 @@ import { uintCV, PostConditionMode } from '@stacks/transactions'
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './lib/stacks'
 import { validateDeposit, validateWithdraw, validateDecimalPrecision, sanitizeNumericInput } from './lib/validation'
 import { parseTransactionError } from './lib/errorUtils'
-import { formatSTX, formatCompact, formatBlocks } from './lib/formatters'
+import { formatSTX, formatCompact, formatBlocks, formatAddress } from './lib/formatters'
 import { MICROSTX_PER_STX, SATS_PER_BTC } from './lib/constants'
 import { SkipLink } from './components/SkipLink'
 import { ToastContainer } from './components/ToastContainer'
@@ -167,7 +167,7 @@ function App() {
           </button>
         ) : (
           <div className="wallet-info">
-            <p>Connected: {getAddress()?.slice(0, 8)}...{getAddress()?.slice(-4)}</p>
+            <p>Connected: {getAddress() ? formatAddress(getAddress()!) : ''}</p>
             <button className="disconnect-btn" onClick={disconnect}>
               Disconnect
             </button>
