@@ -1313,7 +1313,7 @@
   font-size: 0.75rem;
   cursor: pointer;
   color: var(--text-muted);
-  transition: all 0.2s;
+  transition: all 0.2s, background 0.3s, border-color 0.3s;
   min-height: 32px;
   min-width: 44px;
   display: inline-flex;
