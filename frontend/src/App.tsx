@@ -18,7 +18,12 @@ function App() {
   const [vaultStats] = useState<VaultStats>({
     totalDeposits: 0,
     totalRewards: 0,
-    userBalance: 0
+    userBalance: 0,
+    stxBalance: 0,
+    depositCount: 0,
+    withdrawCount: 0,
+    isPaused: false,
+    currentBlock: 0,
   })
 
   const handleDeposit = async () => {
