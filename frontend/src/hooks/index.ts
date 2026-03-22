@@ -25,6 +25,7 @@ export { usePolling } from './usePolling';
 export { usePrefersColorScheme } from './usePrefersColorScheme';
 export { usePrevious } from './usePrevious';
 export { useReducedMotion } from './useReducedMotion';
+export { useRovingTabIndex } from './useRovingTabIndex';
 export { useScrollLock } from './useScrollLock';
 export { useStackingInfo } from './useStackingInfo';
 export { useStableCallback } from './useStableCallback';
