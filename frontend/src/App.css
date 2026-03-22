@@ -1362,6 +1362,13 @@
   transition: color 0.3s;
 }
 
+.tx-id {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-family: 'Courier New', Courier, monospace;
+  cursor: default;
+}
+
 .tx-status {
   font-size: 0.75rem;
   padding: 0.15rem 0.5rem;
