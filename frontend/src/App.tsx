@@ -9,7 +9,7 @@ import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './lib/stacks'
 import { validateDeposit, validateWithdraw, validateDecimalPrecision, sanitizeNumericInput } from './lib/validation'
 import { parseTransactionError } from './lib/errorUtils'
 import { formatSTX, formatCompact, formatBlocks } from './lib/formatters'
-import { MICROSTX_PER_STX } from './lib/constants'
+import { MICROSTX_PER_STX, SATS_PER_BTC } from './lib/constants'
 import './App.css'
 
 function App() {
@@ -58,7 +58,7 @@ function App() {
       contractAddress: CONTRACT_ADDRESS,
       contractName: CONTRACT_NAME,
       functionName: 'deposit',
-      functionArgs: [uintCV(parseInt(depositAmount) * 100000000)],
+      functionArgs: [uintCV(Math.round(parseFloat(depositAmount) * SATS_PER_BTC))],
       postConditionMode: PostConditionMode.Deny,
       onFinish: () => {
         setDepositAmount('')
