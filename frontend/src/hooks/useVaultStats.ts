@@ -3,6 +3,7 @@ import { cvToJSON, fetchCallReadOnlyFunction, principalCV } from '@stacks/transa
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { REFRESH_INTERVAL_MS } from '../lib/constants';
 import { logger } from '../lib/logger';
+import { parseClarityInt, parseClarityBool } from '../lib/contractParsers';
 import type { VaultStats, VaultStatusResponse } from '../types';
 
 const defaultStats: VaultStats = {
@@ -70,14 +71,14 @@ export function useVaultStats(userAddress: string | null) {
       }
 
       setStats({
-        totalDeposits: parseInt(statusValue['total-deposits'].value, 10),
-        totalRewards: parseInt(statusValue['total-rewards'].value, 10),
+        totalDeposits: parseClarityInt(statusValue['total-deposits'].value),
+        totalRewards: parseClarityInt(statusValue['total-rewards'].value),
         userBalance,
-        stxBalance: tvl || parseInt(statusValue['stx-balance'].value, 10),
-        depositCount: parseInt(statusValue['deposit-count'].value, 10),
-        withdrawCount: parseInt(statusValue['withdraw-count'].value, 10),
-        isPaused: statusValue.paused.value,
-        currentBlock: parseInt(statusValue['current-block'].value, 10),
+        stxBalance: tvl || parseClarityInt(statusValue['stx-balance'].value),
+        depositCount: parseClarityInt(statusValue['deposit-count'].value),
+        withdrawCount: parseClarityInt(statusValue['withdraw-count'].value),
+        isPaused: parseClarityBool(statusValue.paused.value),
+        currentBlock: parseClarityInt(statusValue['current-block'].value),
       });
       setLastUpdated(Date.now());
       logger.debug('Vault stats fetched successfully');
