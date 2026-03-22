@@ -31,6 +31,7 @@ export function useContractCall() {
         contractName: CONTRACT_NAME,
         functionName: options.functionName,
         functionArgs: options.functionArgs,
+        postConditions: options.postConditions ?? [],
         postConditionMode: PostConditionMode.Deny,
         onFinish: (data) => {
           logger.info(`Transaction submitted: ${options.functionName}`, { txId: data.txId });
@@ -44,7 +45,8 @@ export function useContractCall() {
         },
       });
     } catch (err) {
-      const errorMsg = parseTransactionError(err);
+      const contractMsg = handleContractError(err);
+      const errorMsg = contractMsg || parseTransactionError(err);
       logger.error(`Contract call failed: ${options.functionName}`, err);
       setError(errorMsg);
       setLoading(false);
