@@ -604,6 +604,7 @@
   text-align: center;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
+  transition: color 0.3s;
 }
 
 .info-section ul {
