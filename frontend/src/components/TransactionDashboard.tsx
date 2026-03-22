@@ -3,6 +3,7 @@ import { useTransactionHistory } from '../hooks/useTransactionHistory';
 import { useTransactionPoller } from '../hooks/useTransactionPoller';
 import { useTransactionStatus } from '../hooks/useTransactionStatus';
 import { TransactionHistory } from './TransactionHistory';
+import { TransactionAnnouncer } from './TransactionAnnouncer';
 
 export function TransactionDashboard() {
   const {
@@ -36,6 +37,7 @@ export function TransactionDashboard() {
 
   return (
     <div className="tx-dashboard">
+      <TransactionAnnouncer transactions={transactions} />
       <TransactionHistory
         transactions={transactions}
         onClear={clearHistory}
