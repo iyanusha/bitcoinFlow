@@ -59,3 +59,12 @@ export {
   hasNotificationPermission,
   showTransactionNotification,
 } from './transactionNotifications';
+export {
+  hexToRgb,
+  relativeLuminance,
+  contrastRatio,
+  meetsAA,
+  meetsAAA,
+  getContrastLevel,
+} from './colorContrast';
+export type { ContrastLevel } from './colorContrast';
