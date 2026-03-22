@@ -931,10 +931,12 @@
   background: none;
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  padding: 0.25rem 0.75rem;
+  padding: 0.35rem 0.75rem;
   font-size: 0.8rem;
   cursor: pointer;
   color: var(--text-muted);
+  min-height: 36px;
+  transition: all 0.2s;
 }
 
 .tx-clear-btn:hover {
