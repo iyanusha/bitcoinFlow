@@ -6,6 +6,7 @@ export function getContractErrorMessage(code: number): string {
     103: 'Stacking operation failed',
     104: 'sBTC transfer could not be completed',
     105: 'Vault operations are currently paused',
+    106: 'Please wait for the cooldown period to end before withdrawing',
   };
   return messages[code] || `Unknown contract error (code: ${code})`;
 }
