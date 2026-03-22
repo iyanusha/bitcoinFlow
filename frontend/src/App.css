@@ -164,6 +164,20 @@
   gap: 1rem;
 }
 
+.wallet-address-link {
+  color: white;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 0.95rem;
+  border-bottom: 1px dashed rgba(255,255,255,0.5);
+  transition: border-color 0.2s;
+}
+
+.wallet-address-link:hover {
+  border-bottom-color: white;
+  text-decoration: none;
+}
+
 .disconnect-btn {
   background: rgba(255, 100, 100, 0.3);
   color: white;
