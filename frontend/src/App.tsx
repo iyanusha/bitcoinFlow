@@ -372,12 +372,12 @@ function App() {
 
           <section className="info-section" role="region" aria-labelledby="how-it-works">
             <h3 id="how-it-works">How BitcoinFlow Works</h3>
-            <ul>
+            <ol aria-label="Steps to use BitcoinFlow">
               <li>Deposit sBTC to get liquid Flow tokens (1:1 ratio)</li>
               <li>Your sBTC is auto-stacked to earn STX rewards</li>
               <li>Rewards are automatically compounded</li>
               <li>Withdraw anytime by burning Flow tokens</li>
-            </ul>
+            </ol>
           </section>
         </main>
       </ErrorBoundary>)}
