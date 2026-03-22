@@ -146,6 +146,16 @@ export function TransactionHistory({ transactions, onClear, pendingCount = 0 }: 
           <FilterButton label="Confirmed" active={statusFilter === 'confirmed'} onClick={() => setStatusFilter('confirmed')} />
           <FilterButton label="Failed" active={statusFilter === 'failed'} onClick={() => setStatusFilter('failed')} />
         </div>
+        <div className="tx-filter-group">
+          {(['all', 'today', '7d', '30d', '90d'] as DateRangePreset[]).map(preset => (
+            <FilterButton
+              key={preset}
+              label={DATE_RANGE_LABELS[preset]}
+              active={datePreset === preset}
+              onClick={() => setDatePreset(preset)}
+            />
+          ))}
+        </div>
       </div>
 
       <PaginatedList transactions={filteredTransactions} />
