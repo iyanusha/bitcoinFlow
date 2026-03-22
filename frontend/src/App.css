@@ -286,7 +286,8 @@
   background: var(--bg-secondary);
   padding: 2rem;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-lg);
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
 .stats-header {
