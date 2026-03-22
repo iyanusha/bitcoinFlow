@@ -536,6 +536,11 @@
   color: var(--success);
   font-weight: bold;
   font-size: 1.2rem;
+  speak: never;
+}
+
+.info-section li {
+  line-height: 1.5;
 }
 
 @media (max-width: 1024px) {
