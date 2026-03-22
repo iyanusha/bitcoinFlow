@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   formatSTX, formatBTC, formatSBTC, formatCompact,
   formatPercentage, formatBlocks, formatExchangeRate,
-  formatAddress, formatTxId, formatUSD,
+  formatAddress, formatTxId, formatUSD, formatTimeSince,
 } from '../formatters';
 
 describe('formatSTX', () => {
@@ -164,5 +164,26 @@ describe('formatUSD', () => {
   it('formats zero', () => {
     const result = formatUSD(0);
     expect(result).toContain('0.00');
+  });
+});
+
+describe('formatTimeSince', () => {
+  it('returns "just now" for recent timestamps', () => {
+    expect(formatTimeSince(Date.now() - 2000)).toBe('just now');
+  });
+
+  it('returns seconds for < 60s', () => {
+    const result = formatTimeSince(Date.now() - 30_000);
+    expect(result).toMatch(/\d+s ago/);
+  });
+
+  it('returns minutes for < 60m', () => {
+    const result = formatTimeSince(Date.now() - 300_000);
+    expect(result).toMatch(/\d+m ago/);
+  });
+
+  it('returns hours for >= 60m', () => {
+    const result = formatTimeSince(Date.now() - 7_200_000);
+    expect(result).toMatch(/\d+h ago/);
   });
 });
