@@ -15,6 +15,7 @@ export function ErrorMessage({ message, onDismiss, type = 'error' }: ErrorMessag
     <div
       role={type === 'error' ? 'alert' : 'status'}
       aria-live={type === 'error' ? 'assertive' : 'polite'}
+      aria-atomic="true"
       style={{ background: c.bg, color: c.fg, padding: '1rem', borderRadius: '8px', marginBottom: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
     >
       <span>{message}</span>
