@@ -2025,3 +2025,73 @@
   }
 }
 
+/* Keyboard shortcut help dialog */
+.shortcut-help-dialog {
+  max-width: 400px;
+  width: 90vw;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.shortcut-help-dialog::backdrop {
+  background: var(--overlay-bg);
+}
+
+.shortcut-help-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.shortcut-help-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.shortcut-help-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+}
+
+.shortcut-help-close:hover {
+  color: var(--text-primary);
+  background: var(--surface-hover);
+}
+
+.shortcut-help-table {
+  width: 100%;
+  border-spacing: 0 0.5rem;
+}
+
+.shortcut-keys {
+  text-align: right;
+  padding-right: 1rem;
+  white-space: nowrap;
+}
+
+.shortcut-keys kbd {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 0 var(--border-color);
+}
+
+.shortcut-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
