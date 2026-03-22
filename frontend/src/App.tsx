@@ -215,7 +215,10 @@ function App() {
 
           {position && (
             <div className="user-position">
-              <h2>Your Position</h2>
+              <div className="stats-header">
+                <h2>Your Position</h2>
+                {positionLoading && <span className="loading-dot" aria-label="Loading position">●</span>}
+              </div>
               <div className="stats-grid">
                 <div className="stat-card">
                   <h3>Deposited</h3>
