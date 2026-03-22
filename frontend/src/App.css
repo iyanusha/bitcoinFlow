@@ -839,11 +839,13 @@
 .error-boundary h2 {
   color: var(--error-text);
   margin-bottom: 1rem;
+  transition: color 0.3s;
 }
 
 .error-boundary p {
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
+  transition: color 0.3s;
 }
 
 .error-boundary button {
