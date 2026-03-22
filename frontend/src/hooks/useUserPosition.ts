@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { cvToJSON, fetchCallReadOnlyFunction, principalCV } from '@stacks/transactions';
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
+import { logger } from '../lib/logger';
 import type { UserPosition, CooldownInfo, UserShareResponse } from '../types';
 
 export function useUserPosition(userAddress: string | null) {
@@ -55,7 +56,9 @@ export function useUserPosition(userAddress: string | null) {
         isExpired: blocksRemaining === 0,
       });
       setLastUpdated(Date.now());
+      logger.debug('User position fetched successfully', { address: userAddress });
     } catch (err) {
+      logger.error('Failed to fetch user position', err);
       setError(err instanceof Error ? err.message : 'Failed to fetch position');
       setPosition(null);
     } finally {
