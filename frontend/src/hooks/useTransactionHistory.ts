@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react';
 import type { TransactionRecord, TransactionStatus } from '../types';
+import { MAX_TX_HISTORY } from '../lib/constants';
 
 const STORAGE_KEY = 'bf-tx-history';
-const MAX_HISTORY = 50;
 
 function loadHistory(): TransactionRecord[] {
   try {
@@ -15,7 +15,7 @@ function loadHistory(): TransactionRecord[] {
 }
 
 function saveHistory(records: TransactionRecord[]): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(records.slice(0, MAX_HISTORY)));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(records.slice(0, MAX_TX_HISTORY)));
 }
 
 export function useTransactionHistory() {
@@ -28,7 +28,7 @@ export function useTransactionHistory() {
       timestamp: Date.now(),
     };
     setTransactions(prev => {
-      const next = [record, ...prev].slice(0, MAX_HISTORY);
+      const next = [record, ...prev].slice(0, MAX_TX_HISTORY);
       saveHistory(next);
       return next;
     });
