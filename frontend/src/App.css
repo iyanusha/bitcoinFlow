@@ -834,11 +834,12 @@
   font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
   background: var(--bg-secondary);
   padding: 0.75rem;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   margin-bottom: 1rem;
   word-break: break-all;
   max-height: 120px;
   overflow-y: auto;
+  transition: background 0.3s;
 }
 
 @media (max-width: 480px) {
@@ -1141,7 +1142,7 @@
 .tx-clear-btn {
   background: none;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   padding: 0.35rem 0.75rem;
   font-size: 0.8rem;
   cursor: pointer;
