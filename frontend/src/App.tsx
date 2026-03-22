@@ -362,7 +362,7 @@ function App() {
 
           <TransactionHistory transactions={transactions} onClear={clearHistory} />
 
-          <section className="info-section" aria-labelledby="how-it-works">
+          <section className="info-section" role="region" aria-labelledby="how-it-works">
             <h3 id="how-it-works">How BitcoinFlow Works</h3>
             <ul>
               <li>Deposit sBTC to get liquid Flow tokens (1:1 ratio)</li>
