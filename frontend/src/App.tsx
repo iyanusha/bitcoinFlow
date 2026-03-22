@@ -240,7 +240,7 @@ function App() {
           <div className="vault-stats">
             <div className="stats-header">
               <h2>Vault Statistics</h2>
-              {statsLoading && <span className="loading-dot" aria-label="Loading stats">●</span>}
+              {statsLoading && <span className="loading-dot" role="status" aria-label="Loading vault statistics"><span aria-hidden="true">●</span></span>}
               <button className="refresh-btn" onClick={refreshStats} disabled={statsLoading} aria-label="Refresh vault statistics">
                 <span aria-hidden="true">↻</span>
               </button>
