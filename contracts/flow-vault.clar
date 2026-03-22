@@ -162,7 +162,9 @@
     stx-balance: (var-get stx-balance),
     last-compound: (var-get last-compound-cycle),
     paused: (var-get vault-paused),
-    current-block: block-height
+    current-block: block-height,
+    deposit-count: (var-get total-deposit-count),
+    withdraw-count: (var-get total-withdraw-count)
   }
 )
 
