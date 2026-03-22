@@ -19,6 +19,7 @@ export function useStackingInfo() {
   const [info, setInfo] = useState<StackingInfo>(defaultInfo);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<number | null>(null);
 
   const fetchInfo = useCallback(async () => {
     setLoading(true);
@@ -59,6 +60,7 @@ export function useStackingInfo() {
         currentBlockHeight: parseClarityInt(statusValue?.['current-block']?.value),
       });
 
+      setLastUpdated(Date.now());
       logger.debug('Stacking info fetched successfully');
     } catch (err) {
       const msg = handleContractError(err);
@@ -75,5 +77,5 @@ export function useStackingInfo() {
     return () => clearInterval(interval);
   }, [fetchInfo]);
 
-  return { info, loading, error, refresh: fetchInfo };
+  return { info, loading, error, lastUpdated, refresh: fetchInfo };
 }
