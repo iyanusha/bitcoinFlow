@@ -4,6 +4,7 @@ import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { REFRESH_INTERVAL_MS } from '../lib/constants';
 import { logger } from '../lib/logger';
 import { parseClarityInt, parseClarityBool } from '../lib/contractParsers';
+import { handleContractError } from '../lib/contractErrors';
 import { withRetry } from '../lib/retry';
 import type { StackingInfo } from '../types';
 
@@ -60,7 +61,7 @@ export function useStackingInfo() {
 
       logger.debug('Stacking info fetched successfully');
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Failed to fetch stacking info';
+      const msg = handleContractError(err);
       logger.error('Failed to fetch stacking info', err);
       setError(msg);
     } finally {
