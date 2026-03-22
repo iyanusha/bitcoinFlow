@@ -176,6 +176,7 @@ function App() {
 
   return (
     <div className="app">
+      <KeyboardShortcutHelp open={showShortcuts} onClose={() => setShowShortcuts(false)} />
       <ToastContainer toasts={toasts} onDismiss={removeToast} />
       <SkipLink targetId="main-content" />
       <header className="app-header" role="banner" aria-label={LANDMARK_LABELS.header}>
