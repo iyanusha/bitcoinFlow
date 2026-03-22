@@ -590,9 +590,15 @@
   }
 
   .toast-container {
-    left: 1rem;
-    right: 1rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    top: 0.75rem;
     max-width: none;
+  }
+
+  .toast {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.75rem;
   }
 
   .tx-item {
