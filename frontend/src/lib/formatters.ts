@@ -31,6 +31,15 @@ export function formatExchangeRate(rate: number): string {
   return (rate / 1_000_000).toFixed(6);
 }
 
+export function formatAddress(address: string, startLen = 8, endLen = 4): string {
+  if (address.length <= startLen + endLen) return address;
+  return `${address.slice(0, startLen)}...${address.slice(-endLen)}`;
+}
+
+export function formatTxId(txId: string): string {
+  return formatAddress(txId, 10, 6);
+}
+
 export function formatTimeSince(timestamp: number): string {
   const seconds = Math.floor((Date.now() - timestamp) / 1000);
   if (seconds < 5) return 'just now';
