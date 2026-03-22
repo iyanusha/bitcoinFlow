@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { validateAmount, validateDeposit, validateWithdraw } from '../validation';
+import {
+  validateAmount,
+  validateDeposit,
+  validateWithdraw,
+  validateDecimalPrecision,
+} from '../validation';
 
 describe('validateAmount', () => {
   it('rejects empty string', () => {
@@ -94,5 +99,29 @@ describe('validateWithdraw', () => {
     const result = validateWithdraw('0', 100);
     expect(result.isValid).toBe(false);
     expect(result.error).toBe('Amount must be greater than zero');
+  });
+});
+
+describe('validateDecimalPrecision', () => {
+  it('accepts value within precision limit', () => {
+    const result = validateDecimalPrecision('1.12345678');
+    expect(result.isValid).toBe(true);
+  });
+
+  it('rejects value exceeding default 8 decimal precision', () => {
+    const result = validateDecimalPrecision('1.123456789');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Maximum 8 decimal places');
+  });
+
+  it('accepts whole numbers', () => {
+    const result = validateDecimalPrecision('42');
+    expect(result.isValid).toBe(true);
+  });
+
+  it('supports custom precision limit', () => {
+    const result = validateDecimalPrecision('1.123', 2);
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Maximum 2 decimal places');
   });
 });
