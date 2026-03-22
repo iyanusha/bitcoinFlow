@@ -3,7 +3,13 @@
  * Provides mock factories and assertion helpers.
  */
 
-import type { TransactionRecord, VaultStats, UserPosition } from '../types';
+import type {
+  TransactionRecord,
+  VaultStats,
+  UserPosition,
+  ToastMessage,
+  CooldownInfo,
+} from '../types';
 
 export function createMockTransaction(
   overrides: Partial<TransactionRecord> = {}
@@ -43,6 +49,27 @@ export function createMockUserPosition(
     pendingRewards: 0,
     lastDepositTime: null,
     sharePct: 0,
+    ...overrides,
+  };
+}
+
+export function createMockToast(
+  overrides: Partial<ToastMessage> = {}
+): ToastMessage {
+  return {
+    id: crypto.randomUUID(),
+    type: 'info',
+    message: 'Test notification',
+    ...overrides,
+  };
+}
+
+export function createMockCooldown(
+  overrides: Partial<CooldownInfo> = {}
+): CooldownInfo {
+  return {
+    blocksRemaining: 0,
+    isExpired: true,
     ...overrides,
   };
 }
