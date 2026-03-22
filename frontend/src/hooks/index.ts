@@ -11,6 +11,7 @@ export { useEventListener } from './useEventListener';
 export { useExchangeRate } from './useExchangeRate';
 export { useFocusReturn } from './useFocusReturn';
 export { useFocusTrap } from './useFocusTrap';
+export { useHighContrast } from './useHighContrast';
 export { useFormValidation } from './useFormValidation';
 export { useIdleCallback } from './useIdleCallback';
 export { useIntersectionObserver } from './useIntersectionObserver';
