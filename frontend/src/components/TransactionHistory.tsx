@@ -8,6 +8,7 @@ import { usePagination } from '../hooks/usePagination';
 import { exportTransactions } from '../lib/transactionExport';
 import { getPresetDateRange, isWithinDateRange, DATE_RANGE_LABELS } from '../lib/dateRanges';
 import type { DateRangePreset } from '../lib/dateRanges';
+import { searchTransactions } from '../lib/transactionSearch';
 
 type FilterType = 'all' | 'deposit' | 'withdraw';
 type StatusFilter = 'all' | TransactionStatus;
