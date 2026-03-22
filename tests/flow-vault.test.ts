@@ -461,24 +461,26 @@ describe("flow-vault", () => {
     expect(result).toBeDefined();
   });
 
-  it("returns total rewards", () => {
+  it("returns total rewards as uint", () => {
     const { result } = simnet.callReadOnlyFn(
       "flow-vault",
       "get-total-rewards",
       [],
       deployer
     );
-    expect(result).toBeDefined();
+    const rewards = Number(result.expectUint());
+    expect(rewards).toBeGreaterThanOrEqual(0);
   });
 
-  it("returns total deposits", () => {
+  it("returns total deposits as uint", () => {
     const { result } = simnet.callReadOnlyFn(
       "flow-vault",
       "get-total-deposits",
       [],
       deployer
     );
-    expect(result).toBeDefined();
+    const deposits = Number(result.expectUint());
+    expect(deposits).toBeGreaterThanOrEqual(0);
   });
 
   it("owner can unpause vault", () => {
