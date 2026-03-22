@@ -24,3 +24,13 @@ export const API_URL = isMainnet
 
 export const STACKING_THRESHOLD = 10_000_000;
 export const WITHDRAWAL_COOLDOWN_BLOCKS = 6;
+
+export function getTxExplorerUrl(txId: string): string {
+  const chain = isMainnet ? '' : '&chain=testnet';
+  return `https://explorer.hiro.so/txid/${txId}?${chain}`;
+}
+
+export function getAddressExplorerUrl(address: string): string {
+  const chain = isMainnet ? '' : '&chain=testnet';
+  return `https://explorer.hiro.so/address/${address}?${chain}`;
+}
