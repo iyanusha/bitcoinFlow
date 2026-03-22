@@ -14,6 +14,7 @@ import { formatSTX, formatCompact, formatBlocks } from './lib/formatters'
 import { MICROSTX_PER_STX, SATS_PER_BTC } from './lib/constants'
 import { SkipLink } from './components/SkipLink'
 import { ToastContainer } from './components/ToastContainer'
+import { TransactionHistory } from './components/TransactionHistory'
 import './App.css'
 
 function App() {
