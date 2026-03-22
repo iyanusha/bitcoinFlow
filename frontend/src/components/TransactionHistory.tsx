@@ -172,6 +172,12 @@ export function TransactionHistory({ transactions, onClear, pendingCount = 0 }: 
         </div>
       </div>
 
+      {filteredTransactions.length !== transactions.length && (
+        <p className="tx-filter-count" aria-live="polite">
+          Showing {filteredTransactions.length} of {transactions.length} transactions
+        </p>
+      )}
+
       <PaginatedList transactions={filteredTransactions} />
     </section>
   );
