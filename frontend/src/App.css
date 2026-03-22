@@ -437,6 +437,13 @@
 
 .action-card input::placeholder {
   color: var(--text-muted);
+  opacity: 1;
+}
+
+.action-card input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--bg-secondary);
 }
 
 .action-card input:focus {
