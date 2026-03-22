@@ -3,6 +3,7 @@ import { cvToJSON, fetchCallReadOnlyFunction, principalCV } from '@stacks/transa
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { logger } from '../lib/logger';
 import { parseClarityInt } from '../lib/contractParsers';
+import { withRetry } from '../lib/retry';
 import type { UserPosition, CooldownInfo, UserShareResponse } from '../types';
 
 export function useUserPosition(userAddress: string | null) {
