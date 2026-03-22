@@ -111,3 +111,24 @@ export interface ToastMessage {
   txId?: string;
   duration?: number;
 }
+
+/** Raw response shape from Hiro API for transaction status */
+export interface HiroTxResponse {
+  tx_id: string;
+  tx_status: 'success' | 'abort_by_response' | 'abort_by_post_condition' | 'pending';
+  tx_type: string;
+  sender_address: string;
+  block_height?: number;
+  burn_block_time?: number;
+}
+
+/** Raw response shape from Hiro API for address balances */
+export interface HiroBalanceResponse {
+  stx: {
+    balance: string;
+    total_sent: string;
+    total_received: string;
+  };
+  fungible_tokens: Record<string, { balance: string }>;
+  non_fungible_tokens: Record<string, { count: number }>;
+}
