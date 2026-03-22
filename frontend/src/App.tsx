@@ -174,7 +174,7 @@ function App() {
     <div className="app">
       <ToastContainer toasts={toasts} onDismiss={removeToast} />
       <SkipLink targetId="main-content" />
-      <header className="app-header" role="banner">
+      <header className="app-header" role="banner" aria-label={LANDMARK_LABELS.header}>
         <div className="header-top">
           <h1>BitcoinFlow</h1>
           <button
