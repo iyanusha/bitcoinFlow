@@ -9,6 +9,7 @@ interface UseContractCallOptions {
   functionName: string;
   functionArgs: ClarityValue[];
   onSuccess?: () => void;
+  onError?: (error: string) => void;
 }
 
 export function useContractCall() {
@@ -41,9 +42,11 @@ export function useContractCall() {
         },
       });
     } catch (err) {
+      const errorMsg = parseTransactionError(err);
       logger.error(`Contract call failed: ${options.functionName}`, err);
-      setError(parseTransactionError(err));
+      setError(errorMsg);
       setLoading(false);
+      options.onError?.(errorMsg);
     }
   }, []);
 
