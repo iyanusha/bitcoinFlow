@@ -4,6 +4,7 @@ import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { REFRESH_INTERVAL_MS } from '../lib/constants';
 import { logger } from '../lib/logger';
 import { parseClarityInt, parseClarityBool } from '../lib/contractParsers';
+import { withRetry } from '../lib/retry';
 import type { VaultStats, VaultStatusResponse } from '../types';
 
 const defaultStats: VaultStats = {
