@@ -333,10 +333,10 @@ function App() {
               <small id="deposit-help">Minimum: 0.0001 sBTC</small>
               <button
                 onClick={handleDeposit}
-                disabled={!depositAmount || isDepositing || vaultStats.isPaused}
+                disabled={!depositAmount || isDepositing || vaultStats.isPaused || !isOnline}
                 aria-busy={isDepositing}
               >
-                {isDepositing ? 'Processing...' : vaultStats.isPaused ? 'Vault Paused' : 'Deposit & Get Flow Tokens'}
+                {isDepositing ? 'Processing...' : !isOnline ? 'Offline' : vaultStats.isPaused ? 'Vault Paused' : 'Deposit & Get Flow Tokens'}
               </button>
             </div>
 
@@ -359,10 +359,10 @@ function App() {
               <small id="withdraw-help">Burns FLOW tokens and returns sBTC</small>
               <button
                 onClick={handleWithdraw}
-                disabled={!withdrawAmount || isWithdrawing || vaultStats.isPaused}
+                disabled={!withdrawAmount || isWithdrawing || vaultStats.isPaused || !isOnline}
                 aria-busy={isWithdrawing}
               >
-                {isWithdrawing ? 'Processing...' : vaultStats.isPaused ? 'Vault Paused' : 'Burn Flow & Withdraw'}
+                {isWithdrawing ? 'Processing...' : !isOnline ? 'Offline' : vaultStats.isPaused ? 'Vault Paused' : 'Burn Flow & Withdraw'}
               </button>
             </div>
           </div>
