@@ -214,10 +214,11 @@
 .wallet-address-link {
   color: white;
   text-decoration: none;
-  font-family: monospace;
-  font-size: 0.95rem;
+  font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
   border-bottom: 1px dashed rgba(255,255,255,0.5);
   transition: border-color 0.2s;
+  word-break: break-all;
 }
 
 .wallet-address-link:hover {
