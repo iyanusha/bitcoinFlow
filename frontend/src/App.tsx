@@ -334,6 +334,7 @@ function App() {
                 onClick={handleDeposit}
                 disabled={!depositAmount || isDepositing || vaultStats.isPaused || !isOnline}
                 aria-busy={isDepositing}
+                aria-describedby="deposit-help"
               >
                 {isDepositing ? 'Processing deposit...' : !isOnline ? 'Offline — connect to deposit' : vaultStats.isPaused ? 'Vault Paused' : 'Deposit & Get Flow Tokens'}
               </button>
