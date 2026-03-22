@@ -48,6 +48,7 @@
       (+ (default-to u0 (map-get? user-deposits tx-sender)) amount))
     (var-set total-deposits (+ (var-get total-deposits) amount))
     (map-set user-last-deposit tx-sender block-height)
+    (var-set total-deposit-count (+ (var-get total-deposit-count) u1))
     ;; Mint flow tokens 1:1 ratio for now
     (ft-mint? flow-token amount tx-sender)
   )
@@ -62,6 +63,7 @@
                   WITHDRAWAL-COOLDOWN) ERR-COOLDOWN-ACTIVE)
     (map-set user-deposits tx-sender (- user-balance amount))
     (var-set total-deposits (- (var-get total-deposits) amount))
+    (var-set total-withdraw-count (+ (var-get total-withdraw-count) u1))
     ;; Burn flow tokens
     (ft-burn? flow-token amount tx-sender)
   )
