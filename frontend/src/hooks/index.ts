@@ -21,6 +21,7 @@ export { usePrefersColorScheme } from './usePrefersColorScheme';
 export { usePrevious } from './usePrevious';
 export { useReducedMotion } from './useReducedMotion';
 export { useScrollLock } from './useScrollLock';
+export { useStackingInfo } from './useStackingInfo';
 export { useStableCallback } from './useStableCallback';
 export { useTheme } from './useTheme';
 export { useTimeout } from './useTimeout';
