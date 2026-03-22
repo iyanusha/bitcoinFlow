@@ -68,7 +68,7 @@
 }
 
 .dark *:focus-visible {
-  outline-color: #a5b4fc;
+  outline-color: var(--accent);
 }
 
 .action-card input:focus-visible {
