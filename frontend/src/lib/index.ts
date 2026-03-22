@@ -70,3 +70,4 @@ export {
 export type { ContrastLevel } from './colorContrast';
 export { auditAccessibility } from './a11yAudit';
 export type { A11yIssue } from './a11yAudit';
+export { announceToScreenReader } from './a11y';
