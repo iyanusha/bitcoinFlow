@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { VaultStats, AppError } from './types'
+import type { VaultStats } from './types'
 import { useWallet } from './hooks/useWallet'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
