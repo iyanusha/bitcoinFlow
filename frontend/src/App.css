@@ -80,10 +80,50 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.vault-stats h2 {
-  text-align: center;
+.stats-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
   margin-bottom: 2rem;
+}
+
+.stats-header h2 {
   color: #333;
+  margin: 0;
+}
+
+.loading-dot {
+  color: #667eea;
+  font-size: 1.2rem;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.refresh-btn {
+  background: none;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #667eea;
+  transition: all 0.2s;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.refresh-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
 .stats-grid {
