@@ -794,6 +794,23 @@ describe("flow-vault", () => {
     expect(result).toBeSome(Cl.principal(wallet2));
   });
 
+  it("partial withdrawal reduces balance correctly", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    const wallet6 = accounts.get("wallet_6")!;
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(5000000)], wallet6);
+    simnet.mineEmptyBlocks(7);
+
+    simnet.callPublicFn("flow-vault", "withdraw", [Cl.uint(2000000)], wallet6);
+
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-user-deposit",
+      [Cl.principal(wallet6)],
+      deployer
+    );
+    expect(result).toBeUint(3000000);
+  });
+
   it("multiple sequential deposits accumulate for same user", () => {
     simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
 
