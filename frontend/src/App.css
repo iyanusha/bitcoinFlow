@@ -242,15 +242,15 @@
 }
 
 .action-card {
-  background: white;
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  border: 1px solid #e1e8ed;
+  border: 1px solid var(--border-color);
 }
 
 .action-card h3 {
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -258,16 +258,18 @@
 .action-card input {
   width: 100%;
   padding: 1rem;
-  border: 2px solid #e1e8ed;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
   font-size: 1rem;
   margin-bottom: 1rem;
   transition: border-color 0.3s ease;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .action-card input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--accent);
 }
 
 .action-card button {
