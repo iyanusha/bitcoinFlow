@@ -19,6 +19,7 @@ import { logger } from './lib/logger'
 import { SkipLink } from './components/SkipLink'
 import { ToastContainer } from './components/ToastContainer'
 import { TransactionHistory } from './components/TransactionHistory'
+import { ErrorBoundary } from './components/ErrorBoundary'
 import './App.css'
 
 function App() {
@@ -232,7 +233,7 @@ function App() {
         </div>
       )}
 
-      {isConnected && (
+      {isConnected && (<ErrorBoundary>
         <main id="main-content" className="main-content">
           <div className="vault-stats">
             <div className="stats-header">
@@ -370,7 +371,7 @@ function App() {
             </ul>
           </div>
         </main>
-      )}
+      </ErrorBoundary>)}
 
       <footer className="app-footer" role="contentinfo">
         <p>BitcoinFlow — Built on Stacks</p>
