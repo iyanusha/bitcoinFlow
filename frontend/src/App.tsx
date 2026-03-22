@@ -191,6 +191,10 @@ function App() {
                 <p>{formatSTX(vaultStats.totalRewards)} STX</p>
               </div>
               <div className="stat-card">
+                <h3>STX Balance</h3>
+                <p>{formatSTX(vaultStats.stxBalance)} STX</p>
+              </div>
+              <div className="stat-card">
                 <h3>Your Flow Tokens</h3>
                 <p>{formatCompact(vaultStats.userBalance / MICROSTX_PER_STX)} FLOW</p>
               </div>
