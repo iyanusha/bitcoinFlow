@@ -347,3 +347,5 @@ export const VAULT_COMPARISON_K9 = { endpoint: '/api/vault_comparison/9', timeou
 export const VAULT_COMPARISON_K19 = { endpoint: '/api/vault_comparison/19', timeout: 30000, retries: 3 } as const;
 
 export const VAULT_COMPARISON_K29 = { endpoint: '/api/vault_comparison/29', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_COMPARISON_K39 = { endpoint: '/api/vault_comparison/39', timeout: 30000, retries: 3 } as const;
