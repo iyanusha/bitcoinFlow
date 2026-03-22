@@ -1076,6 +1076,36 @@
   text-decoration: underline;
 }
 
+@media (max-height: 500px) and (orientation: landscape) {
+  .app-header {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .app-header p {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    padding: 0.75rem;
+  }
+
+  .stat-card p {
+    font-size: 1.25rem;
+  }
+}
+
 @media (forced-colors: active) {
   .stat-card,
   .action-card,
