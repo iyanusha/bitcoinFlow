@@ -1283,6 +1283,10 @@
   background: rgba(0,0,0,0.5);
 }
 
+.dark .confirm-dialog::backdrop {
+  background: rgba(0,0,0,0.7);
+}
+
 .confirm-dialog h3 {
   margin: 0 0 0.75rem;
 }
