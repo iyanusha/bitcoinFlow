@@ -183,9 +183,16 @@ function App() {
           </button>
         </div>
         <p>Smart sBTC Stacking Vault</p>
-        <span className="network-badge">
-          {import.meta.env.VITE_NETWORK === 'mainnet' ? 'Mainnet' : 'Testnet'}
-        </span>
+        <div className="header-badges">
+          <span className="network-badge">
+            {import.meta.env.VITE_NETWORK === 'mainnet' ? 'Mainnet' : 'Testnet'}
+          </span>
+          {pendingCount > 0 && (
+            <span className="pending-badge" aria-label={`${pendingCount} pending transaction${pendingCount > 1 ? 's' : ''}`}>
+              {pendingCount} pending
+            </span>
+          )}
+        </div>
 
         {!isConnected ? (
           <button className="connect-btn" onClick={connect}>
