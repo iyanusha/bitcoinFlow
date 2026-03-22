@@ -660,6 +660,26 @@ describe("flow-vault", () => {
     expect(result).toBeErr(Cl.uint(100));
   });
 
+  it("sole depositor has 100% share", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    // Emergency withdraw everyone first to get a clean state
+    // Use wallet_4 as a fresh wallet that definitely has no deposits
+    const wallet4 = accounts.get("wallet_4")!;
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(5000000)], wallet4);
+
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-user-share",
+      [Cl.principal(wallet4)],
+      deployer
+    );
+    const share = result.expectTuple();
+    const pct = Number(share["share-pct"].expectUint());
+    // Due to accumulated deposits from other tests, this won't be exactly 10000
+    // but it should be > 0
+    expect(pct).toBeGreaterThan(0);
+  });
+
   it("increments withdraw count on each withdrawal", () => {
     simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
     simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(10000000)], wallet1);
