@@ -1,6 +1,14 @@
 import { ERROR_MESSAGES } from './constants';
 import { logger } from './logger';
 
+/** Known contract error codes */
+export type ContractErrorCode = 100 | 101 | 102 | 103 | 104 | 105 | 106;
+
+/** Type guard to check if a number is a known error code */
+export function isKnownErrorCode(code: number): code is ContractErrorCode {
+  return code in ERROR_MESSAGES;
+}
+
 /** Map contract error code to user-friendly message */
 export function getContractError(code: number): string {
   return ERROR_MESSAGES[code] || `Unknown contract error (code ${code})`;
