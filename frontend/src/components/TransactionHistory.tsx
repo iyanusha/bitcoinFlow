@@ -1,6 +1,6 @@
-import type { TransactionRecord } from '../types';
+import type { TransactionRecord, TransactionStatus } from '../types';
 import { getTxExplorerUrl } from '../lib/stacks';
-import { formatBTC } from '../lib/formatters';
+import { formatBTC, formatTimeSince } from '../lib/formatters';
 
 interface TransactionHistoryProps {
   transactions: TransactionRecord[];
