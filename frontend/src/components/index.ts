@@ -8,3 +8,6 @@ export { SkipLink } from './SkipLink';
 export { AmountInput } from './AmountInput';
 export { ValidatedInput } from './ValidatedInput';
 export { ButtonWithLoading } from './ButtonWithLoading';
+export { Toast } from './Toast';
+export { ToastContainer } from './ToastContainer';
+export { TransactionHistory } from './TransactionHistory';
