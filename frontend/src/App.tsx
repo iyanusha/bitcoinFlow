@@ -172,6 +172,7 @@ function App() {
   const pendingCount = transactions.filter(tx => tx.status === 'pending').length;
   useDocumentTitle(pendingCount > 0 ? `(${pendingCount}) BitcoinFlow` : 'BitcoinFlow');
   useKeyboard('Escape', () => setError(null), !!error);
+  useKeyboardShortcut({ key: '?' }, () => setShowShortcuts(prev => !prev));
 
   return (
     <div className="app">
