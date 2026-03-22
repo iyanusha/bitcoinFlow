@@ -439,6 +439,29 @@ describe("flow-vault", () => {
     expect(result).toBeOk(Cl.bool(true));
   });
 
+  it("STX deposit increases total deposits", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+
+    const { result: before } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-total-deposits",
+      [],
+      deployer
+    );
+    const depositsBefore = Number(before.expectUint());
+
+    simnet.callPublicFn("flow-vault", "deposit-stx", [Cl.uint(4000000)], wallet1);
+
+    const { result: after } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-total-deposits",
+      [],
+      deployer
+    );
+    const depositsAfter = Number(after.expectUint());
+    expect(depositsAfter).toBe(depositsBefore + 4000000);
+  });
+
   it("allows STX withdrawal after cooldown period", () => {
     simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
     simnet.callPublicFn("flow-vault", "deposit-stx", [Cl.uint(5000000)], wallet1);
