@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { copyToClipboard } from '../lib/clipboard';
 
 interface CopyButtonProps {
@@ -6,7 +6,7 @@ interface CopyButtonProps {
   label?: string;
 }
 
-export function CopyButton({ text, label = 'Copy' }: CopyButtonProps) {
+export const CopyButton = memo(function CopyButton({ text, label = 'Copy' }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -28,4 +28,4 @@ export function CopyButton({ text, label = 'Copy' }: CopyButtonProps) {
       {copied ? 'Copied' : 'Copy'}
     </button>
   );
-}
+});
