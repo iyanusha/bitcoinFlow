@@ -551,6 +551,11 @@
 
 .info-section li {
   line-height: 1.5;
+  transition: transform 0.15s ease;
+}
+
+.info-section li:hover {
+  transform: translateX(4px);
 }
 
 @media (max-width: 1024px) {
