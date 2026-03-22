@@ -33,15 +33,7 @@ export async function withRetry<T>(
 
       if (attempt >= maxRetries) break;
 
-      const isRetryable =
-        err instanceof Error &&
-        (err.message.includes('network') ||
-          err.message.includes('fetch') ||
-          err.message.includes('timeout') ||
-          err.message.includes('ECONNREFUSED') ||
-          err.message.includes('429'));
-
-      if (!isRetryable) throw err;
+      if (!isRetryableError(err)) throw err;
 
       const delay = Math.min(baseDelayMs * Math.pow(2, attempt), maxDelayMs);
       logger.warn(`Retry attempt ${attempt + 1}/${maxRetries} after ${delay}ms`, err);
