@@ -3,6 +3,7 @@ import { cvToJSON, fetchCallReadOnlyFunction } from '@stacks/transactions';
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { REFRESH_INTERVAL_MS } from '../lib/constants';
 import { logger } from '../lib/logger';
+import { parseClarityInt } from '../lib/contractParsers';
 import type { ExchangeRate } from '../types';
 
 export function useExchangeRate() {
@@ -25,7 +26,7 @@ export function useExchangeRate() {
       });
 
       const json = cvToJSON(result);
-      const rate = parseInt(json.value, 10);
+      const rate = parseClarityInt(json.value);
 
       setExchangeRate({
         rate,
