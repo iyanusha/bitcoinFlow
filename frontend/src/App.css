@@ -843,6 +843,38 @@
     border-radius: 12px;
   }
 
+  .tx-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .tx-summary-item {
+    padding: 0.5rem;
+  }
+
+  .tx-filter-btn {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    min-height: 30px;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .tx-header-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tx-export-btn,
+  .tx-clear-btn {
+    width: 100%;
+    text-align: center;
+  }
+
   .app-footer {
     padding: 1.5rem 0.5rem;
     margin-top: 2rem;
