@@ -63,6 +63,20 @@ export const THEME = {
   SYSTEM_PREFERENCE_QUERY: '(prefers-color-scheme: dark)',
 } as const;
 
+export const RETRY = {
+  MAX_RETRIES: 3,
+  BASE_DELAY_MS: 1000,
+  MAX_DELAY_MS: 10_000,
+  TX_STATUS_RETRIES: 2,
+  TX_STATUS_DELAY_MS: 500,
+} as const;
+
+export const CACHE = {
+  DEFAULT_TTL_MS: 10_000,
+  VAULT_STATUS_TTL_MS: 15_000,
+  EXCHANGE_RATE_TTL_MS: 30_000,
+} as const;
+
 export const PERFORMANCE = {
   RESIZE_DEBOUNCE_MS: 150,
   SCROLL_THROTTLE_MS: 100,
