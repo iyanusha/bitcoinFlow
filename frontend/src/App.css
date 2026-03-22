@@ -1039,6 +1039,40 @@
   text-decoration: underline;
 }
 
+@media (forced-colors: active) {
+  .stat-card,
+  .action-card,
+  .vault-stats,
+  .tx-history {
+    border: 1px solid ButtonText;
+  }
+
+  .connect-btn,
+  .disconnect-btn,
+  .action-card button,
+  .refresh-btn,
+  .theme-toggle {
+    border: 1px solid ButtonText;
+  }
+
+  .toast {
+    border: 2px solid ButtonText;
+  }
+
+  .skeleton {
+    background: GrayText;
+  }
+
+  .spinner {
+    border-color: GrayText;
+    border-top-color: Highlight;
+  }
+
+  *:focus-visible {
+    outline: 2px solid Highlight;
+  }
+}
+
 @media print {
   .app {
     padding: 0;
