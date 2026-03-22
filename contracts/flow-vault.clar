@@ -42,9 +42,10 @@
     (asserts! (not (var-get vault-paused)) ERR-VAULT-PAUSED)
     (asserts! (> amount u0) ERR-INVALID-AMOUNT)
     ;; Transfer sBTC from user to vault (placeholder for sBTC integration)
-    (map-set user-deposits tx-sender 
+    (map-set user-deposits tx-sender
       (+ (default-to u0 (map-get? user-deposits tx-sender)) amount))
     (var-set total-deposits (+ (var-get total-deposits) amount))
+    (map-set user-last-deposit tx-sender block-height)
     ;; Mint flow tokens 1:1 ratio for now
     (ft-mint? flow-token amount tx-sender)
   )
