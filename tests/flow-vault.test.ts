@@ -182,7 +182,10 @@ describe("flow-vault", () => {
       [Cl.principal(wallet1)],
       deployer
     );
-    expect(result).toBeDefined();
+    // Immediately after deposit, cooldown should be active (>0)
+    const remaining = Number(result.expectUint());
+    expect(remaining).toBeGreaterThan(0);
+    expect(remaining).toBeLessThanOrEqual(6);
   });
 
   it("only owner can compound rewards", () => {
