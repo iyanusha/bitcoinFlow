@@ -46,6 +46,12 @@ export function isValidStxAddress(address: string): boolean {
   return /^S[TPM][0-9A-Z]{38,40}$/.test(address);
 }
 
+export function validateStxAddress(address: string): ValidationResult {
+  if (!address || address.trim() === '') return { isValid: false, error: 'Address is required' };
+  if (!isValidStxAddress(address)) return { isValid: false, error: 'Invalid Stacks address format' };
+  return { isValid: true, error: null };
+}
+
 export function combineValidators(...validators: ((v: string) => ValidationResult)[]): (v: string) => ValidationResult {
   return (value: string) => {
     for (const validator of validators) {
