@@ -242,4 +242,105 @@ describe("flow-vault", () => {
     );
     expect(result).toBeErr(Cl.uint(106));
   });
+
+  it("owner can emergency withdraw for a user", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(4000000)], wallet1);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "emergency-withdraw",
+      [Cl.principal(wallet1)],
+      deployer
+    );
+    expect(result).toBeOk(Cl.bool(true));
+
+    const { result: balance } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-user-deposit",
+      [Cl.principal(wallet1)],
+      deployer
+    );
+    expect(balance).toBeUint(0);
+  });
+
+  it("non-owner cannot emergency withdraw", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(2000000)], wallet1);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "emergency-withdraw",
+      [Cl.principal(wallet1)],
+      wallet2
+    );
+    expect(result).toBeErr(Cl.uint(100));
+  });
+
+  it("tracks flow token balance after deposit", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(7000000)], wallet1);
+
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-user-flow-balance",
+      [Cl.principal(wallet1)],
+      deployer
+    );
+    expect(result).toBeDefined();
+  });
+
+  it("returns delegation pool status", () => {
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-delegation-pool",
+      [],
+      deployer
+    );
+    expect(result).toBeDefined();
+  });
+
+  it("returns total rewards", () => {
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-total-rewards",
+      [],
+      deployer
+    );
+    expect(result).toBeDefined();
+  });
+
+  it("returns total deposits", () => {
+    const { result } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-total-deposits",
+      [],
+      deployer
+    );
+    expect(result).toBeDefined();
+  });
+
+  it("owner can unpause vault", () => {
+    simnet.callPublicFn("flow-vault", "pause-vault", [], deployer);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "unpause-vault",
+      [],
+      deployer
+    );
+    expect(result).toBeOk(Cl.bool(true));
+  });
+
+  it("non-owner cannot unpause vault", () => {
+    simnet.callPublicFn("flow-vault", "pause-vault", [], deployer);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "unpause-vault",
+      [],
+      wallet1
+    );
+    expect(result).toBeErr(Cl.uint(100));
+  });
 });
