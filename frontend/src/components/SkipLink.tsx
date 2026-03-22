@@ -1,3 +1,16 @@
-export function SkipLink({ targetId = 'main-content' }: { targetId?: string }) {
-  return <a href={`#${targetId}`} className="skip-link">Skip to main content</a>;
+interface SkipLinkProps {
+  targetId?: string;
+  label?: string;
+}
+
+export function SkipLink({ targetId = 'main-content', label = 'Skip to main content' }: SkipLinkProps) {
+  return (
+    <a
+      href={`#${targetId}`}
+      className="skip-link"
+      aria-label={label}
+    >
+      {label}
+    </a>
+  );
 }
