@@ -34,3 +34,8 @@ export function getAddressExplorerUrl(address: string): string {
   const chain = isMainnet ? '' : '&chain=testnet';
   return `https://explorer.hiro.so/address/${address}?${chain}`;
 }
+
+export function getContractExplorerUrl(): string {
+  const chain = isMainnet ? '' : '&chain=testnet';
+  return `https://explorer.hiro.so/address/${CONTRACT_ADDRESS}.${CONTRACT_NAME}?${chain}`;
+}
