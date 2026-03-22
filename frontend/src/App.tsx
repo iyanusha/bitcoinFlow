@@ -24,6 +24,7 @@ import { SkipLink } from './components/SkipLink'
 import { ToastContainer } from './components/ToastContainer'
 import { TransactionHistory } from './components/TransactionHistory'
 import { ErrorBoundary } from './components/ErrorBoundary'
+import { KeyboardShortcutHelp } from './components/KeyboardShortcutHelp'
 import './App.css'
 
 function App() {
