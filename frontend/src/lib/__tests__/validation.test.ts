@@ -8,6 +8,7 @@ import {
   isPositiveInteger,
   isValidStxAddress,
   validateStxAddress,
+  combineValidators,
 } from '../validation';
 
 describe('validateAmount', () => {
@@ -201,5 +202,28 @@ describe('validateStxAddress', () => {
     const result = validateStxAddress('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM');
     expect(result.isValid).toBe(true);
     expect(result.error).toBeNull();
+  });
+});
+
+describe('combineValidators', () => {
+  it('returns first failing validator error', () => {
+    const combined = combineValidators(validateAmount, (v) => validateDeposit(v));
+    const result = combined('');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Amount is required');
+  });
+
+  it('passes when all validators pass', () => {
+    const combined = combineValidators(validateAmount, (v) => validateDeposit(v));
+    const result = combined('1.0');
+    expect(result.isValid).toBe(true);
+    expect(result.error).toBeNull();
+  });
+
+  it('chains to second validator when first passes', () => {
+    const combined = combineValidators(validateAmount, (v) => validateDeposit(v));
+    const result = combined('0.00001');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Minimum deposit is 0.0001 sBTC');
   });
 });
