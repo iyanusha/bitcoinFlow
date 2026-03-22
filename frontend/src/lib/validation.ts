@@ -72,3 +72,21 @@ export function combineValidators(...validators: ((v: string) => ValidationResul
     return { isValid: true, error: null };
   };
 }
+
+/**
+ * Validate a contract identifier (address.contract-name).
+ */
+export function isValidContractId(contractId: string): boolean {
+  const parts = contractId.split('.');
+  if (parts.length !== 2) return false;
+  const [address, name] = parts;
+  if (!isValidStxAddress(address)) return false;
+  return /^[a-zA-Z][a-zA-Z0-9-]{0,127}$/.test(name);
+}
+
+/**
+ * Validate a transaction ID (hex string prefixed with 0x).
+ */
+export function isValidTxId(txId: string): boolean {
+  return /^0x[a-fA-F0-9]{64}$/.test(txId);
+}
