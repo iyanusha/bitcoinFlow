@@ -457,14 +457,34 @@
   padding: 3rem;
   max-width: 500px;
   margin: 2rem auto;
-  background: #fff5f5;
-  border: 1px solid #fed7d7;
+  background: var(--error-bg);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
 }
 
-.error-boundary h2 { color: #c53030; margin-bottom: 1rem; }
-.error-boundary p { color: #742a2a; margin-bottom: 1.5rem; }
-.error-boundary button { background: #c53030; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; }
+.error-boundary h2 {
+  color: var(--error-text);
+  margin-bottom: 1rem;
+}
+
+.error-boundary p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.error-boundary button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.error-boundary button:hover {
+  opacity: 0.9;
+}
 
 .error-banner {
   background: var(--error-bg);
