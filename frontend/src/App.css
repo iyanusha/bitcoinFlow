@@ -13,6 +13,8 @@
   --warning-bg: #fef3c7;
   --warning-text: #92400e;
   --success: #16a34a;
+  --success-bg: #d1fae5;
+  --success-text: #065f46;
 }
 
 .dark {
@@ -30,6 +32,8 @@
   --warning-bg: #451a03;
   --warning-text: #fcd34d;
   --success: #4ade80;
+  --success-bg: #052e16;
+  --success-text: #86efac;
 }
 
 *:focus-visible {
@@ -772,7 +776,7 @@
 }
 
 .tx-status-pending { background: var(--warning-bg); color: var(--warning-text); }
-.tx-status-confirmed { background: #d1fae5; color: #065f46; }
+.tx-status-confirmed { background: var(--success-bg); color: var(--success-text); }
 .tx-status-failed { background: var(--error-bg); color: var(--error-text); }
 
 .tx-time {
