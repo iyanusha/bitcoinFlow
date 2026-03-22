@@ -27,3 +27,6 @@ export const REFRESH_INTERVAL_MS = 30_000;
 export const BLOCK_TIME_SECONDS = 600;
 export const COOLDOWN_BLOCKS = 6;
 export const COOLDOWN_ESTIMATED_MINUTES = Math.round((COOLDOWN_BLOCKS * BLOCK_TIME_SECONDS) / 60);
+
+export const MAX_TX_HISTORY = 50;
+export const TX_POLL_INTERVAL_MS = 15_000;
