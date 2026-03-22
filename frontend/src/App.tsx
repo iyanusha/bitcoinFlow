@@ -165,6 +165,8 @@ function App() {
     }
   }
 
+  const pendingCount = transactions.filter(tx => tx.status === 'pending').length;
+
   return (
     <div className="app">
       <ToastContainer toasts={toasts} onDismiss={removeToast} />
