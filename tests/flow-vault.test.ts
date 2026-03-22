@@ -97,5 +97,33 @@ describe("flow-vault", () => {
     const status = result.expectTuple();
     expect(status["total-deposits"]).toBeDefined();
     expect(status["total-rewards"]).toBeDefined();
+    expect(status["deposit-count"]).toBeDefined();
+    expect(status["withdraw-count"]).toBeDefined();
+  });
+
+  it("rejects zero-amount withdrawal", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(5000000)], wallet1);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "withdraw",
+      [Cl.uint(0)],
+      wallet1
+    );
+    expect(result).toBeErr(Cl.uint(102));
+  });
+
+  it("rejects withdrawal during cooldown period", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(3000000)], wallet2);
+
+    const { result } = simnet.callPublicFn(
+      "flow-vault",
+      "withdraw",
+      [Cl.uint(1000000)],
+      wallet2
+    );
+    expect(result).toBeErr(Cl.uint(106));
   });
 });
