@@ -6,7 +6,7 @@ import { useExchangeRate } from './hooks/useExchangeRate'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './lib/stacks'
-import { validateDeposit, validateWithdraw } from './lib/validation'
+import { validateDeposit, validateWithdraw, validateDecimalPrecision } from './lib/validation'
 import { parseTransactionError } from './lib/errorUtils'
 import { formatSTX, formatCompact, formatBlocks } from './lib/formatters'
 import { MICROSTX_PER_STX } from './lib/constants'
@@ -36,6 +36,12 @@ function App() {
 
   const handleDeposit = async () => {
     if (!isConnected || !depositAmount) return
+
+    const precisionCheck = validateDecimalPrecision(depositAmount)
+    if (!precisionCheck.isValid) {
+      setError(precisionCheck.error)
+      return
+    }
 
     const validation = validateDeposit(depositAmount)
     if (!validation.isValid) {
