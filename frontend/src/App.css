@@ -1261,12 +1261,12 @@
 
 .confirm-dialog {
   border: none;
-  border-radius: 16px;
+  border-radius: var(--radius-xl);
   padding: 2rem;
   max-width: 400px;
   background: var(--bg-card);
   color: var(--text-primary);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  box-shadow: var(--shadow-xl);
 }
 
 .confirm-dialog::backdrop {
