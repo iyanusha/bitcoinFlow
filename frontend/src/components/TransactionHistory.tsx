@@ -7,6 +7,8 @@ import { usePagination } from '../hooks/usePagination';
 type FilterType = 'all' | 'deposit' | 'withdraw';
 type StatusFilter = 'all' | TransactionStatus;
 
+const PAGE_SIZE = 10;
+
 interface TransactionHistoryProps {
   transactions: TransactionRecord[];
   onClear: () => void;
@@ -30,6 +32,40 @@ function FilterButton({
     >
       {label}
     </button>
+  );
+}
+
+function PaginatedList({ transactions }: { transactions: TransactionRecord[] }) {
+  const {
+    pageItems,
+    currentPage,
+    totalPages,
+    hasNext,
+    hasPrev,
+    nextPage,
+    prevPage,
+  } = usePagination(transactions, PAGE_SIZE);
+
+  if (transactions.length === 0) {
+    return <p className="tx-empty">No transactions match the selected filters.</p>;
+  }
+
+  return (
+    <>
+      <ul className="tx-list" aria-label="Transaction history">
+        {pageItems.map(tx => (
+          <TransactionItem key={tx.txId} transaction={tx} />
+        ))}
+      </ul>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        hasNext={hasNext}
+        hasPrev={hasPrev}
+        onNext={nextPage}
+        onPrev={prevPage}
+      />
+    </>
   );
 }
 
@@ -93,15 +129,7 @@ export function TransactionHistory({ transactions, onClear, pendingCount = 0 }: 
         </div>
       </div>
 
-      {filteredTransactions.length === 0 ? (
-        <p className="tx-empty">No transactions match the selected filters.</p>
-      ) : (
-        <ul className="tx-list" aria-label="Transaction history">
-          {filteredTransactions.map(tx => (
-            <TransactionItem key={tx.txId} transaction={tx} />
-          ))}
-        </ul>
-      )}
+      <PaginatedList transactions={filteredTransactions} />
     </section>
   );
 }
