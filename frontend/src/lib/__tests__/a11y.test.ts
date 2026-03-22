@@ -7,6 +7,10 @@ import {
   isKeyMatch,
   externalLinkLabel,
   formatForScreenReader,
+  isActivationKey,
+  ARIA_DESCRIPTIONS,
+  LANDMARK_LABELS,
+  KEYS,
 } from '../a11y';
 
 describe('generateId', () => {
@@ -92,5 +96,47 @@ describe('formatForScreenReader', () => {
 
   it('formats zero', () => {
     expect(formatForScreenReader(0, 'sBTC')).toBe('0 sBTC');
+  });
+});
+
+describe('isActivationKey', () => {
+  it('returns true for Enter', () => {
+    expect(isActivationKey('Enter')).toBe(true);
+  });
+
+  it('returns true for Space', () => {
+    expect(isActivationKey(' ')).toBe(true);
+  });
+
+  it('returns false for other keys', () => {
+    expect(isActivationKey('Escape')).toBe(false);
+    expect(isActivationKey('a')).toBe(false);
+  });
+});
+
+describe('ARIA_DESCRIPTIONS', () => {
+  it('has descriptions for main UI sections', () => {
+    expect(ARIA_DESCRIPTIONS.vaultStats).toBeTruthy();
+    expect(ARIA_DESCRIPTIONS.depositForm).toBeTruthy();
+    expect(ARIA_DESCRIPTIONS.withdrawForm).toBeTruthy();
+    expect(ARIA_DESCRIPTIONS.transactionHistory).toBeTruthy();
+  });
+});
+
+describe('LANDMARK_LABELS', () => {
+  it('has labels for main landmarks', () => {
+    expect(LANDMARK_LABELS.header).toBeTruthy();
+    expect(LANDMARK_LABELS.main).toBeTruthy();
+    expect(LANDMARK_LABELS.footer).toBeTruthy();
+  });
+});
+
+describe('KEYS', () => {
+  it('defines standard key names', () => {
+    expect(KEYS.ENTER).toBe('Enter');
+    expect(KEYS.ESCAPE).toBe('Escape');
+    expect(KEYS.TAB).toBe('Tab');
+    expect(KEYS.ARROW_UP).toBe('ArrowUp');
+    expect(KEYS.ARROW_DOWN).toBe('ArrowDown');
   });
 });
