@@ -43,3 +43,14 @@ export async function callReadOnlyInt(
   const parsed = parseInt(result, 10);
   return Number.isFinite(parsed) ? parsed : 0;
 }
+
+/**
+ * Call a read-only function and return a boolean value.
+ */
+export async function callReadOnlyBool(
+  functionName: string,
+  functionArgs: ClarityValue[] = []
+): Promise<boolean> {
+  const result = await callReadOnly<boolean>({ functionName, functionArgs });
+  return result === true;
+}
