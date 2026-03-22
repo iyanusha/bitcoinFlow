@@ -63,6 +63,35 @@
   color: white;
 }
 
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.theme-toggle {
+  position: absolute;
+  right: 0;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: rgba(255,255,255,0.3);
+}
+
 .app-header h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
