@@ -29,6 +29,7 @@ export { useTheme } from './useTheme';
 export { useTimeout } from './useTimeout';
 export { useToast } from './useToast';
 export { useTransactionHistory } from './useTransactionHistory';
+export { useTransactionPoller } from './useTransactionPoller';
 export { useTransactionStatus } from './useTransactionStatus';
 export { useUserPosition } from './useUserPosition';
 export { useVaultHealth } from './useVaultHealth';
