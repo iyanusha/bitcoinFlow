@@ -507,6 +507,10 @@
   background: var(--bg-secondary);
 }
 
+.dark .action-card input:disabled {
+  opacity: 0.5;
+}
+
 .action-card input:focus {
   outline: none;
   border-color: var(--accent);
