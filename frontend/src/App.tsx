@@ -15,16 +15,7 @@ function App() {
   const [error, setError] = useState<string | null>(null)
   const [isDepositing, setIsDepositing] = useState(false)
   const [isWithdrawing, setIsWithdrawing] = useState(false)
-  const [vaultStats] = useState<VaultStats>({
-    totalDeposits: 0,
-    totalRewards: 0,
-    userBalance: 0,
-    stxBalance: 0,
-    depositCount: 0,
-    withdrawCount: 0,
-    isPaused: false,
-    currentBlock: 0,
-  })
+  const { stats: vaultStats, loading: statsLoading, refresh: refreshStats } = useVaultStats(getAddress())
 
   const handleDeposit = async () => {
     if (!isConnected || !depositAmount) return
