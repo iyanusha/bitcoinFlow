@@ -14,6 +14,7 @@ import {
   COOLDOWN_ESTIMATED_MINUTES,
   MAX_TX_HISTORY,
   TX_POLL_INTERVAL_MS,
+  ERROR_MESSAGES,
 } from '../constants';
 
 describe('constants', () => {
@@ -67,5 +68,22 @@ describe('constants', () => {
 
   it('TX_POLL_INTERVAL_MS is 15 seconds', () => {
     expect(TX_POLL_INTERVAL_MS).toBe(15_000);
+  });
+
+  it('ERROR_MESSAGES covers all 7 contract error codes', () => {
+    expect(Object.keys(ERROR_MESSAGES)).toHaveLength(7);
+    expect(ERROR_MESSAGES[100]).toContain('authorized');
+    expect(ERROR_MESSAGES[101]).toContain('balance');
+    expect(ERROR_MESSAGES[102]).toContain('amount');
+    expect(ERROR_MESSAGES[103]).toContain('Stacking');
+    expect(ERROR_MESSAGES[104]).toContain('sBTC');
+    expect(ERROR_MESSAGES[105]).toContain('paused');
+    expect(ERROR_MESSAGES[106]).toContain('cooldown');
+  });
+
+  it('VALIDATION is frozen/readonly', () => {
+    expect(VALIDATION.MIN_DEPOSIT).toBe(0.0001);
+    expect(VALIDATION.MAX_DEPOSIT).toBe(21_000_000);
+    expect(VALIDATION.MAX_DECIMALS).toBe(8);
   });
 });
