@@ -107,7 +107,7 @@ function App() {
       contractAddress: CONTRACT_ADDRESS,
       contractName: CONTRACT_NAME,
       functionName: 'withdraw',
-      functionArgs: [uintCV(parseInt(withdrawAmount) * 100000000)],
+      functionArgs: [uintCV(Math.round(parseFloat(withdrawAmount) * SATS_PER_BTC))],
       postConditionMode: PostConditionMode.Deny,
       onFinish: () => {
         setWithdrawAmount('')
