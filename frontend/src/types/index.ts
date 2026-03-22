@@ -172,3 +172,20 @@ export interface EventQueryOptions {
   offset?: number;
   eventType?: ContractEventType;
 }
+
+/** Post-condition type for contract calls */
+export type PostConditionType = 'stx-transfer' | 'ft-transfer' | 'nft-transfer';
+
+/** Deposit request sent to the contract */
+export interface DepositRequest {
+  amount: number;
+  senderAddress: string;
+  postConditions: unknown[];
+}
+
+/** Withdrawal request sent to the contract */
+export interface WithdrawRequest {
+  flowTokenAmount: number;
+  senderAddress: string;
+  postConditions: unknown[];
+}
