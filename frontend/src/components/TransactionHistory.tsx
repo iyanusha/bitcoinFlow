@@ -182,9 +182,20 @@ export function TransactionHistory({ transactions, onClear, pendingCount = 0 }: 
       </div>
 
       {filteredTransactions.length !== transactions.length && (
-        <p className="tx-filter-count" aria-live="polite">
-          Showing {filteredTransactions.length} of {transactions.length} transactions
-        </p>
+        <div className="tx-filter-status">
+          <p className="tx-filter-count" aria-live="polite">
+            Showing {filteredTransactions.length} of {transactions.length} transactions
+          </p>
+          {hasActiveFilters && (
+            <button
+              className="tx-reset-filters-btn"
+              onClick={resetFilters}
+              aria-label="Reset all filters"
+            >
+              Reset Filters
+            </button>
+          )}
+        </div>
       )}
 
       <PaginatedList transactions={filteredTransactions} />
