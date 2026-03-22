@@ -19,6 +19,7 @@ export function useVaultStats(userAddress: string | null) {
   const [stats, setStats] = useState<VaultStats>(defaultStats);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<number | null>(null);
 
   const fetchStats = useCallback(async (silent = false) => {
     if (!silent) setLoading(true);
@@ -61,6 +62,7 @@ export function useVaultStats(userAddress: string | null) {
         isPaused: statusValue.paused.value,
         currentBlock: parseInt(statusValue['current-block'].value, 10),
       });
+      setLastUpdated(Date.now());
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch vault stats');
     } finally {
@@ -74,5 +76,5 @@ export function useVaultStats(userAddress: string | null) {
     return () => clearInterval(interval);
   }, [fetchStats]);
 
-  return { stats, loading, error, refresh: fetchStats };
+  return { stats, loading, error, lastUpdated, refresh: fetchStats };
 }
