@@ -313,6 +313,7 @@
 .refresh-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+  animation: spin 1s linear infinite;
 }
 
 .refresh-btn:active:not(:disabled) {
