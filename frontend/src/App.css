@@ -540,8 +540,9 @@
 .info-section {
   background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
   padding: 2rem;
-  border-radius: 20px;
+  border-radius: var(--radius-xl);
   margin-top: 2rem;
+  transition: background 0.3s;
 }
 
 .dark .info-section {
