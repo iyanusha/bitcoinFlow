@@ -984,16 +984,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   backdrop-filter: blur(2px);
-}
-
-.dark .loading-overlay {
-  background: rgba(0, 0, 0, 0.7);
 }
 
 .action-card button.loading {
@@ -1326,11 +1322,7 @@
 }
 
 .confirm-dialog::backdrop {
-  background: rgba(0,0,0,0.5);
-}
-
-.dark .confirm-dialog::backdrop {
-  background: rgba(0,0,0,0.7);
+  background: var(--overlay-bg);
 }
 
 .confirm-dialog h3 {
