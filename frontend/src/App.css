@@ -1025,6 +1025,65 @@
   text-decoration: underline;
 }
 
+@media print {
+  .app {
+    padding: 0;
+    max-width: none;
+  }
+
+  .app-header {
+    background: none !important;
+    color: #000 !important;
+    text-shadow: none !important;
+    border: 1px solid #ccc;
+    break-after: avoid;
+  }
+
+  .theme-toggle,
+  .connect-btn,
+  .disconnect-btn,
+  .toast-container,
+  .skip-link,
+  .refresh-btn,
+  .action-card button,
+  .tx-clear-btn,
+  .copy-btn,
+  .footer-links {
+    display: none !important;
+  }
+
+  .stat-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+  }
+
+  .action-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tx-history {
+    break-before: page;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75rem;
+    color: #666;
+  }
+
+  .explorer-link::after,
+  .wallet-address-link::after {
+    content: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
