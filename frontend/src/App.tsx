@@ -152,6 +152,10 @@ function App() {
                 <p>{formatCompact(vaultStats.userBalance / MICROSTX_PER_STX)} FLOW</p>
               </div>
               <div className="stat-card">
+                <h3>Exchange Rate</h3>
+                <p>{exchangeRate.formattedRate} sBTC/FLOW</p>
+              </div>
+              <div className="stat-card">
                 <h3>Vault Operations</h3>
                 <p>{vaultStats.depositCount + vaultStats.withdrawCount} total</p>
               </div>
