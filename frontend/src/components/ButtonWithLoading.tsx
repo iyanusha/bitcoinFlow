@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { memo, type ReactNode } from 'react';
 
 interface Props {
   loading: boolean;
@@ -10,7 +10,7 @@ interface Props {
   type?: 'button' | 'submit';
 }
 
-export function ButtonWithLoading({
+export const ButtonWithLoading = memo(function ButtonWithLoading({
   loading,
   disabled,
   onClick,
@@ -32,4 +32,4 @@ export function ButtonWithLoading({
       {loading ? loadingText : children}
     </button>
   );
-}
+});
