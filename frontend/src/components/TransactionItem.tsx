@@ -12,10 +12,18 @@ const STATUS_LABELS: Record<string, string> = {
   failed: 'Failed',
 };
 
+const TYPE_ICONS: Record<string, string> = {
+  deposit: '\u2193',  // ↓
+  withdraw: '\u2191', // ↑
+};
+
 export function TransactionItem({ transaction: tx }: TransactionItemProps) {
   return (
     <li className="tx-item">
       <div className="tx-item-left">
+        <span className={`tx-type-icon tx-type-icon-${tx.type}`} aria-hidden="true">
+          {TYPE_ICONS[tx.type]}
+        </span>
         <span className={`tx-type tx-type-${tx.type}`}>
           {tx.type === 'deposit' ? 'Deposit' : 'Withdraw'}
         </span>
