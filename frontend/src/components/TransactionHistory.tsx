@@ -81,6 +81,15 @@ export function TransactionHistory({ transactions, onClear, pendingCount = 0 }: 
   const [datePreset, setDatePreset] = useState<DateRangePreset>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
+  const hasActiveFilters = typeFilter !== 'all' || statusFilter !== 'all' || datePreset !== 'all' || searchQuery !== '';
+
+  const resetFilters = () => {
+    setTypeFilter('all');
+    setStatusFilter('all');
+    setDatePreset('all');
+    setSearchQuery('');
+  };
+
   const filteredTransactions = useMemo(() => {
     const dateRange = getPresetDateRange(datePreset);
     const filtered = transactions.filter(tx => {
