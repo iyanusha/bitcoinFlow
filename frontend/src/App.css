@@ -2107,3 +2107,24 @@
   font-size: 0.9rem;
 }
 
+/* High contrast / forced colors mode */
+@media (forced-colors: active) {
+  .stat-card,
+  .action-card,
+  .tx-item,
+  .confirm-dialog,
+  .toast {
+    border: 2px solid ButtonText;
+  }
+
+  .connect-btn,
+  .disconnect-btn,
+  .action-card button {
+    border: 2px solid ButtonText;
+  }
+
+  .status-badge {
+    border: 1px solid ButtonText;
+  }
+}
+
