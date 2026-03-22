@@ -98,3 +98,11 @@ img {
   scrollbar-width: thin;
   scrollbar-color: var(--border-color, #d1d5db) transparent;
 }
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
