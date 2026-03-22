@@ -117,7 +117,16 @@ function App() {
   return (
     <div className="app">
       <header className="app-header" role="banner">
-        <h1>BitcoinFlow</h1>
+        <div className="header-top">
+          <h1>BitcoinFlow</h1>
+          <button
+            className="theme-toggle"
+            onClick={() => setDarkMode(!darkMode)}
+            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {darkMode ? '☀' : '☾'}
+          </button>
+        </div>
         <p>Smart sBTC Stacking Vault</p>
 
         {!isConnected ? (
