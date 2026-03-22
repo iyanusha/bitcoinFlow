@@ -269,7 +269,10 @@ function App() {
                 inputMode="decimal"
                 placeholder="0.0000"
                 value={withdrawAmount}
-                onChange={(e) => setWithdrawAmount(sanitizeNumericInput(e.target.value))}
+                onChange={(e) => {
+                  setWithdrawAmount(sanitizeNumericInput(e.target.value))
+                  if (error) setError(null)
+                }}
                 autoComplete="off"
                 aria-describedby="withdraw-help"
               />
