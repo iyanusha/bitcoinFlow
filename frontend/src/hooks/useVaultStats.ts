@@ -4,6 +4,7 @@ import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { REFRESH_INTERVAL_MS } from '../lib/constants';
 import { logger } from '../lib/logger';
 import { parseClarityInt, parseClarityBool } from '../lib/contractParsers';
+import { handleContractError } from '../lib/contractErrors';
 import { withRetry } from '../lib/retry';
 import type { VaultStats, VaultStatusResponse } from '../types';
 
@@ -90,7 +91,7 @@ export function useVaultStats(userAddress: string | null) {
       setLastUpdated(Date.now());
       logger.debug('Vault stats fetched successfully');
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Failed to fetch vault stats';
+      const msg = handleContractError(err);
       logger.error('Failed to fetch vault stats', err);
       setError(msg);
     } finally {
