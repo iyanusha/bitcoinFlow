@@ -365,8 +365,8 @@
 .error-boundary button { background: #c53030; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; }
 
 .error-banner {
-  background: #fee2e2;
-  color: #dc2626;
+  background: var(--error-bg);
+  color: var(--error-text);
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
@@ -376,8 +376,8 @@
 }
 
 .paused-banner {
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--warning-bg);
+  color: var(--warning-text);
   padding: 1rem 1.5rem;
   border-radius: 10px;
   margin-bottom: 1.5rem;
