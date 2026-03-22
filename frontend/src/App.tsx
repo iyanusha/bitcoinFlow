@@ -13,6 +13,7 @@ import { parseTransactionError } from './lib/errorUtils'
 import { formatSTX, formatCompact, formatBlocks } from './lib/formatters'
 import { MICROSTX_PER_STX, SATS_PER_BTC } from './lib/constants'
 import { SkipLink } from './components/SkipLink'
+import { ToastContainer } from './components/ToastContainer'
 import './App.css'
 
 function App() {
