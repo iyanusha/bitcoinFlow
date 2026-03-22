@@ -324,6 +324,31 @@ describe("flow-vault", () => {
     expect(balance).toBeGreaterThanOrEqual(7000000);
   });
 
+  it("handles deposits from multiple users independently", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(3000000)], wallet1);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(7000000)], wallet2);
+
+    const { result: bal1 } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-user-deposit",
+      [Cl.principal(wallet1)],
+      deployer
+    );
+
+    const { result: bal2 } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-user-deposit",
+      [Cl.principal(wallet2)],
+      deployer
+    );
+
+    const b1 = Number(bal1.expectUint());
+    const b2 = Number(bal2.expectUint());
+    expect(b1).toBeGreaterThanOrEqual(3000000);
+    expect(b2).toBeGreaterThanOrEqual(7000000);
+  });
+
   it("increments deposit count on each deposit", () => {
     simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
     simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(1000000)], wallet1);
