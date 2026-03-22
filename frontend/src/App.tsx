@@ -255,7 +255,7 @@ function App() {
                 View Contract
               </a>
             </div>
-            <div className="stats-grid" aria-live="polite">
+            <div className="stats-grid" role="region" aria-label="Vault statistics" aria-live="polite">
               <div className="stat-card">
                 <h3>Total Deposits</h3>
                 <p>{formatSTX(vaultStats.totalDeposits)} STX</p>
