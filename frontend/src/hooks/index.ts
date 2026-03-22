@@ -9,6 +9,7 @@ export { useDeposit } from './useDeposit';
 export { useDocumentTitle } from './useDocumentTitle';
 export { useEventListener } from './useEventListener';
 export { useExchangeRate } from './useExchangeRate';
+export { useFocusReturn } from './useFocusReturn';
 export { useFocusTrap } from './useFocusTrap';
 export { useFormValidation } from './useFormValidation';
 export { useIdleCallback } from './useIdleCallback';
