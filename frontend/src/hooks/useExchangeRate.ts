@@ -39,5 +39,5 @@ export function useExchangeRate() {
     return () => clearInterval(interval);
   }, [fetchRate]);
 
-  return exchangeRate;
+  return { ...exchangeRate, refresh: fetchRate };
 }
