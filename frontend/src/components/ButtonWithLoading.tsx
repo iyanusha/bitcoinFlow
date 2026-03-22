@@ -7,11 +7,26 @@ interface Props {
   children: ReactNode;
   loadingText?: string;
   className?: string;
+  type?: 'button' | 'submit';
 }
 
-export function ButtonWithLoading({ loading, disabled, onClick, children, loadingText = 'Processing...', className }: Props) {
+export function ButtonWithLoading({
+  loading,
+  disabled,
+  onClick,
+  children,
+  loadingText = 'Processing...',
+  className,
+  type = 'button',
+}: Props) {
   return (
-    <button onClick={onClick} disabled={disabled || loading} className={className}>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled || loading}
+      className={`${className || ''} ${loading ? 'btn-loading' : ''}`.trim()}
+      aria-busy={loading}
+    >
       {loading ? loadingText : children}
     </button>
   );
