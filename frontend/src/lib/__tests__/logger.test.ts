@@ -1,0 +1,43 @@
+import { describe, expect, it, vi, beforeEach } from 'vitest';
+import { logger } from '../logger';
+
+describe('logger', () => {
+  beforeEach(() => {
+    vi.spyOn(console, 'log').mockImplementation(() => {});
+    vi.spyOn(console, 'info').mockImplementation(() => {});
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  it('logger.info calls console.info', () => {
+    logger.info('test message');
+    expect(console.info).toHaveBeenCalled();
+  });
+
+  it('logger.warn calls console.warn', () => {
+    logger.warn('warning message');
+    expect(console.warn).toHaveBeenCalled();
+  });
+
+  it('logger.error calls console.error', () => {
+    logger.error('error message');
+    expect(console.error).toHaveBeenCalled();
+  });
+
+  it('logger.info includes prefix', () => {
+    logger.info('test');
+    const call = (console.info as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(call[0]).toContain('BitcoinFlow');
+  });
+
+  it('logger.info passes data argument', () => {
+    logger.info('msg', { key: 'value' });
+    const call = (console.info as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(call[2]).toEqual({ key: 'value' });
+  });
+
+  it('logger.debug calls console.log in dev mode', () => {
+    logger.debug('debug info');
+    expect(console.log).toHaveBeenCalled();
+  });
+});
