@@ -247,7 +247,7 @@ function App() {
                 View Contract
               </a>
             </div>
-            <div className="stats-grid" role="region" aria-label="Vault statistics" aria-live="polite">
+            <div className="stats-grid" role="region" aria-label="Vault statistics" aria-roledescription={ARIA_DESCRIPTIONS.vaultStats} aria-live="polite">
               <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
                 <h3>Total Deposits</h3>
                 <p>{formatSTX(vaultStats.totalDeposits)} STX</p>
