@@ -179,6 +179,16 @@
   )
 )
 
+(define-read-only (get-cooldown-remaining (user principal))
+  (let ((last-deposit (default-to u0 (map-get? user-last-deposit user)))
+        (elapsed (- block-height last-deposit)))
+    (if (>= elapsed WITHDRAWAL-COOLDOWN)
+      u0
+      (- WITHDRAWAL-COOLDOWN elapsed)
+    )
+  )
+)
+
 (define-read-only (get-vault-tvl)
   (+ (var-get total-deposits) (var-get total-rewards))
 )
