@@ -352,6 +352,10 @@
   color: #3730a3;
 }
 
+.dark .user-position h2 {
+  color: #c7d2fe;
+}
+
 .actions {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
