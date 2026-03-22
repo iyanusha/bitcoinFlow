@@ -1,3 +1,4 @@
+export { useAriaLabel } from './useAriaLabel';
 export { useAsync } from './useAsync';
 export { useClipboard } from './useClipboard';
 export { useConfirm } from './useConfirm';
