@@ -565,3 +565,7 @@ button:focus-visible {
 .vault_comparison-sec36 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
 .vault_comparison-sec36 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
 .vault_comparison-sec36 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_comparison-sec37 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_comparison-sec37 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_comparison-sec37 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
