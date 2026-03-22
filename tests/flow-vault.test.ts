@@ -794,6 +794,34 @@ describe("flow-vault", () => {
     expect(result).toBeSome(Cl.principal(wallet2));
   });
 
+  it("cooldown resets after a new deposit", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    const wallet7 = accounts.get("wallet_7")!;
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(1000000)], wallet7);
+    simnet.mineEmptyBlocks(7);
+
+    // Cooldown should be expired now
+    const { result: before } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-cooldown-remaining",
+      [Cl.principal(wallet7)],
+      deployer
+    );
+    expect(before).toBeUint(0);
+
+    // New deposit resets cooldown
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(1000000)], wallet7);
+
+    const { result: after } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-cooldown-remaining",
+      [Cl.principal(wallet7)],
+      deployer
+    );
+    const remaining = Number(after.expectUint());
+    expect(remaining).toBeGreaterThan(0);
+  });
+
   it("partial withdrawal reduces balance correctly", () => {
     simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
     const wallet6 = accounts.get("wallet_6")!;
