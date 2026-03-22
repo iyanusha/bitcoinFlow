@@ -105,5 +105,16 @@ export function useVaultStats(userAddress: string | null) {
     return () => clearInterval(interval);
   }, [fetchStats]);
 
+  // Refresh when tab becomes visible again
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        fetchStats(true);
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => document.removeEventListener('visibilitychange', handleVisibility);
+  }, [fetchStats]);
+
   return { stats, loading, error, lastUpdated, refresh: fetchStats };
 }
