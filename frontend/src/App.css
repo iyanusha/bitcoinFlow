@@ -41,6 +41,20 @@
   outline-offset: 2px;
 }
 
+.dark *:focus-visible {
+  outline-color: #a5b4fc;
+}
+
+.action-card input:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.25);
+}
+
+.dark .action-card input:focus-visible {
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.3);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
