@@ -721,6 +721,12 @@
   margin: 0;
 }
 
+.tx-count {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
 .tx-history-header {
   display: flex;
   justify-content: space-between;
