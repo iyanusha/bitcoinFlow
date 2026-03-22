@@ -34,9 +34,16 @@ export function ConfirmDialog({
   if (!open) return null;
 
   return (
-    <dialog ref={dialogRef} className="confirm-dialog" onClose={onCancel}>
-      <h3>{title}</h3>
-      <p>{message}</p>
+    <dialog
+      ref={dialogRef}
+      className="confirm-dialog"
+      onClose={onCancel}
+      aria-labelledby="confirm-dialog-title"
+      aria-describedby="confirm-dialog-message"
+      aria-modal="true"
+    >
+      <h3 id="confirm-dialog-title">{title}</h3>
+      <p id="confirm-dialog-message">{message}</p>
       <div className="confirm-dialog-actions">
         <button className="confirm-dialog-cancel" onClick={onCancel}>{cancelLabel}</button>
         <button className="confirm-dialog-confirm" onClick={onConfirm}>{confirmLabel}</button>
