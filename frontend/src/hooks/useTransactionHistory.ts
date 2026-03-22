@@ -59,5 +59,12 @@ export function useTransactionHistory() {
     localStorage.removeItem(STORAGE_KEY);
   }, []);
 
-  return { transactions, addTransaction, updateStatus, clearHistory };
+  const pendingCount = useMemo(
+    () => transactions.filter(tx => tx.status === 'pending').length,
+    [transactions]
+  );
+
+  const hasPending = pendingCount > 0;
+
+  return { transactions, addTransaction, updateStatus, clearHistory, pendingCount, hasPending };
 }
