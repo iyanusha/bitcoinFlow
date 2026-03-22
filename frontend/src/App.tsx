@@ -160,12 +160,18 @@ function App() {
 
             <div className="action-card">
               <h3>Withdraw sBTC</h3>
+              <label htmlFor="withdraw-amount" className="sr-only">Withdrawal amount in FLOW tokens</label>
               <input
+                id="withdraw-amount"
                 type="number"
                 placeholder="Flow tokens to burn"
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(e.target.value)}
+                min="0.0001"
+                step="0.0001"
+                aria-describedby="withdraw-help"
               />
+              <small id="withdraw-help">Burns FLOW tokens and returns sBTC</small>
               <button onClick={handleWithdraw} disabled={!withdrawAmount || isWithdrawing}>
                 {isWithdrawing ? 'Processing...' : 'Burn Flow & Withdraw'}
               </button>
