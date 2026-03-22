@@ -49,6 +49,7 @@
 
 (define-public (withdraw (amount uint))
   (let ((user-balance (default-to u0 (map-get? user-deposits tx-sender))))
+    (asserts! (not (var-get vault-paused)) ERR-VAULT-PAUSED)
     (asserts! (> amount u0) ERR-INVALID-AMOUNT)
     (asserts! (>= user-balance amount) ERR-INSUFFICIENT-BALANCE)
     (map-set user-deposits tx-sender (- user-balance amount))
