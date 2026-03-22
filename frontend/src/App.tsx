@@ -249,15 +249,15 @@ function App() {
               </a>
             </div>
             <div className="stats-grid" role="region" aria-label="Vault statistics" aria-roledescription={ARIA_DESCRIPTIONS.vaultStats} aria-live="polite">
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Total Deposits: ${formatSTX(vaultStats.totalDeposits)} STX`}>
                 <h3>Total Deposits</h3>
                 <p>{formatSTX(vaultStats.totalDeposits)} STX</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Total Rewards: ${formatSTX(vaultStats.totalRewards)} STX`}>
                 <h3>Total Rewards</h3>
                 <p>{formatSTX(vaultStats.totalRewards)} STX</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`STX Balance: ${formatSTX(vaultStats.stxBalance)} STX`}>
                 <h3>STX Balance</h3>
                 <p>{formatSTX(vaultStats.stxBalance)} STX</p>
               </div>
