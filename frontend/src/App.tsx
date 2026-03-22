@@ -198,7 +198,7 @@ function App() {
         </div>
 
         {!isConnected ? (
-          <button className="connect-btn" onClick={connect}>
+          <button className="connect-btn" onClick={connect} aria-label={ARIA_DESCRIPTIONS.walletConnection}>
             Connect Stacks Wallet
           </button>
         ) : (
