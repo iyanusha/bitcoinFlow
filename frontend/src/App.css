@@ -329,9 +329,14 @@
   color: var(--text-primary);
 }
 
+.action-card input::placeholder {
+  color: var(--text-muted);
+}
+
 .action-card input:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
 }
 
 .action-card button {
