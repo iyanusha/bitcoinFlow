@@ -118,6 +118,7 @@ function App() {
 
   const handleWithdraw = async () => {
     if (!isConnected || !withdrawAmount) return
+    logger.info('Initiating withdrawal', { amount: withdrawAmount })
 
     const withdrawPrecision = validateDecimalPrecision(withdrawAmount)
     if (!withdrawPrecision.isValid) {
