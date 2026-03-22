@@ -24,3 +24,18 @@ export function microToDecimal(microValue: number, decimals: number): string {
   const divisor = Math.pow(10, decimals);
   return (microValue / divisor).toFixed(decimals);
 }
+
+/**
+ * Safely parse a Clarity optional value — returns null if none.
+ */
+export function parseClarityOptional<T>(value: { value: T } | null | undefined): T | null {
+  if (!value || value.value === undefined) return null;
+  return value.value;
+}
+
+/**
+ * Check if a Clarity response is an error (err) vs success (ok).
+ */
+export function isClarityError(response: { type: string }): boolean {
+  return response.type === 'err';
+}
