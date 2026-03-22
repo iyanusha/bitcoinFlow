@@ -184,6 +184,16 @@
   border: 1px solid rgba(255, 200, 50, 0.4);
 }
 
+.dark .network-badge-mainnet {
+  background: rgba(74, 222, 128, 0.2);
+  border-color: rgba(74, 222, 128, 0.4);
+}
+
+.dark .network-badge-testnet {
+  background: rgba(250, 204, 21, 0.15);
+  border-color: rgba(250, 204, 21, 0.3);
+}
+
 .pending-badge {
   display: inline-block;
   background: rgba(255, 200, 50, 0.3);
