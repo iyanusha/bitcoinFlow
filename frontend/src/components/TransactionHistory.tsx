@@ -41,7 +41,11 @@ export function TransactionHistory({ transactions, onClear }: TransactionHistory
     <div className="tx-history">
       <div className="tx-history-header">
         <h3>Transaction History</h3>
-        <button className="tx-clear-btn" onClick={onClear}>Clear</button>
+        <button className="tx-clear-btn" onClick={() => {
+          if (window.confirm('Clear all transaction history?')) {
+            onClear();
+          }
+        }}>Clear</button>
       </div>
       <ul className="tx-list">
         {transactions.map(tx => (
