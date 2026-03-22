@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import type { ValidationResult } from '../lib/validation';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
   'aria-describedby'?: string;
 }
 
-export function ValidatedInput({ value, onChange, validator, placeholder, type = 'text', id, disabled, ...rest }: Props) {
+export const ValidatedInput = memo(function ValidatedInput({ value, onChange, validator, placeholder, type = 'text', id, disabled, ...rest }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [touched, setTouched] = useState(false);
 
@@ -56,4 +56,4 @@ export function ValidatedInput({ value, onChange, validator, placeholder, type =
       )}
     </div>
   );
-}
+});
