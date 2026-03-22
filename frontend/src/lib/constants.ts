@@ -263,3 +263,5 @@ export const DEPOSIT_HISTORY_K69 = { endpoint: '/api/deposit_history/69', timeou
 export const DEPOSIT_HISTORY_K79 = { endpoint: '/api/deposit_history/79', timeout: 30000, retries: 3 } as const;
 
 export const WITHDRAW_HISTORY_K9 = { endpoint: '/api/withdraw_history/9', timeout: 30000, retries: 3 } as const;
+
+export const WITHDRAW_HISTORY_K19 = { endpoint: '/api/withdraw_history/19', timeout: 30000, retries: 3 } as const;
