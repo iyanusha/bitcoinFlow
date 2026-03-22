@@ -345,7 +345,11 @@ function App() {
                 aria-describedby="withdraw-help"
               />
               <small id="withdraw-help">Burns FLOW tokens and returns sBTC</small>
-              <button onClick={handleWithdraw} disabled={!withdrawAmount || isWithdrawing || vaultStats.isPaused}>
+              <button
+                onClick={handleWithdraw}
+                disabled={!withdrawAmount || isWithdrawing || vaultStats.isPaused}
+                aria-busy={isWithdrawing}
+              >
                 {isWithdrawing ? 'Processing...' : vaultStats.isPaused ? 'Vault Paused' : 'Burn Flow & Withdraw'}
               </button>
             </div>
