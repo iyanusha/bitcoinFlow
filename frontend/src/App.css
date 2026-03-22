@@ -1589,6 +1589,17 @@
   border-color: rgba(255,255,255,0.15);
 }
 
+.tx-dashboard {
+  margin-top: 1.5rem;
+}
+
+.tx-dashboard-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
 .copy-btn {
   background: none;
   border: 1px solid var(--border-color);
