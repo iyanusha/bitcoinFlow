@@ -521,6 +521,27 @@
   .action-card {
     padding: 1.5rem;
   }
+
+  .toast-container {
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+
+  .tx-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .tx-item-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .header-badges {
+    flex-wrap: wrap;
+  }
 }
 
 .error-boundary {
