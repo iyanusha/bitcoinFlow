@@ -1291,6 +1291,7 @@
   color: var(--accent);
   font-size: 0.8rem;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
 .tx-explorer-link:hover {
