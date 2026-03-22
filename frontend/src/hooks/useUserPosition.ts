@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { cvToJSON, fetchCallReadOnlyFunction, principalCV } from '@stacks/transactions';
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
-import type { UserPosition, CooldownInfo } from '../types';
+import type { UserPosition, CooldownInfo, UserShareResponse } from '../types';
 
 export function useUserPosition(userAddress: string | null) {
   const [position, setPosition] = useState<UserPosition | null>(null);
@@ -27,7 +27,7 @@ export function useUserPosition(userAddress: string | null) {
       });
 
       const shareJson = cvToJSON(shareResult);
-      const shareValue = shareJson.value;
+      const shareValue = shareJson.value as UserShareResponse;
 
       const cooldownResult = await fetchCallReadOnlyFunction({
         contractAddress: CONTRACT_ADDRESS,
