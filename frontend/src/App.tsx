@@ -284,7 +284,7 @@ function App() {
             <div className="user-position" role="region" aria-label="Your position" aria-description={ARIA_DESCRIPTIONS.userPosition}>
               <div className="stats-header">
                 <h2>Your Position</h2>
-                {positionLoading && <span className="loading-dot" aria-label="Loading position">●</span>}
+                {positionLoading && <span className="loading-dot" role="status" aria-label="Loading your position"><span aria-hidden="true">●</span></span>}
               </div>
               <div className="stats-grid">
                 <div className="stat-card">
