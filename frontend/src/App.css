@@ -27,6 +27,7 @@
   --radius-md: 10px;
   --radius-lg: 15px;
   --radius-xl: 20px;
+  --surface-hover: rgba(0,0,0,0.04);
 }
 
 .dark {
@@ -54,6 +55,7 @@
   --shadow-md: 0 5px 15px rgba(0,0,0,0.25);
   --shadow-lg: 0 10px 30px rgba(0,0,0,0.3);
   --shadow-xl: 0 20px 60px rgba(0,0,0,0.4);
+  --surface-hover: rgba(255,255,255,0.06);
 }
 
 *:focus-visible {
