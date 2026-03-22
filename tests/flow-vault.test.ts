@@ -660,6 +660,31 @@ describe("flow-vault", () => {
     expect(result).toBeErr(Cl.uint(100));
   });
 
+  it("increments withdraw count on each withdrawal", () => {
+    simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
+    simnet.callPublicFn("flow-vault", "deposit", [Cl.uint(10000000)], wallet1);
+    simnet.mineEmptyBlocks(7);
+
+    const { result: statusBefore } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-vault-status",
+      [],
+      deployer
+    );
+    const countBefore = Number(statusBefore.expectTuple()["withdraw-count"].expectUint());
+
+    simnet.callPublicFn("flow-vault", "withdraw", [Cl.uint(1000000)], wallet1);
+
+    const { result: statusAfter } = simnet.callReadOnlyFn(
+      "flow-vault",
+      "get-vault-status",
+      [],
+      deployer
+    );
+    const countAfter = Number(statusAfter.expectTuple()["withdraw-count"].expectUint());
+    expect(countAfter).toBe(countBefore + 1);
+  });
+
   it("full deposit-withdraw lifecycle works correctly", () => {
     simnet.callPublicFn("flow-vault", "unpause-vault", [], deployer);
 
