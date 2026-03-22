@@ -11,6 +11,27 @@ export function getContractErrorMessage(code: number): string {
   return messages[code] || `Unknown contract error (code: ${code})`;
 }
 
+export function isRetryableError(error: unknown): boolean {
+  if (error instanceof Error) {
+    const msg = error.message.toLowerCase();
+    return msg.includes('network') ||
+      msg.includes('timeout') ||
+      msg.includes('fetch') ||
+      msg.includes('econnrefused') ||
+      msg.includes('429');
+  }
+  return false;
+}
+
+export function getErrorSeverity(error: unknown): 'low' | 'medium' | 'high' {
+  if (error instanceof Error) {
+    if (error.message.includes('UserRejected')) return 'low';
+    if (error.message.includes('network')) return 'medium';
+    return 'high';
+  }
+  return 'high';
+}
+
 export function parseTransactionError(error: unknown): string {
   if (error instanceof Error) {
     if (error.message.includes('UserRejected')) return 'Transaction was cancelled by user';
