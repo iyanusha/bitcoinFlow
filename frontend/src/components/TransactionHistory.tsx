@@ -77,14 +77,17 @@ function PaginatedList({ transactions }: { transactions: TransactionRecord[] }) 
 export function TransactionHistory({ transactions, onClear, pendingCount = 0 }: TransactionHistoryProps) {
   const [typeFilter, setTypeFilter] = useState<FilterType>('all');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
+  const [datePreset, setDatePreset] = useState<DateRangePreset>('all');
 
   const filteredTransactions = useMemo(() => {
+    const dateRange = getPresetDateRange(datePreset);
     return transactions.filter(tx => {
       if (typeFilter !== 'all' && tx.type !== typeFilter) return false;
       if (statusFilter !== 'all' && tx.status !== statusFilter) return false;
+      if (!isWithinDateRange(tx.timestamp, dateRange)) return false;
       return true;
     });
-  }, [transactions, typeFilter, statusFilter]);
+  }, [transactions, typeFilter, statusFilter, datePreset]);
 
   if (transactions.length === 0) {
     return (
