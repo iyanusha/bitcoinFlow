@@ -199,8 +199,12 @@ function App() {
                 <p>{exchangeRate.formattedRate} sBTC/FLOW</p>
               </div>
               <div className="stat-card">
-                <h3>Vault Operations</h3>
-                <p>{vaultStats.depositCount + vaultStats.withdrawCount} total</p>
+                <h3>Deposits</h3>
+                <p>{vaultStats.depositCount}</p>
+              </div>
+              <div className="stat-card">
+                <h3>Withdrawals</h3>
+                <p>{vaultStats.withdrawCount}</p>
               </div>
             </div>
           </div>
