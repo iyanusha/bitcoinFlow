@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import type { VaultStats } from './types'
 import { useWallet } from './hooks/useWallet'
+import { useVaultStats } from './hooks/useVaultStats'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './lib/stacks'
