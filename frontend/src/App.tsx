@@ -124,8 +124,8 @@ function App() {
                 value={depositAmount}
                 onChange={(e) => setDepositAmount(e.target.value)}
               />
-              <button onClick={handleDeposit} disabled={!depositAmount}>
-                Deposit & Get Flow Tokens
+              <button onClick={handleDeposit} disabled={!depositAmount || isDepositing}>
+                {isDepositing ? 'Processing...' : 'Deposit & Get Flow Tokens'}
               </button>
             </div>
 
@@ -137,8 +137,8 @@ function App() {
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(e.target.value)}
               />
-              <button onClick={handleWithdraw} disabled={!withdrawAmount}>
-                Burn Flow & Withdraw
+              <button onClick={handleWithdraw} disabled={!withdrawAmount || isWithdrawing}>
+                {isWithdrawing ? 'Processing...' : 'Burn Flow & Withdraw'}
               </button>
             </div>
           </div>
