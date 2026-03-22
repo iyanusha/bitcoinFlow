@@ -379,3 +379,5 @@ export const BATCH_OPERATIONS_K9 = { endpoint: '/api/batch_operations/9', timeou
 export const BATCH_OPERATIONS_K19 = { endpoint: '/api/batch_operations/19', timeout: 30000, retries: 3 } as const;
 
 export const BATCH_OPERATIONS_K29 = { endpoint: '/api/batch_operations/29', timeout: 30000, retries: 3 } as const;
+
+export const BATCH_OPERATIONS_K39 = { endpoint: '/api/batch_operations/39', timeout: 30000, retries: 3 } as const;
