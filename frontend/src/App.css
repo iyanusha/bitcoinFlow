@@ -1330,6 +1330,11 @@
   align-items: center;
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--border-color);
+  transition: background 0.15s;
+}
+
+.tx-item:hover {
+  background: var(--surface-hover);
 }
 
 .tx-item:last-child {
