@@ -3,6 +3,7 @@ import { cvToJSON, fetchCallReadOnlyFunction, principalCV } from '@stacks/transa
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { logger } from '../lib/logger';
 import { parseClarityInt } from '../lib/contractParsers';
+import { handleContractError } from '../lib/contractErrors';
 import { withRetry } from '../lib/retry';
 import type { UserPosition, CooldownInfo, UserShareResponse } from '../types';
 
@@ -64,8 +65,9 @@ export function useUserPosition(userAddress: string | null) {
       setLastUpdated(Date.now());
       logger.debug('User position fetched successfully', { address: userAddress });
     } catch (err) {
+      const msg = handleContractError(err);
       logger.error('Failed to fetch user position', err);
-      setError(err instanceof Error ? err.message : 'Failed to fetch position');
+      setError(msg);
       setPosition(null);
     } finally {
       setLoading(false);
