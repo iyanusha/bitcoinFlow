@@ -18,6 +18,7 @@ export { useMediaQuery, useIsMobile, useIsTablet, useIsDesktop } from './useMedi
 export { useMounted } from './useMounted';
 export { useOnlineStatus } from './useOnlineStatus';
 export { usePageVisibility } from './usePageVisibility';
+export { usePagination } from './usePagination';
 export { usePolling } from './usePolling';
 export { usePrefersColorScheme } from './usePrefersColorScheme';
 export { usePrevious } from './usePrevious';
