@@ -1,6 +1,7 @@
 import { cvToJSON, fetchCallReadOnlyFunction, type ClarityValue } from '@stacks/transactions';
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './stacks';
 import { logger } from './logger';
+import { getCached, setCached, buildCacheKey } from './contractCache';
 
 export interface ReadOnlyCallOptions {
   functionName: string;
