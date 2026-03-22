@@ -230,8 +230,19 @@
 }
 
 .stats-header h2 {
-  color: #333;
+  color: var(--text-primary);
   margin: 0;
+}
+
+.stats-contract-link {
+  color: var(--accent);
+  font-size: 0.8rem;
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.stats-contract-link:hover {
+  text-decoration: underline;
 }
 
 .loading-dot {
