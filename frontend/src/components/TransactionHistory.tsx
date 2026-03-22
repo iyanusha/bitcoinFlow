@@ -137,6 +137,17 @@ export function TransactionHistory({ transactions, onClear, pendingCount = 0 }: 
 
       <TransactionSummary transactions={transactions} />
 
+      <div className="tx-search">
+        <input
+          type="search"
+          className="tx-search-input"
+          placeholder="Search by TX ID, type, or status..."
+          value={searchQuery}
+          onChange={e => setSearchQuery(e.target.value)}
+          aria-label="Search transactions"
+        />
+      </div>
+
       <div className="tx-filters" role="toolbar" aria-label="Transaction filters">
         <div className="tx-filter-group">
           <FilterButton label="All" active={typeFilter === 'all'} onClick={() => setTypeFilter('all')} />
