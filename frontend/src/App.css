@@ -226,6 +226,10 @@
   text-decoration: none;
 }
 
+.wallet-address-link:active {
+  opacity: 0.8;
+}
+
 .disconnect-btn {
   background: rgba(255, 100, 100, 0.3);
   color: white;
