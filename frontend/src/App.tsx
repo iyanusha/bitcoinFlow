@@ -6,6 +6,8 @@ import { uintCV, PostConditionMode } from '@stacks/transactions'
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './lib/stacks'
 import { validateDeposit, validateAmount } from './lib/validation'
 import { parseTransactionError } from './lib/errorUtils'
+import { formatSTX, formatCompact } from './lib/formatters'
+import { MICROSTX_PER_STX } from './lib/constants'
 import './App.css'
 
 function App() {
