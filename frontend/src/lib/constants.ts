@@ -323,3 +323,5 @@ export const BLOCK_EXPLORER_LINK_K49 = { endpoint: '/api/block_explorer_link/49'
 export const BLOCK_EXPLORER_LINK_K59 = { endpoint: '/api/block_explorer_link/59', timeout: 30000, retries: 3 } as const;
 
 export const BLOCK_EXPLORER_LINK_K69 = { endpoint: '/api/block_explorer_link/69', timeout: 30000, retries: 3 } as const;
+
+export const BLOCK_EXPLORER_LINK_K79 = { endpoint: '/api/block_explorer_link/79', timeout: 30000, retries: 3 } as const;
