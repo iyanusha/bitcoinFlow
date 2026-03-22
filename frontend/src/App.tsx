@@ -6,7 +6,7 @@ import { useExchangeRate } from './hooks/useExchangeRate'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './lib/stacks'
-import { validateDeposit, validateWithdraw, validateDecimalPrecision } from './lib/validation'
+import { validateDeposit, validateWithdraw, validateDecimalPrecision, sanitizeNumericInput } from './lib/validation'
 import { parseTransactionError } from './lib/errorUtils'
 import { formatSTX, formatCompact, formatBlocks } from './lib/formatters'
 import { MICROSTX_PER_STX } from './lib/constants'
@@ -238,7 +238,7 @@ function App() {
                 type="number"
                 placeholder="Amount to deposit"
                 value={depositAmount}
-                onChange={(e) => setDepositAmount(e.target.value)}
+                onChange={(e) => setDepositAmount(sanitizeNumericInput(e.target.value))}
                 min="0.0001"
                 step="0.0001"
                 aria-describedby="deposit-help"
