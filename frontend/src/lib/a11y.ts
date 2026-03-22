@@ -94,3 +94,28 @@ export const KEYS = {
 export function isActivationKey(key: string): boolean {
   return key === KEYS.ENTER || key === KEYS.SPACE;
 }
+
+/**
+ * Programmatically announce a message to screen readers via
+ * a temporary live region. Useful for dynamic state changes
+ * that don't have a visual live region.
+ */
+export function announceToScreenReader(
+  message: string,
+  priority: 'polite' | 'assertive' = 'polite',
+): void {
+  const el = document.createElement('div');
+  el.setAttribute('role', 'status');
+  el.setAttribute('aria-live', priority);
+  el.setAttribute('aria-atomic', 'true');
+  el.className = 'sr-only';
+  document.body.appendChild(el);
+
+  // Delay setting text so the live region is registered before content
+  requestAnimationFrame(() => {
+    el.textContent = message;
+    setTimeout(() => {
+      document.body.removeChild(el);
+    }, 1000);
+  });
+}
