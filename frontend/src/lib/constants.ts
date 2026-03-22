@@ -31,6 +31,14 @@ export const COOLDOWN_ESTIMATED_MINUTES = Math.round((COOLDOWN_BLOCKS * BLOCK_TI
 export const MAX_TX_HISTORY = 50;
 export const TX_POLL_INTERVAL_MS = 15_000;
 
+export const SEO = {
+  SITE_NAME: 'BitcoinFlow',
+  SITE_URL: 'https://bitcoinflow.app',
+  DESCRIPTION: 'Smart sBTC Stacking Vault with auto-compounding rewards',
+  OG_IMAGE: 'https://bitcoinflow.app/og-image.png',
+  TWITTER_HANDLE: '@bitcoinflow',
+} as const;
+
 export const BREAKPOINTS = {
   MOBILE: 480,
   TABLET: 768,
