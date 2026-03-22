@@ -15,6 +15,7 @@ import { validateDeposit, validateWithdraw, validateDecimalPrecision, sanitizeNu
 import { parseTransactionError } from './lib/errorUtils'
 import { formatSTX, formatCompact, formatBlocks, formatAddress } from './lib/formatters'
 import { MICROSTX_PER_STX, SATS_PER_BTC } from './lib/constants'
+import { logger } from './lib/logger'
 import { SkipLink } from './components/SkipLink'
 import { ToastContainer } from './components/ToastContainer'
 import { TransactionHistory } from './components/TransactionHistory'
@@ -69,6 +70,7 @@ function App() {
 
   const handleDeposit = async () => {
     if (!isConnected || !depositAmount) return
+    logger.info('Initiating deposit', { amount: depositAmount })
 
     const precisionCheck = validateDecimalPrecision(depositAmount)
     if (!precisionCheck.isValid) {
