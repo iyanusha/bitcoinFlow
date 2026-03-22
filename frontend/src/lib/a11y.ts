@@ -56,3 +56,41 @@ export function externalLinkLabel(label: string): string {
 export function formatForScreenReader(value: number, unit: string): string {
   return `${value.toLocaleString()} ${unit}`;
 }
+
+/** Common ARIA role descriptions */
+export const ARIA_DESCRIPTIONS = {
+  vaultStats: 'Vault statistics overview showing total deposits, rewards, and balances',
+  userPosition: 'Your current position in the vault including deposited amount and share',
+  depositForm: 'Form to deposit sBTC into the flow vault',
+  withdrawForm: 'Form to withdraw sBTC from the flow vault',
+  transactionHistory: 'List of your recent deposit and withdrawal transactions',
+  walletConnection: 'Connect or disconnect your Stacks wallet',
+} as const;
+
+/** Landmark descriptions for screen readers */
+export const LANDMARK_LABELS = {
+  header: 'Bitcoin Flow application header',
+  main: 'Main application content',
+  footer: 'Application footer with links and copyright',
+  stats: 'Vault statistics',
+  actions: 'Deposit and withdrawal actions',
+} as const;
+
+/** Key constants for keyboard interactions */
+export const KEYS = {
+  ENTER: 'Enter',
+  SPACE: ' ',
+  ESCAPE: 'Escape',
+  TAB: 'Tab',
+  ARROW_UP: 'ArrowUp',
+  ARROW_DOWN: 'ArrowDown',
+  ARROW_LEFT: 'ArrowLeft',
+  ARROW_RIGHT: 'ArrowRight',
+  HOME: 'Home',
+  END: 'End',
+} as const;
+
+/** Check if a key press is an activation key (Enter or Space) */
+export function isActivationKey(key: string): boolean {
+  return key === KEYS.ENTER || key === KEYS.SPACE;
+}
