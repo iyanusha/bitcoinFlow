@@ -51,3 +51,18 @@ export async function withRetry<T>(
 
   throw lastError;
 }
+
+/**
+ * Check if an error is retryable (network-related).
+ * Exported for testing and custom retry logic.
+ */
+export function isRetryableError(err: unknown): boolean {
+  if (!(err instanceof Error)) return false;
+  return (
+    err.message.includes('network') ||
+    err.message.includes('fetch') ||
+    err.message.includes('timeout') ||
+    err.message.includes('ECONNREFUSED') ||
+    err.message.includes('429')
+  );
+}
