@@ -465,3 +465,5 @@ export const MULTI_VAULT_K39 = { endpoint: '/api/multi_vault/39', timeout: 30000
 export const MULTI_VAULT_K49 = { endpoint: '/api/multi_vault/49', timeout: 30000, retries: 3 } as const;
 
 export const MULTI_VAULT_K59 = { endpoint: '/api/multi_vault/59', timeout: 30000, retries: 3 } as const;
+
+export const MULTI_VAULT_K69 = { endpoint: '/api/multi_vault/69', timeout: 30000, retries: 3 } as const;
