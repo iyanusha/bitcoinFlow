@@ -116,3 +116,4 @@ export {
   markStart,
 } from './performanceMonitor';
 export type { PerformanceEntry } from './performanceMonitor';
+export { throttle, rafThrottle } from './throttle';
