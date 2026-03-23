@@ -20,6 +20,8 @@ export type { FormFieldState, FormFieldActions, UseFormFieldResult } from './use
 export { useFormSubmit } from './useFormSubmit';
 export { useFormValidation } from './useFormValidation';
 export { useIdleCallback } from './useIdleCallback';
+export { useInputMask } from './useInputMask';
+export type { UseInputMaskResult } from './useInputMask';
 export { useIntersectionObserver } from './useIntersectionObserver';
 export { useKeyboard } from './useKeyboard';
 export { useKeyboardShortcut } from './useKeyboardShortcut';
