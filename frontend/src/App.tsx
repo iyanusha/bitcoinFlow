@@ -58,6 +58,13 @@ function App() {
   const [depositTouched, setDepositTouched] = useState(false)
   const [withdrawTouched, setWithdrawTouched] = useState(false)
 
+  // Memoize formatted values to avoid recalculating on every render
+  const formattedDeposits = useMemo(() => formatSTX(vaultStats.totalDeposits), [vaultStats.totalDeposits])
+  const formattedRewards = useMemo(() => formatSTX(vaultStats.totalRewards), [vaultStats.totalRewards])
+  const formattedBalance = useMemo(() => formatSTX(vaultStats.stxBalance), [vaultStats.stxBalance])
+  const formattedUserTokens = useMemo(() => formatCompact(vaultStats.userBalance / MICROSTX_PER_STX), [vaultStats.userBalance])
+  const userFlowBalance = useMemo(() => position ? position.flowTokenBalance / MICROSTX_PER_STX : 0, [position])
+
   const pollPendingTransactions = useCallback(async () => {
     const pending = transactions.filter(tx => tx.status === 'pending');
     for (const tx of pending) {
