@@ -12,6 +12,8 @@ export { useExchangeRate } from './useExchangeRate';
 export { useFocusReturn } from './useFocusReturn';
 export { useFocusTrap } from './useFocusTrap';
 export { useHighContrast } from './useHighContrast';
+export { useFormField } from './useFormField';
+export type { FormFieldState, FormFieldActions, UseFormFieldResult } from './useFormField';
 export { useFormValidation } from './useFormValidation';
 export { useIdleCallback } from './useIdleCallback';
 export { useIntersectionObserver } from './useIntersectionObserver';
