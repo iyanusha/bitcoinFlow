@@ -31,3 +31,4 @@ export { PasswordStrengthMeter } from './PasswordStrengthMeter';
 export type { PasswordStrength } from './PasswordStrengthMeter';
 export { FormActions } from './FormActions';
 export { StatCard } from './StatCard';
+export { VirtualList } from './VirtualList';
