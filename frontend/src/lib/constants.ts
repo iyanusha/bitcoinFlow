@@ -501,3 +501,5 @@ export const STAKE_OPTIMIZER_K59 = { endpoint: '/api/stake_optimizer/59', timeou
 export const STAKE_OPTIMIZER_K69 = { endpoint: '/api/stake_optimizer/69', timeout: 30000, retries: 3 } as const;
 
 export const STAKE_OPTIMIZER_K79 = { endpoint: '/api/stake_optimizer/79', timeout: 30000, retries: 3 } as const;
+
+export const REWARD_TRACKER_K9 = { endpoint: '/api/reward_tracker/9', timeout: 30000, retries: 3 } as const;
