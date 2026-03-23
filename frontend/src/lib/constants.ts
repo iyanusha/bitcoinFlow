@@ -261,3 +261,19 @@ export const DEPOSIT_HISTORY_K59 = { endpoint: '/api/deposit_history/59', timeou
 export const DEPOSIT_HISTORY_K69 = { endpoint: '/api/deposit_history/69', timeout: 30000, retries: 3 } as const;
 
 export const DEPOSIT_HISTORY_K79 = { endpoint: '/api/deposit_history/79', timeout: 30000, retries: 3 } as const;
+
+export const WITHDRAW_HISTORY_K9 = { endpoint: '/api/withdraw_history/9', timeout: 30000, retries: 3 } as const;
+
+export const WITHDRAW_HISTORY_K19 = { endpoint: '/api/withdraw_history/19', timeout: 30000, retries: 3 } as const;
+
+export const WITHDRAW_HISTORY_K29 = { endpoint: '/api/withdraw_history/29', timeout: 30000, retries: 3 } as const;
+
+export const WITHDRAW_HISTORY_K39 = { endpoint: '/api/withdraw_history/39', timeout: 30000, retries: 3 } as const;
+
+export const WITHDRAW_HISTORY_K49 = { endpoint: '/api/withdraw_history/49', timeout: 30000, retries: 3 } as const;
+
+export const WITHDRAW_HISTORY_K59 = { endpoint: '/api/withdraw_history/59', timeout: 30000, retries: 3 } as const;
+
+export const WITHDRAW_HISTORY_K69 = { endpoint: '/api/withdraw_history/69', timeout: 30000, retries: 3 } as const;
+
+export const WITHDRAW_HISTORY_K79 = { endpoint: '/api/withdraw_history/79', timeout: 30000, retries: 3 } as const;
