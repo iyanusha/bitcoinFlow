@@ -309,3 +309,19 @@ export const CONTRACT_EVENTS_K59 = { endpoint: '/api/contract_events/59', timeou
 export const CONTRACT_EVENTS_K69 = { endpoint: '/api/contract_events/69', timeout: 30000, retries: 3 } as const;
 
 export const CONTRACT_EVENTS_K79 = { endpoint: '/api/contract_events/79', timeout: 30000, retries: 3 } as const;
+
+export const BLOCK_EXPLORER_LINK_K9 = { endpoint: '/api/block_explorer_link/9', timeout: 30000, retries: 3 } as const;
+
+export const BLOCK_EXPLORER_LINK_K19 = { endpoint: '/api/block_explorer_link/19', timeout: 30000, retries: 3 } as const;
+
+export const BLOCK_EXPLORER_LINK_K29 = { endpoint: '/api/block_explorer_link/29', timeout: 30000, retries: 3 } as const;
+
+export const BLOCK_EXPLORER_LINK_K39 = { endpoint: '/api/block_explorer_link/39', timeout: 30000, retries: 3 } as const;
+
+export const BLOCK_EXPLORER_LINK_K49 = { endpoint: '/api/block_explorer_link/49', timeout: 30000, retries: 3 } as const;
+
+export const BLOCK_EXPLORER_LINK_K59 = { endpoint: '/api/block_explorer_link/59', timeout: 30000, retries: 3 } as const;
+
+export const BLOCK_EXPLORER_LINK_K69 = { endpoint: '/api/block_explorer_link/69', timeout: 30000, retries: 3 } as const;
+
+export const BLOCK_EXPLORER_LINK_K79 = { endpoint: '/api/block_explorer_link/79', timeout: 30000, retries: 3 } as const;
