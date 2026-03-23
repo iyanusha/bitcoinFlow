@@ -1241,3 +1241,67 @@ button:focus-visible {
 .reward_tracker-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
 .reward_tracker-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
 .reward_tracker-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec6 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec6 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec6 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec7 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec7 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec7 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec16 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec16 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec16 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec17 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec17 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec17 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec26 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec26 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec26 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec27 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec27 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec27 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec36 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec36 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec36 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec37 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec37 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec37 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec46 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec46 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec46 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec47 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec47 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec47 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec56 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec56 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec56 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec57 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec57 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec57 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec66 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec66 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec66 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec67 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec67 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec67 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec76 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec76 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec76 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.user_preferences-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.user_preferences-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.user_preferences-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
