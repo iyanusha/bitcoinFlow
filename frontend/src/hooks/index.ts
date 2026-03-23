@@ -61,3 +61,4 @@ export { useLazyLoad } from './useLazyLoad';
 export { useThrottle } from './useThrottle';
 export { useRenderCount } from './useRenderCount';
 export { useDeferred } from './useDeferred';
+export { useAbortController } from './useAbortController';
