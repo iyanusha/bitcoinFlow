@@ -119,3 +119,4 @@ export type { PerformanceEntry } from './performanceMonitor';
 export { throttle, rafThrottle } from './throttle';
 export { memoize, memoizeWithTTL } from './memoize';
 export { batchUpdates, scheduleIdle, cancelIdle } from './batchUpdates';
+export { ObjectPool } from './objectPool';
