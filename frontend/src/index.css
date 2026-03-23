@@ -1217,3 +1217,7 @@ button:focus-visible {
 .reward_tracker-sec47 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
 .reward_tracker-sec47 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
 .reward_tracker-sec47 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.reward_tracker-sec56 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.reward_tracker-sec56 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.reward_tracker-sec56 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
