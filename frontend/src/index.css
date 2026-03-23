@@ -89,3 +89,67 @@ button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+.vault_analytics-sec6 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec6 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec6 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec7 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec7 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec7 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec16 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec16 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec16 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec17 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec17 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec17 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec26 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec26 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec26 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec27 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec27 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec27 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec36 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec36 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec36 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec37 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec37 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec37 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec46 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec46 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec46 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec47 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec47 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec47 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec56 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec56 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec56 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec57 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec57 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec57 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec66 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec66 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec66 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec67 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec67 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec67 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec76 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec76 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec76 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_analytics-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_analytics-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_analytics-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }

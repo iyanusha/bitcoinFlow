@@ -229,3 +229,19 @@ export const ADMIN_PANEL_S29 = { pageSize: 20, refreshMs: 30000 } as const;
 export const ADMIN_PANEL_S39 = { pageSize: 20, refreshMs: 30000 } as const;
 
 export const ADMIN_PANEL_S49 = { pageSize: 20, refreshMs: 30000 } as const;
+
+export const VAULT_ANALYTICS_K9 = { endpoint: '/api/vault_analytics/9', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_ANALYTICS_K19 = { endpoint: '/api/vault_analytics/19', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_ANALYTICS_K29 = { endpoint: '/api/vault_analytics/29', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_ANALYTICS_K39 = { endpoint: '/api/vault_analytics/39', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_ANALYTICS_K49 = { endpoint: '/api/vault_analytics/49', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_ANALYTICS_K59 = { endpoint: '/api/vault_analytics/59', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_ANALYTICS_K69 = { endpoint: '/api/vault_analytics/69', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_ANALYTICS_K79 = { endpoint: '/api/vault_analytics/79', timeout: 30000, retries: 3 } as const;
