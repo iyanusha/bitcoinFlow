@@ -501,3 +501,19 @@ export const STAKE_OPTIMIZER_K59 = { endpoint: '/api/stake_optimizer/59', timeou
 export const STAKE_OPTIMIZER_K69 = { endpoint: '/api/stake_optimizer/69', timeout: 30000, retries: 3 } as const;
 
 export const STAKE_OPTIMIZER_K79 = { endpoint: '/api/stake_optimizer/79', timeout: 30000, retries: 3 } as const;
+
+export const REWARD_TRACKER_K9 = { endpoint: '/api/reward_tracker/9', timeout: 30000, retries: 3 } as const;
+
+export const REWARD_TRACKER_K19 = { endpoint: '/api/reward_tracker/19', timeout: 30000, retries: 3 } as const;
+
+export const REWARD_TRACKER_K29 = { endpoint: '/api/reward_tracker/29', timeout: 30000, retries: 3 } as const;
+
+export const REWARD_TRACKER_K39 = { endpoint: '/api/reward_tracker/39', timeout: 30000, retries: 3 } as const;
+
+export const REWARD_TRACKER_K49 = { endpoint: '/api/reward_tracker/49', timeout: 30000, retries: 3 } as const;
+
+export const REWARD_TRACKER_K59 = { endpoint: '/api/reward_tracker/59', timeout: 30000, retries: 3 } as const;
+
+export const REWARD_TRACKER_K69 = { endpoint: '/api/reward_tracker/69', timeout: 30000, retries: 3 } as const;
+
+export const REWARD_TRACKER_K79 = { endpoint: '/api/reward_tracker/79', timeout: 30000, retries: 3 } as const;
