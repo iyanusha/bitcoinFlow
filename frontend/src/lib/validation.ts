@@ -153,3 +153,44 @@ export function validatePattern(
   }
   return { isValid: true, error: null };
 }
+
+/**
+ * Validate that a value is not equal to a specific value.
+ */
+export function validateNotEqual(
+  value: string,
+  notEqual: string,
+  message = 'Value is not allowed',
+): ValidationResult {
+  if (value === notEqual) {
+    return { isValid: false, error: message };
+  }
+  return { isValid: true, error: null };
+}
+
+/**
+ * Validate a value against a whitelist.
+ */
+export function validateWhitelist(
+  value: string,
+  allowed: string[],
+  message = 'Value is not in the allowed list',
+): ValidationResult {
+  if (!allowed.includes(value)) {
+    return { isValid: false, error: message };
+  }
+  return { isValid: true, error: null };
+}
+
+/**
+ * Create a conditional validator that only runs when a condition is met.
+ */
+export function validateWhen(
+  condition: boolean,
+  validator: (value: string) => ValidationResult,
+): (value: string) => ValidationResult {
+  return (value: string) => {
+    if (!condition) return { isValid: true, error: null };
+    return validator(value);
+  };
+}
