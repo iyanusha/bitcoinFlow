@@ -60,3 +60,4 @@ export { useMemoCompare } from './useMemoCompare';
 export { useLazyLoad } from './useLazyLoad';
 export { useThrottle } from './useThrottle';
 export { useRenderCount } from './useRenderCount';
+export { useDeferred } from './useDeferred';
