@@ -665,3 +665,67 @@ button:focus-visible {
 .portfolio_view-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
 .portfolio_view-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
 .portfolio_view-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec6 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec6 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec6 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec7 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec7 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec7 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec16 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec16 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec16 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec17 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec17 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec17 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec26 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec26 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec26 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec27 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec27 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec27 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec36 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec36 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec36 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec37 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec37 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec37 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec46 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec46 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec46 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec47 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec47 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec47 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec56 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec56 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec56 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec57 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec57 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec57 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec66 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec66 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec66 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec67 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec67 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec67 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec76 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec76 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec76 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.batch_operations-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.batch_operations-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.batch_operations-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }

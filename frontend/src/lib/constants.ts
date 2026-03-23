@@ -373,3 +373,19 @@ export const PORTFOLIO_VIEW_K59 = { endpoint: '/api/portfolio_view/59', timeout:
 export const PORTFOLIO_VIEW_K69 = { endpoint: '/api/portfolio_view/69', timeout: 30000, retries: 3 } as const;
 
 export const PORTFOLIO_VIEW_K79 = { endpoint: '/api/portfolio_view/79', timeout: 30000, retries: 3 } as const;
+
+export const BATCH_OPERATIONS_K9 = { endpoint: '/api/batch_operations/9', timeout: 30000, retries: 3 } as const;
+
+export const BATCH_OPERATIONS_K19 = { endpoint: '/api/batch_operations/19', timeout: 30000, retries: 3 } as const;
+
+export const BATCH_OPERATIONS_K29 = { endpoint: '/api/batch_operations/29', timeout: 30000, retries: 3 } as const;
+
+export const BATCH_OPERATIONS_K39 = { endpoint: '/api/batch_operations/39', timeout: 30000, retries: 3 } as const;
+
+export const BATCH_OPERATIONS_K49 = { endpoint: '/api/batch_operations/49', timeout: 30000, retries: 3 } as const;
+
+export const BATCH_OPERATIONS_K59 = { endpoint: '/api/batch_operations/59', timeout: 30000, retries: 3 } as const;
+
+export const BATCH_OPERATIONS_K69 = { endpoint: '/api/batch_operations/69', timeout: 30000, retries: 3 } as const;
+
+export const BATCH_OPERATIONS_K79 = { endpoint: '/api/batch_operations/79', timeout: 30000, retries: 3 } as const;
