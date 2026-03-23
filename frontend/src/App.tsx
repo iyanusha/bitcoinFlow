@@ -335,6 +335,9 @@ function App() {
                 aria-describedby={`deposit-help${depositTouched && depositAmount && !validateDeposit(depositAmount).isValid ? ' deposit-error' : ''}`}
               />
               <small id="deposit-help">Minimum: 0.0001 sBTC</small>
+              {depositTouched && depositAmount && !validateDeposit(depositAmount).isValid && (
+                <p id="deposit-error" className="form-error-message" role="alert">{validateDeposit(depositAmount).error}</p>
+              )}
               <button
                 onClick={handleDeposit}
                 disabled={!depositAmount || isDepositing || vaultStats.isPaused || !isOnline}
