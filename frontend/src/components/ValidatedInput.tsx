@@ -16,7 +16,7 @@ interface Props {
   'aria-describedby'?: string;
 }
 
-export const ValidatedInput = memo(function ValidatedInput({ value, onChange, validator, placeholder, type = 'text', id, disabled, ...rest }: Props) {
+export const ValidatedInput = memo(function ValidatedInput({ value, onChange, validator, placeholder, type = 'text', id, disabled, label, helpText, inputMode, autoComplete, ...rest }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [touched, setTouched] = useState(false);
 
