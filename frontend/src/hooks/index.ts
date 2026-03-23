@@ -64,3 +64,4 @@ export { useDeferred } from './useDeferred';
 export { useAbortController } from './useAbortController';
 export { useNetworkSpeed } from './useNetworkSpeed';
 export { useLatestRef } from './useLatestRef';
+export { useUpdateEffect } from './useUpdateEffect';
