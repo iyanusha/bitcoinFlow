@@ -25,3 +25,4 @@ export { LiveRegion } from './LiveRegion';
 export { AccessibleIcon } from './AccessibleIcon';
 export { KeyboardShortcutHelp } from './KeyboardShortcutHelp';
 export { FormErrorMessage } from './FormErrorMessage';
+export { FormFieldGroup } from './FormFieldGroup';
