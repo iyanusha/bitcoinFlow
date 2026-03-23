@@ -9,6 +9,10 @@ interface Props {
   type?: string;
   id?: string;
   disabled?: boolean;
+  label?: string;
+  helpText?: string;
+  inputMode?: 'text' | 'decimal' | 'numeric';
+  autoComplete?: string;
   'aria-describedby'?: string;
 }
 
