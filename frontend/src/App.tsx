@@ -371,7 +371,23 @@ function App() {
                 aria-invalid={withdrawTouched && withdrawAmount ? !validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid : undefined}
                 aria-describedby="withdraw-help"
               />
-              <small id="withdraw-help">Burns FLOW tokens and returns sBTC</small>
+              <div className="input-row">
+                <small id="withdraw-help">Burns FLOW tokens and returns sBTC</small>
+                {position && (
+                  <button
+                    type="button"
+                    className="max-btn"
+                    onClick={() => {
+                      const maxAmount = (position.flowTokenBalance / MICROSTX_PER_STX).toString();
+                      setWithdrawAmount(maxAmount);
+                      setWithdrawTouched(true);
+                    }}
+                    aria-label={`Set maximum withdrawal: ${formatCompact(position.flowTokenBalance / MICROSTX_PER_STX)} FLOW`}
+                  >
+                    Max
+                  </button>
+                )}
+              </div>
               {withdrawTouched && withdrawAmount && !validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid && (
                 <p id="withdraw-error" className="form-error-message" role="alert">{validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).error}</p>
               )}
