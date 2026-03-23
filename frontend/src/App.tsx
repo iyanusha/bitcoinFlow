@@ -328,8 +328,11 @@ function App() {
                   setDepositAmount(sanitizeNumericInput(e.target.value))
                   if (error) setError(null)
                 }}
+                onBlur={() => setDepositTouched(true)}
                 autoComplete="off"
-                aria-describedby="deposit-help"
+                className={depositTouched && depositAmount ? (validateDeposit(depositAmount).isValid ? 'input-valid' : 'input-error') : ''}
+                aria-invalid={depositTouched && depositAmount ? !validateDeposit(depositAmount).isValid : undefined}
+                aria-describedby={`deposit-help${depositTouched && depositAmount && !validateDeposit(depositAmount).isValid ? ' deposit-error' : ''}`}
               />
               <small id="deposit-help">Minimum: 0.0001 sBTC</small>
               <button
