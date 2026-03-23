@@ -413,3 +413,5 @@ export const YIELD_CALCULATOR_K19 = { endpoint: '/api/yield_calculator/19', time
 export const YIELD_CALCULATOR_K29 = { endpoint: '/api/yield_calculator/29', timeout: 30000, retries: 3 } as const;
 
 export const YIELD_CALCULATOR_K39 = { endpoint: '/api/yield_calculator/39', timeout: 30000, retries: 3 } as const;
+
+export const YIELD_CALCULATOR_K49 = { endpoint: '/api/yield_calculator/49', timeout: 30000, retries: 3 } as const;
