@@ -368,6 +368,9 @@ function App() {
                 aria-describedby="withdraw-help"
               />
               <small id="withdraw-help">Burns FLOW tokens and returns sBTC</small>
+              {withdrawTouched && withdrawAmount && !validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid && (
+                <p id="withdraw-error" className="form-error-message" role="alert">{validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).error}</p>
+              )}
               <button
                 onClick={handleWithdraw}
                 disabled={!withdrawAmount || isWithdrawing || vaultStats.isPaused || !isOnline}
