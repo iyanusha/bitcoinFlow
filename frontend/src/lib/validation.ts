@@ -90,3 +90,20 @@ export function isValidContractId(contractId: string): boolean {
 export function isValidTxId(txId: string): boolean {
   return /^0x[a-fA-F0-9]{64}$/.test(txId);
 }
+
+/**
+ * Validate that a string is within a length range.
+ */
+export function validateLength(
+  value: string,
+  min: number,
+  max: number,
+): ValidationResult {
+  if (value.length < min) {
+    return { isValid: false, error: `Must be at least ${min} characters` };
+  }
+  if (value.length > max) {
+    return { isValid: false, error: `Must be at most ${max} characters` };
+  }
+  return { isValid: true, error: null };
+}
