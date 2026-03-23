@@ -527,3 +527,5 @@ export const USER_PREFERENCES_K29 = { endpoint: '/api/user_preferences/29', time
 export const USER_PREFERENCES_K39 = { endpoint: '/api/user_preferences/39', timeout: 30000, retries: 3 } as const;
 
 export const USER_PREFERENCES_K49 = { endpoint: '/api/user_preferences/49', timeout: 30000, retries: 3 } as const;
+
+export const USER_PREFERENCES_K59 = { endpoint: '/api/user_preferences/59', timeout: 30000, retries: 3 } as const;
