@@ -16,6 +16,9 @@ import {
   validateRange,
   validateRequired,
   validatePattern,
+  validateNotEqual,
+  validateWhitelist,
+  validateWhen,
 } from '../validation';
 
 describe('validateAmount', () => {
