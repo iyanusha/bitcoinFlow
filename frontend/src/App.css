@@ -395,6 +395,8 @@
   text-align: center;
   border: 1px solid var(--border-color);
   transition: transform 0.2s, box-shadow 0.2s, background 0.3s, border-color 0.3s;
+  will-change: transform;
+  contain: layout style;
 }
 
 .stat-card:hover {
@@ -489,6 +491,7 @@
   transition: box-shadow 0.2s ease, background 0.3s, border-color 0.3s;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-color);
+  contain: layout style;
 }
 
 .action-card:hover {
@@ -2403,4 +2406,25 @@
   0% { opacity: 0.5; }
   50% { opacity: 0.8; }
   100% { opacity: 0.5; }
+}
+
+/* ── Performance: content-visibility for off-screen sections ── */
+.transaction-history-section,
+.vault-info-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
+}
+
+/* Reduce paint cost for fixed/sticky elements */
+.app-header {
+  will-change: transform;
+}
+
+/* GPU-accelerate modal overlays */
+.modal-overlay {
+  will-change: opacity;
+}
+
+.modal-content {
+  will-change: transform, opacity;
 }
