@@ -451,3 +451,5 @@ export const EMERGENCY_WITHDRAW_K49 = { endpoint: '/api/emergency_withdraw/49', 
 export const EMERGENCY_WITHDRAW_K59 = { endpoint: '/api/emergency_withdraw/59', timeout: 30000, retries: 3 } as const;
 
 export const EMERGENCY_WITHDRAW_K69 = { endpoint: '/api/emergency_withdraw/69', timeout: 30000, retries: 3 } as const;
+
+export const EMERGENCY_WITHDRAW_K79 = { endpoint: '/api/emergency_withdraw/79', timeout: 30000, retries: 3 } as const;
