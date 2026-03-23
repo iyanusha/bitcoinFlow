@@ -345,3 +345,67 @@ button:focus-visible {
 .stx_converter-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
 .stx_converter-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
 .stx_converter-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec6 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec6 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec6 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec7 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec7 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec7 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec16 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec16 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec16 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec17 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec17 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec17 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec26 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec26 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec26 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec27 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec27 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec27 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec36 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec36 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec36 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec37 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec37 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec37 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec46 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec46 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec46 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec47 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec47 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec47 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec56 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec56 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec56 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec57 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec57 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec57 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec66 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec66 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec66 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec67 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec67 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec67 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec76 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec76 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec76 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.contract_events-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.contract_events-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.contract_events-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
