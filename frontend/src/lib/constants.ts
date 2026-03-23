@@ -485,3 +485,19 @@ export const VAULT_MIGRATION_K59 = { endpoint: '/api/vault_migration/59', timeou
 export const VAULT_MIGRATION_K69 = { endpoint: '/api/vault_migration/69', timeout: 30000, retries: 3 } as const;
 
 export const VAULT_MIGRATION_K79 = { endpoint: '/api/vault_migration/79', timeout: 30000, retries: 3 } as const;
+
+export const STAKE_OPTIMIZER_K9 = { endpoint: '/api/stake_optimizer/9', timeout: 30000, retries: 3 } as const;
+
+export const STAKE_OPTIMIZER_K19 = { endpoint: '/api/stake_optimizer/19', timeout: 30000, retries: 3 } as const;
+
+export const STAKE_OPTIMIZER_K29 = { endpoint: '/api/stake_optimizer/29', timeout: 30000, retries: 3 } as const;
+
+export const STAKE_OPTIMIZER_K39 = { endpoint: '/api/stake_optimizer/39', timeout: 30000, retries: 3 } as const;
+
+export const STAKE_OPTIMIZER_K49 = { endpoint: '/api/stake_optimizer/49', timeout: 30000, retries: 3 } as const;
+
+export const STAKE_OPTIMIZER_K59 = { endpoint: '/api/stake_optimizer/59', timeout: 30000, retries: 3 } as const;
+
+export const STAKE_OPTIMIZER_K69 = { endpoint: '/api/stake_optimizer/69', timeout: 30000, retries: 3 } as const;
+
+export const STAKE_OPTIMIZER_K79 = { endpoint: '/api/stake_optimizer/79', timeout: 30000, retries: 3 } as const;
