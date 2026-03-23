@@ -127,3 +127,4 @@ export {
   preload,
   preconnectHiroApi,
 } from './resourceHints';
+export { debounce } from './debounce';
