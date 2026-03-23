@@ -117,3 +117,4 @@ export {
 } from './performanceMonitor';
 export type { PerformanceEntry } from './performanceMonitor';
 export { throttle, rafThrottle } from './throttle';
+export { memoize, memoizeWithTTL } from './memoize';
