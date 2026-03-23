@@ -129,3 +129,27 @@ export function validateLength(
   }
   return { isValid: true, error: null };
 }
+
+/**
+ * Validate that a value is not empty.
+ */
+export function validateRequired(value: string, fieldName = 'Field'): ValidationResult {
+  if (!value || value.trim() === '') {
+    return { isValid: false, error: `${fieldName} is required` };
+  }
+  return { isValid: true, error: null };
+}
+
+/**
+ * Validate that a value matches a regex pattern.
+ */
+export function validatePattern(
+  value: string,
+  pattern: RegExp,
+  message = 'Invalid format',
+): ValidationResult {
+  if (!pattern.test(value)) {
+    return { isValid: false, error: message };
+  }
+  return { isValid: true, error: null };
+}
