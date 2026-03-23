@@ -29,3 +29,4 @@ export { FormFieldGroup } from './FormFieldGroup';
 export { CharacterCounter } from './CharacterCounter';
 export { PasswordStrengthMeter } from './PasswordStrengthMeter';
 export type { PasswordStrength } from './PasswordStrengthMeter';
+export { FormActions } from './FormActions';
