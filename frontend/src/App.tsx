@@ -255,7 +255,7 @@ function App() {
                 View Contract
               </a>
             </div>
-            <div className="stats-grid" aria-live="polite">
+            <div className="stats-grid" role="region" aria-label="Vault statistics" aria-live="polite">
               <div className="stat-card">
                 <h3>Total Deposits</h3>
                 <p>{formatSTX(vaultStats.totalDeposits)} STX</p>
@@ -314,8 +314,8 @@ function App() {
             </div>
           )}
 
-          <div className="actions">
-            <div className="action-card">
+          <div className="actions" role="region" aria-label="Vault actions">
+            <div className="action-card" role="form" aria-label="Deposit sBTC">
               <h3>Deposit sBTC</h3>
               <label htmlFor="deposit-amount" className="sr-only">Deposit amount in sBTC</label>
               <input
@@ -337,11 +337,11 @@ function App() {
                 disabled={!depositAmount || isDepositing || vaultStats.isPaused || !isOnline}
                 aria-busy={isDepositing}
               >
-                {isDepositing ? 'Processing...' : !isOnline ? 'Offline' : vaultStats.isPaused ? 'Vault Paused' : 'Deposit & Get Flow Tokens'}
+                {isDepositing ? 'Processing deposit...' : !isOnline ? 'Offline — connect to deposit' : vaultStats.isPaused ? 'Vault Paused' : 'Deposit & Get Flow Tokens'}
               </button>
             </div>
 
-            <div className="action-card">
+            <div className="action-card" role="form" aria-label="Withdraw sBTC">
               <h3>Withdraw sBTC</h3>
               <label htmlFor="withdraw-amount" className="sr-only">Withdrawal amount in FLOW tokens</label>
               <input
@@ -363,34 +363,34 @@ function App() {
                 disabled={!withdrawAmount || isWithdrawing || vaultStats.isPaused || !isOnline}
                 aria-busy={isWithdrawing}
               >
-                {isWithdrawing ? 'Processing...' : !isOnline ? 'Offline' : vaultStats.isPaused ? 'Vault Paused' : 'Burn Flow & Withdraw'}
+                {isWithdrawing ? 'Processing withdrawal...' : !isOnline ? 'Offline — connect to withdraw' : vaultStats.isPaused ? 'Vault Paused' : 'Burn Flow & Withdraw'}
               </button>
             </div>
           </div>
 
           <TransactionHistory transactions={transactions} onClear={clearHistory} />
 
-          <div className="info-section">
-            <h3>How BitcoinFlow Works</h3>
+          <section className="info-section" aria-labelledby="how-it-works">
+            <h3 id="how-it-works">How BitcoinFlow Works</h3>
             <ul>
               <li>Deposit sBTC to get liquid Flow tokens (1:1 ratio)</li>
               <li>Your sBTC is auto-stacked to earn STX rewards</li>
               <li>Rewards are automatically compounded</li>
               <li>Withdraw anytime by burning Flow tokens</li>
             </ul>
-          </div>
+          </section>
         </main>
       </ErrorBoundary>)}
 
       <footer className="app-footer" role="contentinfo">
         <p>BitcoinFlow — Built on Stacks</p>
-        <p className="footer-links">
+        <nav className="footer-links" aria-label="External links">
           <a href="https://www.stacks.co" target="_blank" rel="noopener noreferrer">Stacks</a>
           {' | '}
           <a href="https://explorer.hiro.so" target="_blank" rel="noopener noreferrer">Explorer</a>
           {' | '}
           <a href={getAddressExplorerUrl(`${CONTRACT_ADDRESS}.${CONTRACT_NAME}`)} target="_blank" rel="noopener noreferrer">Contract</a>
-        </p>
+        </nav>
       </footer>
     </div>
   )

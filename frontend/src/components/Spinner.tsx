@@ -2,17 +2,20 @@ interface SpinnerProps {
   size?: 'sm' | 'md' | 'lg';
   color?: string;
   label?: string;
+  decorative?: boolean;
 }
 
-export function Spinner({ size = 'md', color, label = 'Loading' }: SpinnerProps) {
+export function Spinner({ size = 'md', color, label = 'Loading', decorative = false }: SpinnerProps) {
   const px = { sm: 16, md: 24, lg: 40 }[size];
   const borderWidth = size === 'sm' ? 2 : 3;
   const spinnerColor = color || 'var(--accent, #667eea)';
+
   return (
     <div
       className="spinner"
-      role="status"
-      aria-label={label}
+      role={decorative ? 'presentation' : 'status'}
+      aria-label={decorative ? undefined : label}
+      aria-hidden={decorative ? true : undefined}
       style={{
         width: px,
         height: px,

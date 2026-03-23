@@ -6,10 +6,22 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -19,6 +31,9 @@ body {
   background: var(--bg-primary, #ffffff);
   color: var(--text-primary, #333333);
   transition: background 0.3s ease, color 0.3s ease;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 a {
@@ -28,6 +43,16 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+::selection {
+  background: rgba(102, 126, 234, 0.3);
+  color: var(--text-primary, #333333);
+}
+
+.dark ::selection {
+  background: rgba(129, 140, 248, 0.4);
+  color: #f1f5f9;
 }
 
 @media (prefers-reduced-motion: reduce) {

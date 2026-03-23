@@ -32,6 +32,8 @@ export function ValidatedInput({ value, onChange, validator, placeholder, type =
     }
   };
 
+  const errorId = id ? `${id}-error` : undefined;
+
   return (
     <div>
       <input
@@ -44,9 +46,14 @@ export function ValidatedInput({ value, onChange, validator, placeholder, type =
         disabled={disabled}
         className={touched ? (error ? 'invalid' : 'valid') : ''}
         aria-invalid={touched && !!error}
-        aria-describedby={rest['aria-describedby']}
+        aria-describedby={[rest['aria-describedby'], touched && error ? errorId : null].filter(Boolean).join(' ') || undefined}
+        aria-errormessage={touched && error && errorId ? errorId : undefined}
       />
-      {touched && error && <div className="field-error">{error}</div>}
+      {touched && error && (
+        <div id={errorId} className="field-error" role="alert">
+          {error}
+        </div>
+      )}
     </div>
   );
 }

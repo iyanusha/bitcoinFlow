@@ -1,11 +1,18 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-export function useDocumentTitle(title: string) {
+export function useDocumentTitle(title: string, restoreOnUnmount = true) {
+  const previousTitleRef = useRef(document.title);
+
   useEffect(() => {
-    const previousTitle = document.title;
     document.title = title;
-    return () => {
-      document.title = previousTitle;
-    };
   }, [title]);
+
+  useEffect(() => {
+    const savedTitle = previousTitleRef.current;
+    return () => {
+      if (restoreOnUnmount) {
+        document.title = savedTitle;
+      }
+    };
+  }, [restoreOnUnmount]);
 }

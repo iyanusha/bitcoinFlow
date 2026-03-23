@@ -24,30 +24,44 @@ function StatusBadge({ status }: { status: TransactionRecord['status'] }) {
     confirmed: 'Confirmed',
     failed: 'Failed',
   };
-  return <span className={`tx-status tx-status-${status}`}>{labels[status]}</span>;
+  return (
+    <span
+      className={`tx-status tx-status-${status}`}
+      role="status"
+      aria-label={`Transaction status: ${labels[status]}`}
+    >
+      {labels[status]}
+    </span>
+  );
 }
 
 export function TransactionHistory({ transactions, onClear }: TransactionHistoryProps) {
   if (transactions.length === 0) {
     return (
-      <div className="tx-history">
-        <h3>Transaction History</h3>
+      <section className="tx-history" aria-labelledby="tx-history-heading">
+        <h3 id="tx-history-heading">Transaction History</h3>
         <p className="tx-empty">No transactions yet. Make a deposit or withdrawal to get started.</p>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div className="tx-history">
+    <section className="tx-history" aria-labelledby="tx-history-heading-full">
       <div className="tx-history-header">
-        <h3>Transaction History <span className="tx-count">({transactions.length})</span></h3>
-        <button className="tx-clear-btn" onClick={() => {
-          if (window.confirm('Clear all transaction history?')) {
-            onClear();
-          }
-        }}>Clear</button>
+        <h3 id="tx-history-heading-full">Transaction History <span className="tx-count">({transactions.length})</span></h3>
+        <button
+          className="tx-clear-btn"
+          onClick={() => {
+            if (window.confirm('Clear all transaction history?')) {
+              onClear();
+            }
+          }}
+          aria-label="Clear transaction history"
+        >
+          Clear
+        </button>
       </div>
-      <ul className="tx-list">
+      <ul className="tx-list" aria-label="Transaction history">
         {transactions.map(tx => (
           <li key={tx.txId} className="tx-item">
             <div className="tx-item-left">
@@ -72,6 +86,6 @@ export function TransactionHistory({ transactions, onClear }: TransactionHistory
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
