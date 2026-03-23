@@ -71,3 +71,30 @@ export type { ContrastLevel } from './colorContrast';
 export { auditAccessibility } from './a11yAudit';
 export type { A11yIssue } from './a11yAudit';
 export { announceToScreenReader } from './a11y';
+export {
+  validateLength,
+  validateRange,
+  validateRequired,
+  validatePattern,
+  validateNotEqual,
+  validateWhitelist,
+  validateWhen,
+} from './validation';
+export {
+  stripHtml,
+  escapeHtml,
+  normalizeWhitespace,
+  stripControlChars,
+  sanitizeText,
+  sanitizeNumber,
+  truncate,
+} from './inputSanitizer';
+export {
+  formDataToObject,
+  hasFormChanges,
+  getChangedFields,
+  formValuesToQueryString,
+  queryStringToFormValues,
+} from './formHelpers';
+export { VALIDATION_MESSAGES } from './validationMessages';
+export type { ValidationMessageKey } from './validationMessages';
