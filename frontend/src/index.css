@@ -281,3 +281,67 @@ button:focus-visible {
 .withdraw_history-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
 .withdraw_history-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
 .withdraw_history-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec6 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec6 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec6 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec7 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec7 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec7 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec16 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec16 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec16 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec17 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec17 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec17 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec26 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec26 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec26 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec27 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec27 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec27 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec36 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec36 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec36 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec37 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec37 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec37 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec46 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec46 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec46 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec47 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec47 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec47 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec56 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec56 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec56 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec57 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec57 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec57 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec66 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec66 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec66 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec67 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec67 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec67 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec76 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec76 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec76 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stx_converter-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stx_converter-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stx_converter-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
