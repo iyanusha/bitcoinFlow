@@ -185,6 +185,34 @@ export function validateWhitelist(
 /**
  * Create a conditional validator that only runs when a condition is met.
  */
+/**
+ * Validate that two values match (e.g. password confirmation).
+ */
+export function validateConfirmMatch(
+  value: string,
+  original: string,
+  fieldName = 'Values',
+): ValidationResult {
+  if (value !== original) {
+    return { isValid: false, error: `${fieldName} do not match` };
+  }
+  return { isValid: true, error: null };
+}
+
+/**
+ * Validate that a numeric value has at most N decimal places.
+ */
+export function validateMaxDecimals(
+  value: string,
+  maxDecimals: number,
+): ValidationResult {
+  const parts = value.split('.');
+  if (parts.length > 1 && parts[1].length > maxDecimals) {
+    return { isValid: false, error: `Maximum ${maxDecimals} decimal places allowed` };
+  }
+  return { isValid: true, error: null };
+}
+
 export function validateWhen(
   condition: boolean,
   validator: (value: string) => ValidationResult,
