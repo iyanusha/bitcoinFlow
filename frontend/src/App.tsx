@@ -26,10 +26,18 @@ import { TransactionHistory } from './components/TransactionHistory'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { KeyboardShortcutHelp } from './components/KeyboardShortcutHelp'
 import { preconnectHiroApi } from './lib/resourceHints'
+import { reportWebVitals } from './lib/webVitals'
 import './App.css'
 
 // Preconnect to Hiro API on module load for faster first request
 preconnectHiroApi();
+
+// Report web vitals in development
+if (import.meta.env.DEV) {
+  reportWebVitals((metric) => {
+    logger.debug('Web Vital', { name: metric.name, value: Math.round(metric.value), rating: metric.rating });
+  });
+}
 
 function App() {
   const { isConnected, connect, disconnect, getAddress } = useWallet()
