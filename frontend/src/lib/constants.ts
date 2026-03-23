@@ -441,3 +441,5 @@ export const AUTO_COMPOUND_UI_K79 = { endpoint: '/api/auto_compound_ui/79', time
 export const EMERGENCY_WITHDRAW_K9 = { endpoint: '/api/emergency_withdraw/9', timeout: 30000, retries: 3 } as const;
 
 export const EMERGENCY_WITHDRAW_K19 = { endpoint: '/api/emergency_withdraw/19', timeout: 30000, retries: 3 } as const;
+
+export const EMERGENCY_WITHDRAW_K29 = { endpoint: '/api/emergency_withdraw/29', timeout: 30000, retries: 3 } as const;
