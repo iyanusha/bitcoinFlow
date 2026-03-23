@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import type { VaultStats, AppError } from './types'
+import type { VaultStats } from './types'
 import { useWallet } from './hooks/useWallet'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from './lib/stacks'
+import { validateDeposit, validateAmount } from './lib/validation'
+import { parseTransactionError } from './lib/errorUtils'
 import './App.css'
 
 function App() {
@@ -16,11 +18,25 @@ function App() {
   const [vaultStats] = useState<VaultStats>({
     totalDeposits: 0,
     totalRewards: 0,
-    userBalance: 0
+    userBalance: 0,
+    stxBalance: 0,
+    depositCount: 0,
+    withdrawCount: 0,
+    isPaused: false,
+    currentBlock: 0,
   })
 
   const handleDeposit = async () => {
     if (!isConnected || !depositAmount) return
+
+    const validation = validateDeposit(depositAmount)
+    if (!validation.isValid) {
+      setError(validation.error)
+      return
+    }
+
+    setIsDepositing(true)
+    setError(null)
 
     try {
     await openContractCall({
@@ -30,20 +46,32 @@ function App() {
       functionName: 'deposit',
       functionArgs: [uintCV(parseInt(depositAmount) * 100000000)],
       postConditionMode: PostConditionMode.Deny,
-      onFinish: (data) => {
-        console.log('Deposit tx:', data.txId)
+      onFinish: () => {
         setDepositAmount('')
+        setError(null)
+        setIsDepositing(false)
+      },
+      onCancel: () => {
+        setIsDepositing(false)
       },
     });
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Deposit failed");
+      setError(parseTransactionError(err));
+      setIsDepositing(false)
     }
-      },
-    })
   }
 
   const handleWithdraw = async () => {
     if (!isConnected || !withdrawAmount) return
+
+    const validation = validateAmount(withdrawAmount)
+    if (!validation.isValid) {
+      setError(validation.error)
+      return
+    }
+
+    setIsWithdrawing(true)
+    setError(null)
 
     try {
     await openContractCall({
@@ -53,16 +81,19 @@ function App() {
       functionName: 'withdraw',
       functionArgs: [uintCV(parseInt(withdrawAmount) * 100000000)],
       postConditionMode: PostConditionMode.Deny,
-      onFinish: (data) => {
-        console.log('Withdraw tx:', data.txId)
+      onFinish: () => {
         setWithdrawAmount('')
+        setError(null)
+        setIsWithdrawing(false)
+      },
+      onCancel: () => {
+        setIsWithdrawing(false)
       },
     });
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Withdrawal failed");
+      setError(parseTransactionError(err));
+      setIsWithdrawing(false)
     }
-      },
-    })
   }
 
   return (
@@ -84,6 +115,13 @@ function App() {
           </div>
         )}
       </header>
+
+      {error && (
+        <div className="error-banner" role="alert">
+          <p>{error}</p>
+          <button className="dismiss-btn" onClick={() => setError(null)}>Dismiss</button>
+        </div>
+      )}
 
       {isConnected && (
         <main className="main-content">
@@ -108,27 +146,39 @@ function App() {
           <div className="actions">
             <div className="action-card">
               <h3>Deposit sBTC</h3>
+              <label htmlFor="deposit-amount" className="sr-only">Deposit amount in sBTC</label>
               <input
+                id="deposit-amount"
                 type="number"
                 placeholder="Amount to deposit"
                 value={depositAmount}
                 onChange={(e) => setDepositAmount(e.target.value)}
+                min="0.0001"
+                step="0.0001"
+                aria-describedby="deposit-help"
               />
-              <button onClick={handleDeposit} disabled={!depositAmount}>
-                Deposit & Get Flow Tokens
+              <small id="deposit-help">Minimum: 0.0001 sBTC</small>
+              <button onClick={handleDeposit} disabled={!depositAmount || isDepositing}>
+                {isDepositing ? 'Processing...' : 'Deposit & Get Flow Tokens'}
               </button>
             </div>
 
             <div className="action-card">
               <h3>Withdraw sBTC</h3>
+              <label htmlFor="withdraw-amount" className="sr-only">Withdrawal amount in FLOW tokens</label>
               <input
+                id="withdraw-amount"
                 type="number"
                 placeholder="Flow tokens to burn"
                 value={withdrawAmount}
                 onChange={(e) => setWithdrawAmount(e.target.value)}
+                min="0.0001"
+                step="0.0001"
+                aria-describedby="withdraw-help"
               />
-              <button onClick={handleWithdraw} disabled={!withdrawAmount}>
-                Burn Flow & Withdraw
+              <small id="withdraw-help">Burns FLOW tokens and returns sBTC</small>
+              <button onClick={handleWithdraw} disabled={!withdrawAmount || isWithdrawing}>
+                {isWithdrawing ? 'Processing...' : 'Burn Flow & Withdraw'}
               </button>
             </div>
           </div>

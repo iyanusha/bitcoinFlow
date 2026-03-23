@@ -12,8 +12,15 @@ export const CONTRACT_ADDRESS =
 
 export const CONTRACT_NAME = "flow-vault";
 
-export const CLARITY_VERSION = 4;
+export const CLARITY_VERSION = 3;
 
 export const EXPLORER_URL = isMainnet
   ? "https://explorer.hiro.so"
   : "https://explorer.hiro.so/?chain=testnet";
+
+export const API_URL = isMainnet
+  ? "https://api.mainnet.hiro.so"
+  : "https://api.testnet.hiro.so";
+
+export const STACKING_THRESHOLD = 10_000_000;
+export const WITHDRAWAL_COOLDOWN_BLOCKS = 6;

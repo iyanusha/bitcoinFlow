@@ -15,3 +15,18 @@ export function formatCompact(num: number): string {
 export function formatUSD(amount: number): string {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
 }
+
+export function formatPercentage(basisPoints: number): string {
+  return `${(basisPoints / 100).toFixed(2)}%`;
+}
+
+export function formatBlocks(blocks: number): string {
+  const minutes = Math.round((blocks * 10));
+  if (minutes < 60) return `~${minutes}m`;
+  const hours = Math.round(minutes / 60);
+  return `~${hours}h`;
+}
+
+export function formatExchangeRate(rate: number): string {
+  return (rate / 1_000_000).toFixed(6);
+}
