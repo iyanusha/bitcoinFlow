@@ -2030,6 +2030,22 @@
   outline: none;
 }
 
+/* Form error messages */
+.form-error-message {
+  color: var(--error-text);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  padding: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.form-error-message::before {
+  content: '⚠';
+  font-size: 0.9rem;
+}
+
 /* Focus ring container */
 .focus-ring-container {
   position: relative;
