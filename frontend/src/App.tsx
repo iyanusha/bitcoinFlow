@@ -25,7 +25,11 @@ import { ToastContainer } from './components/ToastContainer'
 import { TransactionHistory } from './components/TransactionHistory'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { KeyboardShortcutHelp } from './components/KeyboardShortcutHelp'
+import { preconnectHiroApi } from './lib/resourceHints'
 import './App.css'
+
+// Preconnect to Hiro API on module load for faster first request
+preconnectHiroApi();
 
 function App() {
   const { isConnected, connect, disconnect, getAddress } = useWallet()
