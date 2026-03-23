@@ -47,3 +47,5 @@ export const DEPOSIT_CONFIRM_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSiz
 export const NETWORK_STATUS_CONFIG = { refreshMs: 30000, maxRetries: 3, pageSize: 25 } as const;
 
 export const NETWORK_STATUS_K9 = { endpoint: '/api/network_status/9', timeout: 30000, retries: 3 } as const;
+
+export const NETWORK_STATUS_K19 = { endpoint: '/api/network_status/19', timeout: 30000, retries: 3 } as const;
