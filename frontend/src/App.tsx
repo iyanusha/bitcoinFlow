@@ -156,6 +156,7 @@ function App() {
         addTransaction({ txId, type: 'withdraw', amount: Math.round(parseFloat(withdrawAmount) * SATS_PER_BTC) })
         toastSuccess(`Withdrawal of ${withdrawAmount} FLOW submitted`, txId)
         setWithdrawAmount('')
+        setWithdrawTouched(false)
         setError(null)
         setIsWithdrawing(false)
         refreshStats()
