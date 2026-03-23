@@ -481,3 +481,5 @@ export const VAULT_MIGRATION_K39 = { endpoint: '/api/vault_migration/39', timeou
 export const VAULT_MIGRATION_K49 = { endpoint: '/api/vault_migration/49', timeout: 30000, retries: 3 } as const;
 
 export const VAULT_MIGRATION_K59 = { endpoint: '/api/vault_migration/59', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_MIGRATION_K69 = { endpoint: '/api/vault_migration/69', timeout: 30000, retries: 3 } as const;
