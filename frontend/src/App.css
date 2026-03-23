@@ -2180,6 +2180,26 @@
   font-size: 0.9rem;
 }
 
+/* Character counter */
+.char-counter {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: right;
+  display: block;
+  margin-top: 0.15rem;
+  transition: color 0.2s;
+}
+
+.char-counter-warn {
+  color: var(--warning-text);
+  font-weight: 500;
+}
+
+.char-counter-over {
+  color: var(--error-text);
+  font-weight: 600;
+}
+
 /* High contrast preferences */
 @media (prefers-contrast: more) {
   :root {
