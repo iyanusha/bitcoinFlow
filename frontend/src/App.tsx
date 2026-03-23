@@ -63,7 +63,7 @@ function App() {
   const formattedRewards = useMemo(() => formatSTX(vaultStats.totalRewards), [vaultStats.totalRewards])
   const formattedBalance = useMemo(() => formatSTX(vaultStats.stxBalance), [vaultStats.stxBalance])
   const formattedUserTokens = useMemo(() => formatCompact(vaultStats.userBalance / MICROSTX_PER_STX), [vaultStats.userBalance])
-  const userFlowBalance = useMemo(() => position ? position.flowTokenBalance / MICROSTX_PER_STX : 0, [position])
+  const userFlowBalance = useMemo(() => userFlowBalance, [position])
 
   const pollPendingTransactions = useCallback(async () => {
     const pending = transactions.filter(tx => tx.status === 'pending');
@@ -152,7 +152,7 @@ function App() {
       return
     }
 
-    const userBalance = position ? position.flowTokenBalance / MICROSTX_PER_STX : 0
+    const userBalance = userFlowBalance
     const validation = validateWithdraw(withdrawAmount, userBalance)
     if (!validation.isValid) {
       setError(validation.error)
@@ -386,8 +386,8 @@ function App() {
                 }}
                 onBlur={() => setWithdrawTouched(true)}
                 autoComplete="off"
-                className={withdrawTouched && withdrawAmount ? (validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid ? 'input-valid' : 'input-error') : ''}
-                aria-invalid={withdrawTouched && withdrawAmount ? !validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid : undefined}
+                className={withdrawTouched && withdrawAmount ? (validateWithdraw(withdrawAmount, userFlowBalance).isValid ? 'input-valid' : 'input-error') : ''}
+                aria-invalid={withdrawTouched && withdrawAmount ? !validateWithdraw(withdrawAmount, userFlowBalance).isValid : undefined}
                 aria-describedby="withdraw-help"
               />
               <div className="input-row">
@@ -407,8 +407,8 @@ function App() {
                   </button>
                 )}
               </div>
-              {withdrawTouched && withdrawAmount && !validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid && (
-                <p id="withdraw-error" className="form-error-message" role="alert">{validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).error}</p>
+              {withdrawTouched && withdrawAmount && !validateWithdraw(withdrawAmount, userFlowBalance).isValid && (
+                <p id="withdraw-error" className="form-error-message" role="alert">{validateWithdraw(withdrawAmount, userFlowBalance).error}</p>
               )}
               <button
                 onClick={handleWithdraw}
