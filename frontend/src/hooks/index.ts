@@ -65,3 +65,5 @@ export { useAbortController } from './useAbortController';
 export { useNetworkSpeed } from './useNetworkSpeed';
 export { useLatestRef } from './useLatestRef';
 export { useUpdateEffect } from './useUpdateEffect';
+export { useMemoryPressure } from './useMemoryPressure';
+export type { MemoryInfo } from './useMemoryPressure';
