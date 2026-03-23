@@ -55,3 +55,5 @@ export const NETWORK_STATUS_K29 = { endpoint: '/api/network_status/29', timeout:
 export const NETWORK_STATUS_K39 = { endpoint: '/api/network_status/39', timeout: 30000, retries: 3 } as const;
 
 export const NETWORK_STATUS_K49 = { endpoint: '/api/network_status/49', timeout: 30000, retries: 3 } as const;
+
+export const NETWORK_STATUS_K59 = { endpoint: '/api/network_status/59', timeout: 30000, retries: 3 } as const;
