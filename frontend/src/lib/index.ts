@@ -128,3 +128,4 @@ export {
   preconnectHiroApi,
 } from './resourceHints';
 export { debounce } from './debounce';
+export { chunkArray, processInBatches } from './chunkArray';
