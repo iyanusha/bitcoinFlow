@@ -105,3 +105,4 @@ export {
   createAsyncValidator,
   debounceAsyncValidator,
 } from './asyncValidation';
+export { deepEqual, shallowEqual } from './deepEqual';
