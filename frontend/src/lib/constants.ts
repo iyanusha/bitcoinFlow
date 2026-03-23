@@ -429,3 +429,5 @@ export const AUTO_COMPOUND_UI_K19 = { endpoint: '/api/auto_compound_ui/19', time
 export const AUTO_COMPOUND_UI_K29 = { endpoint: '/api/auto_compound_ui/29', timeout: 30000, retries: 3 } as const;
 
 export const AUTO_COMPOUND_UI_K39 = { endpoint: '/api/auto_compound_ui/39', timeout: 30000, retries: 3 } as const;
+
+export const AUTO_COMPOUND_UI_K49 = { endpoint: '/api/auto_compound_ui/49', timeout: 30000, retries: 3 } as const;
