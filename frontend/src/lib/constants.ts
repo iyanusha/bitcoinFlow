@@ -389,3 +389,19 @@ export const BATCH_OPERATIONS_K59 = { endpoint: '/api/batch_operations/59', time
 export const BATCH_OPERATIONS_K69 = { endpoint: '/api/batch_operations/69', timeout: 30000, retries: 3 } as const;
 
 export const BATCH_OPERATIONS_K79 = { endpoint: '/api/batch_operations/79', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_HEALTH_K9 = { endpoint: '/api/vault_health/9', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_HEALTH_K19 = { endpoint: '/api/vault_health/19', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_HEALTH_K29 = { endpoint: '/api/vault_health/29', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_HEALTH_K39 = { endpoint: '/api/vault_health/39', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_HEALTH_K49 = { endpoint: '/api/vault_health/49', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_HEALTH_K59 = { endpoint: '/api/vault_health/59', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_HEALTH_K69 = { endpoint: '/api/vault_health/69', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_HEALTH_K79 = { endpoint: '/api/vault_health/79', timeout: 30000, retries: 3 } as const;
