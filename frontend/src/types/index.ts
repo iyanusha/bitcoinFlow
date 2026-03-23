@@ -103,3 +103,11 @@ export interface CooldownInfo {
   blocksRemaining: number;
   isExpired: boolean;
 }
+
+export interface ToastMessage {
+  id: string;
+  type: 'success' | 'error' | 'info';
+  message: string;
+  txId?: string;
+  duration?: number;
+}
