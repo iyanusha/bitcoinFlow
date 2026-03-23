@@ -79,6 +79,8 @@ export {
   validateNotEqual,
   validateWhitelist,
   validateWhen,
+  validateConfirmMatch,
+  validateMaxDecimals,
 } from './validation';
 export {
   stripHtml,
