@@ -17,6 +17,7 @@ export { useForm } from './useForm';
 export type { UseFormResult } from './useForm';
 export { useFormField } from './useFormField';
 export type { FormFieldState, FormFieldActions, UseFormFieldResult } from './useFormField';
+export { useFormSubmit } from './useFormSubmit';
 export { useFormValidation } from './useFormValidation';
 export { useIdleCallback } from './useIdleCallback';
 export { useIntersectionObserver } from './useIntersectionObserver';
