@@ -336,7 +336,9 @@ function App() {
                 aria-invalid={depositTouched && depositAmount ? !validateDeposit(depositAmount).isValid : undefined}
                 aria-describedby={`deposit-help${depositTouched && depositAmount && !validateDeposit(depositAmount).isValid ? ' deposit-error' : ''}`}
               />
-              <small id="deposit-help">Minimum: 0.0001 sBTC</small>
+              <div className="input-row">
+                <small id="deposit-help">Minimum: 0.0001 sBTC</small>
+              </div>
               {depositTouched && depositAmount && !validateDeposit(depositAmount).isValid && (
                 <p id="deposit-error" className="form-error-message" role="alert">{validateDeposit(depositAmount).error}</p>
               )}
