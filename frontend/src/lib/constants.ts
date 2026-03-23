@@ -407,3 +407,5 @@ export const VAULT_HEALTH_K69 = { endpoint: '/api/vault_health/69', timeout: 300
 export const VAULT_HEALTH_K79 = { endpoint: '/api/vault_health/79', timeout: 30000, retries: 3 } as const;
 
 export const YIELD_CALCULATOR_K9 = { endpoint: '/api/yield_calculator/9', timeout: 30000, retries: 3 } as const;
+
+export const YIELD_CALCULATOR_K19 = { endpoint: '/api/yield_calculator/19', timeout: 30000, retries: 3 } as const;
