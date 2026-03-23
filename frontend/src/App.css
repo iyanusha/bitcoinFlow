@@ -2083,6 +2083,21 @@
   color: var(--text-muted);
 }
 
+/* Form field group */
+.form-field-group {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin: 0;
+}
+
+.form-field-group-legend {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 0 0.5rem;
+}
+
 /* Focus ring container */
 .focus-ring-container {
   position: relative;
