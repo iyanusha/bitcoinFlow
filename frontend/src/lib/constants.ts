@@ -437,3 +437,19 @@ export const AUTO_COMPOUND_UI_K59 = { endpoint: '/api/auto_compound_ui/59', time
 export const AUTO_COMPOUND_UI_K69 = { endpoint: '/api/auto_compound_ui/69', timeout: 30000, retries: 3 } as const;
 
 export const AUTO_COMPOUND_UI_K79 = { endpoint: '/api/auto_compound_ui/79', timeout: 30000, retries: 3 } as const;
+
+export const EMERGENCY_WITHDRAW_K9 = { endpoint: '/api/emergency_withdraw/9', timeout: 30000, retries: 3 } as const;
+
+export const EMERGENCY_WITHDRAW_K19 = { endpoint: '/api/emergency_withdraw/19', timeout: 30000, retries: 3 } as const;
+
+export const EMERGENCY_WITHDRAW_K29 = { endpoint: '/api/emergency_withdraw/29', timeout: 30000, retries: 3 } as const;
+
+export const EMERGENCY_WITHDRAW_K39 = { endpoint: '/api/emergency_withdraw/39', timeout: 30000, retries: 3 } as const;
+
+export const EMERGENCY_WITHDRAW_K49 = { endpoint: '/api/emergency_withdraw/49', timeout: 30000, retries: 3 } as const;
+
+export const EMERGENCY_WITHDRAW_K59 = { endpoint: '/api/emergency_withdraw/59', timeout: 30000, retries: 3 } as const;
+
+export const EMERGENCY_WITHDRAW_K69 = { endpoint: '/api/emergency_withdraw/69', timeout: 30000, retries: 3 } as const;
+
+export const EMERGENCY_WITHDRAW_K79 = { endpoint: '/api/emergency_withdraw/79', timeout: 30000, retries: 3 } as const;
