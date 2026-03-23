@@ -1173,3 +1173,7 @@ button:focus-visible {
 .stake_optimizer-sec76 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
 .stake_optimizer-sec76 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
 .stake_optimizer-sec76 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.stake_optimizer-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.stake_optimizer-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.stake_optimizer-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
