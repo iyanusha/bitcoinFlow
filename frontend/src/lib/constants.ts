@@ -509,3 +509,5 @@ export const REWARD_TRACKER_K19 = { endpoint: '/api/reward_tracker/19', timeout:
 export const REWARD_TRACKER_K29 = { endpoint: '/api/reward_tracker/29', timeout: 30000, retries: 3 } as const;
 
 export const REWARD_TRACKER_K39 = { endpoint: '/api/reward_tracker/39', timeout: 30000, retries: 3 } as const;
+
+export const REWARD_TRACKER_K49 = { endpoint: '/api/reward_tracker/49', timeout: 30000, retries: 3 } as const;
