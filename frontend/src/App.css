@@ -2065,6 +2065,24 @@
   box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.15);
 }
 
+/* Validated input wrapper */
+.validated-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.validated-input-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.validated-input-help {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
 /* Focus ring container */
 .focus-ring-container {
   position: relative;
