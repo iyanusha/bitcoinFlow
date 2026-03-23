@@ -19,6 +19,8 @@ import {
   validateNotEqual,
   validateWhitelist,
   validateWhen,
+  validateConfirmMatch,
+  validateMaxDecimals,
 } from '../validation';
 
 describe('validateAmount', () => {
@@ -440,5 +442,39 @@ describe('validateWhen', () => {
     const validator = validateWhen(false, validateAmount);
     const result = validator('');
     expect(result.isValid).toBe(true);
+  });
+});
+
+describe('validateConfirmMatch', () => {
+  it('passes when values match', () => {
+    const result = validateConfirmMatch('abc', 'abc');
+    expect(result.isValid).toBe(true);
+  });
+
+  it('fails when values differ', () => {
+    const result = validateConfirmMatch('abc', 'xyz');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('do not match');
+  });
+
+  it('uses custom field name in error', () => {
+    const result = validateConfirmMatch('a', 'b', 'Passwords');
+    expect(result.error).toBe('Passwords do not match');
+  });
+});
+
+describe('validateMaxDecimals', () => {
+  it('passes for valid decimal count', () => {
+    expect(validateMaxDecimals('1.23', 2).isValid).toBe(true);
+  });
+
+  it('passes for no decimals', () => {
+    expect(validateMaxDecimals('123', 2).isValid).toBe(true);
+  });
+
+  it('fails when exceeding max decimals', () => {
+    const result = validateMaxDecimals('1.234', 2);
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('2 decimal places');
   });
 });
