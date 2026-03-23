@@ -453,3 +453,19 @@ export const EMERGENCY_WITHDRAW_K59 = { endpoint: '/api/emergency_withdraw/59', 
 export const EMERGENCY_WITHDRAW_K69 = { endpoint: '/api/emergency_withdraw/69', timeout: 30000, retries: 3 } as const;
 
 export const EMERGENCY_WITHDRAW_K79 = { endpoint: '/api/emergency_withdraw/79', timeout: 30000, retries: 3 } as const;
+
+export const MULTI_VAULT_K9 = { endpoint: '/api/multi_vault/9', timeout: 30000, retries: 3 } as const;
+
+export const MULTI_VAULT_K19 = { endpoint: '/api/multi_vault/19', timeout: 30000, retries: 3 } as const;
+
+export const MULTI_VAULT_K29 = { endpoint: '/api/multi_vault/29', timeout: 30000, retries: 3 } as const;
+
+export const MULTI_VAULT_K39 = { endpoint: '/api/multi_vault/39', timeout: 30000, retries: 3 } as const;
+
+export const MULTI_VAULT_K49 = { endpoint: '/api/multi_vault/49', timeout: 30000, retries: 3 } as const;
+
+export const MULTI_VAULT_K59 = { endpoint: '/api/multi_vault/59', timeout: 30000, retries: 3 } as const;
+
+export const MULTI_VAULT_K69 = { endpoint: '/api/multi_vault/69', timeout: 30000, retries: 3 } as const;
+
+export const MULTI_VAULT_K79 = { endpoint: '/api/multi_vault/79', timeout: 30000, retries: 3 } as const;
