@@ -493,3 +493,5 @@ export const STAKE_OPTIMIZER_K19 = { endpoint: '/api/stake_optimizer/19', timeou
 export const STAKE_OPTIMIZER_K29 = { endpoint: '/api/stake_optimizer/29', timeout: 30000, retries: 3 } as const;
 
 export const STAKE_OPTIMIZER_K39 = { endpoint: '/api/stake_optimizer/39', timeout: 30000, retries: 3 } as const;
+
+export const STAKE_OPTIMIZER_K49 = { endpoint: '/api/stake_optimizer/49', timeout: 30000, retries: 3 } as const;
