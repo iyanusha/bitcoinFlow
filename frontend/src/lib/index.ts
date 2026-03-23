@@ -129,3 +129,5 @@ export {
 } from './resourceHints';
 export { debounce } from './debounce';
 export { chunkArray, processInBatches } from './chunkArray';
+export { reportWebVitals } from './webVitals';
+export type { WebVitalsMetric } from './webVitals';
