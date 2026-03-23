@@ -58,3 +58,4 @@ export type { UseFieldTouchedResult } from './useFieldTouched';
 export { useFormDirtyWarning } from './useFormDirtyWarning';
 export { useMemoCompare } from './useMemoCompare';
 export { useLazyLoad } from './useLazyLoad';
+export { useThrottle } from './useThrottle';
