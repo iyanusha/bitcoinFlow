@@ -300,3 +300,93 @@ describe('isValidTxId', () => {
     expect(isValidTxId('0x' + 'g'.repeat(64))).toBe(false);
   });
 });
+
+describe('validateLength', () => {
+  it('accepts value within range', () => {
+    const result = validateLength('hello', 2, 10);
+    expect(result.isValid).toBe(true);
+  });
+
+  it('rejects value below minimum', () => {
+    const result = validateLength('hi', 3, 10);
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('at least 3');
+  });
+
+  it('rejects value above maximum', () => {
+    const result = validateLength('a'.repeat(11), 2, 10);
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('at most 10');
+  });
+
+  it('accepts exact minimum', () => {
+    const result = validateLength('ab', 2, 10);
+    expect(result.isValid).toBe(true);
+  });
+
+  it('accepts exact maximum', () => {
+    const result = validateLength('a'.repeat(10), 2, 10);
+    expect(result.isValid).toBe(true);
+  });
+});
+
+describe('validateRange', () => {
+  it('accepts value within range', () => {
+    const result = validateRange('5', 1, 10);
+    expect(result.isValid).toBe(true);
+  });
+
+  it('rejects value below minimum', () => {
+    const result = validateRange('0.5', 1, 10, 'sBTC');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('Minimum is 1 sBTC');
+  });
+
+  it('rejects value above maximum', () => {
+    const result = validateRange('15', 1, 10, 'sBTC');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('Maximum is 10 sBTC');
+  });
+
+  it('inherits base validation', () => {
+    const result = validateRange('abc', 1, 10);
+    expect(result.isValid).toBe(false);
+  });
+});
+
+describe('validateRequired', () => {
+  it('rejects empty string', () => {
+    const result = validateRequired('', 'Name');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Name is required');
+  });
+
+  it('rejects whitespace only', () => {
+    const result = validateRequired('   ');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Field is required');
+  });
+
+  it('accepts non-empty string', () => {
+    const result = validateRequired('test');
+    expect(result.isValid).toBe(true);
+  });
+});
+
+describe('validatePattern', () => {
+  it('accepts matching pattern', () => {
+    const result = validatePattern('hello', /^[a-z]+$/);
+    expect(result.isValid).toBe(true);
+  });
+
+  it('rejects non-matching pattern', () => {
+    const result = validatePattern('hello123', /^[a-z]+$/, 'Only lowercase letters');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Only lowercase letters');
+  });
+
+  it('uses default error message', () => {
+    const result = validatePattern('123', /^[a-z]+$/);
+    expect(result.error).toBe('Invalid format');
+  });
+});
