@@ -1049,3 +1049,67 @@ button:focus-visible {
 .multi_vault-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
 .multi_vault-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
 .multi_vault-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec6 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec6 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec6 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec7 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec7 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec7 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec16 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec16 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec16 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec17 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec17 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec17 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec26 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec26 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec26 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec27 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec27 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec27 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec36 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec36 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec36 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec37 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec37 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec37 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec46 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec46 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec46 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec47 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec47 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec47 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec56 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec56 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec56 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec57 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec57 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec57 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec66 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec66 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec66 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec67 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec67 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec67 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec76 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec76 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec76 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.vault_migration-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.vault_migration-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.vault_migration-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
