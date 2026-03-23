@@ -2200,6 +2200,45 @@
   font-weight: 600;
 }
 
+/* Password strength meter */
+.password-strength {
+  margin-top: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.password-strength-bars {
+  display: flex;
+  gap: 3px;
+  flex: 1;
+}
+
+.password-strength-bar {
+  height: 4px;
+  flex: 1;
+  border-radius: 2px;
+  background: var(--border-color);
+  transition: background 0.2s;
+}
+
+.password-strength-bar.strength-weak { background: var(--error-text); }
+.password-strength-bar.strength-fair { background: var(--warning-text); }
+.password-strength-bar.strength-good { background: var(--info-text); }
+.password-strength-bar.strength-strong { background: var(--success); }
+
+.password-strength-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  min-width: 3rem;
+}
+
+.strength-text-weak { color: var(--error-text); }
+.strength-text-fair { color: var(--warning-text); }
+.strength-text-good { color: var(--info-text); }
+.strength-text-strong { color: var(--success); }
+
 /* High contrast preferences */
 @media (prefers-contrast: more) {
   :root {
