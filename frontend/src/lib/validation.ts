@@ -92,6 +92,28 @@ export function isValidTxId(txId: string): boolean {
 }
 
 /**
+ * Validate that a numeric value is within a range.
+ */
+export function validateRange(
+  value: string,
+  min: number,
+  max: number,
+  unit = '',
+): ValidationResult {
+  const base = validateAmount(value);
+  if (!base.isValid) return base;
+  const num = parseFloat(value);
+  const unitSuffix = unit ? ` ${unit}` : '';
+  if (num < min) {
+    return { isValid: false, error: `Minimum is ${min}${unitSuffix}` };
+  }
+  if (num > max) {
+    return { isValid: false, error: `Maximum is ${max}${unitSuffix}` };
+  }
+  return { isValid: true, error: null };
+}
+
+/**
  * Validate that a string is within a length range.
  */
 export function validateLength(
