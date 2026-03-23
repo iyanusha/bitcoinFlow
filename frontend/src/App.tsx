@@ -101,6 +101,7 @@ function App() {
         addTransaction({ txId, type: 'deposit', amount: Math.round(parseFloat(depositAmount) * SATS_PER_BTC) })
         toastSuccess(`Deposit of ${depositAmount} sBTC submitted`, txId)
         setDepositAmount('')
+        setDepositTouched(false)
         setError(null)
         setIsDepositing(false)
         refreshStats()
