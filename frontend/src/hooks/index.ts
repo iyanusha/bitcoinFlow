@@ -62,3 +62,4 @@ export { useThrottle } from './useThrottle';
 export { useRenderCount } from './useRenderCount';
 export { useDeferred } from './useDeferred';
 export { useAbortController } from './useAbortController';
+export { useNetworkSpeed } from './useNetworkSpeed';
