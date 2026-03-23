@@ -56,3 +56,4 @@ export { useAnnouncer } from './useAnnouncer';
 export { useFieldTouched } from './useFieldTouched';
 export type { UseFieldTouchedResult } from './useFieldTouched';
 export { useFormDirtyWarning } from './useFormDirtyWarning';
+export { useMemoCompare } from './useMemoCompare';
