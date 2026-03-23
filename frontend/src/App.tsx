@@ -361,7 +361,10 @@ function App() {
                   setWithdrawAmount(sanitizeNumericInput(e.target.value))
                   if (error) setError(null)
                 }}
+                onBlur={() => setWithdrawTouched(true)}
                 autoComplete="off"
+                className={withdrawTouched && withdrawAmount ? (validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid ? 'input-valid' : 'input-error') : ''}
+                aria-invalid={withdrawTouched && withdrawAmount ? !validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid : undefined}
                 aria-describedby="withdraw-help"
               />
               <small id="withdraw-help">Burns FLOW tokens and returns sBTC</small>
