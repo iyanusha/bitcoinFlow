@@ -277,21 +277,21 @@ function App() {
               </a>
             </div>
             <div className="stats-grid" role="region" aria-label="Vault statistics" aria-roledescription={ARIA_DESCRIPTIONS.vaultStats} aria-live="polite">
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Total Deposits: ${formatSTX(vaultStats.totalDeposits)} STX`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Total Deposits: ${formattedDeposits} STX`}>
                 <h3>Total Deposits</h3>
-                <p>{formatSTX(vaultStats.totalDeposits)} STX</p>
+                <p>{formattedDeposits} STX</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Total Rewards: ${formatSTX(vaultStats.totalRewards)} STX`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Total Rewards: ${formattedRewards} STX`}>
                 <h3>Total Rewards</h3>
-                <p>{formatSTX(vaultStats.totalRewards)} STX</p>
+                <p>{formattedRewards} STX</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`STX Balance: ${formatSTX(vaultStats.stxBalance)} STX`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`STX Balance: ${formattedBalance} STX`}>
                 <h3>STX Balance</h3>
-                <p>{formatSTX(vaultStats.stxBalance)} STX</p>
+                <p>{formattedBalance} STX</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Your Flow Tokens: ${formatCompact(vaultStats.userBalance / MICROSTX_PER_STX)} FLOW`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Your Flow Tokens: ${formattedUserTokens} FLOW`}>
                 <h3>Your Flow Tokens</h3>
-                <p>{formatCompact(vaultStats.userBalance / MICROSTX_PER_STX)} FLOW</p>
+                <p>{formattedUserTokens} FLOW</p>
               </div>
               <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Exchange Rate: ${exchangeRate.formattedRate} sBTC per FLOW`}>
                 <h3>Exchange Rate</h3>
