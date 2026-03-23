@@ -12,6 +12,10 @@ import {
   validateBtcAmount,
   isValidContractId,
   isValidTxId,
+  validateLength,
+  validateRange,
+  validateRequired,
+  validatePattern,
 } from '../validation';
 
 describe('validateAmount', () => {
