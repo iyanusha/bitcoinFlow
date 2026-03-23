@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { sanitizeNumericInput } from '../lib/validation';
 
 interface Props {
@@ -11,7 +12,7 @@ interface Props {
   error?: string | null;
 }
 
-export function AmountInput({ value, onChange, label, unit, max, id, disabled, error }: Props) {
+export const AmountInput = memo(function AmountInput({ value, onChange, label, unit, max, id, disabled, error }: Props) {
   const handleChange = (raw: string) => {
     const sanitized = sanitizeNumericInput(raw);
     onChange(sanitized);
@@ -58,4 +59,4 @@ export function AmountInput({ value, onChange, label, unit, max, id, disabled, e
       {error && <p id={errorId} className="field-error" role="alert">{error}</p>}
     </div>
   );
-}
+});

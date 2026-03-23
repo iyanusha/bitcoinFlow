@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { API_URL } from '../lib/stacks';
 import { logger } from '../lib/logger';
-import type { TransactionStatus } from '../types';
+import type { TransactionStatus, HiroTxResponse } from '../types';
 
 export function useTransactionStatus() {
   const checkStatus = useCallback(async (txId: string): Promise<TransactionStatus> => {
@@ -9,7 +9,7 @@ export function useTransactionStatus() {
       const res = await fetch(`${API_URL}/extended/v1/tx/${txId}`);
       if (!res.ok) return 'pending';
 
-      const data = await res.json();
+      const data = (await res.json()) as HiroTxResponse;
       const status = data.tx_status;
 
       if (status === 'success') return 'confirmed';

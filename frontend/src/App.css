@@ -157,6 +157,16 @@
   letter-spacing: 1px;
 }
 
+.network-badge-mainnet {
+  background: rgba(22, 163, 74, 0.3);
+  border: 1px solid rgba(22, 163, 74, 0.5);
+}
+
+.network-badge-testnet {
+  background: rgba(255, 200, 50, 0.2);
+  border: 1px solid rgba(255, 200, 50, 0.4);
+}
+
 .pending-badge {
   display: inline-block;
   background: rgba(255, 200, 50, 0.3);
@@ -224,6 +234,10 @@
 .wallet-address-link:hover {
   border-bottom-color: white;
   text-decoration: none;
+}
+
+.wallet-address-link:active {
+  opacity: 0.8;
 }
 
 .disconnect-btn {
@@ -309,6 +323,7 @@
 .refresh-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+  animation: spin 1s linear infinite;
 }
 
 .refresh-btn:active:not(:disabled) {
@@ -344,6 +359,15 @@
 .stat-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.stat-card.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.stat-card.loading p {
+  color: var(--text-muted);
 }
 
 .stat-card h3 {
@@ -421,6 +445,7 @@
 
 .action-card:hover {
   box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  border-color: var(--accent);
 }
 
 .action-card h3 {
@@ -542,6 +567,11 @@
 
 .info-section li {
   line-height: 1.5;
+  transition: transform 0.15s ease;
+}
+
+.info-section li:hover {
+  transform: translateX(4px);
 }
 
 @media (max-width: 1024px) {
@@ -768,6 +798,26 @@
   transform: scale(0.97);
 }
 
+.error-boundary-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  display: block;
+  speak: never;
+}
+
+.error-boundary-details {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+  background: var(--bg-secondary);
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  word-break: break-all;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
 @media (max-width: 480px) {
   .error-boundary {
     padding: 1.5rem;
@@ -796,6 +846,10 @@
 .error-banner p {
   margin: 0;
   flex: 1;
+}
+
+.dark .error-banner {
+  border-color: var(--error-text);
 }
 
 .paused-banner {
@@ -834,6 +888,11 @@
 
 .offline-banner a {
   color: #93c5fd;
+}
+
+.dark .offline-banner {
+  background: #0f172a;
+  border-color: #334155;
 }
 
 .dismiss-btn {
@@ -969,6 +1028,12 @@
   border: 1px solid #3b82f6;
 }
 
+.toast-warning {
+  background: #451a03;
+  color: #fde68a;
+  border: 1px solid #d97706;
+}
+
 .toast-message {
   flex: 1;
 }
@@ -995,6 +1060,10 @@
   opacity: 1;
 }
 
+.toast-dismiss:active {
+  transform: scale(0.9);
+}
+
 .toast-dismiss:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
@@ -1010,6 +1079,11 @@
 @keyframes slideIn {
   from { transform: translateX(100%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
 }
 
 .tx-history {
@@ -1052,6 +1126,16 @@
 .tx-clear-btn:hover {
   color: var(--error-text);
   border-color: var(--error-text);
+}
+
+.tx-clear-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.tx-clear-btn:active {
+  transform: scale(0.95);
 }
 
 .tx-empty {
@@ -1124,6 +1208,12 @@
 
 .tx-explorer-link:hover {
   text-decoration: underline;
+}
+
+.tx-explorer-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .copy-btn {
@@ -1252,6 +1342,14 @@
 .gap-sm { gap: 0.5rem; }
 .gap-md { gap: 1rem; }
 .gap-lg { gap: 1.5rem; }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-sm { font-size: 0.85rem; }
+.text-xs { font-size: 0.75rem; }
+.text-muted { color: var(--text-muted); }
+.font-mono { font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace; }
 
 @media (max-height: 500px) and (orientation: landscape) {
   .app-header {

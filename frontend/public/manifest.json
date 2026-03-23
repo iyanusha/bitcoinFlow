@@ -1,0 +1,19 @@
+{
+  "name": "BitcoinFlow",
+  "short_name": "BitcoinFlow",
+  "description": "Smart sBTC Stacking Vault with auto-compounding rewards",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "categories": ["finance", "crypto"],
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

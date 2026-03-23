@@ -1,5 +1,5 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
-import { copyToClipboard } from '../clipboard';
+import { copyToClipboard, isClipboardAvailable } from '../clipboard';
 
 describe('copyToClipboard', () => {
   beforeEach(() => {
@@ -31,5 +31,14 @@ describe('copyToClipboard', () => {
 
     const result = await copyToClipboard('test');
     expect(result).toBe(false);
+  });
+});
+
+describe('isClipboardAvailable', () => {
+  it('returns true when navigator.clipboard.writeText exists', () => {
+    Object.assign(navigator, {
+      clipboard: { writeText: vi.fn() },
+    });
+    expect(isClipboardAvailable()).toBe(true);
   });
 });

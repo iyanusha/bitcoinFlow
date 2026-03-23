@@ -43,12 +43,23 @@ export function isPositiveInteger(value: string): boolean {
 }
 
 export function isValidStxAddress(address: string): boolean {
+  if (address.length < 40 || address.length > 42) return false;
   return /^S[TPM][0-9A-Z]{38,40}$/.test(address);
 }
 
 export function validateStxAddress(address: string): ValidationResult {
   if (!address || address.trim() === '') return { isValid: false, error: 'Address is required' };
   if (!isValidStxAddress(address)) return { isValid: false, error: 'Invalid Stacks address format' };
+  return { isValid: true, error: null };
+}
+
+export function validateBtcAmount(value: string): ValidationResult {
+  const base = validateAmount(value);
+  if (!base.isValid) return base;
+  const num = parseFloat(value);
+  if (num > 21_000_000) return { isValid: false, error: 'Amount exceeds Bitcoin max supply (21M)' };
+  const precision = validateDecimalPrecision(value, 8);
+  if (!precision.isValid) return precision;
   return { isValid: true, error: null };
 }
 

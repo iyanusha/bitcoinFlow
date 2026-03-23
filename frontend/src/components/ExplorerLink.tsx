@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { getTxExplorerUrl, getAddressExplorerUrl } from '../lib/stacks';
 import { formatTxId, formatAddress } from '../lib/formatters';
 
@@ -7,7 +8,7 @@ interface ExplorerLinkProps {
   label?: string;
 }
 
-export function ExplorerLink({ type, value, label }: ExplorerLinkProps) {
+export const ExplorerLink = memo(function ExplorerLink({ type, value, label }: ExplorerLinkProps) {
   const url = type === 'tx' ? getTxExplorerUrl(value) : getAddressExplorerUrl(value);
   const displayText = label ?? (type === 'tx' ? formatTxId(value) : formatAddress(value));
 
@@ -28,4 +29,4 @@ export function ExplorerLink({ type, value, label }: ExplorerLinkProps) {
       <span className="sr-only"> (opens in new tab)</span>
     </a>
   );
-}
+});

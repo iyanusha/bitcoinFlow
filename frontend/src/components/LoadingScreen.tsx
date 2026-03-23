@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import { Spinner } from './Spinner';
 
 interface LoadingScreenProps { message?: string; }
 
-export function LoadingScreen({ message = 'Loading...' }: LoadingScreenProps) {
+export const LoadingScreen = memo(function LoadingScreen({ message = 'Loading...' }: LoadingScreenProps) {
   return (
     <div
       role="status"
@@ -14,4 +15,4 @@ export function LoadingScreen({ message = 'Loading...' }: LoadingScreenProps) {
       <p style={{ color: 'var(--text-muted, #6b7280)', fontSize: '0.9rem' }}>{message}</p>
     </div>
   );
-}
+});

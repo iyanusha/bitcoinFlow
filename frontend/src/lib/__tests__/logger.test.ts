@@ -40,4 +40,22 @@ describe('logger', () => {
     logger.debug('debug info');
     expect(console.log).toHaveBeenCalled();
   });
+
+  it('logger.error includes ERROR in prefix', () => {
+    logger.error('critical');
+    const call = (console.error as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(call[0]).toContain('ERROR');
+  });
+
+  it('logger.warn includes WARN in prefix', () => {
+    logger.warn('caution');
+    const call = (console.warn as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(call[0]).toContain('WARN');
+  });
+
+  it('logger passes empty string when no data is provided', () => {
+    logger.info('no data');
+    const call = (console.info as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(call[2]).toBe('');
+  });
 });

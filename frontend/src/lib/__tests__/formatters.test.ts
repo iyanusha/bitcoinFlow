@@ -3,7 +3,7 @@ import {
   formatSTX, formatBTC, formatSBTC, formatCompact,
   formatPercentage, formatBlocks, formatExchangeRate,
   formatAddress, formatTxId, formatUSD, formatTimeSince,
-  formatDate,
+  formatDate, formatNumber, formatDuration,
 } from '../formatters';
 
 describe('formatSTX', () => {
@@ -202,5 +202,49 @@ describe('formatDate', () => {
     const result = formatDate(ts);
     // Should include hour/minute
     expect(result.length).toBeGreaterThan(5);
+  });
+});
+
+describe('formatNumber', () => {
+  it('formats integer with no unnecessary decimals', () => {
+    expect(formatNumber(1000)).toBe('1,000');
+  });
+
+  it('formats with default 2 decimal places', () => {
+    expect(formatNumber(1234.567)).toBe('1,234.57');
+  });
+
+  it('formats with custom decimal places', () => {
+    expect(formatNumber(1234.5678, 4)).toBe('1,234.5678');
+  });
+
+  it('formats zero', () => {
+    expect(formatNumber(0)).toBe('0');
+  });
+
+  it('formats large numbers with commas', () => {
+    expect(formatNumber(1_000_000)).toBe('1,000,000');
+  });
+});
+
+describe('formatDuration', () => {
+  it('formats seconds only', () => {
+    expect(formatDuration(45)).toBe('45s');
+  });
+
+  it('formats minutes and seconds', () => {
+    expect(formatDuration(90)).toBe('1m 30s');
+  });
+
+  it('formats hours and minutes', () => {
+    expect(formatDuration(3660)).toBe('1h 1m');
+  });
+
+  it('formats exactly one minute', () => {
+    expect(formatDuration(60)).toBe('1m 0s');
+  });
+
+  it('formats exactly one hour', () => {
+    expect(formatDuration(3600)).toBe('1h 0m');
   });
 });

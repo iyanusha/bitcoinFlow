@@ -15,6 +15,11 @@ import {
   MAX_TX_HISTORY,
   TX_POLL_INTERVAL_MS,
   ERROR_MESSAGES,
+  ANIMATION,
+  PERFORMANCE,
+  SEO,
+  BREAKPOINTS,
+  KEYS,
 } from '../constants';
 
 describe('constants', () => {
@@ -85,5 +90,57 @@ describe('constants', () => {
     expect(VALIDATION.MIN_DEPOSIT).toBe(0.0001);
     expect(VALIDATION.MAX_DEPOSIT).toBe(21_000_000);
     expect(VALIDATION.MAX_DECIMALS).toBe(8);
+  });
+});
+
+describe('ANIMATION constants', () => {
+  it('has positive toast duration', () => {
+    expect(ANIMATION.TOAST_DURATION_MS).toBeGreaterThan(0);
+  });
+
+  it('error toasts last longer than default', () => {
+    expect(ANIMATION.ERROR_TOAST_DURATION_MS).toBeGreaterThan(ANIMATION.TOAST_DURATION_MS);
+  });
+
+  it('copy feedback is 2 seconds', () => {
+    expect(ANIMATION.COPY_FEEDBACK_MS).toBe(2000);
+  });
+});
+
+describe('PERFORMANCE constants', () => {
+  it('resize debounce is reasonable', () => {
+    expect(PERFORMANCE.RESIZE_DEBOUNCE_MS).toBeGreaterThanOrEqual(100);
+    expect(PERFORMANCE.RESIZE_DEBOUNCE_MS).toBeLessThanOrEqual(300);
+  });
+
+  it('online debounce matches useOnlineStatus', () => {
+    expect(PERFORMANCE.ONLINE_DEBOUNCE_MS).toBe(300);
+  });
+});
+
+describe('SEO constants', () => {
+  it('site name is BitcoinFlow', () => {
+    expect(SEO.SITE_NAME).toBe('BitcoinFlow');
+  });
+
+  it('site URL uses https', () => {
+    expect(SEO.SITE_URL.startsWith('https://')).toBe(true);
+  });
+});
+
+describe('BREAKPOINTS', () => {
+  it('mobile < tablet < desktop < wide', () => {
+    expect(BREAKPOINTS.MOBILE).toBeLessThan(BREAKPOINTS.TABLET);
+    expect(BREAKPOINTS.TABLET).toBeLessThan(BREAKPOINTS.DESKTOP);
+    expect(BREAKPOINTS.DESKTOP).toBeLessThan(BREAKPOINTS.WIDE);
+  });
+});
+
+describe('KEYS', () => {
+  it('defines standard keyboard key values', () => {
+    expect(KEYS.ENTER).toBe('Enter');
+    expect(KEYS.ESCAPE).toBe('Escape');
+    expect(KEYS.TAB).toBe('Tab');
+    expect(KEYS.SPACE).toBe(' ');
   });
 });

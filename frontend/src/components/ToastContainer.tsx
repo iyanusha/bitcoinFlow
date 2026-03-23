@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Toast } from './Toast';
 import type { ToastMessage } from '../types';
 
@@ -6,7 +7,7 @@ interface ToastContainerProps {
   onDismiss: (id: string) => void;
 }
 
-export function ToastContainer({ toasts, onDismiss }: ToastContainerProps) {
+export const ToastContainer = memo(function ToastContainer({ toasts, onDismiss }: ToastContainerProps) {
   if (toasts.length === 0) return null;
 
   return (
@@ -16,4 +17,4 @@ export function ToastContainer({ toasts, onDismiss }: ToastContainerProps) {
       ))}
     </div>
   );
-}
+});

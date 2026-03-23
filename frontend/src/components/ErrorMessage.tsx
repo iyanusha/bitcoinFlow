@@ -1,10 +1,12 @@
+import { memo } from 'react';
+
 interface ErrorMessageProps {
   message: string;
   onDismiss?: () => void;
   type?: 'error' | 'warning' | 'info';
 }
 
-export function ErrorMessage({ message, onDismiss, type = 'error' }: ErrorMessageProps) {
+export const ErrorMessage = memo(function ErrorMessage({ message, onDismiss, type = 'error' }: ErrorMessageProps) {
   const colors = {
     error: { bg: 'var(--error-bg, #fee2e2)', fg: 'var(--error-text, #dc2626)' },
     warning: { bg: 'var(--warning-bg, #fef3c7)', fg: 'var(--warning-text, #d97706)' },
@@ -30,4 +32,4 @@ export function ErrorMessage({ message, onDismiss, type = 'error' }: ErrorMessag
       )}
     </div>
   );
-}
+});

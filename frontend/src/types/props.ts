@@ -47,3 +47,16 @@ export interface AccessibleProps {
   'aria-live'?: 'polite' | 'assertive' | 'off';
   role?: string;
 }
+
+export interface FormCallbacks {
+  onSubmit?: () => void;
+  onReset?: () => void;
+  onValidationError?: (error: string) => void;
+}
+
+export interface LoadingProps {
+  loading?: boolean;
+  loadingText?: string;
+}
+
+export type WithClassName<T> = T & { className?: string };

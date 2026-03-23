@@ -56,4 +56,26 @@ describe('getContractExplorerUrl', () => {
     const url = getContractExplorerUrl();
     expect(url).toContain('explorer.hiro.so');
   });
+
+  it('includes both address and contract name joined by dot', () => {
+    const url = getContractExplorerUrl();
+    expect(url).toMatch(/address\/\w+\.flow-vault/);
+  });
+});
+
+describe('URL format consistency', () => {
+  it('tx URL starts with https', () => {
+    const url = getTxExplorerUrl('0x123');
+    expect(url.startsWith('https://')).toBe(true);
+  });
+
+  it('address URL starts with https', () => {
+    const url = getAddressExplorerUrl('ST1234');
+    expect(url.startsWith('https://')).toBe(true);
+  });
+
+  it('contract URL starts with https', () => {
+    const url = getContractExplorerUrl();
+    expect(url.startsWith('https://')).toBe(true);
+  });
 });

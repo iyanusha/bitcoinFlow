@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://api.testnet.hiro.so" crossorigin />
+    <link rel="preconnect" href="https://api.mainnet.hiro.so" crossorigin />
+    <link rel="dns-prefetch" href="https://explorer.hiro.so" />
     <meta name="theme-color" content="#667eea" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
     <title>BitcoinFlow — Smart sBTC Stacking Vault</title>
@@ -11,9 +16,38 @@
     <meta property="og:title" content="BitcoinFlow — Smart sBTC Stacking Vault" />
     <meta property="og:description" content="Earn auto-compounding stacking rewards on your STX and sBTC. Built on Stacks, secured by Bitcoin." />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:url" content="https://bitcoinflow.app" />
+    <meta property="og:image" content="https://bitcoinflow.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="BitcoinFlow" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="BitcoinFlow" />
     <meta name="twitter:description" content="Smart sBTC stacking vault with auto-compounding rewards" />
+    <meta name="twitter:image" content="https://bitcoinflow.app/og-image.png" />
+    <meta name="twitter:image:alt" content="BitcoinFlow — Smart sBTC Stacking Vault" />
+    <link rel="canonical" href="https://bitcoinflow.app" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="BitcoinFlow" />
+    <meta name="keywords" content="sBTC, stacking, vault, DeFi, Stacks, Bitcoin, liquid staking, FLOW token" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "BitcoinFlow",
+        "description": "Smart sBTC Stacking Vault with auto-compounding rewards",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

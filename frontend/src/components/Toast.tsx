@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo } from 'react';
 import type { ToastMessage } from '../types';
 import { getTxExplorerUrl } from '../lib/stacks';
 
@@ -9,7 +9,7 @@ interface ToastProps {
 
 const DEFAULT_DURATION = 5000;
 
-export function Toast({ toast, onDismiss }: ToastProps) {
+export const Toast = memo(function Toast({ toast, onDismiss }: ToastProps) {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -51,4 +51,4 @@ export function Toast({ toast, onDismiss }: ToastProps) {
       </button>
     </div>
   );
-}
+});

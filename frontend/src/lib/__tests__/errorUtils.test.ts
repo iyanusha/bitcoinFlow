@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getContractErrorMessage, parseTransactionError } from '../errorUtils';
+import { getContractErrorMessage, parseTransactionError, isRetryableError, getErrorSeverity } from '../errorUtils';
 
 describe('getContractErrorMessage', () => {
   it('returns message for ERR-NOT-AUTHORIZED (100)', () => {
@@ -72,5 +72,46 @@ describe('parseTransactionError', () => {
     expect(parseTransactionError('string error')).toBe('An unexpected error occurred');
     expect(parseTransactionError(null)).toBe('An unexpected error occurred');
     expect(parseTransactionError(undefined)).toBe('An unexpected error occurred');
+  });
+});
+
+describe('isRetryableError', () => {
+  it('returns true for network errors', () => {
+    expect(isRetryableError(new Error('network timeout'))).toBe(true);
+  });
+
+  it('returns true for fetch errors', () => {
+    expect(isRetryableError(new Error('fetch failed'))).toBe(true);
+  });
+
+  it('returns true for timeout errors', () => {
+    expect(isRetryableError(new Error('Request timeout'))).toBe(true);
+  });
+
+  it('returns false for contract errors', () => {
+    expect(isRetryableError(new Error('(err u105)'))).toBe(false);
+  });
+
+  it('returns false for non-Error values', () => {
+    expect(isRetryableError('string')).toBe(false);
+    expect(isRetryableError(null)).toBe(false);
+  });
+});
+
+describe('getErrorSeverity', () => {
+  it('returns low for user-cancelled transactions', () => {
+    expect(getErrorSeverity(new Error('UserRejected'))).toBe('low');
+  });
+
+  it('returns medium for network errors', () => {
+    expect(getErrorSeverity(new Error('network error'))).toBe('medium');
+  });
+
+  it('returns high for unknown errors', () => {
+    expect(getErrorSeverity(new Error('Something broke'))).toBe('high');
+  });
+
+  it('returns high for non-Error values', () => {
+    expect(getErrorSeverity('string')).toBe('high');
   });
 });

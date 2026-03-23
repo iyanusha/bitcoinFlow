@@ -195,7 +195,7 @@ function App() {
         </div>
         <p>Smart sBTC Stacking Vault</p>
         <div className="header-badges">
-          <span className="network-badge">
+          <span className={`network-badge ${import.meta.env.VITE_NETWORK === 'mainnet' ? 'network-badge-mainnet' : 'network-badge-testnet'}`}>
             {import.meta.env.VITE_NETWORK === 'mainnet' ? 'Mainnet' : 'Testnet'}
           </span>
           {pendingCount > 0 && (
@@ -256,31 +256,31 @@ function App() {
               </a>
             </div>
             <div className="stats-grid" role="region" aria-label="Vault statistics" aria-live="polite">
-              <div className="stat-card">
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
                 <h3>Total Deposits</h3>
                 <p>{formatSTX(vaultStats.totalDeposits)} STX</p>
               </div>
-              <div className="stat-card">
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
                 <h3>Total Rewards</h3>
                 <p>{formatSTX(vaultStats.totalRewards)} STX</p>
               </div>
-              <div className="stat-card">
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
                 <h3>STX Balance</h3>
                 <p>{formatSTX(vaultStats.stxBalance)} STX</p>
               </div>
-              <div className="stat-card">
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
                 <h3>Your Flow Tokens</h3>
                 <p>{formatCompact(vaultStats.userBalance / MICROSTX_PER_STX)} FLOW</p>
               </div>
-              <div className="stat-card">
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
                 <h3>Exchange Rate</h3>
                 <p>{exchangeRate.formattedRate} sBTC/FLOW</p>
               </div>
-              <div className="stat-card">
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
                 <h3>Deposits</h3>
                 <p>{vaultStats.depositCount}</p>
               </div>
-              <div className="stat-card">
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
                 <h3>Withdrawals</h3>
                 <p>{vaultStats.withdrawCount}</p>
               </div>
