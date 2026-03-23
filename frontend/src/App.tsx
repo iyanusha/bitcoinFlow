@@ -43,6 +43,8 @@ function App() {
   const isOnline = useOnlineStatus()
   const { isDark: darkMode, toggle: toggleTheme } = useTheme()
   const [showShortcuts, setShowShortcuts] = useState(false)
+  const [depositTouched, setDepositTouched] = useState(false)
+  const [withdrawTouched, setWithdrawTouched] = useState(false)
 
   const pollPendingTransactions = useCallback(async () => {
     const pending = transactions.filter(tx => tx.status === 'pending');
