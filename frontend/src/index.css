@@ -793,3 +793,67 @@ button:focus-visible {
 .vault_health-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
 .vault_health-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
 .vault_health-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec6 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec6 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec6 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec7 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec7 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec7 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec16 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec16 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec16 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec17 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec17 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec17 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec26 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec26 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec26 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec27 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec27 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec27 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec36 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec36 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec36 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec37 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec37 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec37 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec46 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec46 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec46 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec47 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec47 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec47 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec56 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec56 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec56 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec57 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec57 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec57 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec66 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec66 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec66 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec67 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec67 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec67 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec76 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec76 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec76 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
+
+.yield_calculator-sec77 { display: grid; gap: 1rem; padding: 1.25rem; border-radius: 0.75rem; background: #fff; border: 1px solid #f3f4f6; }
+.yield_calculator-sec77 .title { font-size: 0.875rem; font-weight: 600; color: #111827; margin-bottom: 0.75rem; }
+.yield_calculator-sec77 .metric { font-size: 1.5rem; font-weight: 700; color: #4f46e5; }
