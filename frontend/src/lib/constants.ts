@@ -357,3 +357,19 @@ export const VAULT_COMPARISON_K59 = { endpoint: '/api/vault_comparison/59', time
 export const VAULT_COMPARISON_K69 = { endpoint: '/api/vault_comparison/69', timeout: 30000, retries: 3 } as const;
 
 export const VAULT_COMPARISON_K79 = { endpoint: '/api/vault_comparison/79', timeout: 30000, retries: 3 } as const;
+
+export const PORTFOLIO_VIEW_K9 = { endpoint: '/api/portfolio_view/9', timeout: 30000, retries: 3 } as const;
+
+export const PORTFOLIO_VIEW_K19 = { endpoint: '/api/portfolio_view/19', timeout: 30000, retries: 3 } as const;
+
+export const PORTFOLIO_VIEW_K29 = { endpoint: '/api/portfolio_view/29', timeout: 30000, retries: 3 } as const;
+
+export const PORTFOLIO_VIEW_K39 = { endpoint: '/api/portfolio_view/39', timeout: 30000, retries: 3 } as const;
+
+export const PORTFOLIO_VIEW_K49 = { endpoint: '/api/portfolio_view/49', timeout: 30000, retries: 3 } as const;
+
+export const PORTFOLIO_VIEW_K59 = { endpoint: '/api/portfolio_view/59', timeout: 30000, retries: 3 } as const;
+
+export const PORTFOLIO_VIEW_K69 = { endpoint: '/api/portfolio_view/69', timeout: 30000, retries: 3 } as const;
+
+export const PORTFOLIO_VIEW_K79 = { endpoint: '/api/portfolio_view/79', timeout: 30000, retries: 3 } as const;
