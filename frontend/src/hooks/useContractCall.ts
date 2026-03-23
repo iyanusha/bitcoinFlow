@@ -3,6 +3,7 @@ import { openContractCall } from '@stacks/connect';
 import { PostConditionMode, type ClarityValue } from '@stacks/transactions';
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { parseTransactionError } from '../lib/errorUtils';
+import { logger } from '../lib/logger';
 
 interface UseContractCallOptions {
   functionName: string;
@@ -29,15 +30,18 @@ export function useContractCall() {
         functionArgs: options.functionArgs,
         postConditionMode: PostConditionMode.Deny,
         onFinish: (data) => {
+          logger.info(`Transaction submitted: ${options.functionName}`, { txId: data.txId });
           setTxId(data.txId);
           setLoading(false);
           options.onSuccess?.();
         },
         onCancel: () => {
+          logger.debug(`Transaction cancelled: ${options.functionName}`);
           setLoading(false);
         },
       });
     } catch (err) {
+      logger.error(`Contract call failed: ${options.functionName}`, err);
       setError(parseTransactionError(err));
       setLoading(false);
     }

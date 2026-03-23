@@ -4,7 +4,10 @@ const isDev = import.meta.env.DEV;
 
 function log(level: LogLevel, message: string, data?: unknown) {
   if (!isDev && level === 'debug') return;
-  const prefix = `[BitcoinFlow:${level.toUpperCase()}]`;
+  const timestamp = isDev ? new Date().toISOString().slice(11, 23) : '';
+  const prefix = isDev
+    ? `[${timestamp}][BitcoinFlow:${level.toUpperCase()}]`
+    : `[BitcoinFlow:${level.toUpperCase()}]`;
   console[level === 'debug' ? 'log' : level](prefix, message, data ?? '');
 }
 

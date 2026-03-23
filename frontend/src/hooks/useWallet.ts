@@ -40,7 +40,11 @@ export function useWallet() {
 }
 
 export function getStxBalance(address: string): Promise<number> {
-  return fetch(`https://api.hiro.so/extended/v1/address/${address}/balances`)
+  const isMainnet = import.meta.env.VITE_NETWORK === "mainnet";
+  const baseUrl = isMainnet
+    ? "https://api.mainnet.hiro.so"
+    : "https://api.testnet.hiro.so";
+  return fetch(`${baseUrl}/extended/v1/address/${address}/balances`)
     .then(res => res.json())
     .then(data => parseInt(data.stx?.balance || '0'))
     .catch(() => 0);

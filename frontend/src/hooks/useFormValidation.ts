@@ -18,5 +18,8 @@ export function useFormValidation(validator: (value: string) => ValidationResult
 
   const clearError = useCallback(() => { setError(null); setTouched(false); }, []);
 
-  return { error, touched, validate, onBlur, clearError };
+  const isValid = touched && error === null;
+  const isInvalid = touched && error !== null;
+
+  return { error, touched, isValid, isInvalid, validate, onBlur, clearError };
 }

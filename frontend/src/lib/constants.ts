@@ -1,5 +1,7 @@
 export const MICROSTX_PER_STX = 1_000_000;
 export const SATS_PER_BTC = 100_000_000;
+export const SBTC_DECIMALS = 8;
+export const FLOW_DECIMALS = 6;
 
 export const ERROR_MESSAGES: Record<number, string> = {
   100: 'Not authorized to perform this action',

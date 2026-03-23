@@ -8,9 +8,11 @@ interface Props {
   placeholder?: string;
   type?: string;
   id?: string;
+  disabled?: boolean;
+  'aria-describedby'?: string;
 }
 
-export function ValidatedInput({ value, onChange, validator, placeholder, type = 'text', id }: Props) {
+export function ValidatedInput({ value, onChange, validator, placeholder, type = 'text', id, disabled, ...rest }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [touched, setTouched] = useState(false);
 
@@ -39,7 +41,10 @@ export function ValidatedInput({ value, onChange, validator, placeholder, type =
         onChange={e => handleChange(e.target.value)}
         onBlur={handleBlur}
         placeholder={placeholder}
+        disabled={disabled}
         className={touched ? (error ? 'invalid' : 'valid') : ''}
+        aria-invalid={touched && !!error}
+        aria-describedby={rest['aria-describedby']}
       />
       {touched && error && <div className="field-error">{error}</div>}
     </div>
