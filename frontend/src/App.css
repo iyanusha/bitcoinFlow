@@ -2046,6 +2046,25 @@
   font-size: 0.9rem;
 }
 
+/* Form input validation states */
+.action-card input.input-error {
+  border-color: var(--error-text);
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.15);
+}
+
+.action-card input.input-valid {
+  border-color: var(--success);
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.15);
+}
+
+.dark .action-card input.input-error {
+  box-shadow: 0 0 0 2px rgba(252, 165, 165, 0.15);
+}
+
+.dark .action-card input.input-valid {
+  box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.15);
+}
+
 /* Focus ring container */
 .focus-ring-container {
   position: relative;
