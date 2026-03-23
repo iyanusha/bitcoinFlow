@@ -393,3 +393,52 @@ describe('validatePattern', () => {
     expect(result.error).toBe('Invalid format');
   });
 });
+
+describe('validateNotEqual', () => {
+  it('accepts value not equal', () => {
+    const result = validateNotEqual('hello', 'world');
+    expect(result.isValid).toBe(true);
+  });
+
+  it('rejects equal value', () => {
+    const result = validateNotEqual('test', 'test', 'Cannot use this value');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Cannot use this value');
+  });
+
+  it('uses default message', () => {
+    const result = validateNotEqual('a', 'a');
+    expect(result.error).toBe('Value is not allowed');
+  });
+});
+
+describe('validateWhitelist', () => {
+  it('accepts value in list', () => {
+    const result = validateWhitelist('deposit', ['deposit', 'withdraw']);
+    expect(result.isValid).toBe(true);
+  });
+
+  it('rejects value not in list', () => {
+    const result = validateWhitelist('transfer', ['deposit', 'withdraw']);
+    expect(result.isValid).toBe(false);
+  });
+
+  it('uses custom message', () => {
+    const result = validateWhitelist('x', ['a', 'b'], 'Pick a or b');
+    expect(result.error).toBe('Pick a or b');
+  });
+});
+
+describe('validateWhen', () => {
+  it('runs validator when condition is true', () => {
+    const validator = validateWhen(true, validateAmount);
+    const result = validator('');
+    expect(result.isValid).toBe(false);
+  });
+
+  it('skips validation when condition is false', () => {
+    const validator = validateWhen(false, validateAmount);
+    const result = validator('');
+    expect(result.isValid).toBe(true);
+  });
+});
