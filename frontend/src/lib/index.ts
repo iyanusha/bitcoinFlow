@@ -106,3 +106,13 @@ export {
   debounceAsyncValidator,
 } from './asyncValidation';
 export { deepEqual, shallowEqual } from './deepEqual';
+export {
+  measureSync,
+  measureAsync,
+  getPerformanceEntries,
+  getEntriesByName,
+  getAverageDuration,
+  clearPerformanceEntries,
+  markStart,
+} from './performanceMonitor';
+export type { PerformanceEntry } from './performanceMonitor';
