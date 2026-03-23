@@ -341,3 +341,19 @@ export const FEE_ESTIMATOR_K59 = { endpoint: '/api/fee_estimator/59', timeout: 3
 export const FEE_ESTIMATOR_K69 = { endpoint: '/api/fee_estimator/69', timeout: 30000, retries: 3 } as const;
 
 export const FEE_ESTIMATOR_K79 = { endpoint: '/api/fee_estimator/79', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_COMPARISON_K9 = { endpoint: '/api/vault_comparison/9', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_COMPARISON_K19 = { endpoint: '/api/vault_comparison/19', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_COMPARISON_K29 = { endpoint: '/api/vault_comparison/29', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_COMPARISON_K39 = { endpoint: '/api/vault_comparison/39', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_COMPARISON_K49 = { endpoint: '/api/vault_comparison/49', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_COMPARISON_K59 = { endpoint: '/api/vault_comparison/59', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_COMPARISON_K69 = { endpoint: '/api/vault_comparison/69', timeout: 30000, retries: 3 } as const;
+
+export const VAULT_COMPARISON_K79 = { endpoint: '/api/vault_comparison/79', timeout: 30000, retries: 3 } as const;
