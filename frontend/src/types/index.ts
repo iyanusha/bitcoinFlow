@@ -114,6 +114,24 @@ export interface ToastMessage {
   duration?: number;
 }
 
+/** Parsed response from get-vault-status read-only call */
+export interface VaultStatusResponse {
+  'total-deposits': { value: string };
+  'total-rewards': { value: string };
+  'stx-balance': { value: string };
+  'deposit-count': { value: string };
+  'withdraw-count': { value: string };
+  paused: { value: boolean };
+  'current-block': { value: string };
+}
+
+/** Parsed response from get-user-share read-only call */
+export interface UserShareResponse {
+  deposited: { value: string };
+  'flow-balance': { value: string };
+  'share-pct': { value: string };
+}
+
 /** Raw response shape from Hiro API for transaction status */
 export interface HiroTxResponse {
   tx_id: string;
@@ -133,4 +151,41 @@ export interface HiroBalanceResponse {
   };
   fungible_tokens: Record<string, { balance: string }>;
   non_fungible_tokens: Record<string, { count: number }>;
+}
+
+/** Contract event types emitted by flow-vault */
+export type ContractEventType = 'deposit' | 'withdraw' | 'compound' | 'pause' | 'unpause';
+
+/** A contract event parsed from a transaction's events array */
+export interface ContractEvent {
+  type: ContractEventType;
+  sender: string;
+  amount?: number;
+  blockHeight: number;
+  txId: string;
+  timestamp: number;
+}
+
+/** Pagination options for contract event queries */
+export interface EventQueryOptions {
+  limit?: number;
+  offset?: number;
+  eventType?: ContractEventType;
+}
+
+/** Post-condition type for contract calls */
+export type PostConditionType = 'stx-transfer' | 'ft-transfer' | 'nft-transfer';
+
+/** Deposit request sent to the contract */
+export interface DepositRequest {
+  amount: number;
+  senderAddress: string;
+  postConditions: unknown[];
+}
+
+/** Withdrawal request sent to the contract */
+export interface WithdrawRequest {
+  flowTokenAmount: number;
+  senderAddress: string;
+  postConditions: unknown[];
 }

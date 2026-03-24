@@ -80,3 +80,23 @@ export function formatDuration(seconds: number): string {
   const hours = Math.floor(minutes / 60);
   return `${hours}h ${minutes % 60}m`;
 }
+
+/**
+ * Format a share percentage from basis points (10000 = 100%).
+ */
+export function formatSharePct(basisPoints: number): string {
+  if (basisPoints === 0) return '0%';
+  const pct = basisPoints / 100;
+  if (pct < 0.01) return '< 0.01%';
+  return `${pct.toFixed(2)}%`;
+}
+
+/**
+ * Format vault TVL for compact display.
+ */
+export function formatTVL(microStx: number): string {
+  const stx = microStx / 1_000_000;
+  if (stx >= 1_000_000) return `${(stx / 1_000_000).toFixed(2)}M STX`;
+  if (stx >= 1_000) return `${(stx / 1_000).toFixed(2)}K STX`;
+  return `${stx.toFixed(2)} STX`;
+}

@@ -21,6 +21,8 @@ import {
   BREAKPOINTS,
   KEYS,
   THEME,
+  RETRY,
+  CACHE,
 } from '../constants';
 
 describe('constants', () => {
@@ -161,5 +163,38 @@ describe('THEME constants', () => {
 
   it('has a system preference query', () => {
     expect(THEME.SYSTEM_PREFERENCE_QUERY).toContain('prefers-color-scheme');
+  });
+});
+
+describe('RETRY constants', () => {
+  it('has reasonable retry count', () => {
+    expect(RETRY.MAX_RETRIES).toBeGreaterThanOrEqual(1);
+    expect(RETRY.MAX_RETRIES).toBeLessThanOrEqual(10);
+  });
+
+  it('base delay is at least 500ms', () => {
+    expect(RETRY.BASE_DELAY_MS).toBeGreaterThanOrEqual(500);
+  });
+
+  it('max delay is greater than base delay', () => {
+    expect(RETRY.MAX_DELAY_MS).toBeGreaterThan(RETRY.BASE_DELAY_MS);
+  });
+
+  it('tx status retries are lower than default', () => {
+    expect(RETRY.TX_STATUS_RETRIES).toBeLessThanOrEqual(RETRY.MAX_RETRIES);
+  });
+});
+
+describe('CACHE constants', () => {
+  it('has positive default TTL', () => {
+    expect(CACHE.DEFAULT_TTL_MS).toBeGreaterThan(0);
+  });
+
+  it('vault status TTL is at least as long as default', () => {
+    expect(CACHE.VAULT_STATUS_TTL_MS).toBeGreaterThanOrEqual(CACHE.DEFAULT_TTL_MS);
+  });
+
+  it('exchange rate TTL is the longest', () => {
+    expect(CACHE.EXCHANGE_RATE_TTL_MS).toBeGreaterThanOrEqual(CACHE.VAULT_STATUS_TTL_MS);
   });
 });

@@ -10,6 +10,8 @@ import {
   validateStxAddress,
   combineValidators,
   validateBtcAmount,
+  isValidContractId,
+  isValidTxId,
 } from '../validation';
 
 describe('validateAmount', () => {
@@ -256,5 +258,41 @@ describe('validateBtcAmount', () => {
   it('accepts 8 decimal places exactly', () => {
     const result = validateBtcAmount('0.12345678');
     expect(result.isValid).toBe(true);
+  });
+});
+
+describe('isValidContractId', () => {
+  it('accepts valid contract ID', () => {
+    expect(isValidContractId('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.flow-vault')).toBe(true);
+  });
+
+  it('rejects missing contract name', () => {
+    expect(isValidContractId('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM')).toBe(false);
+  });
+
+  it('rejects contract name starting with number', () => {
+    expect(isValidContractId('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.1bad-name')).toBe(false);
+  });
+
+  it('rejects invalid address', () => {
+    expect(isValidContractId('invalid.flow-vault')).toBe(false);
+  });
+});
+
+describe('isValidTxId', () => {
+  it('accepts valid 0x-prefixed 64-char hex', () => {
+    expect(isValidTxId('0x' + 'a'.repeat(64))).toBe(true);
+  });
+
+  it('rejects without 0x prefix', () => {
+    expect(isValidTxId('a'.repeat(64))).toBe(false);
+  });
+
+  it('rejects wrong length', () => {
+    expect(isValidTxId('0x' + 'a'.repeat(63))).toBe(false);
+  });
+
+  it('rejects non-hex characters', () => {
+    expect(isValidTxId('0x' + 'g'.repeat(64))).toBe(false);
   });
 });

@@ -1,6 +1,7 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import type { TransactionRecord, TransactionStatus } from '../types';
 import { MAX_TX_HISTORY } from '../lib/constants';
+import { logger } from '../lib/logger';
 
 const STORAGE_KEY = 'bf-tx-history';
 
@@ -8,14 +9,24 @@ function loadHistory(): TransactionRecord[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
-    return JSON.parse(raw) as TransactionRecord[];
-  } catch {
+    const parsed = JSON.parse(raw) as TransactionRecord[];
+    if (!Array.isArray(parsed)) {
+      logger.warn('Transaction history is not an array, resetting');
+      return [];
+    }
+    return parsed;
+  } catch (err) {
+    logger.warn('Failed to load transaction history', err);
     return [];
   }
 }
 
 function saveHistory(records: TransactionRecord[]): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(records.slice(0, MAX_TX_HISTORY)));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(records.slice(0, MAX_TX_HISTORY)));
+  } catch (err) {
+    logger.warn('Failed to save transaction history', err);
+  }
 }
 
 export function useTransactionHistory() {
@@ -48,5 +59,12 @@ export function useTransactionHistory() {
     localStorage.removeItem(STORAGE_KEY);
   }, []);
 
-  return { transactions, addTransaction, updateStatus, clearHistory };
+  const pendingCount = useMemo(
+    () => transactions.filter(tx => tx.status === 'pending').length,
+    [transactions]
+  );
+
+  const hasPending = pendingCount > 0;
+
+  return { transactions, addTransaction, updateStatus, clearHistory, pendingCount, hasPending };
 }

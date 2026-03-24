@@ -4,6 +4,7 @@ import {
   formatPercentage, formatBlocks, formatExchangeRate,
   formatAddress, formatTxId, formatUSD, formatTimeSince,
   formatDate, formatNumber, formatDuration,
+  formatSharePct, formatTVL,
 } from '../formatters';
 
 describe('formatSTX', () => {
@@ -246,5 +247,41 @@ describe('formatDuration', () => {
 
   it('formats exactly one hour', () => {
     expect(formatDuration(3600)).toBe('1h 0m');
+  });
+});
+
+describe('formatSharePct', () => {
+  it('formats zero as 0%', () => {
+    expect(formatSharePct(0)).toBe('0%');
+  });
+
+  it('formats small percentage', () => {
+    expect(formatSharePct(50)).toBe('0.50%');
+  });
+
+  it('formats 100% from basis points', () => {
+    expect(formatSharePct(10000)).toBe('100.00%');
+  });
+
+  it('formats tiny percentage below threshold', () => {
+    expect(formatSharePct(0.5)).toBe('< 0.01%');
+  });
+});
+
+describe('formatTVL', () => {
+  it('formats millions', () => {
+    expect(formatTVL(5_000_000_000_000)).toBe('5.00M STX');
+  });
+
+  it('formats thousands', () => {
+    expect(formatTVL(50_000_000_000)).toBe('50.00K STX');
+  });
+
+  it('formats small amounts', () => {
+    expect(formatTVL(500_000_000)).toBe('500.00 STX');
+  });
+
+  it('formats zero', () => {
+    expect(formatTVL(0)).toBe('0.00 STX');
   });
 });

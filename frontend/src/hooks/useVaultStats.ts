@@ -3,7 +3,10 @@ import { cvToJSON, fetchCallReadOnlyFunction, principalCV } from '@stacks/transa
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 import { REFRESH_INTERVAL_MS } from '../lib/constants';
 import { logger } from '../lib/logger';
-import type { VaultStats } from '../types';
+import { parseClarityInt, parseClarityBool } from '../lib/contractParsers';
+import { handleContractError } from '../lib/contractErrors';
+import { withRetry } from '../lib/retry';
+import type { VaultStats, VaultStatusResponse } from '../types';
 
 const defaultStats: VaultStats = {
   totalDeposits: 0,
@@ -27,62 +30,68 @@ export function useVaultStats(userAddress: string | null) {
     setError(null);
 
     try {
-      const statusResult = await fetchCallReadOnlyFunction({
-        contractAddress: CONTRACT_ADDRESS,
-        contractName: CONTRACT_NAME,
-        functionName: 'get-vault-status',
-        functionArgs: [],
-        network,
-        senderAddress: CONTRACT_ADDRESS,
-      });
+      const statusResult = await withRetry(() =>
+        fetchCallReadOnlyFunction({
+          contractAddress: CONTRACT_ADDRESS,
+          contractName: CONTRACT_NAME,
+          functionName: 'get-vault-status',
+          functionArgs: [],
+          network,
+          senderAddress: CONTRACT_ADDRESS,
+        })
+      );
 
       const statusJson = cvToJSON(statusResult);
-      const statusValue = statusJson.value;
+      const statusValue = statusJson.value as VaultStatusResponse;
 
       let userBalance = 0;
       if (userAddress) {
-        const balanceResult = await fetchCallReadOnlyFunction({
-          contractAddress: CONTRACT_ADDRESS,
-          contractName: CONTRACT_NAME,
-          functionName: 'get-user-flow-balance',
-          functionArgs: [principalCV(userAddress)],
-          network,
-          senderAddress: CONTRACT_ADDRESS,
-        });
+        const balanceResult = await withRetry(() =>
+          fetchCallReadOnlyFunction({
+            contractAddress: CONTRACT_ADDRESS,
+            contractName: CONTRACT_NAME,
+            functionName: 'get-user-flow-balance',
+            functionArgs: [principalCV(userAddress)],
+            network,
+            senderAddress: CONTRACT_ADDRESS,
+          })
+        );
         const balanceJson = cvToJSON(balanceResult);
-        userBalance = parseInt(balanceJson.value, 10);
+        userBalance = parseClarityInt(balanceJson.value);
       }
 
       let tvl = 0;
       try {
-        const tvlResult = await fetchCallReadOnlyFunction({
-          contractAddress: CONTRACT_ADDRESS,
-          contractName: CONTRACT_NAME,
-          functionName: 'get-vault-tvl',
-          functionArgs: [],
-          network,
-          senderAddress: CONTRACT_ADDRESS,
-        });
+        const tvlResult = await withRetry(() =>
+          fetchCallReadOnlyFunction({
+            contractAddress: CONTRACT_ADDRESS,
+            contractName: CONTRACT_NAME,
+            functionName: 'get-vault-tvl',
+            functionArgs: [],
+            network,
+            senderAddress: CONTRACT_ADDRESS,
+          })
+        );
         const tvlJson = cvToJSON(tvlResult);
-        tvl = parseInt(tvlJson.value, 10);
+        tvl = parseClarityInt(tvlJson.value);
       } catch {
-        // TVL fetch is optional
+        // TVL fetch is optional — falls back to stx-balance
       }
 
       setStats({
-        totalDeposits: parseInt(statusValue['total-deposits'].value, 10),
-        totalRewards: parseInt(statusValue['total-rewards'].value, 10),
+        totalDeposits: parseClarityInt(statusValue['total-deposits'].value),
+        totalRewards: parseClarityInt(statusValue['total-rewards'].value),
         userBalance,
-        stxBalance: tvl || parseInt(statusValue['stx-balance'].value, 10),
-        depositCount: parseInt(statusValue['deposit-count'].value, 10),
-        withdrawCount: parseInt(statusValue['withdraw-count'].value, 10),
-        isPaused: statusValue.paused.value,
-        currentBlock: parseInt(statusValue['current-block'].value, 10),
+        stxBalance: tvl || parseClarityInt(statusValue['stx-balance'].value),
+        depositCount: parseClarityInt(statusValue['deposit-count'].value),
+        withdrawCount: parseClarityInt(statusValue['withdraw-count'].value),
+        isPaused: parseClarityBool(statusValue.paused.value),
+        currentBlock: parseClarityInt(statusValue['current-block'].value),
       });
       setLastUpdated(Date.now());
       logger.debug('Vault stats fetched successfully');
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Failed to fetch vault stats';
+      const msg = handleContractError(err);
       logger.error('Failed to fetch vault stats', err);
       setError(msg);
     } finally {
@@ -94,6 +103,17 @@ export function useVaultStats(userAddress: string | null) {
     fetchStats();
     const interval = setInterval(() => fetchStats(true), REFRESH_INTERVAL_MS);
     return () => clearInterval(interval);
+  }, [fetchStats]);
+
+  // Refresh when tab becomes visible again
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        fetchStats(true);
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => document.removeEventListener('visibilitychange', handleVisibility);
   }, [fetchStats]);
 
   return { stats, loading, error, lastUpdated, refresh: fetchStats };
