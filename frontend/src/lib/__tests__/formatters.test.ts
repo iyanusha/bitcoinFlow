@@ -3,7 +3,7 @@ import {
   formatSTX, formatBTC, formatSBTC, formatCompact,
   formatPercentage, formatBlocks, formatExchangeRate,
   formatAddress, formatTxId, formatUSD, formatTimeSince,
-  formatDate, formatNumber, formatDuration,
+  formatDate, formatDateFull, formatNumber, formatDuration,
   formatSharePct, formatTVL,
 } from '../formatters';
 
@@ -283,5 +283,23 @@ describe('formatTVL', () => {
 
   it('formats zero', () => {
     expect(formatTVL(0)).toBe('0.00 STX');
+  });
+});
+
+describe('formatDateFull', () => {
+  it('returns a string containing the year', () => {
+    const ts = new Date('2026-03-22T12:30:45Z').getTime();
+    const result = formatDateFull(ts);
+    expect(result).toContain('2026');
+  });
+
+  it('includes hours and minutes', () => {
+    const ts = new Date('2026-01-15T08:05:00Z').getTime();
+    const result = formatDateFull(ts);
+    expect(result.length).toBeGreaterThan(10);
+  });
+
+  it('returns a non-empty string', () => {
+    expect(formatDateFull(Date.now())).toBeTruthy();
   });
 });

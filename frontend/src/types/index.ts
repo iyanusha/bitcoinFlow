@@ -189,3 +189,21 @@ export interface WithdrawRequest {
   senderAddress: string;
   postConditions: unknown[];
 }
+
+/** Transaction summary statistics */
+export interface TransactionSummaryStats {
+  totalDeposits: number;
+  totalWithdrawals: number;
+  depositCount: number;
+  withdrawCount: number;
+  pendingCount: number;
+  failedCount: number;
+  netFlow: number;
+}
+
+/** Options for filtering transactions */
+export interface TransactionFilter {
+  type?: 'deposit' | 'withdraw';
+  status?: TransactionStatus;
+  dateRange?: { start: number; end: number };
+}
