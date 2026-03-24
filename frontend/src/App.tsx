@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useTheme } from './hooks/useTheme'
 import { useWallet } from './hooks/useWallet'
 import { useVaultStats } from './hooks/useVaultStats'
@@ -25,7 +25,19 @@ import { ToastContainer } from './components/ToastContainer'
 import { TransactionHistory } from './components/TransactionHistory'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { KeyboardShortcutHelp } from './components/KeyboardShortcutHelp'
+import { preconnectHiroApi } from './lib/resourceHints'
+import { reportWebVitals } from './lib/webVitals'
 import './App.css'
+
+// Preconnect to Hiro API on module load for faster first request
+preconnectHiroApi();
+
+// Report web vitals in development
+if (import.meta.env.DEV) {
+  reportWebVitals((metric) => {
+    logger.debug('Web Vital', { name: metric.name, value: Math.round(metric.value), rating: metric.rating });
+  });
+}
 
 function App() {
   const { isConnected, connect, disconnect, getAddress } = useWallet()
@@ -45,6 +57,13 @@ function App() {
   const [showShortcuts, setShowShortcuts] = useState(false)
   const [depositTouched, setDepositTouched] = useState(false)
   const [withdrawTouched, setWithdrawTouched] = useState(false)
+
+  // Memoize formatted values to avoid recalculating on every render
+  const formattedDeposits = useMemo(() => formatSTX(vaultStats.totalDeposits), [vaultStats.totalDeposits])
+  const formattedRewards = useMemo(() => formatSTX(vaultStats.totalRewards), [vaultStats.totalRewards])
+  const formattedBalance = useMemo(() => formatSTX(vaultStats.stxBalance), [vaultStats.stxBalance])
+  const formattedUserTokens = useMemo(() => formatCompact(vaultStats.userBalance / MICROSTX_PER_STX), [vaultStats.userBalance])
+  const userFlowBalance = useMemo(() => userFlowBalance, [position])
 
   const pollPendingTransactions = useCallback(async () => {
     const pending = transactions.filter(tx => tx.status === 'pending');
@@ -133,7 +152,7 @@ function App() {
       return
     }
 
-    const userBalance = position ? position.flowTokenBalance / MICROSTX_PER_STX : 0
+    const userBalance = userFlowBalance
     const validation = validateWithdraw(withdrawAmount, userBalance)
     if (!validation.isValid) {
       setError(validation.error)
@@ -258,21 +277,21 @@ function App() {
               </a>
             </div>
             <div className="stats-grid" role="region" aria-label="Vault statistics" aria-roledescription={ARIA_DESCRIPTIONS.vaultStats} aria-live="polite">
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Total Deposits: ${formatSTX(vaultStats.totalDeposits)} STX`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Total Deposits: ${formattedDeposits} STX`}>
                 <h3>Total Deposits</h3>
-                <p>{formatSTX(vaultStats.totalDeposits)} STX</p>
+                <p>{formattedDeposits} STX</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Total Rewards: ${formatSTX(vaultStats.totalRewards)} STX`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Total Rewards: ${formattedRewards} STX`}>
                 <h3>Total Rewards</h3>
-                <p>{formatSTX(vaultStats.totalRewards)} STX</p>
+                <p>{formattedRewards} STX</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`STX Balance: ${formatSTX(vaultStats.stxBalance)} STX`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`STX Balance: ${formattedBalance} STX`}>
                 <h3>STX Balance</h3>
-                <p>{formatSTX(vaultStats.stxBalance)} STX</p>
+                <p>{formattedBalance} STX</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Your Flow Tokens: ${formatCompact(vaultStats.userBalance / MICROSTX_PER_STX)} FLOW`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Your Flow Tokens: ${formattedUserTokens} FLOW`}>
                 <h3>Your Flow Tokens</h3>
-                <p>{formatCompact(vaultStats.userBalance / MICROSTX_PER_STX)} FLOW</p>
+                <p>{formattedUserTokens} FLOW</p>
               </div>
               <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Exchange Rate: ${exchangeRate.formattedRate} sBTC per FLOW`}>
                 <h3>Exchange Rate</h3>
@@ -367,8 +386,8 @@ function App() {
                 }}
                 onBlur={() => setWithdrawTouched(true)}
                 autoComplete="off"
-                className={withdrawTouched && withdrawAmount ? (validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid ? 'input-valid' : 'input-error') : ''}
-                aria-invalid={withdrawTouched && withdrawAmount ? !validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid : undefined}
+                className={withdrawTouched && withdrawAmount ? (validateWithdraw(withdrawAmount, userFlowBalance).isValid ? 'input-valid' : 'input-error') : ''}
+                aria-invalid={withdrawTouched && withdrawAmount ? !validateWithdraw(withdrawAmount, userFlowBalance).isValid : undefined}
                 aria-describedby="withdraw-help"
               />
               <div className="input-row">
@@ -388,8 +407,8 @@ function App() {
                   </button>
                 )}
               </div>
-              {withdrawTouched && withdrawAmount && !validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid && (
-                <p id="withdraw-error" className="form-error-message" role="alert">{validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).error}</p>
+              {withdrawTouched && withdrawAmount && !validateWithdraw(withdrawAmount, userFlowBalance).isValid && (
+                <p id="withdraw-error" className="form-error-message" role="alert">{validateWithdraw(withdrawAmount, userFlowBalance).error}</p>
               )}
               <button
                 onClick={handleWithdraw}

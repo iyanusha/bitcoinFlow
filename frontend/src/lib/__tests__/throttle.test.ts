@@ -1,23 +1,18 @@
 import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
-import { throttle } from '../throttle';
+import { throttle, rafThrottle } from '../throttle';
 
 describe('throttle', () => {
-  beforeEach(() => {
-    vi.useFakeTimers();
-  });
+  beforeEach(() => { vi.useFakeTimers(); });
+  afterEach(() => { vi.useRealTimers(); });
 
-  afterEach(() => {
-    vi.useRealTimers();
-  });
-
-  it('calls function immediately on first invocation', () => {
+  it('calls function immediately on first call', () => {
     const fn = vi.fn();
     const throttled = throttle(fn, 100);
     throttled();
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
-  it('suppresses subsequent calls within interval', () => {
+  it('throttles subsequent calls', () => {
     const fn = vi.fn();
     const throttled = throttle(fn, 100);
     throttled();
@@ -26,30 +21,52 @@ describe('throttle', () => {
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
-  it('allows call after interval has passed', () => {
+  it('calls trailing after interval', () => {
     const fn = vi.fn();
     const throttled = throttle(fn, 100);
     throttled();
-    vi.advanceTimersByTime(101);
     throttled();
-    expect(fn).toHaveBeenCalledTimes(2);
-  });
-
-  it('schedules trailing call when invoked during cooldown', () => {
-    const fn = vi.fn();
-    const throttled = throttle(fn, 100);
-    throttled(); // immediate
-    throttled(); // should schedule trailing
-    expect(fn).toHaveBeenCalledTimes(1);
-
     vi.advanceTimersByTime(100);
     expect(fn).toHaveBeenCalledTimes(2);
   });
 
-  it('passes arguments to the throttled function', () => {
+  it('cancel prevents pending calls', () => {
     const fn = vi.fn();
     const throttled = throttle(fn, 100);
-    throttled('a', 'b');
-    expect(fn).toHaveBeenCalledWith('a', 'b');
+    throttled();
+    throttled();
+    throttled.cancel();
+    vi.advanceTimersByTime(200);
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('rafThrottle', () => {
+  it('calls function on next frame', () => {
+    const fn = vi.fn();
+    const rafFn = vi.fn((cb: FrameRequestCallback) => {
+      cb(0);
+      return 0;
+    });
+    vi.stubGlobal('requestAnimationFrame', rafFn);
+
+    const throttled = rafThrottle(fn);
+    throttled();
+    expect(fn).toHaveBeenCalledTimes(1);
+
+    vi.unstubAllGlobals();
+  });
+
+  it('cancel prevents pending frame', () => {
+    const cancelFn = vi.fn();
+    vi.stubGlobal('requestAnimationFrame', () => 42);
+    vi.stubGlobal('cancelAnimationFrame', cancelFn);
+
+    const throttled = rafThrottle(vi.fn());
+    throttled();
+    throttled.cancel();
+    expect(cancelFn).toHaveBeenCalledWith(42);
+
+    vi.unstubAllGlobals();
   });
 });

@@ -1,50 +1,71 @@
 import { describe, expect, it, vi } from 'vitest';
-import { memoizeOne } from '../memoize';
+import { memoize, memoizeWithTTL } from '../memoize';
 
-describe('memoizeOne', () => {
-  it('returns cached result for same arguments', () => {
-    const fn = vi.fn((a: number, b: number) => a + b);
-    const memoized = memoizeOne(fn);
-
-    expect(memoized(1, 2)).toBe(3);
-    expect(memoized(1, 2)).toBe(3);
+describe('memoize', () => {
+  it('caches function results', () => {
+    const fn = vi.fn((a: string) => a.toUpperCase());
+    const memoized = memoize(fn);
+    expect(memoized('hello')).toBe('HELLO');
+    expect(memoized('hello')).toBe('HELLO');
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
-  it('recomputes for different arguments', () => {
-    const fn = vi.fn((a: number) => a * 2);
-    const memoized = memoizeOne(fn);
-
-    expect(memoized(5)).toBe(10);
-    expect(memoized(3)).toBe(6);
+  it('uses different cache keys for different args', () => {
+    const fn = vi.fn((a: string) => a.length.toString());
+    const memoized = memoize(fn);
+    memoized('ab');
+    memoized('abc');
     expect(fn).toHaveBeenCalledTimes(2);
   });
 
-  it('only caches the most recent call', () => {
-    const fn = vi.fn((a: number) => a);
-    const memoized = memoizeOne(fn);
-
-    memoized(1);
-    memoized(2);
-    memoized(1); // should recompute, not cached
-    expect(fn).toHaveBeenCalledTimes(3);
+  it('evicts oldest entry when maxSize exceeded', () => {
+    const fn = vi.fn((a: string) => a);
+    const memoized = memoize(fn, { maxSize: 2 });
+    memoized('a');
+    memoized('b');
+    memoized('c');
+    expect(memoized.cache.size).toBe(2);
+    expect(memoized.cache.has('a')).toBe(false);
   });
 
-  it('uses Object.is for equality', () => {
-    const fn = vi.fn((a: unknown) => a);
-    const memoized = memoizeOne(fn);
-
-    memoized(NaN);
-    memoized(NaN);
-    expect(fn).toHaveBeenCalledTimes(1); // NaN === NaN with Object.is
+  it('clears cache', () => {
+    const memoized = memoize((a: string) => a);
+    memoized('a');
+    memoized.clear();
+    expect(memoized.cache.size).toBe(0);
   });
+});
 
-  it('handles zero arguments', () => {
-    const fn = vi.fn(() => 42);
-    const memoized = memoizeOne(fn);
-
-    expect(memoized()).toBe(42);
-    expect(memoized()).toBe(42);
+describe('memoizeWithTTL', () => {
+  it('returns cached value within TTL', () => {
+    const fn = vi.fn((a: string) => a);
+    const memoized = memoizeWithTTL(fn, 1000);
+    memoized('x');
+    memoized('x');
     expect(fn).toHaveBeenCalledTimes(1);
+  });
+
+  it('recalculates after TTL expires', () => {
+    vi.useFakeTimers();
+    const fn = vi.fn((a: string) => a);
+    const memoized = memoizeWithTTL(fn, 100);
+    memoized('x');
+    vi.advanceTimersByTime(200);
+    memoized('x');
+    expect(fn).toHaveBeenCalledTimes(2);
+    vi.useRealTimers();
+  });
+
+  it('clears cache', () => {
+    const memoized = memoizeWithTTL((a: string) => a, 1000);
+    memoized('test');
+    memoized.clear();
+    // After clear, next call should recompute
+    const fn2 = vi.fn((a: string) => a);
+    const memoized2 = memoizeWithTTL(fn2, 1000);
+    memoized2('t');
+    memoized2.clear();
+    memoized2('t');
+    expect(fn2).toHaveBeenCalledTimes(2);
   });
 });

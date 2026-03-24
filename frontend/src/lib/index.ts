@@ -105,3 +105,31 @@ export {
   createAsyncValidator,
   debounceAsyncValidator,
 } from './asyncValidation';
+export { deepEqual, shallowEqual } from './deepEqual';
+export {
+  measureSync,
+  measureAsync,
+  getPerformanceEntries,
+  getEntriesByName,
+  getAverageDuration,
+  clearPerformanceEntries,
+  markStart,
+} from './performanceMonitor';
+export type { PerformanceEntry } from './performanceMonitor';
+export { throttle, rafThrottle } from './throttle';
+export { memoize, memoizeWithTTL } from './memoize';
+export { batchUpdates, scheduleIdle, cancelIdle } from './batchUpdates';
+export { ObjectPool } from './objectPool';
+export {
+  addResourceHint,
+  preconnect,
+  prefetch,
+  preload,
+  preconnectHiroApi,
+} from './resourceHints';
+export { debounce } from './debounce';
+export { chunkArray, processInBatches } from './chunkArray';
+export { reportWebVitals } from './webVitals';
+export type { WebVitalsMetric } from './webVitals';
+export { getCachedData, invalidateCache, clearCache } from './cacheStrategy';
+export type { CacheStrategy } from './cacheStrategy';
