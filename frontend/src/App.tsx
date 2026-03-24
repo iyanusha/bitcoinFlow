@@ -9,6 +9,7 @@ import { useToast } from './hooks/useToast'
 import { useTransactionStatus } from './hooks/useTransactionStatus'
 import { useDocumentTitle } from './hooks/useDocumentTitle'
 import { useKeyboard } from './hooks/useKeyboard'
+import { useKeyboardShortcut } from './hooks/useKeyboardShortcut'
 import { useOnlineStatus } from './hooks/useOnlineStatus'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
@@ -18,10 +19,12 @@ import { parseTransactionError } from './lib/errorUtils'
 import { formatSTX, formatCompact, formatBlocks, formatAddress } from './lib/formatters'
 import { MICROSTX_PER_STX, SATS_PER_BTC, TX_POLL_INTERVAL_MS } from './lib/constants'
 import { logger } from './lib/logger'
+import { ARIA_DESCRIPTIONS, LANDMARK_LABELS } from './lib/a11y'
 import { SkipLink } from './components/SkipLink'
 import { ToastContainer } from './components/ToastContainer'
 import { TransactionHistory } from './components/TransactionHistory'
 import { ErrorBoundary } from './components/ErrorBoundary'
+import { KeyboardShortcutHelp } from './components/KeyboardShortcutHelp'
 import './App.css'
 
 function App() {
@@ -39,6 +42,7 @@ function App() {
   const { checkStatus } = useTransactionStatus()
   const isOnline = useOnlineStatus()
   const { isDark: darkMode, toggle: toggleTheme } = useTheme()
+  const [showShortcuts, setShowShortcuts] = useState(false)
 
   const pollPendingTransactions = useCallback(async () => {
     const pending = transactions.filter(tx => tx.status === 'pending');
@@ -168,20 +172,23 @@ function App() {
   const pendingCount = transactions.filter(tx => tx.status === 'pending').length;
   useDocumentTitle(pendingCount > 0 ? `(${pendingCount}) BitcoinFlow` : 'BitcoinFlow');
   useKeyboard('Escape', () => setError(null), !!error);
+  useKeyboardShortcut({ key: '?' }, () => setShowShortcuts(prev => !prev));
 
   return (
     <div className="app">
+      <KeyboardShortcutHelp open={showShortcuts} onClose={() => setShowShortcuts(false)} />
       <ToastContainer toasts={toasts} onDismiss={removeToast} />
       <SkipLink targetId="main-content" />
-      <header className="app-header" role="banner">
+      <header className="app-header" role="banner" aria-label={LANDMARK_LABELS.header}>
         <div className="header-top">
           <h1>BitcoinFlow</h1>
           <button
             className="theme-toggle"
             onClick={toggleTheme}
             aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-pressed={darkMode}
           >
-            {darkMode ? '☀' : '☾'}
+            <span aria-hidden="true">{darkMode ? '☀' : '☾'}</span>
           </button>
         </div>
         <p>Smart sBTC Stacking Vault</p>
@@ -197,7 +204,7 @@ function App() {
         </div>
 
         {!isConnected ? (
-          <button className="connect-btn" onClick={connect}>
+          <button className="connect-btn" onClick={connect} aria-label={ARIA_DESCRIPTIONS.walletConnection}>
             Connect Stacks Wallet
           </button>
         ) : (
@@ -207,7 +214,7 @@ function App() {
                 {formatAddress(getAddress()!)}
               </a>
             )}</p>
-            <button className="disconnect-btn" onClick={disconnect}>
+            <button className="disconnect-btn" onClick={disconnect} aria-label="Disconnect Stacks wallet">
               Disconnect
             </button>
           </div>
@@ -215,9 +222,9 @@ function App() {
       </header>
 
       {error && (
-        <div className="error-banner" role="alert">
+        <div className="error-banner" role="alert" aria-live="assertive">
           <p>{error}</p>
-          <button className="dismiss-btn" onClick={() => setError(null)}>Dismiss</button>
+          <button className="dismiss-btn" onClick={() => setError(null)} aria-label="Dismiss error message">Dismiss</button>
         </div>
       )}
 
@@ -234,44 +241,44 @@ function App() {
       )}
 
       {isConnected && (<ErrorBoundary>
-        <main id="main-content" className="main-content">
+        <main id="main-content" className="main-content" tabIndex={-1}>
           <div className="vault-stats">
             <div className="stats-header">
               <h2>Vault Statistics</h2>
-              {statsLoading && <span className="loading-dot" aria-label="Loading stats">●</span>}
-              <button className="refresh-btn" onClick={refreshStats} disabled={statsLoading} aria-label="Refresh stats">
-                ↻
+              {statsLoading && <span className="loading-dot" role="status" aria-label="Loading vault statistics"><span aria-hidden="true">●</span></span>}
+              <button className="refresh-btn" onClick={refreshStats} disabled={statsLoading} aria-label="Refresh vault statistics">
+                <span aria-hidden="true">↻</span>
               </button>
               <a href={getContractExplorerUrl()} target="_blank" rel="noopener noreferrer" className="stats-contract-link">
                 View Contract
               </a>
             </div>
-            <div className="stats-grid" role="region" aria-label="Vault statistics" aria-live="polite">
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+            <div className="stats-grid" role="region" aria-label="Vault statistics" aria-roledescription={ARIA_DESCRIPTIONS.vaultStats} aria-live="polite">
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Total Deposits: ${formatSTX(vaultStats.totalDeposits)} STX`}>
                 <h3>Total Deposits</h3>
                 <p>{formatSTX(vaultStats.totalDeposits)} STX</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Total Rewards: ${formatSTX(vaultStats.totalRewards)} STX`}>
                 <h3>Total Rewards</h3>
                 <p>{formatSTX(vaultStats.totalRewards)} STX</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`STX Balance: ${formatSTX(vaultStats.stxBalance)} STX`}>
                 <h3>STX Balance</h3>
                 <p>{formatSTX(vaultStats.stxBalance)} STX</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Your Flow Tokens: ${formatCompact(vaultStats.userBalance / MICROSTX_PER_STX)} FLOW`}>
                 <h3>Your Flow Tokens</h3>
                 <p>{formatCompact(vaultStats.userBalance / MICROSTX_PER_STX)} FLOW</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Exchange Rate: ${exchangeRate.formattedRate} sBTC per FLOW`}>
                 <h3>Exchange Rate</h3>
                 <p>{exchangeRate.formattedRate} sBTC/FLOW</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Deposit Count: ${vaultStats.depositCount}`}>
                 <h3>Deposits</h3>
                 <p>{vaultStats.depositCount}</p>
               </div>
-              <div className={`stat-card${statsLoading ? ' loading' : ''}`}>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Withdrawal Count: ${vaultStats.withdrawCount}`}>
                 <h3>Withdrawals</h3>
                 <p>{vaultStats.withdrawCount}</p>
               </div>
@@ -279,10 +286,10 @@ function App() {
           </div>
 
           {position && (
-            <div className="user-position">
+            <div className="user-position" role="region" aria-label="Your position" aria-description={ARIA_DESCRIPTIONS.userPosition}>
               <div className="stats-header">
                 <h2>Your Position</h2>
-                {positionLoading && <span className="loading-dot" aria-label="Loading position">●</span>}
+                {positionLoading && <span className="loading-dot" role="status" aria-label="Loading your position"><span aria-hidden="true">●</span></span>}
               </div>
               <div className="stats-grid">
                 <div className="stat-card">
@@ -306,7 +313,7 @@ function App() {
           )}
 
           <div className="actions" role="region" aria-label="Vault actions">
-            <div className="action-card" role="form" aria-label="Deposit sBTC">
+            <div className="action-card" role="form" aria-label="Deposit sBTC" aria-description={ARIA_DESCRIPTIONS.depositForm}>
               <h3>Deposit sBTC</h3>
               <label htmlFor="deposit-amount" className="sr-only">Deposit amount in sBTC</label>
               <input
@@ -327,12 +334,13 @@ function App() {
                 onClick={handleDeposit}
                 disabled={!depositAmount || isDepositing || vaultStats.isPaused || !isOnline}
                 aria-busy={isDepositing}
+                aria-describedby="deposit-help"
               >
                 {isDepositing ? 'Processing deposit...' : !isOnline ? 'Offline — connect to deposit' : vaultStats.isPaused ? 'Vault Paused' : 'Deposit & Get Flow Tokens'}
               </button>
             </div>
 
-            <div className="action-card" role="form" aria-label="Withdraw sBTC">
+            <div className="action-card" role="form" aria-label="Withdraw sBTC" aria-description={ARIA_DESCRIPTIONS.withdrawForm}>
               <h3>Withdraw sBTC</h3>
               <label htmlFor="withdraw-amount" className="sr-only">Withdrawal amount in FLOW tokens</label>
               <input
@@ -353,6 +361,7 @@ function App() {
                 onClick={handleWithdraw}
                 disabled={!withdrawAmount || isWithdrawing || vaultStats.isPaused || !isOnline}
                 aria-busy={isWithdrawing}
+                aria-describedby="withdraw-help"
               >
                 {isWithdrawing ? 'Processing withdrawal...' : !isOnline ? 'Offline — connect to withdraw' : vaultStats.isPaused ? 'Vault Paused' : 'Burn Flow & Withdraw'}
               </button>
@@ -361,26 +370,26 @@ function App() {
 
           <TransactionHistory transactions={transactions} onClear={clearHistory} />
 
-          <section className="info-section" aria-labelledby="how-it-works">
+          <section className="info-section" role="region" aria-labelledby="how-it-works">
             <h3 id="how-it-works">How BitcoinFlow Works</h3>
-            <ul>
+            <ol aria-label="Steps to use BitcoinFlow">
               <li>Deposit sBTC to get liquid Flow tokens (1:1 ratio)</li>
               <li>Your sBTC is auto-stacked to earn STX rewards</li>
               <li>Rewards are automatically compounded</li>
               <li>Withdraw anytime by burning Flow tokens</li>
-            </ul>
+            </ol>
           </section>
         </main>
       </ErrorBoundary>)}
 
-      <footer className="app-footer" role="contentinfo">
+      <footer className="app-footer" role="contentinfo" aria-label={LANDMARK_LABELS.footer}>
         <p>BitcoinFlow — Built on Stacks</p>
         <nav className="footer-links" aria-label="External links">
-          <a href="https://www.stacks.co" target="_blank" rel="noopener noreferrer">Stacks</a>
-          {' | '}
-          <a href="https://explorer.hiro.so" target="_blank" rel="noopener noreferrer">Explorer</a>
-          {' | '}
-          <a href={getAddressExplorerUrl(`${CONTRACT_ADDRESS}.${CONTRACT_NAME}`)} target="_blank" rel="noopener noreferrer">Contract</a>
+          <a href="https://www.stacks.co" target="_blank" rel="noopener noreferrer" aria-label="Stacks blockchain (opens in new tab)">Stacks</a>
+          <span aria-hidden="true"> | </span>
+          <a href="https://explorer.hiro.so" target="_blank" rel="noopener noreferrer" aria-label="Hiro block explorer (opens in new tab)">Explorer</a>
+          <span aria-hidden="true"> | </span>
+          <a href={getAddressExplorerUrl(`${CONTRACT_ADDRESS}.${CONTRACT_NAME}`)} target="_blank" rel="noopener noreferrer" aria-label="View flow vault contract (opens in new tab)">Contract</a>
         </nav>
       </footer>
     </div>

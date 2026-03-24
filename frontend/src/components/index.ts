@@ -20,3 +20,7 @@ export { Pagination } from './Pagination';
 export { CopyButton } from './CopyButton';
 export { ConfirmDialog } from './ConfirmDialog';
 export { ExplorerLink } from './ExplorerLink';
+export { FocusRing } from './FocusRing';
+export { LiveRegion } from './LiveRegion';
+export { AccessibleIcon } from './AccessibleIcon';
+export { KeyboardShortcutHelp } from './KeyboardShortcutHelp';

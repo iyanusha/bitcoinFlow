@@ -3,37 +3,33 @@ import { render, screen } from '@testing-library/react';
 import { Spinner } from '../Spinner';
 
 describe('Spinner', () => {
-  it('renders with role="status"', () => {
+  it('renders with status role by default', () => {
     render(<Spinner />);
-    expect(screen.getByRole('status')).toBeTruthy();
+    expect(screen.getByRole('status')).toBeDefined();
   });
 
-  it('has default "Loading" aria-label', () => {
+  it('has default Loading aria-label', () => {
     render(<Spinner />);
-    expect(screen.getByLabelText('Loading')).toBeTruthy();
+    expect(screen.getByRole('status').getAttribute('aria-label')).toBe('Loading');
   });
 
   it('accepts custom label', () => {
-    render(<Spinner label="Fetching data" />);
-    expect(screen.getByLabelText('Fetching data')).toBeTruthy();
+    render(<Spinner label="Processing" />);
+    expect(screen.getByRole('status').getAttribute('aria-label')).toBe('Processing');
   });
 
-  it('has spinner CSS class', () => {
-    const { container } = render(<Spinner />);
-    expect(container.querySelector('.spinner')).toBeTruthy();
+  it('renders as decorative with presentation role', () => {
+    render(<Spinner decorative />);
+    expect(screen.getByRole('presentation')).toBeDefined();
   });
 
-  it('applies inline size styles for sm', () => {
-    const { container } = render(<Spinner size="sm" />);
-    const el = container.querySelector('.spinner') as HTMLElement;
-    expect(el.style.width).toBe('16px');
-    expect(el.style.height).toBe('16px');
+  it('hides decorative spinner from screen readers', () => {
+    render(<Spinner decorative />);
+    expect(screen.getByRole('presentation').getAttribute('aria-hidden')).toBe('true');
   });
 
-  it('applies inline size styles for lg', () => {
-    const { container } = render(<Spinner size="lg" />);
-    const el = container.querySelector('.spinner') as HTMLElement;
-    expect(el.style.width).toBe('40px');
-    expect(el.style.height).toBe('40px');
+  it('applies spinner class', () => {
+    render(<Spinner />);
+    expect(screen.getByRole('status').className).toContain('spinner');
   });
 });

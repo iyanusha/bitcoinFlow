@@ -2,14 +2,14 @@ import { describe, expect, it, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ConfirmDialog } from '../ConfirmDialog';
 
-// Mock HTMLDialogElement.showModal since jsdom doesn't support it
-HTMLDialogElement.prototype.showModal = vi.fn();
-HTMLDialogElement.prototype.close = vi.fn();
+// Mock HTMLDialogElement methods not available in jsdom
+HTMLDialogElement.prototype.showModal = HTMLDialogElement.prototype.showModal || vi.fn();
+HTMLDialogElement.prototype.close = HTMLDialogElement.prototype.close || vi.fn();
 
 describe('ConfirmDialog', () => {
   const defaultProps = {
     open: true,
-    title: 'Delete?',
+    title: 'Confirm Action',
     message: 'Are you sure?',
     onConfirm: vi.fn(),
     onCancel: vi.fn(),
@@ -17,22 +17,25 @@ describe('ConfirmDialog', () => {
 
   it('renders title and message when open', () => {
     render(<ConfirmDialog {...defaultProps} />);
-    expect(screen.getByText('Delete?')).toBeTruthy();
-    expect(screen.getByText('Are you sure?')).toBeTruthy();
+    expect(screen.getByText('Confirm Action')).toBeDefined();
+    expect(screen.getByText('Are you sure?')).toBeDefined();
+  });
+
+  it('returns null when closed', () => {
+    const { container } = render(<ConfirmDialog {...defaultProps} open={false} />);
+    expect(container.querySelector('dialog')).toBeNull();
   });
 
   it('renders default button labels', () => {
     render(<ConfirmDialog {...defaultProps} />);
-    expect(screen.getByText('Confirm')).toBeTruthy();
-    expect(screen.getByText('Cancel')).toBeTruthy();
+    expect(screen.getByText('Confirm')).toBeDefined();
+    expect(screen.getByText('Cancel')).toBeDefined();
   });
 
-  it('accepts custom button labels', () => {
-    render(
-      <ConfirmDialog {...defaultProps} confirmLabel="Yes, delete" cancelLabel="No, keep" />
-    );
-    expect(screen.getByText('Yes, delete')).toBeTruthy();
-    expect(screen.getByText('No, keep')).toBeTruthy();
+  it('renders custom button labels', () => {
+    render(<ConfirmDialog {...defaultProps} confirmLabel="Delete" cancelLabel="Keep" />);
+    expect(screen.getByText('Delete')).toBeDefined();
+    expect(screen.getByText('Keep')).toBeDefined();
   });
 
   it('calls onConfirm when confirm button clicked', () => {
@@ -49,8 +52,18 @@ describe('ConfirmDialog', () => {
     expect(onCancel).toHaveBeenCalledOnce();
   });
 
-  it('returns null when not open', () => {
-    const { container } = render(<ConfirmDialog {...defaultProps} open={false} />);
-    expect(container.querySelector('.confirm-dialog')).toBeNull();
+  it('has proper ARIA attributes', () => {
+    render(<ConfirmDialog {...defaultProps} />);
+    const dialog = screen.getByRole('dialog');
+    expect(dialog.getAttribute('aria-labelledby')).toBe('confirm-dialog-title');
+    expect(dialog.getAttribute('aria-describedby')).toBe('confirm-dialog-message');
+    expect(dialog.getAttribute('aria-modal')).toBe('true');
+  });
+
+  it('calls onCancel on Escape key', () => {
+    const onCancel = vi.fn();
+    render(<ConfirmDialog {...defaultProps} onCancel={onCancel} />);
+    fireEvent.keyDown(screen.getByRole('dialog'), { key: 'Escape' });
+    expect(onCancel).toHaveBeenCalledOnce();
   });
 });

@@ -496,6 +496,12 @@
   border-color: var(--accent);
 }
 
+.action-card:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-xl);
+}
+
 .dark .action-card {
   border-color: var(--border-color);
 }
@@ -2016,6 +2022,131 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Remove focus ring on programmatic focus targets */
+#main-content:focus {
+  outline: none;
+}
+
+/* Focus ring container */
+.focus-ring-container {
+  position: relative;
+  display: inline-block;
+}
+
+.focus-ring-container:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Keyboard shortcut help dialog */
+.shortcut-help-dialog {
+  max-width: 400px;
+  width: 90vw;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.shortcut-help-dialog::backdrop {
+  background: var(--overlay-bg);
+}
+
+.shortcut-help-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.shortcut-help-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.shortcut-help-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+}
+
+.shortcut-help-close:hover {
+  color: var(--text-primary);
+  background: var(--surface-hover);
+}
+
+.shortcut-help-table {
+  width: 100%;
+  border-spacing: 0 0.5rem;
+}
+
+.shortcut-keys {
+  text-align: right;
+  padding-right: 1rem;
+  white-space: nowrap;
+}
+
+.shortcut-keys kbd {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 0 var(--border-color);
+}
+
+.shortcut-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* High contrast preferences */
+@media (prefers-contrast: more) {
+  :root {
+    --border-color: #666;
+    --text-secondary: #444;
+  }
+
+  .dark {
+    --border-color: #999;
+    --text-secondary: #ccc;
+  }
+
+  .stat-card,
+  .action-card {
+    border-width: 2px;
+  }
+}
+
+@media (forced-colors: active) {
+  .stat-card,
+  .action-card,
+  .tx-item,
+  .confirm-dialog,
+  .toast {
+    border: 2px solid ButtonText;
+  }
+
+  .connect-btn,
+  .disconnect-btn,
+  .action-card button {
+    border: 2px solid ButtonText;
+  }
+
+  .status-badge {
+    border: 1px solid ButtonText;
   }
 }
 

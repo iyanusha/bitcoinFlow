@@ -1,4 +1,5 @@
 import { useEffect, useRef, useCallback, memo } from 'react';
+import { useFocusReturn } from '../hooks/useFocusReturn';
 
 interface ConfirmDialogProps {
   open: boolean;
@@ -21,6 +22,7 @@ export const ConfirmDialog = memo(function ConfirmDialog({
 }: ConfirmDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const confirmBtnRef = useRef<HTMLButtonElement>(null);
+  useFocusReturn(open);
 
   useEffect(() => {
     const dialog = dialogRef.current;

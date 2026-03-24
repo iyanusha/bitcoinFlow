@@ -38,6 +38,7 @@ export const Toast = memo(function Toast({ toast, onDismiss }: ToastProps) {
           target="_blank"
           rel="noopener noreferrer"
           className="toast-link"
+          aria-label="View transaction on explorer (opens in new tab)"
         >
           View TX
         </a>
