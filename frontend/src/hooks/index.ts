@@ -22,6 +22,7 @@ export { usePrevious } from './usePrevious';
 export { useReducedMotion } from './useReducedMotion';
 export { useScrollLock } from './useScrollLock';
 export { useStableCallback } from './useStableCallback';
+export { useTheme } from './useTheme';
 export { useTimeout } from './useTimeout';
 export { useToast } from './useToast';
 export { useTransactionHistory } from './useTransactionHistory';

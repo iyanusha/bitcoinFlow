@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { useTheme } from './hooks/useTheme'
 import { useWallet } from './hooks/useWallet'
 import { useVaultStats } from './hooks/useVaultStats'
 import { useUserPosition } from './hooks/useUserPosition'
@@ -37,17 +38,7 @@ function App() {
   const { toasts, removeToast, success: toastSuccess, error: toastError, info: toastInfo } = useToast()
   const { checkStatus } = useTransactionStatus()
   const isOnline = useOnlineStatus()
-  const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('bf-dark-mode') === 'true'
-    }
-    return false
-  })
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode)
-    localStorage.setItem('bf-dark-mode', String(darkMode))
-  }, [darkMode])
+  const { isDark: darkMode, toggle: toggleTheme } = useTheme()
 
   const pollPendingTransactions = useCallback(async () => {
     const pending = transactions.filter(tx => tx.status === 'pending');
@@ -187,7 +178,7 @@ function App() {
           <h1>BitcoinFlow</h1>
           <button
             className="theme-toggle"
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={toggleTheme}
             aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {darkMode ? '☀' : '☾'}

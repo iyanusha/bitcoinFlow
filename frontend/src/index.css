@@ -39,10 +39,20 @@ body {
 a {
   color: var(--accent, #667eea);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.dark img {
+  filter: brightness(0.95);
 }
 
 ::selection {
@@ -87,4 +97,12 @@ a:hover {
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--border-color, #d1d5db) transparent;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
 }

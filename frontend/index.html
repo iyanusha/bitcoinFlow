@@ -33,6 +33,7 @@
     <meta name="keywords" content="sBTC, stacking, vault, DeFi, Stacks, Bitcoin, liquid staking, FLOW token" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta name="color-scheme" content="light dark" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -50,6 +51,10 @@
     </script>
   </head>
   <body>
+    <script>
+      // Prevent FOUC: apply dark class before first paint
+      (function(){try{if(localStorage.getItem('bf-dark-mode')==='true'||(!localStorage.getItem('bf-dark-mode')&&matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

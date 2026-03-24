@@ -56,6 +56,13 @@ export const ANIMATION = {
   COPY_FEEDBACK_MS: 2000,
 } as const;
 
+export const THEME = {
+  STORAGE_KEY: 'bf-dark-mode',
+  TRANSITION_DURATION_MS: 300,
+  CLASS_NAME: 'dark',
+  SYSTEM_PREFERENCE_QUERY: '(prefers-color-scheme: dark)',
+} as const;
+
 export const PERFORMANCE = {
   RESIZE_DEBOUNCE_MS: 150,
   SCROLL_THROTTLE_MS: 100,
