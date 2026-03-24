@@ -14,7 +14,7 @@ import { useOnlineStatus } from './hooks/useOnlineStatus'
 import { openContractCall } from '@stacks/connect'
 import { uintCV, PostConditionMode } from '@stacks/transactions'
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network, getAddressExplorerUrl, getContractExplorerUrl } from './lib/stacks'
-import { validateDeposit, validateWithdraw, validateDecimalPrecision, sanitizeNumericInput } from './lib/validation'
+import { validateDeposit, validateWithdraw, validateDecimalPrecision, sanitizeNumericInput, combineValidators } from './lib/validation'
 import { parseTransactionError } from './lib/errorUtils'
 import { formatSTX, formatCompact, formatBlocks, formatAddress } from './lib/formatters'
 import { MICROSTX_PER_STX, SATS_PER_BTC, TX_POLL_INTERVAL_MS } from './lib/constants'
@@ -43,6 +43,8 @@ function App() {
   const isOnline = useOnlineStatus()
   const { isDark: darkMode, toggle: toggleTheme } = useTheme()
   const [showShortcuts, setShowShortcuts] = useState(false)
+  const [depositTouched, setDepositTouched] = useState(false)
+  const [withdrawTouched, setWithdrawTouched] = useState(false)
 
   const pollPendingTransactions = useCallback(async () => {
     const pending = transactions.filter(tx => tx.status === 'pending');
@@ -99,6 +101,7 @@ function App() {
         addTransaction({ txId, type: 'deposit', amount: Math.round(parseFloat(depositAmount) * SATS_PER_BTC) })
         toastSuccess(`Deposit of ${depositAmount} sBTC submitted`, txId)
         setDepositAmount('')
+        setDepositTouched(false)
         setError(null)
         setIsDepositing(false)
         refreshStats()
@@ -153,6 +156,7 @@ function App() {
         addTransaction({ txId, type: 'withdraw', amount: Math.round(parseFloat(withdrawAmount) * SATS_PER_BTC) })
         toastSuccess(`Withdrawal of ${withdrawAmount} FLOW submitted`, txId)
         setWithdrawAmount('')
+        setWithdrawTouched(false)
         setError(null)
         setIsWithdrawing(false)
         refreshStats()
@@ -326,10 +330,18 @@ function App() {
                   setDepositAmount(sanitizeNumericInput(e.target.value))
                   if (error) setError(null)
                 }}
+                onBlur={() => setDepositTouched(true)}
                 autoComplete="off"
-                aria-describedby="deposit-help"
+                className={depositTouched && depositAmount ? (validateDeposit(depositAmount).isValid ? 'input-valid' : 'input-error') : ''}
+                aria-invalid={depositTouched && depositAmount ? !validateDeposit(depositAmount).isValid : undefined}
+                aria-describedby={`deposit-help${depositTouched && depositAmount && !validateDeposit(depositAmount).isValid ? ' deposit-error' : ''}`}
               />
-              <small id="deposit-help">Minimum: 0.0001 sBTC</small>
+              <div className="input-row">
+                <small id="deposit-help">Minimum: 0.0001 sBTC</small>
+              </div>
+              {depositTouched && depositAmount && !validateDeposit(depositAmount).isValid && (
+                <p id="deposit-error" className="form-error-message" role="alert">{validateDeposit(depositAmount).error}</p>
+              )}
               <button
                 onClick={handleDeposit}
                 disabled={!depositAmount || isDepositing || vaultStats.isPaused || !isOnline}
@@ -353,10 +365,32 @@ function App() {
                   setWithdrawAmount(sanitizeNumericInput(e.target.value))
                   if (error) setError(null)
                 }}
+                onBlur={() => setWithdrawTouched(true)}
                 autoComplete="off"
+                className={withdrawTouched && withdrawAmount ? (validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid ? 'input-valid' : 'input-error') : ''}
+                aria-invalid={withdrawTouched && withdrawAmount ? !validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid : undefined}
                 aria-describedby="withdraw-help"
               />
-              <small id="withdraw-help">Burns FLOW tokens and returns sBTC</small>
+              <div className="input-row">
+                <small id="withdraw-help">Burns FLOW tokens and returns sBTC</small>
+                {position && (
+                  <button
+                    type="button"
+                    className="max-btn"
+                    onClick={() => {
+                      const maxAmount = (position.flowTokenBalance / MICROSTX_PER_STX).toString();
+                      setWithdrawAmount(maxAmount);
+                      setWithdrawTouched(true);
+                    }}
+                    aria-label={`Set maximum withdrawal: ${formatCompact(position.flowTokenBalance / MICROSTX_PER_STX)} FLOW`}
+                  >
+                    Max
+                  </button>
+                )}
+              </div>
+              {withdrawTouched && withdrawAmount && !validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).isValid && (
+                <p id="withdraw-error" className="form-error-message" role="alert">{validateWithdraw(withdrawAmount, position ? position.flowTokenBalance / MICROSTX_PER_STX : 0).error}</p>
+              )}
               <button
                 onClick={handleWithdraw}
                 disabled={!withdrawAmount || isWithdrawing || vaultStats.isPaused || !isOnline}

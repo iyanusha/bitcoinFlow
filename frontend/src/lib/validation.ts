@@ -90,3 +90,135 @@ export function isValidContractId(contractId: string): boolean {
 export function isValidTxId(txId: string): boolean {
   return /^0x[a-fA-F0-9]{64}$/.test(txId);
 }
+
+/**
+ * Validate that a numeric value is within a range.
+ */
+export function validateRange(
+  value: string,
+  min: number,
+  max: number,
+  unit = '',
+): ValidationResult {
+  const base = validateAmount(value);
+  if (!base.isValid) return base;
+  const num = parseFloat(value);
+  const unitSuffix = unit ? ` ${unit}` : '';
+  if (num < min) {
+    return { isValid: false, error: `Minimum is ${min}${unitSuffix}` };
+  }
+  if (num > max) {
+    return { isValid: false, error: `Maximum is ${max}${unitSuffix}` };
+  }
+  return { isValid: true, error: null };
+}
+
+/**
+ * Validate that a string is within a length range.
+ */
+export function validateLength(
+  value: string,
+  min: number,
+  max: number,
+): ValidationResult {
+  if (value.length < min) {
+    return { isValid: false, error: `Must be at least ${min} characters` };
+  }
+  if (value.length > max) {
+    return { isValid: false, error: `Must be at most ${max} characters` };
+  }
+  return { isValid: true, error: null };
+}
+
+/**
+ * Validate that a value is not empty.
+ */
+export function validateRequired(value: string, fieldName = 'Field'): ValidationResult {
+  if (!value || value.trim() === '') {
+    return { isValid: false, error: `${fieldName} is required` };
+  }
+  return { isValid: true, error: null };
+}
+
+/**
+ * Validate that a value matches a regex pattern.
+ */
+export function validatePattern(
+  value: string,
+  pattern: RegExp,
+  message = 'Invalid format',
+): ValidationResult {
+  if (!pattern.test(value)) {
+    return { isValid: false, error: message };
+  }
+  return { isValid: true, error: null };
+}
+
+/**
+ * Validate that a value is not equal to a specific value.
+ */
+export function validateNotEqual(
+  value: string,
+  notEqual: string,
+  message = 'Value is not allowed',
+): ValidationResult {
+  if (value === notEqual) {
+    return { isValid: false, error: message };
+  }
+  return { isValid: true, error: null };
+}
+
+/**
+ * Validate a value against a whitelist.
+ */
+export function validateWhitelist(
+  value: string,
+  allowed: string[],
+  message = 'Value is not in the allowed list',
+): ValidationResult {
+  if (!allowed.includes(value)) {
+    return { isValid: false, error: message };
+  }
+  return { isValid: true, error: null };
+}
+
+/**
+ * Create a conditional validator that only runs when a condition is met.
+ */
+/**
+ * Validate that two values match (e.g. password confirmation).
+ */
+export function validateConfirmMatch(
+  value: string,
+  original: string,
+  fieldName = 'Values',
+): ValidationResult {
+  if (value !== original) {
+    return { isValid: false, error: `${fieldName} do not match` };
+  }
+  return { isValid: true, error: null };
+}
+
+/**
+ * Validate that a numeric value has at most N decimal places.
+ */
+export function validateMaxDecimals(
+  value: string,
+  maxDecimals: number,
+): ValidationResult {
+  const parts = value.split('.');
+  if (parts.length > 1 && parts[1].length > maxDecimals) {
+    return { isValid: false, error: `Maximum ${maxDecimals} decimal places allowed` };
+  }
+  return { isValid: true, error: null };
+}
+
+export function validateWhen(
+  condition: boolean,
+  validator: (value: string) => ValidationResult,
+): (value: string) => ValidationResult {
+  return (value: string) => {
+    if (!condition) return { isValid: true, error: null };
+    return validator(value);
+  };
+}

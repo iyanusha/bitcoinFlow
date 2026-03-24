@@ -12,6 +12,15 @@ import {
   validateBtcAmount,
   isValidContractId,
   isValidTxId,
+  validateLength,
+  validateRange,
+  validateRequired,
+  validatePattern,
+  validateNotEqual,
+  validateWhitelist,
+  validateWhen,
+  validateConfirmMatch,
+  validateMaxDecimals,
 } from '../validation';
 
 describe('validateAmount', () => {
@@ -294,5 +303,178 @@ describe('isValidTxId', () => {
 
   it('rejects non-hex characters', () => {
     expect(isValidTxId('0x' + 'g'.repeat(64))).toBe(false);
+  });
+});
+
+describe('validateLength', () => {
+  it('accepts value within range', () => {
+    const result = validateLength('hello', 2, 10);
+    expect(result.isValid).toBe(true);
+  });
+
+  it('rejects value below minimum', () => {
+    const result = validateLength('hi', 3, 10);
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('at least 3');
+  });
+
+  it('rejects value above maximum', () => {
+    const result = validateLength('a'.repeat(11), 2, 10);
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('at most 10');
+  });
+
+  it('accepts exact minimum', () => {
+    const result = validateLength('ab', 2, 10);
+    expect(result.isValid).toBe(true);
+  });
+
+  it('accepts exact maximum', () => {
+    const result = validateLength('a'.repeat(10), 2, 10);
+    expect(result.isValid).toBe(true);
+  });
+});
+
+describe('validateRange', () => {
+  it('accepts value within range', () => {
+    const result = validateRange('5', 1, 10);
+    expect(result.isValid).toBe(true);
+  });
+
+  it('rejects value below minimum', () => {
+    const result = validateRange('0.5', 1, 10, 'sBTC');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('Minimum is 1 sBTC');
+  });
+
+  it('rejects value above maximum', () => {
+    const result = validateRange('15', 1, 10, 'sBTC');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('Maximum is 10 sBTC');
+  });
+
+  it('inherits base validation', () => {
+    const result = validateRange('abc', 1, 10);
+    expect(result.isValid).toBe(false);
+  });
+});
+
+describe('validateRequired', () => {
+  it('rejects empty string', () => {
+    const result = validateRequired('', 'Name');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Name is required');
+  });
+
+  it('rejects whitespace only', () => {
+    const result = validateRequired('   ');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Field is required');
+  });
+
+  it('accepts non-empty string', () => {
+    const result = validateRequired('test');
+    expect(result.isValid).toBe(true);
+  });
+});
+
+describe('validatePattern', () => {
+  it('accepts matching pattern', () => {
+    const result = validatePattern('hello', /^[a-z]+$/);
+    expect(result.isValid).toBe(true);
+  });
+
+  it('rejects non-matching pattern', () => {
+    const result = validatePattern('hello123', /^[a-z]+$/, 'Only lowercase letters');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Only lowercase letters');
+  });
+
+  it('uses default error message', () => {
+    const result = validatePattern('123', /^[a-z]+$/);
+    expect(result.error).toBe('Invalid format');
+  });
+});
+
+describe('validateNotEqual', () => {
+  it('accepts value not equal', () => {
+    const result = validateNotEqual('hello', 'world');
+    expect(result.isValid).toBe(true);
+  });
+
+  it('rejects equal value', () => {
+    const result = validateNotEqual('test', 'test', 'Cannot use this value');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toBe('Cannot use this value');
+  });
+
+  it('uses default message', () => {
+    const result = validateNotEqual('a', 'a');
+    expect(result.error).toBe('Value is not allowed');
+  });
+});
+
+describe('validateWhitelist', () => {
+  it('accepts value in list', () => {
+    const result = validateWhitelist('deposit', ['deposit', 'withdraw']);
+    expect(result.isValid).toBe(true);
+  });
+
+  it('rejects value not in list', () => {
+    const result = validateWhitelist('transfer', ['deposit', 'withdraw']);
+    expect(result.isValid).toBe(false);
+  });
+
+  it('uses custom message', () => {
+    const result = validateWhitelist('x', ['a', 'b'], 'Pick a or b');
+    expect(result.error).toBe('Pick a or b');
+  });
+});
+
+describe('validateWhen', () => {
+  it('runs validator when condition is true', () => {
+    const validator = validateWhen(true, validateAmount);
+    const result = validator('');
+    expect(result.isValid).toBe(false);
+  });
+
+  it('skips validation when condition is false', () => {
+    const validator = validateWhen(false, validateAmount);
+    const result = validator('');
+    expect(result.isValid).toBe(true);
+  });
+});
+
+describe('validateConfirmMatch', () => {
+  it('passes when values match', () => {
+    const result = validateConfirmMatch('abc', 'abc');
+    expect(result.isValid).toBe(true);
+  });
+
+  it('fails when values differ', () => {
+    const result = validateConfirmMatch('abc', 'xyz');
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('do not match');
+  });
+
+  it('uses custom field name in error', () => {
+    const result = validateConfirmMatch('a', 'b', 'Passwords');
+    expect(result.error).toBe('Passwords do not match');
+  });
+});
+
+describe('validateMaxDecimals', () => {
+  it('passes for valid decimal count', () => {
+    expect(validateMaxDecimals('1.23', 2).isValid).toBe(true);
+  });
+
+  it('passes for no decimals', () => {
+    expect(validateMaxDecimals('123', 2).isValid).toBe(true);
+  });
+
+  it('fails when exceeding max decimals', () => {
+    const result = validateMaxDecimals('1.234', 2);
+    expect(result.isValid).toBe(false);
+    expect(result.error).toContain('2 decimal places');
   });
 });

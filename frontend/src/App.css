@@ -2030,6 +2030,158 @@
   outline: none;
 }
 
+/* Form error messages */
+.form-error-message {
+  color: var(--error-text);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  padding: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.form-error-message::before {
+  content: '⚠';
+  font-size: 0.9rem;
+}
+
+/* Input row with help text and max button */
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.max-btn {
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, color 0.2s;
+  min-height: 28px;
+}
+
+.max-btn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.max-btn:active {
+  transform: scale(0.95);
+}
+
+/* Form input validation states */
+.action-card input.input-error {
+  border-color: var(--error-text);
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.15);
+}
+
+.action-card input.input-valid {
+  border-color: var(--success);
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.15);
+}
+
+.dark .action-card input.input-error {
+  box-shadow: 0 0 0 2px rgba(252, 165, 165, 0.15);
+}
+
+.dark .action-card input.input-valid {
+  box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.15);
+}
+
+/* Validated input wrapper */
+.validated-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.validated-input-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.validated-input-help {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Form field group */
+.form-field-group {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin: 0;
+}
+
+.form-field-group-legend {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 0 0.5rem;
+}
+
+/* Form actions */
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.form-submit-btn {
+  flex: 1;
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  min-height: 44px;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.form-submit-btn:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.form-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-reset-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  min-height: 44px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.form-reset-btn:hover:not(:disabled) {
+  color: var(--text-primary);
+  background: var(--surface-hover);
+}
+
+.form-reset-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Focus ring container */
 .focus-ring-container {
   position: relative;
@@ -2111,6 +2263,65 @@
   color: var(--text-secondary);
   font-size: 0.9rem;
 }
+
+/* Character counter */
+.char-counter {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: right;
+  display: block;
+  margin-top: 0.15rem;
+  transition: color 0.2s;
+}
+
+.char-counter-warn {
+  color: var(--warning-text);
+  font-weight: 500;
+}
+
+.char-counter-over {
+  color: var(--error-text);
+  font-weight: 600;
+}
+
+/* Password strength meter */
+.password-strength {
+  margin-top: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.password-strength-bars {
+  display: flex;
+  gap: 3px;
+  flex: 1;
+}
+
+.password-strength-bar {
+  height: 4px;
+  flex: 1;
+  border-radius: 2px;
+  background: var(--border-color);
+  transition: background 0.2s;
+}
+
+.password-strength-bar.strength-weak { background: var(--error-text); }
+.password-strength-bar.strength-fair { background: var(--warning-text); }
+.password-strength-bar.strength-good { background: var(--info-text); }
+.password-strength-bar.strength-strong { background: var(--success); }
+
+.password-strength-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  min-width: 3rem;
+}
+
+.strength-text-weak { color: var(--error-text); }
+.strength-text-fair { color: var(--warning-text); }
+.strength-text-good { color: var(--info-text); }
+.strength-text-strong { color: var(--success); }
 
 /* High contrast preferences */
 @media (prefers-contrast: more) {
