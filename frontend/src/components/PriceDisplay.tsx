@@ -7,9 +7,13 @@ export function PriceDisplay() {
 
   if (loading && !price) {
     return (
-      <div className="price-display" aria-label="Loading STX price" aria-busy="true">
-        <div className="price-skeleton" style={{ width: 120, height: 28 }} />
-        <div className="price-skeleton" style={{ width: 80, height: 18, marginTop: 6 }} />
+      <div className="price-display" aria-label="Loading STX price" aria-busy="true" role="status">
+        <div className="price-skeleton-wrapper">
+          <div className="price-skeleton" style={{ width: 128, height: 28, marginBottom: 6 }} aria-hidden="true" />
+          <div className="price-skeleton" style={{ width: 72, height: 16, marginBottom: 4 }} aria-hidden="true" />
+          <div className="price-skeleton" style={{ width: 96, height: 12 }} aria-hidden="true" />
+        </div>
+        <span className="sr-only">Fetching current STX price…</span>
       </div>
     );
   }
