@@ -12,6 +12,7 @@ export interface UsePriceFeedReturn {
   refresh: () => void;
   history: PriceData[];
   btcRate: number | null;
+  lastFetchedAt: number | null;
 }
 
 export function usePriceFeed(): UsePriceFeedReturn {
@@ -19,7 +20,9 @@ export function usePriceFeed(): UsePriceFeedReturn {
   const [loading, setLoading] = useState<boolean>(price === null);
   const [error, setError] = useState<string | null>(null);
   const [history, setHistory] = useState<PriceData[]>([]);
+  const [lastFetchedAt, setLastFetchedAt] = useState<number | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const refreshingRef = useRef(false);
 
   const addToHistory = useCallback((data: PriceData) => {
     setHistory(prev => {
@@ -29,17 +32,22 @@ export function usePriceFeed(): UsePriceFeedReturn {
   }, []);
 
   const refresh = useCallback(async () => {
+    // Prevent concurrent fetches
+    if (refreshingRef.current) return;
+    refreshingRef.current = true;
     setLoading(true);
     setError(null);
     try {
       const data = await PriceService.instance.fetchCurrentPrice();
       setPrice(data);
+      setLastFetchedAt(Date.now());
       addToHistory(data);
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Failed to fetch STX price';
       setError(msg);
     } finally {
       setLoading(false);
+      refreshingRef.current = false;
     }
   }, [addToHistory]);
 
@@ -61,5 +69,5 @@ export function usePriceFeed(): UsePriceFeedReturn {
 
   const btcRate = price?.btc ?? null;
 
-  return { price, loading, error, refresh, history, btcRate };
+  return { price, loading, error, refresh, history, btcRate, lastFetchedAt };
 }
