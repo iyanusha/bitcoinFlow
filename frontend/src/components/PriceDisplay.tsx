@@ -20,14 +20,26 @@ export function PriceDisplay() {
 
   if (error && !price) {
     return (
-      <div className="price-display price-error-banner" role="alert">
-        <span>Price unavailable: {error}</span>
-        <button className="price-retry-btn" onClick={refresh} aria-label="Retry fetching STX price">
-          Retry
+      <div className="price-display price-error-banner" role="alert" aria-live="assertive">
+        <div className="price-error-content">
+          <span className="price-error-icon" aria-hidden="true">⚠</span>
+          <span className="price-error-text">Price unavailable — {error}</span>
+        </div>
+        <button
+          className="price-retry-btn"
+          onClick={refresh}
+          aria-label="Retry fetching STX price"
+          disabled={loading}
+          aria-busy={loading}
+        >
+          {loading ? 'Retrying…' : 'Retry'}
         </button>
       </div>
     );
   }
+
+  // Stale price warning banner (price loaded but fetch failed)
+  const showStaleWarning = error && price !== null;
 
   if (!price) return null;
 
@@ -39,6 +51,14 @@ export function PriceDisplay() {
 
   return (
     <div className="price-display" aria-label={`STX price: ${formatUSD(price.usd)}`}>
+      {showStaleWarning && (
+        <div className="price-stale-banner" role="status" aria-live="polite">
+          <span>Showing cached price — </span>
+          <button className="price-retry-btn price-retry-inline" onClick={refresh} aria-label="Retry fetching STX price">
+            Refresh
+          </button>
+        </div>
+      )}
       <div className="price-main">
         <span className="price-value">{formatUSD(price.usd)}</span>
         <span className={`price-change ${changeClass}`} aria-label={`24h change: ${formatChangePercent(price.change24h)}`}>
