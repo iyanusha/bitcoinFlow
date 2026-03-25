@@ -54,3 +54,35 @@ export function isPositiveChange(change: number): boolean {
 export function getPriceChangeColor(change: number): string {
   return change >= 0 ? 'text-green-600' : 'text-red-600';
 }
+
+/**
+ * Format a large USD value compactly (e.g. $1.2M, $34.5K).
+ */
+export function formatUSDCompact(usd: number): string {
+  if (Math.abs(usd) >= 1_000_000) {
+    return `$${(usd / 1_000_000).toFixed(2)}M`;
+  }
+  if (Math.abs(usd) >= 1_000) {
+    return `$${(usd / 1_000).toFixed(2)}K`;
+  }
+  return usdFormatter.format(usd);
+}
+
+/**
+ * Clamp a value between min and max.
+ */
+export function clamp(value: number, min: number, max: number): number {
+  return Math.min(Math.max(value, min), max);
+}
+
+/**
+ * Normalize an array of price values to a 0–1 range for chart rendering.
+ */
+export function normalizePrices(prices: number[]): number[] {
+  if (prices.length === 0) return [];
+  const min = Math.min(...prices);
+  const max = Math.max(...prices);
+  const range = max - min;
+  if (range === 0) return prices.map(() => 0.5);
+  return prices.map(p => (p - min) / range);
+}
