@@ -60,11 +60,18 @@ export function usePriceFeed(): UsePriceFeedReturn {
     };
   }, [refresh]);
 
-  // Refresh on window focus
+  // Refresh on window focus and document visibility change
   useEffect(() => {
     const handleFocus = () => refresh();
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') refresh();
+    };
     window.addEventListener('focus', handleFocus);
-    return () => window.removeEventListener('focus', handleFocus);
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
   }, [refresh]);
 
   const btcRate = price?.btc ?? null;
