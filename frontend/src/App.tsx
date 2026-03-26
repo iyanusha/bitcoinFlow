@@ -27,6 +27,7 @@ import { ErrorBoundary } from './components/ErrorBoundary'
 import { KeyboardShortcutHelp } from './components/KeyboardShortcutHelp'
 import { preconnectHiroApi } from './lib/resourceHints'
 import { reportWebVitals } from './lib/webVitals'
+import { PriceDisplay } from './components/PriceDisplay'
 import './App.css'
 
 // Preconnect to Hiro API on module load for faster first request
@@ -205,6 +206,7 @@ function App() {
       <header className="app-header" role="banner" aria-label={LANDMARK_LABELS.header}>
         <div className="header-top">
           <h1>BitcoinFlow</h1>
+          <PriceDisplay />
           <button
             className="theme-toggle"
             onClick={toggleTheme}
