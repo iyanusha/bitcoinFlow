@@ -4,9 +4,11 @@ import { formatUSD, isPositiveChange } from '../lib/priceUtils';
 
 interface PriceBadgeProps {
   price: PriceData | null;
+  /** When true, shows the STX/BTC rate instead of STX/USD */
+  showBtcRate?: boolean;
 }
 
-export function PriceBadge({ price }: PriceBadgeProps) {
+export function PriceBadge({ price, showBtcRate = false }: PriceBadgeProps) {
   if (!price) {
     return (
       <span className="price-badge price-badge-loading" aria-label="STX price loading" aria-busy="true">
@@ -18,6 +20,21 @@ export function PriceBadge({ price }: PriceBadgeProps) {
   const positive = isPositiveChange(price.change24h);
   const colorClass = positive ? 'price-badge-up' : 'price-badge-down';
   const arrow = positive ? '▲' : '▼';
+
+  if (showBtcRate && price.btc > 0) {
+    const btcFormatted = price.btc < 0.001
+      ? price.btc.toExponential(4)
+      : price.btc.toFixed(8);
+    return (
+      <span
+        className="price-badge"
+        aria-label={`STX/BTC rate: ${btcFormatted}`}
+        title="STX price in BTC"
+      >
+        <span className="price-badge-value">₿ {btcFormatted}</span>
+      </span>
+    );
+  }
 
   return (
     <span
