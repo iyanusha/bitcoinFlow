@@ -106,3 +106,170 @@ img {
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #64748b;
 }
+
+/* ── Price feed styles ────────────────────────────────────────── */
+
+.price-up {
+  color: #16a34a;
+}
+
+.price-down {
+  color: #dc2626;
+}
+
+.price-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: #f0fdf4;
+}
+
+.price-badge-up {
+  color: #16a34a;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.price-badge-down {
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.price-skeleton {
+  display: block;
+  animation: price-pulse 1.5s ease-in-out infinite;
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+.price-skeleton-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@keyframes price-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.price-display {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.875rem;
+}
+
+.price-main {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.price-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.price-change {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.price-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+
+.price-label {
+  font-weight: 600;
+}
+
+.price-updated {
+  opacity: 0.75;
+}
+
+.price-refresh-btn,
+.price-retry-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #6b7280;
+  transition: color 0.15s, background 0.15s;
+}
+
+.price-refresh-btn:hover,
+.price-retry-btn:hover {
+  color: #111827;
+  background: #f3f4f6;
+}
+
+.price-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #dc2626;
+}
+
+.price-error-content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.price-stale-banner {
+  font-size: 0.75rem;
+  color: #b45309;
+  background: #fffbeb;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.price-sparkline {
+  opacity: 0.8;
+  color: #16a34a;
+}
+
+.price-chart {
+  display: block;
+}
+
+.price-chart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
