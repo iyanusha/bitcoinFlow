@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePriceFeed } from '../hooks/usePriceFeed';
+import { PriceChart } from './PriceChart';
 import { formatUSD, formatChangePercent, isPositiveChange } from '../lib/priceUtils';
 
 export function PriceDisplay() {
@@ -82,42 +83,13 @@ export function PriceDisplay() {
         </button>
       </div>
       {history.length > 1 && (
-        <PriceSparklineInline prices={history.map(h => h.usd)} />
+        <PriceChart
+          history={history.map(h => h.usd)}
+          width={200}
+          height={48}
+        />
       )}
     </div>
   );
 }
 
-function PriceSparklineInline({ prices }: { prices: number[] }) {
-  const min = Math.min(...prices);
-  const max = Math.max(...prices);
-  const range = max - min || 1;
-  const w = 120;
-  const h = 32;
-  const points = prices
-    .map((p, i) => {
-      const x = (i / (prices.length - 1)) * w;
-      const y = h - ((p - min) / range) * h;
-      return `${x.toFixed(1)},${y.toFixed(1)}`;
-    })
-    .join(' ');
-
-  return (
-    <svg
-      width={w}
-      height={h}
-      viewBox={`0 0 ${w} ${h}`}
-      aria-hidden="true"
-      className="price-sparkline"
-    >
-      <polyline
-        points={points}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
