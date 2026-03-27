@@ -21,3 +21,21 @@ export interface PriceFetchError {
   message: string;
   retryAfter?: number;
 }
+
+/** Possible error codes returned by the price API or service layer. */
+export type PriceFetchErrorCode =
+  | 'NETWORK_ERROR'
+  | 'RATE_LIMITED'
+  | 'PARSE_ERROR'
+  | 'TIMEOUT'
+  | 'UNKNOWN';
+
+/** Snapshot of multiple asset prices at a single moment in time. */
+export interface PriceSnapshot {
+  stxUsd: number;
+  stxBtc: number;
+  capturedAt: number;
+}
+
+// Re-export all price types as a convenience barrel
+export type { PriceData as STXPriceData };
