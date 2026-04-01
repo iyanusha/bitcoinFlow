@@ -99,6 +99,16 @@ export function LockPeriodSelector({ value, onChange }: LockPeriodSelectorProps)
             aria-invalid={!!customError}
             aria-describedby={customError ? 'custom-blocks-error' : 'custom-blocks-hint'}
           />
+          <input
+            type="range"
+            min={MIN_BLOCKS}
+            max={MAX_BLOCKS}
+            step={144}
+            value={!isNaN(parseInt(customBlocks, 10)) ? parseInt(customBlocks, 10) : MIN_BLOCKS}
+            onChange={e => handleCustomChange(e.target.value)}
+            className="lock-custom-slider"
+            aria-label="Block count slider"
+          />
           {customError && (
             <p id="custom-blocks-error" className="lock-custom-error" role="alert">{customError}</p>
           )}
