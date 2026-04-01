@@ -59,6 +59,33 @@ export function getLockWarningLevel(blocks: number): 'none' | 'low' | 'medium' |
   return 'high';
 }
 
+/** Seconds between Stacks blocks on average. */
+export const SECONDS_PER_BLOCK = MINUTES_PER_BLOCK * 60;
+
+/**
+ * Given a current timestamp and a block height, estimate the wall-clock time
+ * at which a future block will be produced.
+ */
+export function estimateBlockTime(
+  currentBlock: number,
+  targetBlock: number,
+  nowMs: number = Date.now()
+): number {
+  const blockDelta = targetBlock - currentBlock;
+  return nowMs + blockDelta * SECONDS_PER_BLOCK * 1000;
+}
+
+/**
+ * Format a block count as a short label for display in tight spaces.
+ * e.g. 144 → "1d", 1008 → "1w", 4320 → "1mo"
+ */
+export function formatBlocksShort(blocks: number): string {
+  const days = Math.round((blocks * MINUTES_PER_BLOCK) / (60 * 24));
+  if (days >= 30) return `${Math.round(days / 30)}mo`;
+  if (days >= 7) return `${Math.round(days / 7)}w`;
+  return `${days}d`;
+}
+
 /** Preset lock periods available in the UI. */
 export const LOCK_PRESETS: LockPeriod[] = [
   { blocks: 144,    label: '1 Day',     daysEstimate: 1   },
