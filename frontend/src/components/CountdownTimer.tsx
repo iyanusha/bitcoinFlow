@@ -54,13 +54,16 @@ export function CountdownTimer({ blocksRemaining, totalBlocks, currentBlock }: C
             cy={26}
             r={radius}
             fill="none"
-            stroke="#f59e0b"
+            stroke={progressPct >= 100 ? '#22c55e' : '#f59e0b'}
             strokeWidth={4}
             strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
             transform="rotate(-90 26 26)"
             className="lock-ring-progress"
+            style={{
+              transition: 'stroke-dashoffset 0.6s ease, stroke 0.3s ease',
+            }}
           />
         </svg>
         <span className="countdown-pct-label" aria-hidden="true">
