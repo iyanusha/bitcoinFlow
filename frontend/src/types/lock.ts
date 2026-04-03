@@ -25,3 +25,16 @@ export interface LockContractConfig {
   unlockFn: string;
   getLockStatusFn: string;
 }
+
+// Resolved at import time from the same env vars used by stacks.ts
+const CONTRACT_ADDRESS =
+  (typeof import.meta !== 'undefined' && import.meta.env?.VITE_CONTRACT_ADDRESS) ||
+  'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+
+export const LOCK_CONTRACT_CONFIG: LockContractConfig = {
+  contractAddress: CONTRACT_ADDRESS,
+  contractName: 'flow-vault',
+  lockFn: 'lock-vault',
+  unlockFn: 'unlock-vault',
+  getLockStatusFn: 'get-lock-status',
+};
