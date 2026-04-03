@@ -1,19 +1,22 @@
 import { useState, useCallback } from 'react';
+import type { LockStatus } from '../types/lock';
 import { CONTRACT_ADDRESS, CONTRACT_NAME, network } from '../lib/stacks';
 
 export interface UseLockVaultReturn {
   locking: boolean;
   error: string | null;
   txId: string | null;
-  lockVault: (blocks: number) => Promise<void>;
+  optimisticLockStatus: LockStatus | null;
+  lockVault: (blocks: number, currentBlock: number) => Promise<void>;
 }
 
 export function useLockVault(): UseLockVaultReturn {
   const [locking, setLocking] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [txId, setTxId] = useState<string | null>(null);
+  const [optimisticLockStatus, setOptimisticLockStatus] = useState<LockStatus | null>(null);
 
-  const lockVault = useCallback(async (blocks: number) => {
+  const lockVault = useCallback(async (blocks: number, currentBlock: number) => {
     if (blocks < 144 || blocks > 52_560) {
       setError(`Invalid lock period: ${blocks} blocks. Must be between 144 and 52,560.`);
       return;
@@ -24,7 +27,6 @@ export function useLockVault(): UseLockVaultReturn {
     setTxId(null);
 
     try {
-      // Dynamically import to avoid SSR-like bundle issues with @stacks/connect
       const { openContractCall } = await import('@stacks/connect');
       const { uintCV, PostConditionMode } = await import('@stacks/transactions');
 
@@ -36,8 +38,17 @@ export function useLockVault(): UseLockVaultReturn {
         functionArgs: [uintCV(blocks)],
         postConditionMode: PostConditionMode.Deny,
         onFinish: (data) => {
-          setTxId(data.txId);
+          const submittedTxId = data.txId;
+          setTxId(submittedTxId);
           setLocking(false);
+
+          // Optimistic UI: assume the lock takes effect immediately
+          setOptimisticLockStatus({
+            isLocked: true,
+            lockedUntilBlock: currentBlock + blocks,
+            currentBlock,
+            remainingBlocks: blocks,
+          });
         },
         onCancel: () => {
           setLocking(false);
@@ -50,5 +61,5 @@ export function useLockVault(): UseLockVaultReturn {
     }
   }, []);
 
-  return { locking, error, txId, lockVault };
+  return { locking, error, txId, optimisticLockStatus, lockVault };
 }
