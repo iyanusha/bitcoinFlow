@@ -30,6 +30,14 @@ import { reportWebVitals } from './lib/webVitals'
 import { PriceDisplay } from './components/PriceDisplay'
 import { usePriceFeed } from './hooks/usePriceFeed'
 import { calculatePortfolioValue, formatUSD, microSTXtoSTX } from './lib/priceUtils'
+import { LockPeriodSelector } from './components/LockPeriodSelector'
+import { LockVaultButton } from './components/LockVaultButton'
+import { UnlockVaultButton } from './components/UnlockVaultButton'
+import { VaultLockBadge } from './components/VaultLockBadge'
+import { CountdownTimer } from './components/CountdownTimer'
+import { useLockStatus } from './hooks/useLockStatus'
+import { useLockHistory } from './hooks/useLockHistory'
+import type { LockPeriod } from './types/lock'
 import './App.css'
 
 // Preconnect to Hiro API on module load for faster first request
@@ -58,6 +66,9 @@ function App() {
   const isOnline = useOnlineStatus()
   const { isDark: darkMode, toggle: toggleTheme } = useTheme()
   const { price: stxPrice } = usePriceFeed()
+  const { lockStatus, refetch: refetchLock } = useLockStatus(isConnected ? getAddress() : null)
+  const { addEntry: addLockEntry } = useLockHistory()
+  const [selectedLockPeriod, setSelectedLockPeriod] = useState<LockPeriod | null>(null)
   const [showShortcuts, setShowShortcuts] = useState(false)
   const [depositTouched, setDepositTouched] = useState(false)
   const [withdrawTouched, setWithdrawTouched] = useState(false)
@@ -430,6 +441,53 @@ function App() {
               </button>
             </div>
           </div>
+
+          <section className="vault-lock-section" role="region" aria-labelledby="vault-lock-heading">
+            <div className="stats-header">
+              <h2 id="vault-lock-heading">Vault Lock</h2>
+              <VaultLockBadge lockStatus={lockStatus} />
+            </div>
+
+            {lockStatus?.isLocked && lockStatus.remainingBlocks !== null && (
+              <CountdownTimer
+                blocksRemaining={lockStatus.remainingBlocks}
+                totalBlocks={lockStatus.lockedUntilBlock
+                  ? lockStatus.lockedUntilBlock - (lockStatus.currentBlock - (lockStatus.lockedUntilBlock - (lockStatus.remainingBlocks ?? 0) - lockStatus.currentBlock + lockStatus.currentBlock))
+                  : lockStatus.remainingBlocks}
+                currentBlock={lockStatus.currentBlock}
+              />
+            )}
+
+            {!lockStatus?.isLocked && (
+              <LockPeriodSelector
+                value={selectedLockPeriod}
+                onChange={setSelectedLockPeriod}
+              />
+            )}
+
+            <div className="lock-action-row">
+              {!lockStatus?.isLocked ? (
+                <LockVaultButton
+                  selectedPeriod={selectedLockPeriod}
+                  currentBlock={lockStatus?.currentBlock ?? 0}
+                  onSuccess={(txId) => {
+                    if (selectedLockPeriod) {
+                      addLockEntry({ type: 'lock', blocks: selectedLockPeriod.blocks, txId, timestamp: Date.now() });
+                      refetchLock();
+                    }
+                  }}
+                />
+              ) : (
+                <UnlockVaultButton
+                  lockStatus={lockStatus}
+                  onSuccess={(txId) => {
+                    addLockEntry({ type: 'unlock', txId, timestamp: Date.now() });
+                    refetchLock();
+                  }}
+                />
+              )}
+            </div>
+          </section>
 
           <TransactionHistory transactions={transactions} onClear={clearHistory} />
 
