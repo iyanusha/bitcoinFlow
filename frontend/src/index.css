@@ -107,6 +107,333 @@ img {
   background: #64748b;
 }
 
+/* ── Lock period styles ──────────────────────────────────────── */
+
+.lock-badge-unlocked {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #16a34a;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.lock-badge-locked {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #92400e;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.lock-badge-eligible {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #1d4ed8;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.lock-badge,
+.lock-badge-loading {
+  display: inline-flex;
+  align-items: center;
+}
+
+.lock-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.lock-progress-ring {
+  display: block;
+}
+
+.lock-ring-progress {
+  will-change: stroke-dashoffset;
+}
+
+.lock-warning {
+  border-left: 3px solid #f59e0b;
+  background: #fffbeb;
+  padding: 12px;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.85rem;
+  color: #78350f;
+  margin-top: 10px;
+}
+
+.lock-warning--medium {
+  border-left-color: #6366f1;
+  background: #eef2ff;
+  color: #3730a3;
+}
+
+.lock-preset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.lock-preset-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  text-align: left;
+}
+
+.lock-preset-card:hover {
+  border-color: #a3a3a3;
+}
+
+.lock-preset-card--selected {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+.lock-preset-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.lock-preset-blocks,
+.lock-preset-days {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.lock-custom-slider {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  background: #fffbeb;
+  border-radius: 10px;
+  border: 1px solid #fde68a;
+  margin: 12px 0;
+}
+
+.countdown-ring-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-pct-label {
+  position: absolute;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #92400e;
+}
+
+.countdown-info {
+  flex: 1;
+}
+
+.countdown-label {
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.countdown-blocks {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin: 0 0 6px;
+}
+
+.countdown-current {
+  opacity: 0.7;
+}
+
+.countdown-progress-bar {
+  height: 4px;
+  background: #fde68a;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.countdown-progress-fill {
+  height: 100%;
+  background: #f59e0b;
+  border-radius: 9999px;
+  transition: width 0.5s ease;
+}
+
+.lock-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.lock-confirm-modal {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.lock-confirm-details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+  font-size: 0.9rem;
+  margin: 16px 0;
+}
+
+.lock-confirm-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.lock-confirm-cancel {
+  padding: 8px 18px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+.lock-confirm-proceed {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #f59e0b;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lock-vault-btn,
+.unlock-vault-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.lock-vault-btn {
+  background: #f59e0b;
+  color: white;
+}
+
+.unlock-vault-btn {
+  background: #16a34a;
+  color: white;
+}
+
+.lock-vault-btn:disabled,
+.unlock-vault-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.lock-error {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+.lock-success {
+  color: #16a34a;
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+.unlock-tooltip {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-left: 8px;
+}
+
+.lock-history-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 14px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #f3f4f6;
+}
+
+.lock-history-item--lock .lock-history-type-indicator {
+  width: 4px;
+  border-radius: 4px;
+  background: #f59e0b;
+  flex-shrink: 0;
+}
+
+.lock-history-item--unlock .lock-history-type-indicator {
+  width: 4px;
+  border-radius: 4px;
+  background: #16a34a;
+  flex-shrink: 0;
+}
+
+.lock-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.lock-history-type-label--lock { color: #92400e; font-weight: 600; font-size: 0.85rem; }
+.lock-history-type-label--unlock { color: #166534; font-weight: 600; font-size: 0.85rem; }
+.lock-history-date { font-size: 0.75rem; color: #9ca3af; }
+.lock-history-detail { font-size: 0.8rem; color: #6b7280; margin: 2px 0; }
+.lock-history-tx { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; }
+.lock-history-tx-hash { color: #374151; }
+.lock-history-tx-link { color: #6b7280; text-decoration: none; }
+
+.vault-lock-section { margin-top: 24px; }
+.lock-action-row { margin-top: 12px; }
+.lock-period-label { font-weight: 600; font-size: 0.9rem; margin: 0 0 8px; color: #374151; }
+.lock-advanced-btn { background: none; border: none; font-size: 0.8rem; color: #6366f1; cursor: pointer; padding: 4px 0; }
+.lock-custom-label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+.lock-custom-field { width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.95rem; }
+.lock-custom-field--error { border-color: #dc2626; }
+.lock-custom-error { color: #dc2626; font-size: 0.8rem; margin: 4px 0 0; }
+.lock-custom-hint { color: #16a34a; font-size: 0.8rem; margin: 4px 0 0; }
+
 /* ── Price feed styles ────────────────────────────────────────── */
 
 .price-up {
