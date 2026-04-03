@@ -326,6 +326,18 @@ function App() {
                 <h3>Withdrawals</h3>
                 <p>{vaultStats.withdrawCount}</p>
               </div>
+              <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label="Lock status">
+                <h3>Lock Status</h3>
+                <VaultLockBadge lockStatus={lockStatus} />
+                {lockStatus?.isLocked && lockStatus.lockedUntilBlock && (
+                  <p style={{ fontSize: '0.78rem', color: '#6b7280', marginTop: 4 }}>
+                    Unlock at block {lockStatus.lockedUntilBlock.toLocaleString()}
+                    {lockStatus.remainingBlocks !== null && (
+                      <> · {lockStatus.remainingBlocks.toLocaleString()} remaining</>
+                    )}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
 
