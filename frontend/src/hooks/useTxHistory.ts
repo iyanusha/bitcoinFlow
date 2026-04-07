@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import type { Transaction, TxFilter } from '../types/transaction';
 import { TxService } from '../services/txService';
 
@@ -35,6 +35,7 @@ export function useTxHistory(address: string): UseTxHistoryReturn {
   const [hasMore, setHasMore] = useState(true);
   const [filter, setFilter] = useState<TxFilter>({});
   const [pendingTxIds, setPendingTxIds] = useState<string[]>([]);
+  const prevFilterRef = useRef<TxFilter>({});
 
   const fetchPage = useCallback(async (pageOffset: number, replace: boolean) => {
     if (!address) return;
@@ -83,5 +84,11 @@ export function useTxHistory(address: string): UseTxHistoryReturn {
 
   const transactions = useMemo(() => applyFilter(allTransactions, filter), [allTransactions, filter]);
 
-  return { transactions, loading, error, hasMore, filter, setFilter, loadMore, refetch, pendingTxIds, addPendingTx };
+  // Expose a typed setFilter that also tracks the previous filter for diffing
+  const updateFilter = useCallback((newFilter: TxFilter) => {
+    prevFilterRef.current = filter;
+    setFilter(newFilter);
+  }, [filter]);
+
+  return { transactions, loading, error, hasMore, filter, setFilter: updateFilter, loadMore, refetch, pendingTxIds, addPendingTx };
 }
