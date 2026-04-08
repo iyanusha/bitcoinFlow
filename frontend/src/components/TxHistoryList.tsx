@@ -79,7 +79,10 @@ export function TxHistoryList({
       <div className="tx-list" role="list" aria-label="Transaction history">
         {dateKeys.map(date => (
           <div key={date} className="tx-date-group">
-            <p className="tx-date-group-header" aria-label={`Transactions on ${date}`}>{date}</p>
+            <div className="tx-date-group-header-wrapper" aria-label={`Transactions on ${date}`}>
+              <p className="tx-date-group-header">{date}</p>
+              <span className="tx-date-group-count">{grouped[date].length} tx{grouped[date].length !== 1 ? 's' : ''}</span>
+            </div>
             {grouped[date].map(tx => (
               <TxHistoryItem key={tx.id} transaction={tx} />
             ))}
