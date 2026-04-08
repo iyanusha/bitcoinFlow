@@ -18,9 +18,18 @@ interface TxHistoryListProps {
 function SkeletonRow() {
   return (
     <div className="tx-item tx-item-skeleton" aria-hidden="true">
-      <div className="price-skeleton" style={{ width: 64, height: 20 }} />
-      <div className="price-skeleton" style={{ width: 100, height: 16, marginTop: 6 }} />
-      <div className="price-skeleton" style={{ width: 80, height: 12, marginTop: 4 }} />
+      <div className="tx-item-left">
+        <div className="price-skeleton" style={{ width: 10, height: 10, borderRadius: '50%' }} />
+        <div className="price-skeleton" style={{ width: 72, height: 22, borderRadius: 9999 }} />
+      </div>
+      <div className="tx-item-center" style={{ gap: 4 }}>
+        <div className="price-skeleton" style={{ width: 120, height: 14 }} />
+        <div className="price-skeleton" style={{ width: 80, height: 12, marginTop: 4 }} />
+      </div>
+      <div className="tx-item-right">
+        <div className="price-skeleton" style={{ width: 90, height: 16 }} />
+        <div className="price-skeleton" style={{ width: 60, height: 12, marginTop: 4 }} />
+      </div>
     </div>
   );
 }
