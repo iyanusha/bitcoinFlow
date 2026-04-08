@@ -77,11 +77,15 @@ export function TxHistoryItem({ transaction: tx, usdPrice }: TxHistoryItemProps)
       </div>
 
       <div className="tx-item-right">
-        <span className={`tx-amount ${amountColor}`}>
-          {amountPrefix}{amountSTX.toFixed(6)} STX
+        <span className={`tx-amount ${amountColor}`} aria-label={`Amount: ${amountPrefix}${amountSTX.toFixed(6)} STX`}>
+          <span className="tx-amount-prefix" aria-hidden="true">{amountPrefix}</span>
+          {amountSTX.toFixed(6)}
+          <span className="tx-amount-unit"> STX</span>
         </span>
         {usdEquiv && (
-          <span className="tx-amount-usd">≈ ${usdEquiv}</span>
+          <span className="tx-amount-usd" aria-label={`USD equivalent: approximately $${usdEquiv}`}>
+            ≈ ${usdEquiv}
+          </span>
         )}
       </div>
     </div>
