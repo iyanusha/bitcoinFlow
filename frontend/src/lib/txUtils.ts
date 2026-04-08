@@ -69,3 +69,38 @@ export function groupTxsByDate(transactions: Transaction[]): Record<string, Tran
 export function sortTxsNewestFirst(transactions: Transaction[]): Transaction[] {
   return [...transactions].sort((a, b) => b.timestamp - a.timestamp);
 }
+
+/** Group transactions by type. */
+export function groupTxsByType(transactions: Transaction[]): Partial<Record<TxType, Transaction[]>> {
+  const groups: Partial<Record<TxType, Transaction[]>> = {};
+  for (const tx of transactions) {
+    if (!groups[tx.type]) groups[tx.type] = [];
+    groups[tx.type]!.push(tx);
+  }
+  return groups;
+}
+
+/** Compute aggregate stats across a list of transactions. */
+export function computeTxStats(transactions: Transaction[]): {
+  totalDeposited: number;
+  totalWithdrawn: number;
+  totalFees: number;
+  confirmedCount: number;
+  failedCount: number;
+} {
+  let totalDeposited = 0;
+  let totalWithdrawn = 0;
+  let totalFees = 0;
+  let confirmedCount = 0;
+  let failedCount = 0;
+
+  for (const tx of transactions) {
+    totalFees += tx.fee;
+    if (tx.status === 'confirmed') confirmedCount++;
+    if (tx.status === 'failed') failedCount++;
+    if (tx.type === 'deposit' || tx.type === 'reward') totalDeposited += tx.amount;
+    if (tx.type === 'withdrawal') totalWithdrawn += tx.amount;
+  }
+
+  return { totalDeposited, totalWithdrawn, totalFees, confirmedCount, failedCount };
+}
