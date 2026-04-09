@@ -138,6 +138,7 @@ function App() {
       onFinish: (data) => {
         const txId = data.txId;
         addTransaction({ txId, type: 'deposit', amount: Math.round(parseFloat(depositAmount) * SATS_PER_BTC) })
+        txHistoryHook.addPendingTx(txId)
         toastSuccess(`Deposit of ${depositAmount} sBTC submitted`, txId)
         setDepositAmount('')
         setDepositTouched(false)
@@ -193,6 +194,7 @@ function App() {
       onFinish: (data) => {
         const txId = data.txId;
         addTransaction({ txId, type: 'withdraw', amount: Math.round(parseFloat(withdrawAmount) * SATS_PER_BTC) })
+        txHistoryHook.addPendingTx(txId)
         toastSuccess(`Withdrawal of ${withdrawAmount} FLOW submitted`, txId)
         setWithdrawAmount('')
         setWithdrawTouched(false)
@@ -490,6 +492,7 @@ function App() {
                   onSuccess={(txId) => {
                     if (selectedLockPeriod) {
                       addLockEntry({ type: 'lock', blocks: selectedLockPeriod.blocks, txId, timestamp: Date.now() });
+                      txHistoryHook.addPendingTx(txId);
                       refetchLock();
                     }
                   }}
