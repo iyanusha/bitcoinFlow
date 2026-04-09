@@ -27,6 +27,9 @@ import { ErrorBoundary } from './components/ErrorBoundary'
 import { KeyboardShortcutHelp } from './components/KeyboardShortcutHelp'
 import { preconnectHiroApi } from './lib/resourceHints'
 import { reportWebVitals } from './lib/webVitals'
+import { PriceDisplay } from './components/PriceDisplay'
+import { usePriceFeed } from './hooks/usePriceFeed'
+import { calculatePortfolioValue, formatUSD, microSTXtoSTX } from './lib/priceUtils'
 import './App.css'
 
 // Preconnect to Hiro API on module load for faster first request
@@ -54,6 +57,7 @@ function App() {
   const { checkStatus } = useTransactionStatus()
   const isOnline = useOnlineStatus()
   const { isDark: darkMode, toggle: toggleTheme } = useTheme()
+  const { price: stxPrice } = usePriceFeed()
   const [showShortcuts, setShowShortcuts] = useState(false)
   const [depositTouched, setDepositTouched] = useState(false)
   const [withdrawTouched, setWithdrawTouched] = useState(false)
@@ -205,6 +209,7 @@ function App() {
       <header className="app-header" role="banner" aria-label={LANDMARK_LABELS.header}>
         <div className="header-top">
           <h1>BitcoinFlow</h1>
+          <PriceDisplay />
           <button
             className="theme-toggle"
             onClick={toggleTheme}
@@ -288,6 +293,11 @@ function App() {
               <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`STX Balance: ${formattedBalance} STX`}>
                 <h3>STX Balance</h3>
                 <p>{formattedBalance} STX</p>
+                {stxPrice && (
+                  <p className="stat-usd-equiv" aria-label="USD equivalent">
+                    ≈ {formatUSD(calculatePortfolioValue(microSTXtoSTX(vaultStats.stxBalance), stxPrice.usd))}
+                  </p>
+                )}
               </div>
               <div className={`stat-card${statsLoading ? ' loading' : ''}`} aria-label={`Your Flow Tokens: ${formattedUserTokens} FLOW`}>
                 <h3>Your Flow Tokens</h3>
