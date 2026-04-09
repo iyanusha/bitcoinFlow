@@ -79,8 +79,20 @@ export function useTxHistory(address: string): UseTxHistoryReturn {
     const confirmedIds = new Set(
       allTransactions.filter(tx => tx.status === 'confirmed').map(tx => tx.txHash)
     );
-    setPendingTxIds(prev => prev.filter(id => !confirmedIds.has(id)));
-  }, [allTransactions, pendingTxIds.length]);
+    const hasNewlyConfirmed = pendingTxIds.some(id => confirmedIds.has(id));
+    if (hasNewlyConfirmed) {
+      setPendingTxIds(prev => prev.filter(id => !confirmedIds.has(id)));
+    }
+  }, [allTransactions, pendingTxIds]);
+
+  // Poll every 15s when there are pending txs to check for confirmations
+  useEffect(() => {
+    if (pendingTxIds.length === 0) return;
+    const interval = setInterval(() => {
+      fetchPage(0, true);
+    }, 15_000);
+    return () => clearInterval(interval);
+  }, [pendingTxIds.length, fetchPage]);
 
   const transactions = useMemo(() => applyFilter(allTransactions, filter), [allTransactions, filter]);
 
