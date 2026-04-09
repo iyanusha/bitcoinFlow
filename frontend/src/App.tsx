@@ -38,6 +38,9 @@ import { CountdownTimer } from './components/CountdownTimer'
 import { useLockStatus } from './hooks/useLockStatus'
 import { useLockHistory } from './hooks/useLockHistory'
 import type { LockPeriod } from './types/lock'
+import { TxHistoryList } from './components/TxHistoryList'
+import { TxExportButton } from './components/TxExportButton'
+import { useTxHistory } from './hooks/useTxHistory'
 import './App.css'
 
 // Preconnect to Hiro API on module load for faster first request
@@ -69,6 +72,8 @@ function App() {
   const { lockStatus, refetch: refetchLock } = useLockStatus(isConnected ? getAddress() : null)
   const { addEntry: addLockEntry } = useLockHistory()
   const [selectedLockPeriod, setSelectedLockPeriod] = useState<LockPeriod | null>(null)
+  const walletAddress = isConnected ? (getAddress() ?? '') : ''
+  const txHistoryHook = useTxHistory(walletAddress)
   const [showShortcuts, setShowShortcuts] = useState(false)
   const [depositTouched, setDepositTouched] = useState(false)
   const [withdrawTouched, setWithdrawTouched] = useState(false)
@@ -499,6 +504,23 @@ function App() {
                 />
               )}
             </div>
+          </section>
+
+          <section className="tx-history-section" role="region" aria-labelledby="tx-history-heading">
+            <div className="tx-history-header">
+              <h2 id="tx-history-heading">Transaction History</h2>
+              <TxExportButton transactions={txHistoryHook.transactions} />
+            </div>
+            <TxHistoryList
+              transactions={txHistoryHook.transactions}
+              loading={txHistoryHook.loading}
+              error={txHistoryHook.error}
+              hasMore={txHistoryHook.hasMore}
+              filter={txHistoryHook.filter}
+              onFilterChange={txHistoryHook.setFilter}
+              onLoadMore={txHistoryHook.loadMore}
+              pendingTxIds={txHistoryHook.pendingTxIds}
+            />
           </section>
 
           <TransactionHistory transactions={transactions} onClear={clearHistory} />
